@@ -13,7 +13,7 @@ export default function Footer() {
                 <span className="text-amber-400 text-xl">★</span>
               </div>
               <span className="text-white uppercase tracking-[0.3em] text-sm">
-                Luxe Paradiso
+                MOA-HOTEL
               </span>
             </div>
             <p className="text-neutral-400 leading-relaxed">
@@ -90,9 +90,9 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-1" />
                 <span className="text-neutral-400">
-                  Luxury Boulevard 123
+                  Steinstrasse 123
                   <br />
-                  10115 Berlin, Deutschland
+                  40476 Düsseldorf, Deutschland
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -101,16 +101,16 @@ export default function Footer() {
                   href="tel:+49301234567"
                   className="text-neutral-400 hover:text-amber-400 transition-colors"
                 >
-                  +49 (0)30 123 456 7
+                  +49 (0)30 123 456 789
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-amber-400 flex-shrink-0" />
                 <a
-                  href="mailto:info@luxeparadiso.de"
+                  href="mailto:info@moa-hotel.de"
                   className="text-neutral-400 hover:text-amber-400 transition-colors"
                 >
-                  info@luxeparadiso.de
+                  info@moa-hotel.de
                 </a>
               </li>
             </ul>
@@ -141,7 +141,7 @@ export default function Footer() {
           </div>
 
           <p className="text-neutral-500 text-sm">
-            © 2024 Luxe Paradiso. Alle Rechte vorbehalten.
+            © 2024 MOA Hotel. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>
