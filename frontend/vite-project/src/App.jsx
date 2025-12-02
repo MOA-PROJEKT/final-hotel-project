@@ -3,16 +3,17 @@ import Footer from "./components/layout/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <>
       <Navbar />
 
-      <main className="bg-slate-50">
+      {/* Seite (ohne extra Wrapper-Div) */}
+      <main className="min-h-screen bg-slate-50 text-slate-900">
         {/* HERO – später kommt hier Video / Bild */}
         <section
           id="hero"
           className="flex min-h-[70vh] items-center justify-center bg-slate-900 text-white"
         >
-          <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="mx-auto w-full max-w-5xl px-4 text-center">
             <p className="mb-4 text-xs tracking-[0.3em] uppercase text-slate-300">
               MOA Haven
             </p>
@@ -97,6 +98,6 @@ export default function App() {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

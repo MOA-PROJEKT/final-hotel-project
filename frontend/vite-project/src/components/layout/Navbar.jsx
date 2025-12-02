@@ -32,7 +32,7 @@ function LanguageSwitcher({ current, onChange }) {
       </button>
 
       {open && (
-        <div className="absolute left-0 mt-1 space-y-1 text-[14px] tracking-[0.32em] uppercase">
+        <div className="absolute left-0 mt-1 space-y-1 text-[14px] tracking-[0.32em] uppercase bg-white/95 px-2 py-2 shadow-sm">
           {LANGUAGES.filter((code) => code !== current).map((code) => (
             <button
               key={code}
@@ -76,98 +76,146 @@ export default function Navbar() {
             : "bg-white/80 border-transparent backdrop-blur-sm text-slate-900"
         }`}
       >
-        <div className="mx-auto flex w-full max-w-[1400px] flex-col px-2 sm:px-4 lg:px-6 pt-3 pb-2">
-          {/* ROW 1: Burger / Logo / Actions */}
-          <div className="flex h-20 lg:h-24 items-center justify-between gap-4">
-            {/* LINKS: (Mobile = Sprache, Desktop = Burger) */}
-            <div className="flex flex-1 items-center">
-              {/* Mobile: Sprache links */}
-              <div className="flex lg:hidden">
-                <LanguageSwitcher current={language} onChange={setLanguage} />
+        <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
+          {/* ========= DESKTOP: ENTWEDER großer ODER schmaler Header ========= */}
+          {/* Großer Header (nur oben, nicht gescrollt) */}
+          {!isScrolled && (
+            <div className="hidden lg:flex flex-col pt-3 pb-2">
+              {/* Row 1: Burger / Logo / Actions */}
+              <div className="flex h-24 items-center justify-between gap-4">
+                {/* Links: Hamburger */}
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
+                  onClick={() => setIsMenuOpen(true)}
+                >
+                  <Menu className="h-8 w-8" />
+                  <span className="hidden sm:inline">Menü</span>
+                </button>
+
+                {/* Mitte: Logo */}
+                <div className="flex flex-col items-center leading-tight">
+                  <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-full border border-slate-400 text-[10px] tracking-[0.2em]">
+                    ★
+                  </div>
+                  <span className="text-[16px] tracking-[0.55em] uppercase">
+                    MOA HOTEL PARADISE
+                  </span>
+                  <span className="mt-1 text-[11px] tracking-[0.4em] uppercase text-slate-500">
+                    Luxury Retreat
+                  </span>
+                </div>
+
+                {/* Rechts: Sprache + Login + Buchen */}
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <LanguageSwitcher current={language} onChange={setLanguage} />
+
+                  <button
+                    type="button"
+                    className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 hover:border-slate-500"
+                    aria-label="Login"
+                  >
+                    <User className="h-4 w-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="hidden md:inline-flex rounded-sm border border-rose-500 bg-rose-500 px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-white hover:bg-transparent hover:text-rose-500 transition-colors"
+                  >
+                    Buchen
+                  </button>
+                </div>
               </div>
 
-              {/* Desktop: Hamburger links (größer) */}
+              {/* Row 2: Linie + Navigation */}
+              <div className="flex flex-col">
+                <div className="mt-4 border-t border-slate-200/80" />
+                <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="text-slate-500 hover:text-slate-900 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </div>
+          )}
+
+          {/* Schmaler Header (nur wenn gescrollt) */}
+          {isScrolled && (
+            <div className="hidden lg:flex h-14 items-center justify-between gap-6">
+              {/* Links: Brand klein */}
+              <div className="flex flex-col leading-tight">
+                <span className="text-[13px] tracking-[0.45em] uppercase">
+                  MOA HOTEL PARADISE
+                </span>
+                <span className="text-[9px] tracking-[0.35em] uppercase text-slate-500">
+                  Luxury Retreat
+                </span>
+              </div>
+
+              {/* Mitte: Navigation */}
+              <nav className="flex items-center justify-center gap-10 text-[12px] uppercase tracking-[0.35em]">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="text-slate-500 hover:text-slate-900 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Rechts: Buchen */}
               <button
                 type="button"
-                className="hidden lg:inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
-                onClick={() => setIsMenuOpen(true)}
+                className="inline-flex rounded-sm border border-rose-500 bg-rose-500 px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white hover:bg-transparent hover:text-rose-500 transition-colors"
               >
-                <Menu className="h-6 w-6 lg:h-8 lg:w-8" />
-                <span className="hidden sm:inline">Menü</span>
+                Buchen
               </button>
             </div>
+          )}
 
-            {/* LOGO in der Mitte */}
-            <div className="flex flex-col items-center leading-tight">
-              {/* Stern-Logo – Handy kleiner, Desktop größer */}
-              <div className="mb-1 flex h-7 w-7 lg:h-9 lg:w-9 items-center justify-center rounded-full border border-slate-400 text-[9px] tracking-[0.2em]">
-                ★
+          {/* ========= MOBILE / TABLET HEADER (immer, < lg) ========= */}
+          <div className="flex lg:hidden flex-col pt-5 pb-2">
+            {/* Row 1: Sprache / Logo / Burger */}
+            <div className="flex h-16  items-center justify-between gap-4">
+              {/* links: Sprache */}
+              <LanguageSwitcher current={language} onChange={setLanguage} />
+
+              {/* Mitte: Logo (kleiner) */}
+              <div className="flex flex-col items-center leading-tight">
+                <div className="mb-1 flex h-7 w-7 items-center justify-center rounded-full border border-slate-400 text-[9px] tracking-[0.2em]">
+                  ★
+                </div>
+                <span className="text-[12px] tracking-[0.45em] uppercase">
+                  MOA HOTEL PARADISE
+                </span>
+                <span className="mt-1 text-[9px] tracking-[0.35em] uppercase text-slate-500">
+                  Luxury Retreat
+                </span>
               </div>
 
-              {/* Haupttitel */}
-              <span className="text-[12px] tracking-[0.45em] uppercase lg:text-[16px] lg:tracking-[0.55em]">
-                MOA HOTEL PARADISE
-              </span>
-
-              {/* Untertitel */}
-              <span className="mt-1 text-[9px] tracking-[0.35em] uppercase text-slate-500 lg:text-[11px] lg:tracking-[0.4em]">
-                Luxury Retreat
-              </span>
-            </div>
-
-            {/* RECHTS: (Mobile = Burger, Desktop = Sprache + Login + Buchen) */}
-            <div className="flex flex-1 items-center justify-end gap-3 sm:gap-4">
-              {/* Mobile: Hamburger rechts (so lassen) */}
+              {/* rechts: Burger */}
               <button
                 type="button"
-                className="inline-flex lg:hidden items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
+                className="inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
                 onClick={() => setIsMenuOpen(true)}
               >
                 <Menu className="h-6 w-6" />
-                <span className="hidden sm:inline">Menü</span>
               </button>
-
-              {/* Desktop: Sprache + Login + Buchen */}
-              <div className="hidden lg:flex items-center gap-3 sm:gap-4">
-                <LanguageSwitcher current={language} onChange={setLanguage} />
-
-                <button
-                  type="button"
-                  className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 hover:border-slate-500"
-                  aria-label="Login"
-                >
-                  <User className="h-4 w-4" />
-                </button>
-
-                <button
-                  type="button"
-                  className="hidden md:inline-flex rounded-sm border border-rose-500 bg-rose-500 px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-white hover:bg-transparent hover:text-rose-500 transition-colors"
-                >
-                  Buchen
-                </button>
-              </div>
             </div>
-          </div>
 
-          {/* ROW 2: Linie + Navigation (nur Desktop) */}
-          <div className="hidden lg:flex flex-col">
-            <div className="mt-4 border-t border-slate-200/80" />
-            <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-slate-500 hover:text-slate-900 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
           </div>
         </div>
       </header>
 
-      {/* Platzhalter unter dem Header (für Hero) */}
+      {/* Platzhalter unter dem fixen Header */}
       <div className="h-32 sm:h-40 lg:h-44" />
 
       {/* OVERLAY-MENÜ (HAMBURGER) */}
@@ -178,23 +226,23 @@ export default function Navbar() {
             : "opacity-0 pointer-events-none bg-transparent"
         }`}
       >
-        {/* PANEL LINKS */}
+        {/* Panel links */}
         <div
           className={`relative h-full w-full lg:max-w-md bg-amber-900/95 text-white flex flex-col transform transition-transform duration-500 ${
             isMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          {/* X – mobile rechts, Desktop links ungefähr auf Burger-Höhe */}
+          {/* X */}
           <button
             type="button"
             className="absolute top-8 right-3 lg:left-8 lg:right-auto lg:top-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:border-white"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Menü schließen"
           >
-            <X className="h-4 w-4 lg:h-5 lg:w-5" />
+            <X className="h-5 w-5" />
           </button>
 
-          {/* Links im Overlay: Mobile bleibt, Desktop mehr Abstand nach unten */}
+          {/* Links im Overlay */}
           <nav className="flex-1 overflow-y-auto px-8 pt-20 lg:pt-32 space-y-7 lg:space-y-8 text-[14px] lg:text-[15px] tracking-[0.4em] uppercase">
             {navLinks.map((link) => (
               <button
@@ -232,7 +280,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* klickbarer Hintergrund rechts – Desktop */}
+        {/* rechter Hintergrund (Desktop) */}
         <button
           type="button"
           className="hidden lg:block flex-1"
