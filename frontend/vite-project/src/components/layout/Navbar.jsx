@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Menu, X, User, ChevronDown } from "lucide-react";
 
 const navLinks = [
-  { label: "Hotel", href: "#hotel" },
-  { label: "Zimmer", href: "#rooms" },
-  { label: "Restaurant", href: "#restaurant" },
-  { label: "Wellness", href: "#wellness" },
-  { label: "Galerie", href: "#gallery" },
-  { label: "Kontakt", href: "#contact" },
+  { label: "Hotel", to: "/" },
+  { label: "Zimmer", to: "/rooms" },
+  { label: "Restaurant", to: "/restaurant" },
+  { label: "Wellness", to: "/wellness" },
+  { label: "Galerie", to: "/gallery" },
+  { label: "Kontakt", to: "/contact" },
 ];
 
 const LANGUAGES = ["DE", "EN"];
@@ -146,13 +147,17 @@ export default function Navbar() {
                 <div className="mt-4 border-t border-white/40" />
                 <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
                   {navLinks.map((link) => (
-                    <a
+                    <NavLink
                       key={link.label}
-                      href={link.href}
-                      className="text-white/80 hover:text-white transition-colors"
+                      to={link.to}
+                      className={({ isActive }) =>
+                        `text-white/80 hover:text-white transition-colors ${
+                          isActive ? "text-white" : ""
+                        }`
+                      }
                     >
                       {link.label}
-                    </a>
+                    </NavLink>
                   ))}
                 </nav>
               </div>
@@ -175,13 +180,17 @@ export default function Navbar() {
               {/* Mitte: Navigation */}
               <nav className="flex items-center justify-center gap-10 text-[12px] uppercase tracking-[0.35em]">
                 {navLinks.map((link) => (
-                  <a
+                  <NavLink
                     key={link.label}
-                    href={link.href}
-                    className="text-slate-500 hover:text-slate-900 transition-colors"
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `text-slate-500 hover:text-slate-900 transition-colors ${
+                        isActive ? "text-slate-900" : ""
+                      }`
+                    }
                   >
                     {link.label}
-                  </a>
+                  </NavLink>
                 ))}
               </nav>
 
@@ -232,9 +241,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* WICHTIG: KEIN Platzhalter mehr – damit der Header direkt über dem Bild liegt */}
-      {/* (die alte <div className="h-32 ..."/> hier ist GELÖSCHT */}
-
       {/* OVERLAY-MENÜ (HAMBURGER) */}
       <div
         className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
@@ -262,19 +268,16 @@ export default function Navbar() {
           {/* Links im Overlay */}
           <nav className="flex-1 overflow-y-auto px-8 pt-20 lg:pt-32 space-y-7 lg:space-y-8 text-[14px] lg:text-[15px] tracking-[0.4em] uppercase">
             {navLinks.map((link) => (
-              <button
+              <NavLink
                 key={link.label}
-                type="button"
-                className="w-full text-left"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  window.location.hash = link.href.replace("#", "");
-                }}
+                to={link.to}
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full block"
               >
                 <div className="border-b border-white/25 pb-3 pt-1">
                   {link.label}
                 </div>
-              </button>
+              </NavLink>
             ))}
           </nav>
 

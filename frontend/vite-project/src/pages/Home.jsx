@@ -1,4 +1,5 @@
 // src/pages/Home.jsx
+import { Link } from "react-router-dom";
 import HERO from "../assets/images/HERO.jpg";
 import sommer from "../assets/images/sommer.jpg";
 
@@ -22,12 +23,12 @@ export default function Home() {
             </h1>
 
             <div className="mt-10 flex justify-center">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center justify-center border-2 border-[#c50355] bg-white/5 px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] backdrop-blur-sm transition hover:bg-[#c50355] hover:text-white"
               >
                 Buchen
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -56,12 +57,12 @@ export default function Home() {
             </p>
 
             <div className="mt-8">
-              <a
-                href="#rooms"
+              <Link
+                to="/rooms"
                 className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
               >
                 Mehr erfahren
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,12 +103,12 @@ export default function Home() {
                   Intimate double rooms with warm tones, perfect for weekend
                   escapes and short alpine breaks.
                 </p>
-                <a
-                  href="#contact"
-                  className="text-xs font-medium text-slate-900 underline underline-offset-4"
+                <Link
+                  to="/rooms"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
                 >
-                  Check availability
-                </a>
+                  Mehr erfahren
+                </Link>
               </div>
             </article>
 
@@ -177,12 +178,12 @@ export default function Home() {
             </p>
 
             <div className="mt-8">
-              <a
-                href="#restaurant"
+              <Link
+                to="/restaurant"
                 className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
               >
                 Mehr erfahren
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -213,12 +214,12 @@ export default function Home() {
               </p>
 
               <div className="mt-8">
-                <a
-                  href="#wellness"
+                <Link
+                  to="/wellness"
                   className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-medium text-slate-900 shadow-sm hover:bg-slate-100"
                 >
                   Mehr erfahren
-                </a>
+                </Link>
               </div>
             </div>
 
