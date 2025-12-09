@@ -1,17 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import Hero from "../assets/images/Hero.webp";
-import spaMassage from "../assets/images/spaMassage.jpg";
-import spaSauna from "../assets/images/spaSauna.jpg";
-import spaPool2 from "../assets/images/spaPool2.jpg";
-import yogaSession from "../assets/images/yogaSession.jpg";
-import fitnessGym from "../assets/images/fitnessGym.jpg";
-import yoga1 from "../assets/images/yoga1.webp";
-import yoga2 from "../assets/images/yoga2.webp";
-import yoga3 from "../assets/images/yoga3.webp";
-import yoga4 from "../assets/images/yoga4.webp";
-import yoga5 from "../assets/images/yoga5.webp";
-import yoga6 from "../assets/images/yoga6.webp";
+import Hero from "../assets/images/wellness/Hero.webp";
+import spaMassage from "../assets/images/wellness/spaMassage.jpg";
+import spaSauna from "../assets/images/wellness/spaSauna.jpg";
+import spaPool2 from "../assets/images/wellness/spaPool2.jpg";
+import yogaSession from "../assets/images/wellness/yogaSession.jpg";
+import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
+import yoga1 from "../assets/images/wellness/yoga1.webp";
+import yoga2 from "../assets/images/wellness/yoga2.webp";
+import yoga3 from "../assets/images/wellness/yoga3.webp";
+import yoga4 from "../assets/images/wellness/yoga4.webp";
+import yoga5 from "../assets/images/wellness/yoga5.webp";
+import yoga6 from "../assets/images/wellness/yoga6.webp";
 
 import ImageCarousel from "../components/ImageCaroussel.jsx";
 

@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import { Link } from "react-router-dom";
-import HERO from "../assets/images/HERO.jpg";
-import sommer from "../assets/images/sommer.jpg";
+import HERO from "../assets/images/hotel/HERO.jpg";
+import sommer from "../assets/images/hotel/sommer.jpg";
 
 export default function Home() {
   return (
