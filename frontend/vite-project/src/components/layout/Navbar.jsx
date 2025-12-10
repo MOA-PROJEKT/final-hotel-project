@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Menu, X, User, ChevronDown } from "lucide-react";
+import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Menu, X, User, ChevronDown } from 'lucide-react'
 
 const navLinks = [
-  { label: "Hotel", to: "/" },
-  { label: "Zimmer", to: "/rooms" },
-  { label: "Restaurant", to: "/restaurant" },
-  { label: "Wellness", to: "/wellness" },
-  { label: "Galerie", to: "/gallery" },
-  { label: "Kontakt", to: "/contact" },
-];
+  { label: 'Hotel', to: '/' },
+  { label: 'Zimmer', to: '/rooms' },
+  { label: 'Restaurant', to: '/restaurant' },
+  { label: 'Wellness', to: '/wellness' },
+  { label: 'Galerie', to: '/gallery' },
+  { label: 'Kontakt', to: '/contact' },
+]
 
-const LANGUAGES = ["DE", "EN"];
+const LANGUAGES = ['DE', 'EN']
 
 // Sprachauswahl
 function LanguageSwitcher({ current, onChange, isScrolled }) {
   // Farben ändern sich, je nachdem ob gescrollt oder nicht
-  const baseText = isScrolled ? "text-slate-700" : "text-white";
-  const hoverText = isScrolled ? "hover:text-slate-900" : "hover:text-slate-100";
+  const baseText = isScrolled ? 'text-slate-700' : 'text-white'
+  const hoverText = isScrolled ? 'hover:text-slate-900' : 'hover:text-slate-100'
   const dropdownBg = isScrolled
-    ? "bg-white/95 text-slate-700 shadow-sm"
-    : "bg-slate-900/90 text-white shadow-lg";
+    ? 'bg-white/95 text-slate-700 shadow-sm'
+    : 'bg-slate-900/90 text-white shadow-lg'
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="relative inline-block">
@@ -33,7 +33,7 @@ function LanguageSwitcher({ current, onChange, isScrolled }) {
       >
         <span>{current}</span>
         <ChevronDown
-          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -47,8 +47,8 @@ function LanguageSwitcher({ current, onChange, isScrolled }) {
               type="button"
               className={`block text-left w-full ${baseText} ${hoverText}`}
               onClick={() => {
-                onChange(code);
-                setOpen(false);
+                onChange(code)
+                setOpen(false)
               }}
             >
               {code}
@@ -57,22 +57,22 @@ function LanguageSwitcher({ current, onChange, isScrolled }) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("DE");
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [language, setLanguage] = useState('DE')
 
   useEffect(() => {
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 40)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
@@ -81,9 +81,9 @@ export default function Navbar() {
         className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
           isScrolled
             ? // SCROLLED: schmal, weiß, Schatten
-              "bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900"
+              'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
             : // GANZ OBEN: komplett transparent, weiße Schrift auf Bild
-              "bg-transparent border-transparent text-white"
+              'bg-transparent border-transparent text-white'
         }`}
       >
         <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
@@ -152,7 +152,7 @@ export default function Navbar() {
                       to={link.to}
                       className={({ isActive }) =>
                         `text-white/80 hover:text-white transition-colors ${
-                          isActive ? "text-white" : ""
+                          isActive ? 'text-white' : ''
                         }`
                       }
                     >
@@ -185,7 +185,7 @@ export default function Navbar() {
                     to={link.to}
                     className={({ isActive }) =>
                       `text-slate-500 hover:text-slate-900 transition-colors ${
-                        isActive ? "text-slate-900" : ""
+                        isActive ? 'text-slate-900' : ''
                       }`
                     }
                   >
@@ -245,14 +245,14 @@ export default function Navbar() {
       <div
         className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
           isMenuOpen
-            ? "opacity-100 pointer-events-auto bg-black/40"
-            : "opacity-0 pointer-events-none bg-transparent"
+            ? 'opacity-100 pointer-events-auto bg-black/40'
+            : 'opacity-0 pointer-events-none bg-transparent'
         }`}
       >
         {/* Panel links */}
         <div
           className={`relative h-full w-full lg:max-w-md bg-amber-900/95 text-white flex flex-col transform transition-transform duration-500 ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
           {/* X */}
@@ -309,5 +309,5 @@ export default function Navbar() {
         />
       </div>
     </>
-  );
+  )
 }

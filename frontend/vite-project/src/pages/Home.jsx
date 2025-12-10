@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
-import { Link } from "react-router-dom";
-import HERO from "../assets/images/HERO.jpg";
-import sommer from "../assets/images/sommer.jpg";
+import { Link } from 'react-router-dom'
+import HERO from '../assets/images/HERO.jpg'
+import sommer from '../assets/images/sommer.jpg'
 
 export default function Home() {
   return (
@@ -321,5 +321,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  );
+  )
 }

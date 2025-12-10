@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
 export default function ImageCarousel({
   images,
   autoPlay = true,
   interval = 4000,
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+  }
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+  }
 
   useEffect(() => {
-    if (!autoPlay) return;
-    const slideInterval = setInterval(nextSlide, interval);
-    return () => clearInterval(slideInterval);
-  }, [currentIndex, autoPlay, interval]);
+    if (!autoPlay) return
+    const slideInterval = setInterval(nextSlide, interval)
+    return () => clearInterval(slideInterval)
+  }, [currentIndex, autoPlay, interval])
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -34,7 +34,7 @@ export default function ImageCarousel({
       <button
         onClick={prevSlide}
         className="absolute top-1/2 left-0 -translate-y-1/2 text-black text-4xl md:text-5xl font-bold p-4 hover:text-amber-400"
-        style={{ background: "none", border: "none" }}
+        style={{ background: 'none', border: 'none' }}
       >
         ‹
       </button>
@@ -43,7 +43,7 @@ export default function ImageCarousel({
       <button
         onClick={nextSlide}
         className="absolute top-1/2 right-0 -translate-y-1/2 text-black text-4xl md:text-5xl font-bold p-4 hover:text-amber-400"
-        style={{ background: "none", border: "none" }}
+        style={{ background: 'none', border: 'none' }}
       >
         ›
       </button>
@@ -55,11 +55,11 @@ export default function ImageCarousel({
             key={i}
             onClick={() => setCurrentIndex(i)}
             className={`h-2 w-2 rounded-full cursor-pointer transition-all ${
-              currentIndex === i ? "bg-white" : "bg-white/40"
+              currentIndex === i ? 'bg-white' : 'bg-white/40'
             }`}
           ></div>
         ))}
       </div>
     </div>
-  );
+  )
 }

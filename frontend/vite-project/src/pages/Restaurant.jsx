@@ -1,7 +1,7 @@
 // src/pages/Restaurant.jsx
 export default function Restaurant() {
   return (
-  <main className="bg-slate-800 text-white pt-32 min-h-screen">
+    <main className="bg-slate-800 text-white pt-32 min-h-screen">
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h1 className="mb-4 text-3xl sm:text-4xl font-semibold">
           Restaurant &amp; Bar
@@ -12,5 +12,5 @@ export default function Restaurant() {
         </p>
       </section>
     </main>
-  );
+  )
 }
