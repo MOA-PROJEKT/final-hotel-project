@@ -1,9 +1,8 @@
-import {Router} from "express";
-import * as user from "../controllers/userController.js";
+import { Router } from 'express'
+import * as user from '../controllers/userController.js'
 
-const userRouter = Router();
+const userRouter = Router()
 
-userRouter
-    .post("/", user.createUser)
+userRouter.post('/', user.createUser)
 
-export default userRouter;
+export default userRouter

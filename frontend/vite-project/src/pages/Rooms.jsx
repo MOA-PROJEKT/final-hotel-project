@@ -1,6 +1,6 @@
 // src/pages/Rooms.jsx
-import { rooms } from "../data/rooms";
-import RoomList from "../components/rooms/RoomList";
+import { rooms } from '../data/rooms'
+import RoomList from '../components/rooms/RoomList'
 
 export default function Rooms() {
   return (
@@ -25,7 +25,7 @@ export default function Rooms() {
 
         {/* Drei Info-Kacheln wie „Inklusivleistungen / Gut zu wissen / Culinary Credit“ */}
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {["Inklusivleistungen", "Gut zu wissen", "Culinary Credit"].map(
+          {['Inklusivleistungen', 'Gut zu wissen', 'Culinary Credit'].map(
             (item) => (
               <div
                 key={item}
@@ -39,7 +39,7 @@ export default function Rooms() {
                   Gäste ergänzen.
                 </p>
               </div>
-            )
+            ),
           )}
         </div>
 
@@ -47,5 +47,5 @@ export default function Rooms() {
         <RoomList rooms={rooms} />
       </section>
     </main>
-  );
+  )
 }
