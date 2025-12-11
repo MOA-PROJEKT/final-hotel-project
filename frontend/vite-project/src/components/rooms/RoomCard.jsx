@@ -17,9 +17,9 @@ export default function RoomCard({ room }) {
         {/* Titel + Größe */}
         <div>
           <h3 className="text-lg sm:text-xl font-semibold">
-            {room.name}{" "}
+            {room.name}{' '}
             <span className="font-normal">
-              {room.size ? ` ${room.size}` : ""}
+              {room.size ? ` ${room.size}` : ''}
             </span>
           </h3>
         </div>
@@ -44,5 +44,5 @@ export default function RoomCard({ room }) {
         </div>
       </div>
     </article>
-  );
+  )
 }

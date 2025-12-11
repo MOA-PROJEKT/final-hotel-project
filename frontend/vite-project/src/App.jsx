@@ -1,17 +1,17 @@
 // src/App.jsx
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom'
 
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 // Pages
-import Home from "./pages/Home";
-import Rooms from "./pages/Rooms";
-import Restaurant from "./pages/Restaurant";
-import Wellness from "./pages/Wellness";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import Home from './pages/Home'
+import Rooms from './pages/Rooms'
+import Restaurant from './pages/Restaurant'
+import Wellness from './pages/Wellness'
+import Gallery from './pages/Gallery'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -31,5 +31,5 @@ export default function App() {
 
       <Footer />
     </>
-  );
+  )
 }
