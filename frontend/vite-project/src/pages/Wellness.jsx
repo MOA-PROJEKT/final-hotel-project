@@ -1,21 +1,54 @@
-import React from 'react'
-import { useState } from 'react'
-import Hero from '../assets/images/Hero.webp'
-import spaMassage from '../assets/images/spaMassage.jpg'
-import spaSauna from '../assets/images/spaSauna.jpg'
-import spaPool2 from '../assets/images/spaPool2.jpg'
-import yogaSession from '../assets/images/yogaSession.jpg'
-import fitnessGym from '../assets/images/fitnessGym.jpg'
-import yoga1 from '../assets/images/yoga1.webp'
-import yoga2 from '../assets/images/yoga2.webp'
-import yoga3 from '../assets/images/yoga3.webp'
-import yoga4 from '../assets/images/yoga4.webp'
-import yoga5 from '../assets/images/yoga5.webp'
-import yoga6 from '../assets/images/yoga6.webp'
+import React, { useState } from "react";
 
-import ImageCarousel from '../components/ImageCaroussel.jsx'
+import Hero from "../assets/images/wellness/Hero.webp";
+import spaMassage from "../assets/images/wellness/spaMassage.jpg";
+import spaSauna from "../assets/images/wellness/spaSauna.jpg";
+import spaPool2 from "../assets/images/wellness/spaPool2.jpg";
+import yogaSession from "../assets/images/wellness/yogaSession.jpg";
+import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
+import yoga1 from "../assets/images/wellness/yoga1.webp";
+import yoga2 from "../assets/images/wellness/yoga2.webp";
+import yoga3 from "../assets/images/wellness/yoga3.webp";
+import yoga4 from "../assets/images/wellness/yoga4.webp";
+import yoga5 from "../assets/images/wellness/yoga5.webp";
+import yoga6 from "../assets/images/wellness/yoga6.webp";
 
-const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6]
+import ImageCarousel from "../components/ImageCaroussel.jsx";
+
+const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6];
+
+function ReadMore({ children }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="relative">
+      {/* Textblock */}
+      <div
+        className={`
+          transition-all duration-500 ease-in-out overflow-hidden
+          ${expanded ? "max-h-[500px]" : "max-h-[120px]"}
+        `}
+      >
+        <div className={`${expanded ? "" : "line-clamp-3"}`}>{children}</div>
+      </div>
+
+      {/* Fade-out Effekt wenn NICHT expanded */}
+      {!expanded && (
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-stone-300/80 to-transparent pointer-events-none"></div>
+      )}
+
+      {/* Button rechts */}
+      <div className="flex justify-end mt-3">
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-amber-700 font-semibold hover:text-amber-900 transition"
+        >
+          {expanded ? "Weniger lesen" : "Weiter lesen"}
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function Wellness() {
   return (
@@ -27,16 +60,13 @@ export default function Wellness() {
           alt="hero bild"
           className="absolute inset-0 h-full w-full object-cover"
         />
-
         <div className="absolute inset-0 bg-slate-900/35" />
-
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="mx-auto max-w-3xl px-4 text-center text-white">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
               Wellness, Spa & Fitness.
             </h1>
 
-            {/* TERMIN BUCHEN BUTTON */}
             <button className="mt-8 inline-block px-8 py-3 bg-amber-300 text-black font-semibold rounded-full transition hover:bg-amber-600">
               Termin buchen
             </button>
@@ -74,13 +104,17 @@ export default function Wellness() {
                 <h3 className="text-2xl text-amber-600 mb-2">
                   Premium Massage
                 </h3>
-                <p className="text-black">
-                  Wohltuende Ganzkörper-, Aroma- oder Hot-Stone-Massagen für
-                  absolute Tiefenentspannung. Lassen Sie den Stress des Alltags
-                  hinter sich und genießen Sie eine individuell abgestimmte
-                  Behandlung, die Körper und Geist wieder in Balance bringt.
-                  Ideal, um neue Energie zu tanken und tief zu entspannen.
-                </p>
+
+                <ReadMore>
+                  <p className="text-black">
+                    Wohltuende Ganzkörper-, Aroma- oder Hot-Stone-Massagen für
+                    absolute Tiefenentspannung. Lassen Sie den Stress des
+                    Alltags hinter sich und genießen Sie eine individuell
+                    abgestimmte Behandlung, die Körper und Geist wieder in
+                    Balance bringt. Ideal, um neue Energie zu tanken und tief zu
+                    entspannen.
+                  </p>
+                </ReadMore>
               </div>
             </div>
 
@@ -95,13 +129,16 @@ export default function Wellness() {
                 <h3 className="text-2xl text-amber-600 mb-2">
                   Finnische Sauna
                 </h3>
-                <p className="text-black">
-                  Genießen Sie intensive Wärme und regenerative Erholung in
-                  unserer modernen Sauna. Verschiedene Aufguss-Rituale und
-                  Ruhebereiche laden zum Abschalten ein und fördern
-                  Wohlbefinden, Durchblutung und Entspannung. Perfekt für eine
-                  Auszeit vom Alltag.
-                </p>
+
+                <ReadMore>
+                  <p className="text-black">
+                    Genießen Sie intensive Wärme und regenerative Erholung in
+                    unserer modernen Sauna. Verschiedene Aufguss-Rituale und
+                    Ruhebereiche laden zum Abschalten ein und fördern
+                    Wohlbefinden, Durchblutung und Entspannung. Perfekt für eine
+                    Auszeit vom Alltag.
+                  </p>
+                </ReadMore>
               </div>
             </div>
 
@@ -109,22 +146,26 @@ export default function Wellness() {
             <div className="bg-stone-300 rounded-2xl overflow-hidden border border-neutral-800">
               <img
                 src={spaPool2}
-                alt="Heated Pool"
+                alt="Pool"
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-2xl text-amber-600 mb-2">Innenpool</h3>
-                <p className="text-black-400">
-                  Unser beheizter Poolbereich bietet sanfte Beleuchtung und ein
-                  angenehmes Ambiente für entspanntes Schwimmen oder relaxte
-                  Momente. Ideal zum Abschalten, Energie tanken oder für private
-                  Wellness-Momente in ruhiger Atmosphäre.
-                </p>
+
+                <ReadMore>
+                  <p className="text-black">
+                    Unser beheizter Poolbereich bietet sanfte Beleuchtung und
+                    ein angenehmes Ambiente für entspanntes Schwimmen oder
+                    relaxte Momente. Ideal zum Abschalten, Energie tanken oder
+                    für private Wellness-Momente in ruhiger Atmosphäre.
+                  </p>
+                </ReadMore>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <section className="my-24">
         <ImageCarousel images={carouselImages} />
       </section>
@@ -148,9 +189,7 @@ export default function Wellness() {
                 Tägliche Yoga-Stunden
               </h3>
               <p className="text-black-400 leading-relaxed mb-4">
-                Finden Sie innere Ruhe und Balance in unseren professionell
-                geführten Yoga- und Meditationsstunden — ideal für Anfänger und
-                Fortgeschrittene.
+                Finden Sie innere Ruhe und Balance …
               </p>
 
               <ul className="text-black-400 space-y-2">
@@ -166,8 +205,6 @@ export default function Wellness() {
 
       {/* --- FITNESS SECTION --- */}
       <section className="mb-24">
-        {' '}
-        {/* Abstand zum Footer */}
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-semibold text-amber-600 mb-8">
             Fitness & Gym
@@ -178,10 +215,9 @@ export default function Wellness() {
               <h3 className="text-xl text-amber-600 mb-4">
                 Modernes Fitnessstudio
               </h3>
+
               <p className="text-black-400 leading-relaxed mb-4">
-                Unser Fitnessbereich ist ausgestattet mit neuesten Geräten für
-                Kraft- und Ausdauertraining – perfekt für alle, die aktiv
-                bleiben möchten.
+                Unser Fitnessbereich ist ausgestattet …
               </p>
 
               <ul className="text-black-400 space-y-2">
@@ -201,5 +237,5 @@ export default function Wellness() {
         </div>
       </section>
     </section>
-  )
+  );
 }

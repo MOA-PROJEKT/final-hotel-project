@@ -1,14 +1,16 @@
 // src/data/rooms.js
 
 // Eure Zimmerbilder (genau so, wie sie im Explorer heißen)
-import DELUXE_DOUBLE from '../assets/images/DELUXE_DOUBLE.jpg'
-import JUNIOR_MEDIUM from '../assets/images/1_Titelbild_Junior-Suite-Medium.jpg'
-import DELUXE_SUITE from '../assets/images/1_Titelbild_Deluxe-Suite-living-room.jpg'
-import TWIN_JUNIOR from '../assets/images/1_Titelbild_Twin-Junior-Suite.jpg'
-import letzte from '../assets/images/letzte.webp'
-import CORNER_JUNIOR from '../assets/images/1_Titelbild_Corner-Junior-Suite.jpg'
-import GRAND_SUITE from '../assets/images/1_Titelbild_Grand-Suite-bedroom.jpg'
-import PENTHOUSE from '../assets/images/4_Carlton_Penthouse-13.jpg'
+
+import DELUXE_DOUBLE from "../assets/images/zimmer/DELUXE_DOUBLE.jpg";
+import JUNIOR_MEDIUM from "../assets/images/zimmer/1_Titelbild_Junior-Suite-Medium.jpg";
+import DELUXE_SUITE from "../assets/images//zimmer/1_Titelbild_Deluxe-Suite-living-room.jpg";
+import TWIN_JUNIOR from "../assets/images/zimmer/1_Titelbild_Twin-Junior-Suite.jpg";
+import letzte from "../assets/images/zimmer/letzte.webp";
+import CORNER_JUNIOR from "../assets/images/zimmer/1_Titelbild_Corner-Junior-Suite.jpg";
+import GRAND_SUITE from "../assets/images/zimmer/1_Titelbild_Grand-Suite-bedroom.jpg";
+import PENTHOUSE from "../assets/images/zimmer/4_Carlton_Penthouse-13.jpg";
+
 
 export const rooms = [
   {
