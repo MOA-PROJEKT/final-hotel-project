@@ -10,7 +10,7 @@ import Rooms from './pages/Rooms'
 import Restaurant from './pages/Restaurant'
 import Wellness from './pages/Wellness'
 import Gallery from './pages/Gallery'
-import Contact from './pages/Contact'
+import Kontakt from './pages/Kontakt'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/wellness" element={<Wellness />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Kontakt />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

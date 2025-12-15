@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, User, ChevronDown } from 'lucide-react'
 
 const navLinks = [
@@ -65,6 +65,11 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [language, setLanguage] = useState('DE')
 
+  const location = useLocation()
+  const path = location.pathname
+
+  const isLightPage = path === '/contact' || path === '/restaurant'
+
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > 40)
@@ -79,11 +84,9 @@ export default function Navbar() {
       {/* FIXED HEADER */}
       <header
         className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
-          isScrolled
-            ? // SCROLLED: schmal, weiß, Schatten
-              'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
-            : // GANZ OBEN: komplett transparent, weiße Schrift auf Bild
-              'bg-transparent border-transparent text-white'
+          isScrolled || isLightPage
+            ? 'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
+            : 'bg-transparent border-transparent text-white'
         }`}
       >
         <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
@@ -151,8 +154,16 @@ export default function Navbar() {
                       key={link.label}
                       to={link.to}
                       className={({ isActive }) =>
-                        `text-white/80 hover:text-white transition-colors ${
-                          isActive ? 'text-white' : ''
+                        `${
+                          isLightPage
+                            ? 'text-slate-600 hover:text-slate-900'
+                            : 'text-white/80 hover:text-white'
+                        } transition-colors ${
+                          isActive
+                            ? isLightPage
+                              ? 'text-slate-900'
+                              : 'text-white'
+                            : ''
                         }`
                       }
                     >
