@@ -14,11 +14,11 @@ const navLinks = [
 const LANGUAGES = ['DE', 'EN']
 
 // Sprachauswahl
-function LanguageSwitcher({ current, onChange, isScrolled }) {
-  // Farben ändern sich, je nachdem ob gescrollt oder nicht
-  const baseText = isScrolled ? 'text-slate-700' : 'text-white'
-  const hoverText = isScrolled ? 'hover:text-slate-900' : 'hover:text-slate-100'
-  const dropdownBg = isScrolled
+function LanguageSwitcher({ current, onChange, isLight }) {
+  // Helle Seiten (Kontakt, Restaurant) → dunkle Schrift
+  const baseText = isLight ? 'text-slate-700' : 'text-white'
+  const hoverText = isLight ? 'hover:text-slate-900' : 'hover:text-slate-100'
+  const dropdownBg = isLight
     ? 'bg-white/95 text-slate-700 shadow-sm'
     : 'bg-slate-900/90 text-white shadow-lg'
 
@@ -68,6 +68,7 @@ export default function Navbar() {
   const location = useLocation()
   const path = location.pathname
 
+  // "Helle" Seiten: Kontakt + Restaurant
   const isLightPage = path === '/contact' || path === '/restaurant'
 
   useEffect(() => {
@@ -82,17 +83,19 @@ export default function Navbar() {
   return (
     <>
       {/* FIXED HEADER */}
-      <header
-        className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
-          isScrolled || isLightPage
-            ? 'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
-            : 'bg-transparent border-transparent text-white'
-        }`}
-      >
-        <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
-          {/* ========= DESKTOP: ENTWEDER großer ODER schmaler Header ========= */}
+    <header
+  className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
+    // Kontakt + Restaurant oben → beige Hintergrund, ABER ohne untere Linie
+    isLightPage && !isScrolled
+      ? 'bg-[#f7f2ec] border-transparent text-slate-900'
+      : isScrolled
+      ? 'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
+      : 'bg-transparent border-transparent text-white'
+  }`}
+>
 
-          {/* Großer Header (nur oben, nicht gescrollt) */}
+        <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
+          {/* ========= DESKTOP: großer Header ========= */}
           {!isScrolled && (
             <div className="hidden lg:flex flex-col pt-3 pb-2">
               {/* Row 1: Burger / Logo / Actions */}
@@ -109,15 +112,27 @@ export default function Navbar() {
 
                 {/* Mitte: Logo */}
                 <div className="flex flex-col items-center leading-tight">
-                  <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-full border border-white/60 text-[10px] tracking-[0.2em]">
+                  {/* KREIS UM STERN → auf Kontakt/Restaurant dunkel */}
+                  <div
+                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border text-[10px] tracking-[0.2em] ${
+                      isLightPage
+                        ? 'border-slate-500 text-slate-700'
+                        : 'border-white/60 text-white'
+                    }`}
+                  >
                     ★
                   </div>
                   <span className="text-[16px] tracking-[0.55em] uppercase">
                     MOA HOTEL PARADISE
                   </span>
-                  <span className="mt-1 text-[11px] tracking-[0.4em] uppercase text-white/70">
-                    Luxury Retreat
-                  </span>
+                 <span
+                  className={`mt-1 text-[11px] tracking-[0.4em] uppercase ${
+                  isLightPage ? 'text-slate-500' : 'text-white/70'
+              }`}
+                >
+                   Luxury Retreat
+                </span>
+
                 </div>
 
                 {/* Rechts: Sprache + Login + Buchen */}
@@ -125,12 +140,17 @@ export default function Navbar() {
                   <LanguageSwitcher
                     current={language}
                     onChange={setLanguage}
-                    isScrolled={isScrolled}
+                    isLight={isLightPage}
                   />
 
+                  {/* USER-KREIS → auf Kontakt/Restaurant dunkel */}
                   <button
                     type="button"
-                    className="hidden sm:flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:border-white"
+                    className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${
+                      isLightPage
+                        ? 'border-slate-500 text-slate-700 hover:border-slate-700'
+                        : 'border-white/60 text-white hover:border-white'
+                    }`}
                     aria-label="Login"
                   >
                     <User className="h-4 w-4" />
@@ -147,7 +167,12 @@ export default function Navbar() {
 
               {/* Row 2: Linie + Navigation */}
               <div className="flex flex-col">
-                <div className="mt-4 border-t border-white/40" />
+                {/* MITTELLINIE → auf Kontakt/Restaurant dunkler/beige */}
+                <div
+                  className={`mt-4 border-t ${
+                    isLightPage ? 'border-[#eadfce]' : 'border-white/40'
+                  }`}
+                />
                 <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
                   {navLinks.map((link) => (
                     <NavLink
@@ -175,7 +200,7 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* Schmaler Header (nur wenn gescrollt) */}
+          {/* ========= DESKTOP: schmaler Header beim Scrollen ========= */}
           {isScrolled && (
             <div className="hidden lg:flex h-14 items-center justify-between gap-6">
               {/* Links: Brand klein */}
@@ -215,7 +240,7 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* ========= MOBILE / TABLET HEADER (immer, < lg) ========= */}
+          {/* ========= MOBILE / TABLET HEADER ========= */}
           <div className="flex lg:hidden flex-col pt-5 pb-2">
             {/* Row 1: Sprache / Logo / Burger */}
             <div className="flex h-16 items-center justify-between gap-4">
@@ -223,12 +248,18 @@ export default function Navbar() {
               <LanguageSwitcher
                 current={language}
                 onChange={setLanguage}
-                isScrolled={isScrolled}
+                isLight={isLightPage}
               />
 
               {/* Mitte: Logo (kleiner) */}
               <div className="flex flex-col items-center leading-tight">
-                <div className="mb-1 flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-[9px] tracking-[0.2em]">
+                <div
+                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border text-[9px] tracking-[0.2em] ${
+                    isLightPage
+                      ? 'border-slate-500 text-slate-700'
+                      : 'border-white/60 text-white'
+                  }`}
+                >
                   ★
                 </div>
                 <span className="text-[12px] tracking-[0.45em] uppercase">
