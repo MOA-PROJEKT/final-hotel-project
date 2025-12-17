@@ -1,17 +1,17 @@
 // src/pages/Gallery.jsx
-import React from "react";
+import React from 'react'
 
-import spaHero from "../assets/images/galerie/pool2.jpg";
-import spaPool2 from "../assets/images/galerie/pool.jpg";
-import spaSauna from "../assets/images/galerie/zimmer.jpg";
-import spaMassage from "../assets/images/wellness/spaMassage.jpg";
-import yoga1 from "../assets/images/galerie/bet.jpg";
-import yoga2 from "../assets/images/galerie/sone.jpg";
-import fitness from "../assets/images/galerie/fitnes.jpg";
-import snow from "../assets/images/galerie/schne.jpg";
-import pool3 from "../assets/images/galerie/pool3.jpg";
+import spaHero from '../assets/images/galerie/pool2.jpg'
+import spaPool2 from '../assets/images/galerie/pool.webp'
+import spaSauna from '../assets/images/galerie/zimmer.webp'
+import spaMassage from '../assets/images/wellness/spaMassage.jpg'
+import yoga1 from '../assets/images/galerie/bet.webp'
+import yoga2 from '../assets/images/galerie/sonne.webp'
+import fitness from '../assets/images/galerie/fitness.webp'
+import snow from '../assets/images/galerie/schnee.webp'
+import pool3 from '../assets/images/galerie/pool3.webp'
 
-function GalleryCard({ src, alt, height = "h-64" }) {
+function GalleryCard({ src, alt, height = 'h-64' }) {
   return (
     <figure
       className={`relative overflow-hidden rounded-3xl bg-slate-800/70 ${height} group`}
@@ -22,19 +22,13 @@ function GalleryCard({ src, alt, height = "h-64" }) {
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-      <figcaption className="absolute inset-x-0 bottom-0 px-5 pb-4">
-        <p className="text-[10px] uppercase tracking-[0.25em] text-slate-300">
-          Spa &amp; Wellness
-        </p>
-        <p className="mt-1 text-xs sm:text-sm font-medium">{alt}</p>
-      </figcaption>
     </figure>
-  );
+  )
 }
 
 export default function Gallery() {
   return (
-    <main className="bg-slate-900 text-white min-h-screen">
+    <main className=" text-white bg-[#f7f2ec] min-h-screen">
       {/* HERO: volle Breite, Header liegt darüber */}
       <section className="relative -mt-24 sm:-mt-28 lg:-mt-32">
         <div className="relative h-[90vh] min-h-[460px] w-full overflow-hidden">
@@ -44,11 +38,9 @@ export default function Gallery() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-slate-950/5" />
-          <div className="relative flex h-full items-center justify-center px-4">
-            <div className="text-center max-w-3xl">
-              <p className="text-xs sm:text-sm tracking-[0.35em] uppercase text-slate-200">
-                Spa &amp; Wellness
-              </p>
+          <div className="relative flex h-full items-center pt-[140px] justify-center px-4">
+            <div className="text-center  max-w-3xl">
+             
               <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
                 Moments at MOA
               </h1>
@@ -70,19 +62,19 @@ export default function Gallery() {
             <GalleryCard
               src={spaPool2}
               alt="Innenpool mit Liegen und Panorama"
-              height="h-[260px] sm:h-[300px] lg:h-[360px]"
+              height="h-[400px] sm:h-[480px] lg:h-[583px]"
             />
           </div>
           <div className="lg:flex-[2] flex flex-col gap-7">
             <GalleryCard
               src={spaMassage}
               alt="Spa-Massagebereich mit warmem Licht"
-              height="h-[170px] sm:h-[190px] lg:h-[200px]"
+              height="h-[220px] sm:h-[260px] lg:h-[280px]"
             />
             <GalleryCard
               src={spaSauna}
               alt="Elegantes Zimmer mit warmem Licht"
-              height="h-[170px] sm:h-[190px] lg:h-[200px]"
+              height="h-[220px] sm:h-[260px] lg:h-[280px]"
             />
           </div>
         </div>
@@ -93,19 +85,19 @@ export default function Gallery() {
             <GalleryCard
               src={yoga1}
               alt="Suite mit Blick ins Grüne"
-              height="h-[170px] sm:h-[190px] lg:h-[200px]"
+              height="h-[170px] sm:h-[190px] lg:h-[280px]"
             />
             <GalleryCard
               src={yoga2}
               alt="Sonnenterrasse am Nachmittag"
-              height="h-[170px] sm:h-[190px] lg:h-[200px]"
+              height="h-[170px] sm:h-[190px] lg:h-[280px]"
             />
           </div>
           <div className="lg:flex-[3]">
             <GalleryCard
               src={pool3}
               alt="Entspannter Nachmittag am Pool"
-              height="h-[260px] sm:h-[300px] lg:h-[360px]"
+              height="h-[260px] sm:h-[300px] lg:h-[580px]"
             />
           </div>
         </div>
@@ -116,18 +108,18 @@ export default function Gallery() {
             <GalleryCard
               src={fitness}
               alt="Exklusiver Fitnessbereich mit Blick nach draußen"
-              height="h-[220px] sm:h-[240px] lg:h-[260px]"
+              height="h-[220px] sm:h-[240px] lg:h-[320px]"
             />
           </div>
           <div className="md:flex-1">
             <GalleryCard
               src={snow}
               alt="Winterlicher Ausblick über das MOA Hotel"
-              height="h-[220px] sm:h-[240px] lg:h-[260px]"
+              height="h-[220px] sm:h-[240px] lg:h-[320px]"
             />
           </div>
         </div>
       </section>
     </main>
-  );
+  )
 }
