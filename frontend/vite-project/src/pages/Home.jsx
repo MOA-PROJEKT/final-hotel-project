@@ -21,6 +21,18 @@ import c4 from "../assets/images/hotel/c4.jpg";
 import c5 from "../assets/images/hotel/c5.jpg";
 import c6 from "../assets/images/hotel/c6.jpg";
 
+// Carlton-Sektionen Bilder
+import d1 from "../assets/images/hotel/d1.jpg";
+import d2 from "../assets/images/hotel/d2.jpg";
+import d3 from "../assets/images/hotel/d3.jpg";
+
+import g1 from "../assets/images/hotel/g1.jpg";
+import g2 from "../assets/images/hotel/g2.jpg";
+import g3 from "../assets/images/hotel/g3.jpg";
+import g4 from "../assets/images/hotel/g4.jpg";
+
+
+
 // 6 Slides, alle mit gleichen Layout-Maßen
 const HOTEL_SLIDES = [
   {
@@ -74,7 +86,11 @@ const HOTEL_SLIDES = [
   },
 ];
 
+
+
 const CAROUSEL_IMAGES = [c1, c2, c3, c4, c5, c6];
+
+
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -101,22 +117,28 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
+  // Wiederverwendbarer Text für die 3 Carlton-Sektionen
+  const winterTitle = "Ein Winter voller Möglichkeiten";
+  const winterTextLong =
+    "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel – von Genuss bis Erlebnis.";
+  const winterTextShort =
+    "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel.";
+
   return (
     <main className="bg-[#f7efe7] text-slate-900">
       {/* HERO – großes Startbild */}
       <section id="hero" className="relative min-h-[90vh] overflow-hidden">
         <img
           src={HERO}
-          alt="MOA Hotel Hero"
+          alt="MOA Hotel – Startbild"
           className="absolute inset-0 h-full w-full object-cover"
         />
-
         <div className="absolute inset-0 bg-slate-900/35" />
 
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="mx-auto max-w-3xl px-4 text-center text-white">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-              Your private hideaway in the heart of the Alps.
+              Ihr privates Refugium im Herzen der Alpen.
             </h1>
 
             <div className="mt-10 flex justify-center">
@@ -148,7 +170,6 @@ export default function Home() {
 
           {/* Bild + Card */}
           <div className="relative mx-auto max-w-6xl pt-10">
-            {/* Bild – etwas höher, nicht zu breit, nach links geschoben */}
             <div className="shadow-[0_30px_80px_rgba(15,23,42,0.18)] overflow-hidden h-[19rem] sm:h-[21rem] md:h-[23rem] lg:h-[28rem] w-full md:w-[75%]">
               <img
                 src={active.image}
@@ -157,7 +178,6 @@ export default function Home() {
               />
             </div>
 
-            {/* Card – rechts, halb auf dem Bild, halb außerhalb */}
             <div className="mt-8 md:mt-4 md:absolute md:right-[6%] md:top-[-20px] md:w-[52%] lg:w-[52%]">
               <div className="bg-white/50 backdrop-blur-[2px] px-8 py-9 sm:px-10 sm:py-11 shadow-[0_30px_80px_rgba(15,23,42,0.18)] md:h-[19rem] lg:h-[25rem] flex flex-col">
                 <div className="mb-6">
@@ -185,7 +205,6 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Button immer unten auf gleicher Höhe */}
                 <div className="mt-auto pt-6">
                   <Link
                     to="/restaurant"
@@ -198,271 +217,506 @@ export default function Home() {
             </div>
           </div>
 
-                  {/* Slider-Kontrollen */}
-           <div className="mt-10 flex items-center justify-center gap-6">
-  {/* Pfeil links */}
-  <button
-    type="button"
-    onClick={goPrev}
-    aria-label="Vorheriges Bild"
-    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e4d1c2] bg-white text-[#c50355] shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-colors hover:bg-[#c50355] hover:border-[#c50355] hover:text-white"
-  >
-    <span className="relative -top-[3px] text-2xl leading-none">
-      &#8592;
-    </span>
-  </button>
+          {/* Slider-Kontrollen */}
+          <div className="mt-10 flex items-center justify-center gap-6">
+            <button
+              type="button"
+              onClick={goPrev}
+              aria-label="Vorheriges Bild"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e4d1c2] bg-white text-[#c50355] shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-colors hover:bg-[#c50355] hover:border-[#c50355] hover:text-white"
+            >
+              <span className="relative -top-[3px] text-2xl leading-none">
+                &#8592;
+              </span>
+            </button>
 
-  {/* Zähler in der Mitte */}
-  <span className="flex h-10 min-w-[3.2rem] items-center justify-center text-[13px] tracking-[0.3em] uppercase text-slate-600">
-    {currentSlide + 1} / {HOTEL_SLIDES.length}
-  </span>
+            <span className="flex h-10 min-w-[3.2rem] items-center justify-center text-[13px] tracking-[0.3em] uppercase text-slate-600">
+              {currentSlide + 1} / {HOTEL_SLIDES.length}
+            </span>
 
-  {/* Pfeil rechts */}
-  <button
-    type="button"
-    onClick={goNext}
-    aria-label="Nächstes Bild"
-    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e4d1c2] bg-white text-[#c50355] shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-colors hover:bg-[#c50355] hover:border-[#c50355] hover:text-white"
-  >
-    <span className="relative -top-[3px] text-2xl leading-none">
-      &#8594;
-    </span>
-  </button>
-</div>
+            <button
+              type="button"
+              onClick={goNext}
+              aria-label="Nächstes Bild"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#e4d1c2] bg-white text-[#c50355] shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-colors hover:bg-[#c50355] hover:border-[#c50355] hover:text-white"
+            >
+              <span className="relative -top-[3px] text-2xl leading-none">
+                &#8594;
+              </span>
+            </button>
+          </div>
         </div>
       </section>
 
+      {/* MOVING MOUNTAINS */}
+      <section id="moving-mountains" className="relative z-20 bg-[#f7eee5] py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="relative mx-auto max-w-5xl shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+            <img
+              src={b1}
+              alt="Moving Mountains – Winter in den Bergen"
+              className="block h-[650px] w-full object-cover"
+            />
 
+            <div
+              className="
+                absolute left-[-8%] top-[-10%]
+                w-[70%] h-[55%] max-w-[740px]
+                bg-white/50 backdrop-blur-[2px]
+                px-16 py-10
+                shadow-[0_30px_70px_rgba(15,23,42,0.28)]
+              "
+            >
+              <p className="mb-4 text-xs tracking-[0.35em] uppercase text-slate-400">
+                Moving Mountains
+              </p>
 
+              <h2 className="mb-5 text-2xl sm:text-3xl font-semibold leading-snug text-slate-900">
+                Moving Mountains – unser ganzheitliches Programm
+              </h2>
 
+              <p className="mb-6 text-sm sm:text-base leading-relaxed text-slate-700">
+                Ein Konzept, das Vitalität stärkt, die Natur neu erlebbar macht
+                und die Freude an Bewegung, Genuss und Entspannung verbindet.
+              </p>
 
- {/* MOVING MOUNTAINS */}
-<section
-  id="moving-mountains"
-  className="relative z-20 bg-[#f7eee5] py-24"
->
-  <div className="mx-auto max-w-6xl px-4">
-    {/* Bild + Box übereinander */}
-    <div className="relative mx-auto max-w-5xl shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
-      {/* Hintergrundbild – normale Ecken */}
-      <img
-        src={b1}
-        alt="Moving Mountains – Winter in den Bergen"
-        className="block h-[650px] w-full object-cover"
-      />
+              <button
+                type="button"
+                className="inline-flex items-center justify-center border border-[#c50355] bg-white px-9 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+              >
+                Mehr entdecken
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* carusel */}
+      <section>
+        <ImageCaroussel images={CAROUSEL_IMAGES} />
+      </section>
+      
 
-      {/* halb transparente Box wie beim Original */}
-      <div
-        className="
-          absolute left-[-8%] top-[-10%]
-          w-[70%] h-[55%] max-w-[740px]
-          bg-white/50 backdrop-blur-[2px]
-          px-16 py-10
-          shadow-[0_30px_70px_rgba(15,23,42,0.28)]
-        "
-      >
-        <p className="mb-4 text-xs tracking-[0.35em] uppercase text-slate-400">
-          Moving Mountains
-        </p>
-
-        <h2 className="mb-5 text-2xl sm:text-3xl font-semibold leading-snug text-slate-900">
-          Moving Mountains – unser ganzheitliches Programm
-        </h2>
-
-        <p className="mb-6 text-sm sm:text-base leading-relaxed text-slate-700">
-          Ein Konzept, das Vitalität stärkt, die Natur neu erlebbar macht
-          und die Freude an Bewegung, Genuss und Entspannung verbindet.
-        </p>
-
-        <button
-          type="button"
-          className="inline-flex items-center justify-center border border-[#c50355] bg-white px-9 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
-        >
-          Mehr entdecken
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-{/* carusel */}
-
-<section>
-
-<ImageCaroussel images={CAROUSEL_IMAGES} />
-
-</section>
-
-
-
-
-      {/* RESTAURANT */}
-      <section id="restaurant" className="relative z-20 bg-slate-50 py-24">
-        <div className="mx-auto max-w-7xl px-4 grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center">
-          <div className="h-80 rounded-3xl bg-gradient-to-tr from-slate-800 via-slate-700 to-slate-500 shadow-lg md:h-[26rem] lg:h-[30rem]" />
-
-          <div>
-            <p className="mb-3 text-xs tracking-[0.3em] uppercase text-slate-500">
-              Dining
-            </p>
-            <h2 className="mb-3 text-3xl sm:text-4xl font-semibold text-slate-900">
-              Alpine flavours, crafted with a modern touch.
+      {/* ====== CARLTON-STYLE SEKTION 1 (d1) ====== */}
+      <section id="whats-on" className="relative z-20 bg-[#f7efe7] py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          {/* Header mit Linien (nur hier) */}
+          <div className="mb-24 flex items-center justify-center gap-8">
+            <span className="h-px w-32 bg-[#d9c9bb]" />
+            <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">
+              Aktuelles
             </h2>
-            <p className="mb-4 text-base text-slate-700">
-              From slow breakfasts with sunrise views to multi-course tasting
-              menus in the evening – our kitchens celebrate seasonal produce
-              from the region.
-            </p>
-            <p className="text-base text-slate-700">
-              Two signature restaurants, an intimate bar and a terrace
-              overlooking the valley offer the right setting for every moment.
-            </p>
+            <span className="h-px w-32 bg-[#d9c9bb]" />
+          </div>
 
-            <div className="mt-8">
+          <div className="relative mx-auto max-w-5xl">
+            {/* Bild rechts */}
+            <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+              <img
+                src={d1}
+                alt="Aktuelles – Winter"
+                className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+              />
+            </div>
+
+            {/* Desktop Overlay (nur ab md, damit Mobile nicht kaputt geht) */}
+            <div
+              className="
+                hidden md:block
+                absolute left-[-4%] top-[11%] 
+                w-[72%] max-w-[580px] h-[80%]  
+                bg-white/90
+                px-14 py-12
+                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+              "
+            >
+              <div className="mb-6">
+                <div className="h-px w-16 bg-slate-300/70" />
+                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                  MOA HOTEL
+                </p>
+              </div>
+
+              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+                {winterTitle}
+              </h3>
+
+              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+                {winterTextLong}
+              </p>
+
+              <div className="mt-10">
+                <Link
+                  to="/restaurant"
+                  className="
+                    inline-flex items-center justify-center
+                    border border-[#c50355]
+                    px-14 py-4
+                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-[#c50355]
+                    transition hover:bg-[#c50355] hover:text-white
+                  "
+                >
+                  Zum Restaurant
+                </Link>
+              </div>
+            </div>
+
+            {/* Mobile Box unter Bild */}
+            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                MOA HOTEL
+              </p>
+              <h3 className="mt-3 font-serif text-3xl text-slate-900">
+                {winterTitle}
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                {winterTextShort}
+              </p>
               <Link
                 to="/restaurant"
-                className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
+                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
               >
-                Mehr erfahren
+                Zum Restaurant
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WELLNESS */}
-      <section
-        id="wellness"
-        className="relative z-20 bg-slate-900 py-24 text-slate-50"
-      >
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center">
-            <div>
-              <p className="mb-3 text-xs tracking-[0.3em] uppercase text-slate-300">
-                Spa &amp; Wellness
-              </p>
-              <h2 className="mb-3 text-3xl sm:text-4xl font-semibold">
-                A spa that feels like a quiet mountain sanctuary.
-              </h2>
-              <p className="mb-4 text-base text-slate-200/90">
-                Pools with panoramic windows, steam and sauna areas, tailored
-                treatments and cosy relaxation zones – all designed to slow down
-                body and mind.
-              </p>
-              <p className="text-base text-slate-200/90">
-                Our therapists create individual rituals that combine alpine
-                botanicals with modern techniques.
+
+      {/* ====== CARLTON-STYLE SEKTION 2 (d2) – REVERSE ====== */}
+      <section id="section-2" className="relative z-20 bg-[#f7efe7] py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="relative mx-auto max-w-5xl">
+            {/* Bild links */}
+            <div className="w-full md:mr-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+              <img
+                src={d2}
+                alt="Winter Highlight"
+                className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+              />
+            </div>
+
+            {/* Desktop Overlay rechts */}
+            <div
+              className="
+                hidden md:block
+                absolute right-[-4%] top-[6%]
+                w-[72%] max-w-[580px] h-[80%] 
+                bg-white/90
+                px-14 py-12
+                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+              "
+            >
+              <div className="mb-6">
+                <div className="h-px w-16 bg-slate-300/70" />
+                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                  MOA HOTEL
+                </p>
+              </div>
+
+              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+                {winterTitle}
+              </h3>
+
+              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+                {winterTextLong}
               </p>
 
-              <div className="mt-8">
+              <div className="mt-10">
                 <Link
-                  to="/wellness"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-medium text-slate-900 shadow-sm hover:bg-slate-100"
+                  to="/restaurant"
+                  className="
+                    inline-flex items-center justify-center
+                    border border-[#c50355]
+                    px-14 py-4
+                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-[#c50355]
+                    transition hover:bg-[#c50355] hover:text-white
+                  "
                 >
-                  Mehr erfahren
+                  Zum Restaurant
                 </Link>
               </div>
             </div>
 
-            <div className="h-80 rounded-3xl bg-gradient-to-tr from-slate-700 via-slate-500 to-slate-300 md:h-[26rem] lg:h-[30rem]" />
-          </div>
-        </div>
-      </section>
-
-      {/* GALLERY */}
-      <section id="gallery" className="relative z-20 bg-slate-50 py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <p className="mb-3 text-xs tracking-[0.3em] uppercase text-slate-500">
-                Gallery
+            {/* Mobile Box unter Bild */}
+            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                MOA HOTEL
               </p>
-              <h2 className="mb-2 text-3xl sm:text-4xl font-semibold text-slate-900">
-                A glimpse into MOA Haven.
-              </h2>
-              <p className="max-w-xl text-base text-slate-700">
-                Lobby scenes, winter terraces, suites and spa moments – a
-                selection of impressions from the hotel.
-              </p>
-            </div>
-            <a
-              href="#contact"
-              className="hidden rounded-full border border-slate-300 px-5 py-2 text-xs font-medium text-slate-900 hover:bg-slate-100 md:inline-flex"
-            >
-              Ask for media kit
-            </a>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            <div className="h-48 rounded-2xl bg-slate-300 sm:h-56 md:h-64" />
-            <div className="h-48 rounded-2xl bg-slate-200 sm:h-56 md:h-64" />
-            <div className="h-48 rounded-2xl bg-slate-300 sm:h-56 md:h-64" />
-            <div className="h-48 rounded-2xl bg-slate-200 sm:h-56 md:h-64" />
-            <div className="h-48 rounded-2xl bg-slate-300 sm:h-56 md:h-64" />
-            <div className="h-48 rounded-2xl bg-slate-200 sm:h-56 md:h-64" />
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="relative z-20 bg-white py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div>
-              <p className="mb-3 text-xs tracking-[0.3em] uppercase text-slate-500">
-                Contact
-              </p>
-              <h2 className="mb-3 text-3xl sm:text-4xl font-semibold text-slate-900">
-                Plan your stay with our team.
-              </h2>
-              <p className="mb-4 text-base text-slate-700">
-                Whether it&apos;s a weekend escape, a winter holiday or a
-                private celebration – our reservation team will help you tailor
-                your time at MOA Haven.
-              </p>
-
-              <div className="space-y-2 text-sm text-slate-700">
-                <p>MOA Haven Hotel</p>
-                <p>Example Street 12 · 12345 Alpine City</p>
-                <p>Phone: +41 00 000 00 00</p>
-                <p>Email: info@moa-haven.example</p>
-              </div>
-
-              <div className="mt-8">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
-                >
-                  Kontakt aufnehmen
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-slate-100 bg-slate-50 p-6 shadow-sm">
-              <h3 className="mb-3 text-sm font-semibold text-slate-900">
-                Opening times &amp; seasons
+              <h3 className="mt-3 font-serif text-3xl text-slate-900">
+                {winterTitle}
               </h3>
-              <ul className="mb-4 space-y-2 text-xs sm:text-[0.82rem] text-slate-700">
-                <li>• Winter season: mid-December to late March</li>
-                <li>• Check-in from 15:00 · Check-out until 11:00</li>
-                <li>• Private ski shuttle and concierge service on request</li>
-              </ul>
-              <p className="mb-3 text-xs text-slate-600">
-                For group bookings, corporate events or celebrations, please
-                contact our events team directly.
+              <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                {winterTextShort}
               </p>
-              <a
-                href="#contact"
-                className="text-xs font-medium text-slate-900 underline underline-offset-4"
+              <Link
+                to="/restaurant"
+                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
               >
-                events@moa-haven.example
-              </a>
+                Zum Restaurant
+              </Link>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ====== CARLTON-STYLE SEKTION 3 (d3) – OHNE HEADER ====== */}
+      <section id="section-3" className="relative z-20 bg-[#f7efe7] py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="relative mx-auto max-w-5xl">
+            {/* Bild rechts */}
+            <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+              <img
+                src={d3}
+                alt="Winter Highlight"
+                className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+              />
+            </div>
+
+            {/* Desktop Overlay links */}
+            <div
+              className="
+             hidden md:block
+                absolute left-[-4%] top-[11%] 
+                w-[72%] max-w-[580px] h-[80%]  
+                bg-white/90
+                px-14 py-12
+                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+              "
+            >
+              <div className="mb-6">
+                <div className="h-px w-16 bg-slate-300/70" />
+                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                  MOA HOTEL
+                </p>
+              </div>
+
+              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+                {winterTitle}
+              </h3>
+
+              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+                {winterTextLong}
+              </p>
+
+              <div className="mt-10">
+                <Link
+                  to="/restaurant"
+                  className="
+                    inline-flex items-center justify-center
+                    border border-[#c50355]
+                    px-14 py-4
+                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-[#c50355]
+                    transition hover:bg-[#c50355] hover:text-white
+                  "
+                >
+                  Zum Restaurant
+                </Link>
+              </div>
+            </div>
+
+            {/* Mobile Box unter Bild */}
+            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                MOA HOTEL
+              </p>
+              <h3 className="mt-3 font-serif text-3xl text-slate-900">
+                {winterTitle}
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                {winterTextShort}
+              </p>
+              <Link
+                to="/restaurant"
+                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+              >
+                Zum Restaurant
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* 4 Boxen  carlton hotel journal*/}
+          <div className="mb-24 flex items-center justify-center gap-8">
+            <span className="h-px w-32 bg-[#d9c9bb]" />
+            <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">
+              Carlton Hotel Journal
+            </h2>
+            <span className="h-px w-32 bg-[#d9c9bb]" />
+          </div>
+
+
+
+
+         <section className="relative z-20 bg-[#f7efe7] pb-28">
+  <div className="mx-auto max-w-7xl px-4">
+    {/* 2 Spalten – breiter + mehr Abstand */}
+    <div className="grid gap-x-24 gap-y-20 md:grid-cols-2">
+      {/* LINKE SPALTE */}
+      <div className="space-y-20">
+        {/* Card 1 */}
+        <article>
+          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+            <img
+              src={g1}
+              alt="Journal Beitrag 1"
+              className="h-[260px] sm:h-[320px] md:h-[360px] w-full object-cover"
+            />
+          </div>
+
+          <div className="mt-10">
+            <div className="flex items-center gap-7">
+              <span className="h-px w-20 bg-[#d9c9bb]" />
+              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                MOA HOTEL
+              </p>
+            </div>
+
+            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+              Drei Michelin-Keys – Auszeichnung für Exzellenz
+            </h3>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+              Eine Anerkennung für Service, Atmosphäre und außergewöhnliche
+              Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.
+            </p>
+
+            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+              Lesen
+            </button>
+          </div>
+        </article>
+
+        {/* Card 3 */}
+        <article>
+          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+            <img
+              src={g3}
+              alt="Journal Beitrag 3"
+              className="h-[280px] sm:h-[340px] md:h-[390px] w-full object-cover"
+            />
+          </div>
+
+          <div className="mt-10">
+            <div className="flex items-center gap-7">
+              <span className="h-px w-20 bg-[#d9c9bb]" />
+              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                MOA HOTEL
+              </p>
+            </div>
+
+            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+              Signature Moments: außergewöhnlich – und ganz persönlich
+            </h3>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+              Private Winter-Erlebnisse, Concierge-Service und kleine Details,
+              die aus einem Aufenthalt eine Erinnerung machen.
+            </p>
+
+            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+              Lesen
+            </button>
+          </div>
+        </article>
+      </div>
+
+      {/* RECHTE SPALTE (weiter nach unten + etwas nach rechts) */}
+      <div className="space-y-20 md:mt-28 md:pl-8">
+        {/* Card 2 */}
+        <article>
+          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+            <img
+              src={g2}
+              alt="Journal Beitrag 2"
+              className="h-[300px] sm:h-[360px] md:h-[420px] w-full object-cover"
+            />
+          </div>
+
+          <div className="mt-10">
+            <div className="flex items-center gap-7">
+              <span className="h-px w-20 bg-[#d9c9bb]" />
+              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                MOA HOTEL
+              </p>
+            </div>
+
+            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+              Unter den Besten: ein Hotel für besondere Ansprüche
+            </h3>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+              Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und
+              erstklassigen Service – mitten in den Bergen.
+            </p>
+
+            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+              Lesen
+            </button>
+          </div>
+        </article>
+
+        {/* Card 4 */}
+        <article>
+          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+            <img
+              src={g4}
+              alt="Journal Beitrag 4"
+              className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover"
+            />
+          </div>
+
+          <div className="mt-10">
+            <div className="flex items-center gap-7">
+              <span className="h-px w-20 bg-[#d9c9bb]" />
+              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                MOA HOTEL
+              </p>
+            </div>
+
+            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+              Spa & Wellness: Entspannung auf einem neuen Niveau
+            </h3>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+              Pool, Ruhezonen und Treatments – gestaltet für Regeneration,
+              Stille und neue Energie nach einem Wintertag.
+            </p>
+
+            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+              Lesen
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    {/* Unterer Button */}
+    <div className="mt-24 flex justify-center">
+      <button
+        type="button"
+        className="border border-[#c50355] px-14 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+      >
+        Mehr anzeigen
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+  
     </main>
   );
 }
