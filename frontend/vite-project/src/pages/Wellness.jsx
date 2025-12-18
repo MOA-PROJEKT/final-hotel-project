@@ -1,59 +1,35 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import Hero from "../assets/images/wellness/Hero.webp";
-import spaMassage from "../assets/images/wellness/spaMassage.jpg";
-import spaSauna from "../assets/images/wellness/spaSauna.jpg";
-import spaPool2 from "../assets/images/wellness/spaPool2.jpg";
-import yogaSession from "../assets/images/wellness/yogaSession.jpg";
-import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
-import yoga1 from "../assets/images/wellness/yoga1.webp";
-import yoga2 from "../assets/images/wellness/yoga2.webp";
-import yoga3 from "../assets/images/wellness/yoga3.webp";
-import yoga4 from "../assets/images/wellness/yoga4.webp";
-import yoga5 from "../assets/images/wellness/yoga5.webp";
-import yoga6 from "../assets/images/wellness/yoga6.webp";
+// Components
+import WellnessSection from '../components/WellnessSection.jsx'
+import ImageCarousel from '../components/ImageCaroussel.jsx'
 
-import ImageCarousel from "../components/ImageCaroussel.jsx";
+// Images – Hero
+import Hero from '../assets/images/wellness/Hero.webp'
 
-const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6];
+// Images – Spa
+import spaMassage from '../assets/images/wellness/spaMassage.jpg'
+import spaSauna from '../assets/images/wellness/spaSauna.jpg'
+import spaPool2 from '../assets/images/wellness/spaPool2.jpg'
 
-function ReadMore({ children }) {
-  const [expanded, setExpanded] = useState(false);
+// Images – Yoga & Fitness
+import yogaSession from '../assets/images/wellness/yogaSession.jpg'
+import fitnessGym from '../assets/images/wellness/fitnessGym.jpg'
 
-  return (
-    <div className="relative">
-      {/* Textblock */}
-      <div
-        className={`
-          transition-all duration-500 ease-in-out overflow-hidden
-          ${expanded ? "max-h-[500px]" : "max-h-[120px]"}
-        `}
-      >
-        <div className={`${expanded ? "" : "line-clamp-3"}`}>{children}</div>
-      </div>
+// Images – Carousel
+import yoga1 from '../assets/images/wellness/yoga1.webp'
+import yoga2 from '../assets/images/wellness/yoga2.webp'
+import yoga3 from '../assets/images/wellness/yoga3.webp'
+import yoga4 from '../assets/images/wellness/yoga4.webp'
+import yoga5 from '../assets/images/wellness/yoga5.webp'
+import yoga6 from '../assets/images/wellness/yoga6.webp'
 
-      {/* Fade-out Effekt wenn NICHT expanded */}
-      {!expanded && (
-        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-stone-300/80 to-transparent pointer-events-none"></div>
-      )}
-
-      {/* Button rechts */}
-      <div className="flex justify-end mt-3">
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-amber-700 font-semibold hover:text-amber-900 transition"
-        >
-          {expanded ? "Weniger lesen" : "Weiter lesen"}
-        </button>
-      </div>
-    </div>
-  );
-}
+const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6]
 
 export default function Wellness() {
   return (
-    <section>
-      {/* HERO */}
+    <section className="bg-[#f7f2ec] text-[#1b1b1b]">
+      {/* ================= HERO ================= */}
       <div id="hero" className="relative min-h-[90vh] overflow-hidden">
         <img
           src={Hero}
@@ -61,22 +37,36 @@ export default function Wellness() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-900/35" />
+
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="mx-auto max-w-3xl px-4 text-center text-white">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
               Wellness, Spa & Fitness.
             </h1>
 
-            <button className="mt-8 inline-block px-8 py-3 bg-amber-300 text-black font-semibold rounded-full transition hover:bg-amber-600">
+            <button
+              className="
+                inline-block
+                border border-[#f7f2ec]
+                px-12 py-3
+                mt-12
+                rounded-full
+                tracking-widest
+                text-white
+                hover:bg-[#b30042]
+                hover:text-white
+                transition
+              "
+            >
               Termin buchen
             </button>
           </div>
         </div>
       </div>
 
-      {/* INTRO */}
+      {/* ================= INTRO ================= */}
       <section>
-        <div className="flex flex-col items-center text-center px-6 py-16">
+        <div className="flex flex-col items-center text-center px-6 pt-16">
           <p className="text-black text-2xl mt-4 max-w-3xl mx-auto">
             Entdecken Sie unsere exklusive Wellnesswelt – von entspannenden Spa-
             Anwendungen über ruhige Yoga-Sessions bis hin zu einem modernen
@@ -85,157 +75,153 @@ export default function Wellness() {
         </div>
       </section>
 
-      {/* --- SPA SECTION --- */}
-      <section>
-        <div className="container mx-auto px-6 mb-24">
-          <h2 className="text-3xl font-semibold text-amber-600 mb-8">
-            Spa Angebote
-          </h2>
+      {/* ================= SPA SECTION ================= */}
+      <section className="max-w-7xl mx-auto px-6 pt-12">
+        <WellnessSection
+          index={0}
+          image={spaPool2}
+          tag="MOA Hotel – Pool"
+          title="Entspannung mit Blick ins Wasser"
+          description="Der Innenpool im MOA Hotel bietet Ruhe, angenehme Temperaturen und eine elegante Atmosphäre zum Abschalten."
+          details={[
+            { label: 'Öffnungszeiten', value: '07:00 – 21:00 Uhr' },
+            { label: 'Temperatur', value: '28 °C' },
+            { label: 'Zugang', value: 'Hotelgäste' },
+          ]}
+        />
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Massage */}
-            <div className="bg-stone-300 rounded-2xl overflow-hidden border border-neutral-800">
-              <img
-                src={spaMassage}
-                alt="Massage"
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl text-amber-600 mb-2">
-                  Premium Massage
-                </h3>
+        <WellnessSection
+          index={1}
+          image={spaSauna}
+          tag="MOA Hotel – Sauna"
+          title="Wohltuende Wärme für Körper & Geist"
+          description="Unsere Sauna ist ein Rückzugsort zur Regeneration und Entspannung – perfekt nach einem aktiven Tag."
+          details={[
+            { label: 'Öffnungszeiten', value: '14:00 – 22:00 Uhr' },
+            { label: 'Temperatur', value: '80 – 90 °C' },
+            { label: 'Ruhebereich', value: 'inklusive' },
+          ]}
+        />
 
-                <ReadMore>
-                  <p className="text-black">
-                    Wohltuende Ganzkörper-, Aroma- oder Hot-Stone-Massagen für
-                    absolute Tiefenentspannung. Lassen Sie den Stress des
-                    Alltags hinter sich und genießen Sie eine individuell
-                    abgestimmte Behandlung, die Körper und Geist wieder in
-                    Balance bringt. Ideal, um neue Energie zu tanken und tief zu
-                    entspannen.
-                  </p>
-                </ReadMore>
-              </div>
-            </div>
-
-            {/* Sauna */}
-            <div className="bg-stone-300 rounded-2xl overflow-hidden border border-neutral-800">
-              <img
-                src={spaSauna}
-                alt="Sauna"
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl text-amber-600 mb-2">
-                  Finnische Sauna
-                </h3>
-
-                <ReadMore>
-                  <p className="text-black">
-                    Genießen Sie intensive Wärme und regenerative Erholung in
-                    unserer modernen Sauna. Verschiedene Aufguss-Rituale und
-                    Ruhebereiche laden zum Abschalten ein und fördern
-                    Wohlbefinden, Durchblutung und Entspannung. Perfekt für eine
-                    Auszeit vom Alltag.
-                  </p>
-                </ReadMore>
-              </div>
-            </div>
-
-            {/* Pool */}
-            <div className="bg-stone-300 rounded-2xl overflow-hidden border border-neutral-800">
-              <img
-                src={spaPool2}
-                alt="Pool"
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl text-amber-600 mb-2">Innenpool</h3>
-
-                <ReadMore>
-                  <p className="text-black">
-                    Unser beheizter Poolbereich bietet sanfte Beleuchtung und
-                    ein angenehmes Ambiente für entspanntes Schwimmen oder
-                    relaxte Momente. Ideal zum Abschalten, Energie tanken oder
-                    für private Wellness-Momente in ruhiger Atmosphäre.
-                  </p>
-                </ReadMore>
-              </div>
-            </div>
-          </div>
-        </div>
+        <WellnessSection
+          index={2}
+          image={spaMassage}
+          tag="MOA Hotel – Massage"
+          title="Individuelle Massagen für Ihr Wohlbefinden"
+          description="Genießen Sie maßgeschneiderte Massagen, die Körper und Geist in Einklang bringen."
+          details={[
+            { label: 'Behandlungen', value: 'Ganzkörper, Aroma, Hot Stone' },
+            { label: 'Dauer', value: '30 – 90 Minuten' },
+            { label: 'Termine', value: 'nach Vereinbarung' },
+          ]}
+        />
       </section>
 
-      <section className="my-24">
+      {/* ================= IMAGE CAROUSEL ================= */}
+      <section>
         <ImageCarousel images={carouselImages} />
       </section>
 
-      {/* --- YOGA SECTION --- */}
-      <section>
-        <div className="container mx-auto px-6 mb-24">
-          <h2 className="text-3xl font-semibold text-amber-600 mb-8">
+     <section className="relative overflow-hidden">
+  <div className="flex flex-col items-center justify-center">
+    
+    {/* ================= YOGA SECTION ================= */}
+    <div className="w-full max-w-7xl px-6 py-24">
+      <div className="flex flex-col md:flex-row items-center relative justify-center">
+        {/* Bild */}
+        <div className="w-full md:w-7/12 relative">
+          <img
+            src={yogaSession}
+            alt="Yoga Session"
+            className="w-full h-96 md:h-[500px] object-cover shadow-xl"
+          />
+        </div>
+
+        {/* Textbox überlappend */}
+        <div
+          className="
+            bg-white/80 md:bg-white/90
+            backdrop-blur-md md:backdrop-blur-[3px]
+            shadow-lg
+            h-auto md:h-[520px]
+            p-10 md:p-14
+            w-full md:w-[450px]
+            -mt-16 md:mt-0
+            relative
+            z-10
+            md:-ml-10
+          "
+        >
+          <h2 className="text-4xl font-bold text-amber-600 tracking-wide mb-4">
             Yoga & Meditation
           </h2>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            <img
-              src={yogaSession}
-              alt="Fitness"
-              className="rounded-2xl object-cover h-80 w-full border border-neutral-800"
-            />
-
-            <div className="flex flex-col justify-center">
-              <h3 className="text-xl text-amber-600 mb-4">
-                Tägliche Yoga-Stunden
-              </h3>
-              <p className="text-black-400 leading-relaxed mb-4">
-                Finden Sie innere Ruhe und Balance …
-              </p>
-
-              <ul className="text-black-400 space-y-2">
-                <li>• Morgen-Yoga für Energie</li>
-                <li>• Entspannungs-Yoga am Abend</li>
-                <li>• Meditation & Atemübungen</li>
-                <li>• Private Yoga-Sessions</li>
-              </ul>
-            </div>
-          </div>
+          <h3 className="text-2xl font-semibold text-neutral-800 mb-4">
+            Tägliche Yoga-Stunden
+          </h3>
+          <p className="text-neutral-700 leading-relaxed mb-4">
+            Finden Sie innere Ruhe und Balance in unserem speziell gestalteten
+            Yoga-Bereich. Perfekt für Anfänger und Fortgeschrittene.
+          </p>
+          <ul className="text-neutral-700 space-y-2 list-disc list-inside">
+            <li>Morgen-Yoga für Energie</li>
+            <li>Entspannungs-Yoga am Abend</li>
+            <li>Meditation & Atemübungen</li>
+            <li>Private Yoga-Sessions</li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </div>
 
-      {/* --- FITNESS SECTION --- */}
-      <section className="mb-24">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-amber-600 mb-8">
+    {/* ================= FITNESS SECTION ================= */}
+    <div className="w-full max-w-7xl px-6 py-24">
+      <div className="flex flex-col md:flex-row-reverse items-center relative justify-center">
+        {/* Bild */}
+        <div className="w-full md:w-7/12 relative">
+          <img
+            src={fitnessGym}
+            alt="Fitness Studio"
+            className="w-full h-96 md:h-[500px] object-cover shadow-xl"
+          />
+        </div>
+
+        {/* Textbox überlappend */}
+        <div
+          className="
+            bg-white/80 md:bg-white/90
+            backdrop-blur-md md:backdrop-blur-[3px]
+            shadow-lg
+            h-auto md:h-[520px]
+            p-10 md:p-14
+            w-full md:w-[450px]
+            -mt-16 md:mt-0
+            relative
+            z-10
+            md:-mr-10
+          "
+        >
+          <h2 className="text-4xl font-bold text-amber-600 tracking-wide mb-4">
             Fitness & Gym
           </h2>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="flex flex-col justify-center">
-              <h3 className="text-xl text-amber-600 mb-4">
-                Modernes Fitnessstudio
-              </h3>
-
-              <p className="text-black-400 leading-relaxed mb-4">
-                Unser Fitnessbereich ist ausgestattet …
-              </p>
-
-              <ul className="text-black-400 space-y-2">
-                <li>• Laufbänder & Crosstrainer</li>
-                <li>• Freihantelbereich</li>
-                <li>• Kraftgeräte & Functional Training</li>
-                <li>• Personal Trainer auf Anfrage</li>
-              </ul>
-            </div>
-
-            <img
-              src={fitnessGym}
-              alt="Fitness"
-              className="rounded-2xl object-cover mb-5 h-80 w-full border border-neutral-800"
-            />
-          </div>
+          <h3 className="text-2xl font-semibold text-neutral-800 mb-4">
+            Modernes Fitnessstudio
+          </h3>
+          <p className="text-neutral-700 leading-relaxed mb-4">
+            Unser Fitnessbereich ist ausgestattet mit neuesten Geräten,
+            Functional Training Zonen und einem freundlichen Team, das Sie
+            unterstützt.
+          </p>
+          <ul className="text-neutral-700 space-y-2 list-disc list-inside">
+            <li>Laufbänder & Crosstrainer</li>
+            <li>Freihantelbereich</li>
+            <li>Kraftgeräte & Functional Training</li>
+            <li>Personal Trainer auf Anfrage</li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </div>
+
+  </div>
+</section>
     </section>
-  );
+  )
 }
