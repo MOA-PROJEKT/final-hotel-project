@@ -2,43 +2,67 @@
 
 export default function RoomCard({ room }) {
   return (
-    <article className="flex flex-col items-center text-center">
-      {/* Bildbereich wie beim Carlton: großes Bild, viel Luft */}
-      <div className="w-full overflow-hidden rounded-3xl shadow-lg">
+    <article className="relative">
+      {/* ================= BILDBEREICH ================= */}
+      {/* Großes Bild ohne abgerundete Ecken */}
+      <div className="w-full">
         <img
           src={room.image}
           alt={room.name}
-          className="h-[320px] w-full object-cover"
+          className="h-[420px] w-full object-cover"
         />
       </div>
 
-      {/* Textbereich */}
-      <div className="mt-8 max-w-md mx-auto space-y-4">
+      {/* ================= TEXTBLOCK ================= */}
+      {/* Text liegt auf halbtransparentem Weiß
+          und überlappt das Bild leicht (Carlton-Stil) */}
+      <div
+        className="
+          relative
+          -mt-20
+          mx-6
+          bg-white/90
+          px-8 py-6
+          shadow-sm
+        "
+      >
         {/* Titel + Größe */}
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold">
-            {room.name}{' '}
-            <span className="font-normal">
-              {room.size ? ` ${room.size}` : ''}
+        <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 mb-3">
+          {room.name}
+          {room.size && (
+            <span className="ml-2 font-normal text-neutral-600">
+              {room.size}
             </span>
-          </h3>
-        </div>
+          )}
+        </h3>
 
         {/* Beschreibung */}
-        <p className="text-sm text-slate-200 leading-relaxed">
+        <p className="text-sm text-neutral-600 leading-relaxed mb-6">
           {room.shortDescription}
         </p>
 
-        {/* "Mehr entdecken" ähnlich Textlink */}
-        <div className="mt-2">
-          <button className="text-sm font-medium text-amber-300 underline underline-offset-4 hover:text-amber-200">
+        {/* ================= ACTIONS ================= */}
+        <div className="flex items-center justify-between">
+          {/* Mehr entdecken – dezenter Textlink */}
+          <button className="text-sm text-neutral-700 underline underline-offset-4 hover:text-neutral-900 transition">
             Mehr entdecken
           </button>
-        </div>
 
-        {/* "Buchen" Button wie beim Carlton (aber in eurem Stil) */}
-        <div className="pt-4">
-          <button className="inline-flex items-center justify-center rounded-full border border-amber-400 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] hover:bg-amber-400 hover:text-slate-950 transition-colors">
+          {/* Buchen – roter Rahmen, rechteckig */}
+          <button
+            className="
+              border border-[#c52b58]
+              px-6 py-2
+              text-[11px]
+              font-semibold
+              uppercase
+              tracking-[0.3em]
+              text-[#c52b58]
+              transition
+              hover:bg-[#c52b58]
+              hover:text-white
+            "
+          >
             Buchen
           </button>
         </div>
