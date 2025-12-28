@@ -76,7 +76,7 @@ export default function Wellness() {
       </section>
 
       {/* ================= SPA SECTION ================= */}
-      <section className="max-w-7xl mx-auto px-6 pt-12">
+      <section  className="max-w-7xl mx-auto px-6 pt-12 space-y-32">
         <WellnessSection
           index={0}
           image={spaPool2}
@@ -118,7 +118,7 @@ export default function Wellness() {
       </section>
 
       {/* ================= IMAGE CAROUSEL ================= */}
-      <section>
+      <section className='py-10 -mb-8'>
         <ImageCarousel images={carouselImages} />
       </section>
 
@@ -126,7 +126,7 @@ export default function Wellness() {
   <div className="flex flex-col items-center justify-center">
     
     {/* ================= YOGA SECTION ================= */}
-    <div className="w-full max-w-7xl px-6 py-24">
+    <div className="w-full max-w-7xl px-6 ">
       <div className="flex flex-col md:flex-row items-center relative justify-center">
         {/* Bild */}
         <div className="w-full md:w-7/12 relative">

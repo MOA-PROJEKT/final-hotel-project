@@ -1,80 +1,141 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
-export default function ImageCarousel({ images, autoPlay = true, interval = 4000 }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function ImageCarousel({
+  images,
+  autoPlay = true,
+  interval = 5000,
+}) {
+  if (!images || images.length === 0) return null
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+  const slides = [images[images.length - 1], ...images, images[0]]
+
+  const [index, setIndex] = useState(1)
+  const [transition, setTransition] = useState(true)
+  const slideWidth = 68 // vw
+  const sliderRef = useRef(null)
+
+  const next = () => {
+    setTransition(true)
+    setIndex((i) => {
+      if (i >= slides.length - 1) return 1 // zurück zum ersten echten Slide
+      return i + 1
+    })
   }
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+  const prev = () => {
+    setTransition(true)
+    setIndex((i) => {
+      if (i <= 0) return slides.length - 2 // zurück zum letzten echten Slide
+      return i - 1
+    })
   }
 
   useEffect(() => {
     if (!autoPlay) return
-    const slideInterval = setInterval(nextSlide, interval)
-    return () => clearInterval(slideInterval)
-  }, [currentIndex, autoPlay, interval])
+
+    let id = setInterval(next, interval)
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        clearInterval(id)
+      } else {
+        id = setInterval(next, interval)
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      clearInterval(id)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [autoPlay, interval])
+
+  const handleTransitionEnd = () => {
+    if (index === slides.length - 1) {
+      setTransition(false)
+      setIndex(1)
+    }
+    if (index === 0) {
+      setTransition(false)
+      setIndex(slides.length - 2)
+    }
+  }
 
   return (
-    <div className="relative w-full overflow-hidden">
-      {/* Image */}
-      <img
-        src={images[currentIndex]}
-        alt={`Slide ${currentIndex}`}
-        className="w-full h-[80vh] sm:h-[75vh] md:h-[80vh] object-cover transition-all duration-700"
-      />
-
-      {/* Left Arrow */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 -translate-y-1/2 p-3 rounded-full  shadow-lg hover:shadow-xl transition-all"
-        style={{ border: 'none' }}
+    <div className="relative w-full py-10 overflow-hidden">
+      {/* SLIDER */}
+      <div
+        ref={sliderRef}
+        onTransitionEnd={handleTransitionEnd}
+        className={`flex ${
+          transition ? 'transition-transform duration-700 ease-in-out' : ''
+        }`}
+        style={{
+          transform: `translateX(calc(50% - ${
+            index * slideWidth
+          }vw - ${slideWidth / 2}vw))`,
+        }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 md:h-10 md:w-10 text-red-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 -translate-y-1/2 p-3 rounded-full  shadow-lg hover:shadow-xl transition-all"
-        style={{ border: 'none' }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 md:h-10 md:w-10 text-red-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-6 w-full flex items-center justify-center gap-3">
-        {images.map((_, i) => (
-          <div
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className={`h-3 w-3 md:h-4 md:w-4 rounded-full cursor-pointer transition-all transform ${
-              currentIndex === i
-                ? 'bg-[#f7f2ec] scale-125 shadow-lg'
-                : 'bg-[#f7f2ec] hover:bg-white/80'
-            }`}
-          ></div>
+        {slides.map((img, i) => (
+          <div key={i} className="w-[68vw] shrink-0 px-1">
+            <img src={img} alt="" className="w-full h-[68vh] object-cover " />
+          </div>
         ))}
+      </div>
+
+      {/* CONTROLS – unter dem aktiven Bild */}
+      <div className="mt-9 flex justify-center">
+        <div className="flex items-center gap-6 bg-white/80 backdrop-blur px-6 py-3 rounded-full shadow-lg">
+          {/* LEFT */}
+          <button
+            onClick={prev}
+            className="bg-white rounded-full p-2 shadow hover:shadow-md transition"
+          >
+            <svg
+              className="w-6 h-6 text-red-600"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          {/* COUNTER */}
+          <span className="text-sm tracking-widest text-gray-700">
+            {index === 0
+              ? images.length
+              : index === slides.length - 1
+                ? 1
+                : index}{' '}
+            / {images.length}
+          </span>
+
+          {/* RIGHT */}
+          <button
+            onClick={next}
+            className="bg-white rounded-full p-2 shadow hover:shadow-md transition"
+          >
+            <svg
+              className="w-6 h-6 text-red-600"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   )
