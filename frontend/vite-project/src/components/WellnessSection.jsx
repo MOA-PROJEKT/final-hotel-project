@@ -11,9 +11,10 @@ export default function WellnessSection({
   const isEven = index % 2 === 1
 
   return (
-    <div className="relative mb-36">
-      <div  className={`flex items-start justify-center ${isEven ? 'flex-row-reverse' : ''}`}>
-        
+    <section className="relative my-10">
+      <div
+        className={`flex items-start justify-center ${isEven ? 'flex-row-reverse' : ''}`}
+      >
         {/* Bild */}
         <div className="w-7/12">
           <img
@@ -46,14 +47,10 @@ export default function WellnessSection({
           </div>
 
           {/* Titel */}
-          <h2 className="text-3xl font-light leading-snug mb-6">
-            {title}
-          </h2>
+          <h2 className="text-3xl font-light leading-snug mb-6">{title}</h2>
 
           {/* Beschreibung */}
-          <p className="text-gray-700 leading-relaxed mb-10">
-            {description}
-          </p>
+          <p className="text-gray-700 leading-relaxed mb-10">{description}</p>
 
           {/* Details */}
           <div className="space-y-4 text-sm text-gray-700 mb-12">
@@ -89,6 +86,6 @@ export default function WellnessSection({
           </a>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
