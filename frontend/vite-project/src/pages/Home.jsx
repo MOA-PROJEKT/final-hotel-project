@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ImageCaroussel from "../components/ImageCaroussel.jsx";
 
 import HERO from "../assets/images/hotel/HERO.jpg";
+import herovideodesktop from "../assets/images/hotel/herovideodesktop.mp4";
 
 import n1 from "../assets/images/hotel/n1.jpg";
 import n2 from "../assets/images/hotel/n2.jpg";
@@ -128,9 +129,13 @@ export default function Home() {
     <main className="bg-[#f7efe7] text-slate-900">
       {/* HERO – großes Startbild */}
       <section id="hero" className="relative min-h-[90vh] overflow-hidden">
-        <img
-          src={HERO}
-          alt="MOA Hotel – Startbild"
+        <video
+          src={herovideodesktop}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-900/35" />
@@ -298,7 +303,7 @@ export default function Home() {
       
 
       {/* ====== CARLTON-STYLE SEKTION 1 (d1) ====== */}
-      <section id="whats-on" className="relative z-20 bg-[#f7efe7] py-24">
+      <section id="whats-on" className="relative z-20 bg-[#f7efe7] py-14">
         <div className="mx-auto max-w-6xl px-4">
           {/* Header mit Linien (nur hier) */}
           <div className="mb-24 flex items-center justify-center gap-8">

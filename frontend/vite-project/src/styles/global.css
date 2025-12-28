@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-slate-50 text-slate-900 scroll-smooth;
+
+
+/* === Hotel-Schrift lokal einbinden (Playfair Display) === */
+@font-face {
+  font-family: 'HotelDisplay';
+  src: url('../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'HotelDisplay';
+  src: url('../assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+

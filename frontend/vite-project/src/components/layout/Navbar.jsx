@@ -122,7 +122,7 @@ export default function Navbar() {
                   >
                     ★
                   </div>
-                  <span className="text-[16px] tracking-[0.55em] uppercase">
+                  <span className=" font-display text-[16px] tracking-[0.55em] uppercase">
                     MOA HOTEL PARADISE
                   </span>
                  <span
