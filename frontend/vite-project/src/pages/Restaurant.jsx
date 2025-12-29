@@ -67,7 +67,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
   ]
 
   return (
-    <div className="bg-[#f7f6f3] py-16">
+    <div className="bg-[#f7efe7] py-16">
       <h1 className="text-center text-4xl font-serif mb-12 text-yellow-900 mt-36">
         Geschmackserlebnisse für die Sinne
       </h1>
@@ -111,7 +111,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
               <>
                 <button
                   onClick={() => toggle(i)}
-                  className="text-red-600 font-semibold uppercase text-sm tracking-wide underline"
+                  className="text-[#c50355] font-semibold uppercase text-sm tracking-wide underline"
                 >
                   {openIndex === i ? 'WENIGER' : 'MEHR'}
                 </button>
@@ -134,7 +134,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
               {/* MENU DROPDOWN */}
               <details className="group w-fit">
                 {' '}
-                <summary className="cursor-pointer list-none border border-gray-300 text-gray-700 px-5 py-2 rounded-md text-sm flex items-center justify-between gap-4 w-56">
+                <summary className="border-2 border-[#c50355] bg-transparent px-3 py-1 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:bg-[#c50355] hover:text-white transition">
                   Menü herunterladen
                   <span className="transition group-open:rotate-180">⌄</span>
                 </summary>
@@ -150,7 +150,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
                 </ul>
               </details>
               {/* RESERVATION BUTTON */}
-              <button className="border border-red-600 text-red-600 px-6 py-2 uppercase tracking-wide text-sm font-semibold rounded-md hover:bg-red-600 hover:text-white transition">
+              <button className="border-2 border-[#c50355] bg-transparent px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:bg-[#c50355] hover:text-white transition">
                 Reservieren
               </button>
             </div>

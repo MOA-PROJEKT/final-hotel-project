@@ -41,16 +41,16 @@ export default function WellnessSection({
           {/* Tag */}
           <div className="flex items-center gap-4 mb-6">
             <span className="w-10 h-px bg-[#b38b4d]" />
-            <p className="text-xs tracking-widest uppercase text-gray-500">
+            <p className="text-sm tracking-widest uppercase text-gray-500">
               {tag}
             </p>
           </div>
 
           {/* Titel */}
-          <h2 className="text-3xl font-light leading-snug mb-6">{title}</h2>
+          <h2 className="text-3xl font-bold text-[#c50355] tracking-wide mb-4">{title}</h2>
 
           {/* Beschreibung */}
-          <p className="text-gray-700 leading-relaxed mb-10">{description}</p>
+          <p className="text-l font-semibold text-neutral-800 mb-4">{description}</p>
 
           {/* Details */}
           <div className="space-y-4 text-sm text-gray-700 mb-12">
@@ -71,13 +71,12 @@ export default function WellnessSection({
             className="
               inline-block
               border
-              border-[#b30042]
+              border-[#c50355]
               px-12
               py-3
-              text-xs
-              tracking-widest
-              text-[#b30042]
-              hover:bg-[#b30042]
+              text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
+              text-[#c50355]
+              hover:bg-[#c50355]
               hover:text-white
               transition
             "

@@ -28,7 +28,7 @@ function GalleryCard({ src, alt, height = 'h-64' }) {
 
 export default function Gallery() {
   return (
-    <main className=" text-white bg-[#f7f2ec] min-h-screen">
+    <main className=" text-white bg-[#f7efe7] min-h-screen">
       {/* HERO: volle Breite, Header liegt darüber */}
       <section className="relative -mt-24 sm:-mt-28 lg:-mt-32">
         <div className="relative h-[90vh] min-h-[460px] w-full overflow-hidden">

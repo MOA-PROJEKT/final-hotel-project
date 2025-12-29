@@ -128,7 +128,7 @@ export default function Home() {
   return (
     <main className="bg-[#f7efe7] text-slate-900">
       {/* HERO – großes Startbild */}
-      <section id="hero" className="relative min-h-[90vh] overflow-hidden">
+      <section id="hero" className="relative min-h-[100vh] overflow-hidden">
         <video
           src={herovideodesktop}
           autoPlay
@@ -141,18 +141,19 @@ export default function Home() {
         <div className="absolute inset-0 bg-slate-900/35" />
 
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
-          <div className="mx-auto max-w-3xl px-4 text-center text-white">
+          <div className="mx-auto pt-12 max-w-3xl px-4 text-center text-white">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
               Ihr privates Refugium im Herzen der Alpen.
             </h1>
 
             <div className="mt-10 flex justify-center">
               <Link
-                to="/contact"
-                className="inline-flex items-center justify-center border-2 border-[#c50355] bg-white/5 px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] backdrop-blur-sm transition hover:bg-[#c50355] hover:text-white"
-              >
-                Buchen
-              </Link>
+  to="/contact"
+  className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
+>
+  Buchen
+</Link>
+
             </div>
           </div>
         </div>
@@ -357,7 +358,7 @@ export default function Home() {
                     inline-flex items-center justify-center
                     border border-[#c50355]
                     px-14 py-4
-                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
                     text-[#c50355]
                     transition hover:bg-[#c50355] hover:text-white
                   "
@@ -436,7 +437,7 @@ export default function Home() {
                     inline-flex items-center justify-center
                     border border-[#c50355]
                     px-14 py-4
-                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
                     text-[#c50355]
                     transition hover:bg-[#c50355] hover:text-white
                   "
@@ -514,7 +515,7 @@ export default function Home() {
                     inline-flex items-center justify-center
                     border border-[#c50355]
                     px-14 py-4
-                    text-[11px] font-semibold uppercase tracking-[0.35em]
+                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
                     text-[#c50355]
                     transition hover:bg-[#c50355] hover:text-white
                   "
@@ -592,7 +593,7 @@ export default function Home() {
               Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.
             </p>
 
-            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+             <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
               Lesen
             </button>
           </div>
@@ -625,7 +626,7 @@ export default function Home() {
               die aus einem Aufenthalt eine Erinnerung machen.
             </p>
 
-            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+             <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
               Lesen
             </button>
           </div>
@@ -661,7 +662,7 @@ export default function Home() {
               erstklassigen Service – mitten in den Bergen.
             </p>
 
-            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+            <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
               Lesen
             </button>
           </div>
@@ -694,7 +695,7 @@ export default function Home() {
               Stille und neue Energie nach einem Wintertag.
             </p>
 
-            <button className="mt-10 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] hover:opacity-80">
+            <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
               Lesen
             </button>
           </div>
@@ -706,7 +707,7 @@ export default function Home() {
     <div className="mt-24 flex justify-center">
       <button
         type="button"
-        className="border border-[#c50355] px-14 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+        className="border border-[#c50355] px-14 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
       >
         Mehr anzeigen
       </button>

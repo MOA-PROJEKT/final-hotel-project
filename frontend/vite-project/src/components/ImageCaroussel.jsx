@@ -92,7 +92,7 @@ export default function ImageCarousel({
             className="bg-white rounded-full p-2 shadow hover:shadow-md transition"
           >
             <svg
-              className="w-6 h-6 text-red-600"
+              className="w-6 h-6 text-[#c50355]"
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -122,7 +122,7 @@ export default function ImageCarousel({
             className="bg-white rounded-full p-2 shadow hover:shadow-md transition"
           >
             <svg
-              className="w-6 h-6 text-red-600"
+              className="w-6 h-6 text-[#c50355]"
               fill="none"
               stroke="currentColor"
               strokeWidth={2}

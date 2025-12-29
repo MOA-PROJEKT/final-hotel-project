@@ -13,28 +13,23 @@ const navLinks = [
 
 const LANGUAGES = ['DE', 'EN']
 
-// Sprachauswahl
-function LanguageSwitcher({ current, onChange, isLight }) {
-  // Helle Seiten (Kontakt, Restaurant) → dunkle Schrift
-  const baseText = isLight ? 'text-slate-700' : 'text-white'
-  const hoverText = isLight ? 'hover:text-slate-900' : 'hover:text-slate-100'
-  const dropdownBg = isLight
-    ? 'bg-white/95 text-slate-700 shadow-sm'
-    : 'bg-slate-900/90 text-white shadow-lg'
-
+function LanguageSwitcher({ current, onChange, isDark }) {
   const [open, setOpen] = useState(false)
+
+  const baseText = isDark ? 'text-slate-900' : 'text-white font-semibold'
+  const hoverText = isDark ? 'hover:text-slate-900' : 'hover:text-white'
+  const shadowText = isDark ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
+  const dropdownBg = 'bg-slate-900/90 text-white shadow-lg'
 
   return (
     <div className="relative inline-block">
       <button
         type="button"
-        className={`inline-flex items-center gap-1 text-[14px] tracking-[0.32em] uppercase ${baseText} ${hoverText}`}
+        className={`inline-flex items-center gap-1 text-[14px] tracking-[0.32em] uppercase ${baseText} ${hoverText} ${shadowText}`}
         onClick={() => setOpen((o) => !o)}
       >
         <span>{current}</span>
-        <ChevronDown
-          className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`}
-        />
+        <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
@@ -45,7 +40,7 @@ function LanguageSwitcher({ current, onChange, isLight }) {
             <button
               key={code}
               type="button"
-              className={`block text-left w-full ${baseText} ${hoverText}`}
+              className="block text-left w-full text-white hover:text-white"
               onClick={() => {
                 onChange(code)
                 setOpen(false)
@@ -68,89 +63,76 @@ export default function Navbar() {
   const location = useLocation()
   const path = location.pathname
 
-  // "Helle" Seiten: Kontakt + Restaurant
+  // Seiten mit hellem Hintergrund: oben muss die Navbar dunkel sein
   const isLightPage = path === '/contact' || path === '/restaurant'
 
+  // Dark Text, wenn: gescrolled ODER helle Seite
+  const useDarkText = isScrolled || isLightPage
+
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 40)
-    }
+    const onScroll = () => setIsScrolled(window.scrollY > 40)
     onScroll()
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const shadowText = useDarkText ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
+
+  const textMain = useDarkText ? 'text-slate-900' : `text-white ${shadowText}`
+  const textMuted = useDarkText ? 'text-slate-900/70' : `text-white ${shadowText}`
+
+  const borderSoft = useDarkText ? 'border-slate-900/25' : 'border-white/70'
+
+  const navBase = useDarkText
+    ? 'text-slate-900/70 hover:text-slate-900'
+    : `text-white hover:text-white font-semibold ${shadowText}`
+  const navActive = useDarkText ? 'text-slate-900' : `text-white font-bold ${shadowText}`
+
   return (
     <>
-      {/* FIXED HEADER */}
-    <header
-  className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
-    // Kontakt + Restaurant oben → beige Hintergrund, ABER ohne untere Linie
-    isLightPage && !isScrolled
-      ? 'bg-[#f7f2ec] border-transparent text-slate-900'
-      : isScrolled
-      ? 'bg-white/95 border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)] text-slate-900'
-      : 'bg-transparent border-transparent text-white'
-  }`}
->
-
+      <header
+        className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
+          isLightPage && !isScrolled
+            ? 'bg-[#f7f2ec] border-transparent'
+            : isScrolled
+            ? 'bg-[#f7efe7] border-slate-200/70 shadow-[0_8px_20px_rgba(15,23,42,0.06)]'
+            : 'bg-transparent border-transparent'
+        }`}
+      >
         <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
           {/* ========= DESKTOP: großer Header ========= */}
           {!isScrolled && (
             <div className="hidden lg:flex flex-col pt-3 pb-2">
-              {/* Row 1: Burger / Logo / Actions */}
               <div className="flex h-24 items-center justify-between gap-4">
-                {/* Links: Hamburger */}
                 <button
                   type="button"
-                  className="inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
+                  className={`inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase font-semibold ${textMain}`}
                   onClick={() => setIsMenuOpen(true)}
                 >
                   <Menu className="h-8 w-8" />
                   <span className="hidden sm:inline">Menü</span>
                 </button>
 
-                {/* Mitte: Logo */}
-                <div className="flex flex-col items-center leading-tight">
-                  {/* KREIS UM STERN → auf Kontakt/Restaurant dunkel */}
+                <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                   <div
-                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border text-[10px] tracking-[0.2em] ${
-                      isLightPage
-                        ? 'border-slate-500 text-slate-700'
-                        : 'border-white/60 text-white'
-                    }`}
+                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft} text-[10px] tracking-[0.2em] ${textMain}`}
                   >
                     ★
                   </div>
-                  <span className=" font-display text-[16px] tracking-[0.55em] uppercase">
+                  <span className={`font-display text-[16px] tracking-[0.55em] uppercase ${textMain}`}>
                     MOA HOTEL PARADISE
                   </span>
-                 <span
-                  className={`mt-1 text-[11px] tracking-[0.4em] uppercase ${
-                  isLightPage ? 'text-slate-500' : 'text-white/70'
-              }`}
-                >
-                   Luxury Retreat
-                </span>
-
+                  <span className={`mt-1 text-[11px] tracking-[0.4em] uppercase ${textMuted}`}>
+                    Luxury Retreat
+                  </span>
                 </div>
 
-                {/* Rechts: Sprache + Login + Buchen */}
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <LanguageSwitcher
-                    current={language}
-                    onChange={setLanguage}
-                    isLight={isLightPage}
-                  />
+                  <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
 
-                  {/* USER-KREIS → auf Kontakt/Restaurant dunkel */}
                   <button
                     type="button"
-                    className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${
-                      isLightPage
-                        ? 'border-slate-500 text-slate-700 hover:border-slate-700'
-                        : 'border-white/60 text-white hover:border-white'
-                    }`}
+                    className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full border ${borderSoft} ${textMain} hover:opacity-90 transition-opacity`}
                     aria-label="Login"
                   >
                     <User className="h-4 w-4" />
@@ -158,39 +140,21 @@ export default function Navbar() {
 
                   <button
                     type="button"
-                    className="hidden md:inline-flex rounded-sm border border-rose-500 bg-rose-500 px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-white hover:bg-transparent hover:text-rose-300 transition-colors"
+                    className="hidden md:inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
                   >
                     Buchen
                   </button>
                 </div>
               </div>
 
-              {/* Row 2: Linie + Navigation */}
               <div className="flex flex-col">
-                {/* MITTELLINIE → auf Kontakt/Restaurant dunkler/beige */}
-                <div
-                  className={`mt-4 border-t ${
-                    isLightPage ? 'border-[#eadfce]' : 'border-white/40'
-                  }`}
-                />
+                <div className={`mt-4 border-t ${isLightPage ? 'border-[#eadfce]' : 'border-white/45'}`} />
                 <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
                   {navLinks.map((link) => (
                     <NavLink
                       key={link.label}
                       to={link.to}
-                      className={({ isActive }) =>
-                        `${
-                          isLightPage
-                            ? 'text-slate-600 hover:text-slate-900'
-                            : 'text-white/80 hover:text-white'
-                        } transition-colors ${
-                          isActive
-                            ? isLightPage
-                              ? 'text-slate-900'
-                              : 'text-white'
-                            : ''
-                        }`
-                      }
+                      className={({ isActive }) => `${navBase} transition-colors ${isActive ? navActive : ''}`}
                     >
                       {link.label}
                     </NavLink>
@@ -203,25 +167,23 @@ export default function Navbar() {
           {/* ========= DESKTOP: schmaler Header beim Scrollen ========= */}
           {isScrolled && (
             <div className="hidden lg:flex h-14 items-center justify-between gap-6">
-              {/* Links: Brand klein */}
               <div className="flex flex-col leading-tight">
-                <span className="text-[13px] tracking-[0.45em] uppercase">
+                <span className="text-[13px] tracking-[0.45em] uppercase text-slate-900">
                   MOA HOTEL PARADISE
                 </span>
-                <span className="text-[9px] tracking-[0.35em] uppercase text-slate-500">
+                <span className="text-[9px] tracking-[0.35em] uppercase text-slate-900/70">
                   Luxury Retreat
                 </span>
               </div>
 
-              {/* Mitte: Navigation */}
               <nav className="flex items-center justify-center gap-10 text-[12px] uppercase tracking-[0.35em]">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.label}
                     to={link.to}
                     className={({ isActive }) =>
-                      `text-slate-500 hover:text-slate-900 transition-colors ${
-                        isActive ? 'text-slate-900' : ''
+                      `text-slate-900/70 hover:text-slate-900 transition-colors font-medium ${
+                        isActive ? 'text-slate-900 font-semibold' : ''
                       }`
                     }
                   >
@@ -230,50 +192,37 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* Rechts: Buchen */}
               <button
                 type="button"
-                className="inline-flex rounded-sm border border-rose-500 bg-rose-500 px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-white hover:bg-transparent hover:text-rose-500 transition-colors"
+                className="inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
               >
                 Buchen
               </button>
             </div>
           )}
 
-          {/* ========= MOBILE / TABLET HEADER ========= */}
-          <div className="flex lg:hidden flex-col pt-5 pb-2">
-            {/* Row 1: Sprache / Logo / Burger */}
+          {/* ========= MOBILE / TABLET ========= */}
+          <div className={`flex lg:hidden flex-col pt-5 pb-2 ${textMain}`}>
             <div className="flex h-16 items-center justify-between gap-4">
-              {/* links: Sprache */}
-              <LanguageSwitcher
-                current={language}
-                onChange={setLanguage}
-                isLight={isLightPage}
-              />
+              <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
 
-              {/* Mitte: Logo (kleiner) */}
-              <div className="flex flex-col items-center leading-tight">
+              <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                 <div
-                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border text-[9px] tracking-[0.2em] ${
-                    isLightPage
-                      ? 'border-slate-500 text-slate-700'
-                      : 'border-white/60 text-white'
-                  }`}
+                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border ${borderSoft} text-[9px] tracking-[0.2em] ${textMain}`}
                 >
                   ★
                 </div>
-                <span className="text-[12px] tracking-[0.45em] uppercase">
+                <span className={`text-[12px] tracking-[0.45em] uppercase font-semibold ${textMain}`}>
                   MOA HOTEL PARADISE
                 </span>
-                <span className="mt-1 text-[9px] tracking-[0.35em] uppercase text-white/70">
+                <span className={`mt-1 text-[9px] tracking-[0.35em] uppercase ${textMuted}`}>
                   Luxury Retreat
                 </span>
               </div>
 
-              {/* rechts: Burger */}
               <button
                 type="button"
-                className="inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase"
+                className={`inline-flex items-center gap-3 text-[14px] tracking-[0.4em] uppercase font-semibold ${textMain}`}
                 onClick={() => setIsMenuOpen(true)}
               >
                 <Menu className="h-6 w-6" />
@@ -283,21 +232,17 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* OVERLAY-MENÜ (HAMBURGER) */}
+      {/* OVERLAY-MENÜ */}
       <div
         className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
-          isMenuOpen
-            ? 'opacity-100 pointer-events-auto bg-black/40'
-            : 'opacity-0 pointer-events-none bg-transparent'
+          isMenuOpen ? 'opacity-100 pointer-events-auto bg-black/40' : 'opacity-0 pointer-events-none bg-transparent'
         }`}
       >
-        {/* Panel links */}
         <div
           className={`relative h-full w-full lg:max-w-md bg-amber-900/95 text-white flex flex-col transform transition-transform duration-500 ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          {/* X */}
           <button
             type="button"
             className="absolute top-8 right-3 lg:left-8 lg:right-auto lg:top-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:border-white"
@@ -307,28 +252,21 @@ export default function Navbar() {
             <X className="h-5 w-5" />
           </button>
 
-          {/* Links im Overlay */}
-          <nav className="flex-1 overflow-y-auto px-8 pt-20 lg:pt-32 space-y-7 lg:space-y-8 text-[14px] lg:text-[15px] tracking-[0.4em] uppercase">
+          <nav className="flex-1 overflow-y-auto px-8 pt-20 lg:pt-32 space-y-7 lg:space-y-8 text-[14px] lg:text-[15px] tracking-[0.4em] uppercase font-semibold">
             {navLinks.map((link) => (
               <NavLink
                 key={link.label}
                 to={link.to}
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full block"
+                className="w-full block text-white"
               >
-                <div className="border-b border-white/25 pb-3 pt-1">
-                  {link.label}
-                </div>
+                <div className="border-b border-white/25 pb-3 pt-1">{link.label}</div>
               </NavLink>
             ))}
           </nav>
 
-          {/* Unten: Login + Buchen */}
-          <div className="border-t border-white/20 px-8 pb-10 pt-6 text-[11px] uppercase tracking-[0.3em] space-y-4">
-            <button
-              type="button"
-              className="flex items-center gap-2 opacity-90 hover:opacity-100"
-            >
+          <div className="border-t border-white/20 px-8 pb-10 pt-6 text-[11px] uppercase tracking-[0.3em] space-y-4 text-white">
+            <button type="button" className="flex items-center gap-2 opacity-90 hover:opacity-100">
               <User className="h-4 w-4" />
               <span>Login</span>
             </button>
@@ -342,7 +280,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* rechter Hintergrund (Desktop) */}
         <button
           type="button"
           className="hidden lg:block flex-1"

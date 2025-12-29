@@ -28,7 +28,7 @@ const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6]
 
 export default function Wellness() {
   return (
-    <section className="bg-[#f7f2ec] text-[#1b1b1b]">
+    <section className="bg-[#f7efe7] text-[#1b1b1b]">
       {/* ================= HERO ================= */}
       <div id="hero" className="relative min-h-[90vh] overflow-hidden">
         <img
@@ -38,27 +38,18 @@ export default function Wellness() {
         />
         <div className="absolute inset-0 bg-slate-900/35" />
 
-        <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
-          <div className="mx-auto max-w-3xl px-4 text-center text-white">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+        <div className="relative z-10 flex min-h-[90vh]  items-center justify-center">
+          <div className="mx-auto max-w-3xl px-4  text-center text-white">
+            <h1 className="text-4xl  sm:text-5xl md:text-6xl font-semibold leading-tight">
               Wellness, Spa & Fitness.
             </h1>
 
             <button
               className="
-                inline-block
-                border border-[#f7f2ec]
-                px-12 py-3
-                mt-12
-                rounded-full
-                tracking-widest
-                text-white
-                hover:bg-[#b30042]
-                hover:text-white
-                transition
+               inline-flex mt-8 items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]
               "
             >
-              Termin buchen
+              Termin  buchen
             </button>
           </div>
         </div>
@@ -152,7 +143,7 @@ export default function Wellness() {
             md:-ml-10
           "
         >
-          <h2 className="text-4xl font-bold text-amber-600 tracking-wide mb-4">
+          <h2 className="text-4xl font-bold text-[#c50355] tracking-wide mb-4">
             Yoga & Meditation
           </h2>
           <h3 className="text-2xl font-semibold text-neutral-800 mb-4">
@@ -199,7 +190,7 @@ export default function Wellness() {
             md:-mr-10
           "
         >
-          <h2 className="text-4xl font-bold text-amber-600 tracking-wide mb-4">
+          <h2 className="text-4xl font-bold text-[#c50355] tracking-wide mb-4">
             Fitness & Gym
           </h2>
           <h3 className="text-2xl font-semibold text-neutral-800 mb-4">

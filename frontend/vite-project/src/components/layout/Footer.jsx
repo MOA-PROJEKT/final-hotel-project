@@ -20,7 +20,7 @@ export default function Footer() {
                 MOA HOTEL PARADISE
               </span>
             </a>
-            <p className="text-slate-00 leading-relaxed">
+            <p className="text-slate-700 leading-relaxed">
               Erleben Sie unvergleichlichen Luxus und erstklassigen Service in
               unserem exquisiten 5-Sterne-Hotel.
             </p>

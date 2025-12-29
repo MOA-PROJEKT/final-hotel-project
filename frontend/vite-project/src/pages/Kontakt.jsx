@@ -42,7 +42,7 @@ const SALES_CONTACTS = [
 
 export default function Kontakt() {
   return (
-    <main className="bg-[#f7f2ec] min-h-screen text-[#2a2a2a] pt-20">
+    <main className="bg-[#f7efe7] min-h-screen text-[#2a2a2a] pt-20">
       {/* HERO-TEXT */}
       <section className="max-w-6xl mx-auto text-center px-6 pt-32 pb-12">
         <h1 className="text-4xl md:text-5xl font-light text-[#b38b4d] tracking-wide mt-0">
@@ -94,7 +94,7 @@ export default function Kontakt() {
               </p>
               <a
                 href="mailto:info@hotel.ch"
-                className="text-[#b30042] hover:underline text-base"
+                className="text-[#c50355] hover:underline text-base"
               >
                 info@hotel.ch
               </a>
@@ -194,7 +194,7 @@ export default function Kontakt() {
               <p className="text-sm">Telefon {member.tel}</p>
               <a
                 href={`mailto:${member.mail}`}
-                className="text-[#b30042] hover:underline block"
+                className="text-[#c50355] hover:underline block"
               >
                 {member.mail}
               </a>
@@ -245,7 +245,7 @@ export default function Kontakt() {
               </div>
               <a
                 href="mailto:presse@hotel.ch"
-                className="mt-6 text-[#b30042] font-medium hover:underline"
+                className="mt-6 text-[#c50355] font-medium hover:underline"
               >
                 presse@hotel.ch
               </a>
@@ -264,7 +264,7 @@ export default function Kontakt() {
             </div>
             <a
               href="mailto:presse@hotel.ch"
-              className="mt-6 text-[#b30042] font-medium hover:underline"
+              className="mt-6 text-[#c50355] font-medium hover:underline"
             >
               presse@hotel.ch
             </a>
@@ -323,7 +323,7 @@ export default function Kontakt() {
           <div className="md:col-span-2 text-center">
             <button
               type="submit"
-              className="bg-[#b30042] text-white px-10 py-3 rounded-lg text-lg hover:bg-[#8c0035] transition"
+              className="bg-[#c50355] text-white px-10 py-3 rounded-lg text-lg  transition"
             >
               Abschicken
             </button>
