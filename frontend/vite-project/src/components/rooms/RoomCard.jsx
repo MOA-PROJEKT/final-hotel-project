@@ -2,43 +2,57 @@
 
 export default function RoomCard({ room }) {
   return (
-    <article className="flex flex-col items-center text-center">
-      {/* Bildbereich wie beim Carlton: großes Bild, viel Luft */}
-      <div className="w-full overflow-hidden rounded-3xl shadow-lg">
+    <article className="flex flex-col">
+      {/* ================= IMAGE ================= */}
+      <div className="w-full">
         <img
           src={room.image}
           alt={room.name}
-          className="h-[320px] w-full object-cover"
+          className="h-[420px] w-full object-cover"
         />
       </div>
 
-      {/* Textbereich */}
-      <div className="mt-8 max-w-md mx-auto space-y-4">
-        {/* Titel + Größe */}
-        <div>
-          <h3 className="text-lg sm:text-xl font-semibold">
-            {room.name}{' '}
-            <span className="font-normal">
-              {room.size ? ` ${room.size}` : ''}
-            </span>
-          </h3>
-        </div>
+      {/* ================= TEXT ================= */}
+      <div className="mt-10 px-4 text-center">
+        {/* Title */}
+        <h3 className="text-lg sm:text-xl font-semibold text-neutral-700 mb-2">
+          {room.name}
+        </h3>
 
-        {/* Beschreibung */}
-        <p className="text-sm text-slate-200 leading-relaxed">
+        {/* Size */}
+        {room.size && (
+          <p className="text-sm text-neutral-700 mb-4">{room.size}</p>
+        )}
+
+        {/* Description */}
+        <p className="mx-auto max-w-md text-sm text-neutral-500 leading-relaxed mb-8">
           {room.shortDescription}
         </p>
 
-        {/* "Mehr entdecken" ähnlich Textlink */}
-        <div className="mt-2">
-          <button className="text-sm font-medium text-amber-300 underline underline-offset-4 hover:text-amber-200">
+        {/* Actions */}
+        <div className="flex flex-col items-center gap-4">
+          {/* Secondary link */}
+          <button className="text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition">
             Mehr entdecken
           </button>
-        </div>
 
-        {/* "Buchen" Button wie beim Carlton (aber in eurem Stil) */}
-        <div className="pt-4">
-          <button className="inline-flex items-center justify-center rounded-full border border-amber-400 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] hover:bg-amber-400 hover:text-slate-950 transition-colors">
+          {/* Primary action */}
+          <button
+            className="
+            mt-8
+              border border-[#c52b58]
+              px-10
+              py-3
+              text-[11px]
+              font-semibold
+              uppercase
+              tracking-[0.3em]
+              text-[#c52b58]
+              transition
+              hover:bg-[#c52b58]
+              hover:text-white
+            "
+          >
             Buchen
           </button>
         </div>
