@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, User, ChevronDown } from 'lucide-react'
 
 const navLinks = [
@@ -60,6 +60,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [language, setLanguage] = useState('DE')
 
+  const navigate = useNavigate() // ✅ MUSS hier drin sein
   const location = useLocation()
   const path = location.pathname
 
@@ -132,6 +133,7 @@ export default function Navbar() {
 
                   <button
                     type="button"
+                    onClick={() => navigate('/login')}
                     className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full border ${borderSoft} ${textMain} hover:opacity-90 transition-opacity`}
                     aria-label="Login"
                   >
@@ -154,7 +156,9 @@ export default function Navbar() {
                     <NavLink
                       key={link.label}
                       to={link.to}
-                      className={({ isActive }) => `${navBase} transition-colors ${isActive ? navActive : ''}`}
+                      className={({ isActive }) =>
+                        `${navBase} transition-colors ${isActive ? navActive : ''}`
+                      }
                     >
                       {link.label}
                     </NavLink>
@@ -235,7 +239,9 @@ export default function Navbar() {
       {/* OVERLAY-MENÜ */}
       <div
         className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
-          isMenuOpen ? 'opacity-100 pointer-events-auto bg-black/40' : 'opacity-0 pointer-events-none bg-transparent'
+          isMenuOpen
+            ? 'opacity-100 pointer-events-auto bg-black/40'
+            : 'opacity-0 pointer-events-none bg-transparent'
         }`}
       >
         <div
@@ -266,7 +272,14 @@ export default function Navbar() {
           </nav>
 
           <div className="border-t border-white/20 px-8 pb-10 pt-6 text-[11px] uppercase tracking-[0.3em] space-y-4 text-white">
-            <button type="button" className="flex items-center gap-2 opacity-90 hover:opacity-100">
+            <button
+              type="button"
+              onClick={() => {
+                setIsMenuOpen(false)
+                navigate('/login')
+              }}
+              className="flex items-center gap-2 opacity-90 hover:opacity-100"
+            >
               <User className="h-4 w-4" />
               <span>Login</span>
             </button>

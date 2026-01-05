@@ -13,6 +13,10 @@ import Gallery from './pages/Gallery'
 import Kontakt from './pages/Kontakt'
 import NotFound from './pages/NotFound'
 
+// NEW
+import Login from './pages/Login'
+import AdminDashboard from './pages/AdminDashboard'
+
 export default function App() {
   return (
     <>
@@ -25,6 +29,10 @@ export default function App() {
         <Route path="/wellness" element={<Wellness />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Kontakt />} />
+
+        {/* NEW */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminDashboard />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
