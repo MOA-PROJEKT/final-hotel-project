@@ -16,6 +16,9 @@ import NotFound from './pages/NotFound'
 // NEW
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
+import AdminRoute from './components/auth/AdminRoute'
+
+
 
 export default function App() {
   return (
@@ -32,9 +35,20 @@ export default function App() {
 
         {/* NEW */}
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+              <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
 
         <Route path="*" element={<NotFound />} />
+
+  
+
+
       </Routes>
 
       <Footer />
