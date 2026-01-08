@@ -19,6 +19,8 @@ export const rooms = [
     size: '35–45 m²',
     category: 'Zimmer',
     image: DELUXE_DOUBLE,
+    price: 320,
+    maxGuests: 2,
     shortDescription:
       'Individuell eingerichtet in warmen Farbpaletten, mit maßgefertigtem Mobiliar. Selbst als Einstiegskategorie bietet das Deluxe Doppelzimmer einen Blick auf die umliegenden Berge und den See.',
   },
@@ -28,6 +30,8 @@ export const rooms = [
     size: '55 m²',
     category: 'Suite',
     image: JUNIOR_MEDIUM,
+    price: 520,
+    maxGuests: 3,
     shortDescription:
       'Gemütliche Junior Suite mit kombiniertem Wohn- und Schlafraum, Kingsize-Bett und nach Süden ausgerichtetem Blick auf die Landschaft mit Panoramablick über den See.',
   },
@@ -37,6 +41,8 @@ export const rooms = [
     size: '70 m²',
     category: 'Suite',
     image: DELUXE_SUITE,
+    price: 690,
+    maxGuests: 4,
     shortDescription:
       'Großzügige Suite, deren Fensterfront den Blick weit über die Berge und den See öffnet. Viel Raum für ruhige Momente und lange Abende.',
   },
@@ -46,8 +52,10 @@ export const rooms = [
     size: '55 m²',
     category: 'Suite',
     image: TWIN_JUNIOR,
+    price: 560,
+    maxGuests: 4,
     shortDescription:
-      'Junior Suite mit zwei Queensize-Betten – ideal für Reisen zu zweit oder mit Freunden. Der Blick schweift über die Landschaft und den St. Moritzersee.',
+      'Junior Suite mit zwei Queensize-Betten, ideal für Reisen zu zweit oder mit Freunden. Der Blick schweift über die Landschaft und den St. Moritzersee.',
   },
   {
     id: 'junior-suite-large',
@@ -55,6 +63,8 @@ export const rooms = [
     size: '65 m²',
     category: 'Suite',
     image: letzte,
+    price: 620,
+    maxGuests: 4,
     shortDescription:
       'Unsere Empfehlung für alle, die etwas mehr Platz schätzen: eine großzügige Junior Suite mit Badewanne, Dusche und Blick nach Süden auf die Bergwelt.',
   },
@@ -64,6 +74,8 @@ export const rooms = [
     size: '75 m²',
     category: 'Suite',
     image: CORNER_JUNIOR,
+    price: 780,
+    maxGuests: 4,
     shortDescription:
       'Eck-Suite mit gemütlicher Sitzecke zum Zurücklehnen nach einem Tag im Schnee. Der Balkon öffnet sich zur Sonne und über den See.',
   },
@@ -73,6 +85,8 @@ export const rooms = [
     size: '80 m²',
     category: 'Suite',
     image: GRAND_SUITE,
+    price: 980,
+    maxGuests: 4,
     shortDescription:
       'Komfort und Großzügigkeit in den oberen Etagen. Die Grand Suite verbindet weiche Stoffe, klare Linien und einen weiten Blick über Berge und Tal.',
   },
@@ -82,6 +96,8 @@ export const rooms = [
     size: '386 m²',
     category: 'Penthouse',
     image: PENTHOUSE,
+    price: 2500,
+    maxGuests: 6,
     shortDescription:
       'Fünf Balkone, ein Panorama-Rundumblick und ein Wohnbereich, der sich wie ein privates Refugium anfühlt. Die Penthouse Suite nimmt die gesamte oberste Etage ein.',
   },
