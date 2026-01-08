@@ -1,9 +1,8 @@
-// src/components/rooms/RoomCard.jsx
+import { Link } from 'react-router-dom'
 
 export default function RoomCard({ room }) {
   return (
     <article className="flex flex-col">
-      {/* ================= IMAGE ================= */}
       <div className="w-full">
         <img
           src={room.image}
@@ -12,34 +11,31 @@ export default function RoomCard({ room }) {
         />
       </div>
 
-      {/* ================= TEXT ================= */}
       <div className="mt-10 px-4 text-center">
-        {/* Title */}
         <h3 className="text-lg sm:text-xl font-semibold text-neutral-700 mb-2">
           {room.name}
         </h3>
 
-        {/* Size */}
         {room.size && (
           <p className="text-sm text-neutral-700 mb-4">{room.size}</p>
         )}
 
-        {/* Description */}
         <p className="mx-auto max-w-md text-sm text-neutral-500 leading-relaxed mb-8">
           {room.shortDescription}
         </p>
 
-        {/* Actions */}
         <div className="flex flex-col items-center gap-4">
-          {/* Secondary link */}
-          <button className="text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition">
+          <Link
+            to={`/rooms/${room.id}`}
+            className="text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition"
+          >
             Mehr entdecken
-          </button>
+          </Link>
 
-          {/* Primary action */}
-          <button
+          <Link
+            to={`/rooms/${room.id}`}
             className="
-            mt-8
+              mt-8
               border border-[#c52b58]
               px-10
               py-3
@@ -54,7 +50,7 @@ export default function RoomCard({ room }) {
             "
           >
             Buchen
-          </button>
+          </Link>
         </div>
       </div>
     </article>

@@ -148,7 +148,7 @@ export default function Home() {
 
             <div className="mt-10 flex justify-center">
               <Link
-  to="/contact"
+  to="/rooms"
   className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
 >
   Buchen
@@ -552,7 +552,7 @@ export default function Home() {
           <div className="mb-24 flex items-center justify-center gap-8">
             <span className="h-px w-32 bg-[#d9c9bb]" />
             <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">
-              Carlton Hotel Journal
+              Moa Hotel Journal
             </h2>
             <span className="h-px w-32 bg-[#d9c9bb]" />
           </div>

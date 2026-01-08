@@ -75,7 +75,8 @@ export default function Navbar() {
   const location = useLocation()
   const path = location.pathname
 
-  // Auth-State für UI
+  const forceCompact = path === '/my-bookings' || path === '/admin'
+
   const [auth, setAuth] = useState(() => readAuthFromStorage())
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const userMenuRef = useRef(null)
@@ -83,25 +84,24 @@ export default function Navbar() {
   const isLoggedIn = !!auth.token && !!auth.user
   const isAdmin = auth.user?.role === 'admin'
 
-  // Seiten mit hellem Hintergrund: oben muss die Navbar dunkel sein
   const isLightPage = path === '/contact' || path === '/restaurant'
-
-  // Dark Text, wenn: gescrolled ODER helle Seite
   const useDarkText = isScrolled || isLightPage
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 40)
+    const onScroll = () => {
+      if (forceCompact) setIsScrolled(true)
+      else setIsScrolled(window.scrollY > 40)
+    }
+
     onScroll()
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [forceCompact])
 
-  // Auth neu lesen, wenn Login/Logout passiert (im selben Tab)
   useEffect(() => {
     const onAuthChanged = () => setAuth(readAuthFromStorage())
     window.addEventListener('auth-changed', onAuthChanged)
 
-    // Falls ihr in anderem Tab logout/login macht:
     const onStorage = (e) => {
       if (e.key === 'token' || e.key === 'user') setAuth(readAuthFromStorage())
     }
@@ -113,7 +113,6 @@ export default function Navbar() {
     }
   }, [])
 
-  // Dropdown schließen bei Klick außerhalb
   useEffect(() => {
     const onDown = (e) => {
       if (!userMenuRef.current) return
@@ -136,31 +135,37 @@ export default function Navbar() {
   const userInitial = (auth.user?.name?.[0] || auth.user?.email?.[0] || 'U').toUpperCase()
   const userName = auth.user?.name || auth.user?.email || 'Account'
 
+  const closeAllMenus = () => {
+    setUserMenuOpen(false)
+    setIsMenuOpen(false)
+  }
+
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     setAuth({ token: null, user: null })
     window.dispatchEvent(new Event('auth-changed'))
-    setUserMenuOpen(false)
-    setIsMenuOpen(false)
+    closeAllMenus()
     navigate('/')
   }
 
   const goLogin = () => {
-    setUserMenuOpen(false)
-    setIsMenuOpen(false)
+    closeAllMenus()
     navigate('/login')
   }
 
   const goAdmin = () => {
-    setUserMenuOpen(false)
-    setIsMenuOpen(false)
+    closeAllMenus()
     navigate('/admin')
   }
 
+  const goMyBookings = () => {
+    closeAllMenus()
+    navigate('/my-bookings')
+  }
+
   const goRooms = () => {
-    setUserMenuOpen(false)
-    setIsMenuOpen(false)
+    closeAllMenus()
     navigate('/rooms')
   }
 
@@ -176,7 +181,6 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto w-full max-w-[1400px] px-2 sm:px-4 lg:px-6">
-          {/* ========= DESKTOP: großer Header ========= */}
           {!isScrolled && (
             <div className="hidden lg:flex flex-col pt-3 pb-2">
               <div className="flex h-24 items-center justify-between gap-4">
@@ -206,7 +210,6 @@ export default function Navbar() {
                 <div className="flex items-center gap-3 sm:gap-4">
                   <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
 
-                  {/* ✅ LOGIN / USER DROPDOWN */}
                   {!isLoggedIn ? (
                     <button
                       type="button"
@@ -223,7 +226,6 @@ export default function Navbar() {
                         type="button"
                         onClick={() => setUserMenuOpen((v) => !v)}
                         className={`flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
-
                         aria-label="User menu"
                         title={userName}
                       >
@@ -241,13 +243,13 @@ export default function Navbar() {
                       </button>
 
                       {userMenuOpen && (
-                        <div className="absolute right-0 top-full mt-2  z-[9999] w-fit min-w-[100px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
+                        <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[100px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
                           <button
                             type="button"
-                            onClick={goRooms}
+                            onClick={goMyBookings}
                             className="w-full text-left px-3 py-2 hover:bg-white/10"
                           >
-                            Meine Buchungen (später)
+                            Meine Buchungen
                           </button>
 
                           {isAdmin && (
@@ -278,6 +280,7 @@ export default function Navbar() {
 
                   <button
                     type="button"
+                    onClick={goRooms}
                     className="hidden md:inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
                   >
                     Buchen
@@ -304,7 +307,6 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* ========= DESKTOP: schmaler Header beim Scrollen ========= */}
           {isScrolled && (
             <div className="hidden lg:flex h-14 items-center justify-between gap-6">
               <div className="flex flex-col leading-tight">
@@ -334,6 +336,7 @@ export default function Navbar() {
 
               <button
                 type="button"
+                onClick={goRooms}
                 className="inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
               >
                 Buchen
@@ -341,7 +344,6 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* ========= MOBILE / TABLET ========= */}
           <div className={`flex lg:hidden flex-col pt-5 pb-2 ${textMain}`}>
             <div className="flex h-16 items-center justify-between gap-4">
               <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
@@ -372,7 +374,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* OVERLAY-MENÜ */}
       <div
         className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
           isMenuOpen
@@ -387,7 +388,7 @@ export default function Navbar() {
         >
           <button
             type="button"
-            className="absolute top-8 right-3 lg:left-8 lg:right-auto  lg:top-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:border-white"
+            className="absolute top-8 right-3 lg:left-8 lg:right-auto lg:top-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 hover:border-white"
             onClick={() => setIsMenuOpen(false)}
             aria-label="Menü schließen"
           >
@@ -436,6 +437,14 @@ export default function Navbar() {
 
                 <button
                   type="button"
+                  onClick={goMyBookings}
+                  className="flex items-center gap-2 opacity-90 hover:opacity-100"
+                >
+                  <span>Meine Buchungen</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={logout}
                   className="flex items-center gap-2 opacity-90 hover:opacity-100"
                 >
@@ -447,6 +456,7 @@ export default function Navbar() {
 
             <button
               type="button"
+              onClick={goRooms}
               className="mt-2 inline-flex w-full items-center justify-center rounded-sm border border-rose-300 bg-rose-500 px-5 py-3 text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-transparent hover:text-rose-200 transition-colors"
             >
               Buchen
