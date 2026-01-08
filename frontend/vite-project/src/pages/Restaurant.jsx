@@ -30,7 +30,7 @@ export default function Restaurant() {
     {
       img: img2,
       subtitle: 'ESSEN UND TRINKEN',
-      title: 'MOA Bar & Lounge',
+      title: 'MOA Bar und Lounge',
       text: 'Die perfekte Mischung aus Eleganz und Entspannung. Genießen Sie kleine Snacks, Cocktails und atemberaubende Ausblicke. Das Herzstück des Hauses. Geschaffen, um zu bleiben, zu verweilen. Kleine Snacks oder aber den berühmten Carlton Afternoon Tea, beides können Sie hier zelebrieren. Der Blick gleitet dabei durch die imposanten Fenster auf die schneebedeckten Berge.',
       schedule: [],
       menus: ['Bar-Menü', 'Tea Time', 'Snacks'],
@@ -55,7 +55,7 @@ Die offene Gestaltung der Terrasse schafft ein Gefühl von Freiheit und gleichze
 
 Genießen Sie den authentischen Schweizer Käse, sorgfältig ausgewählt von unseren erfahrenen Köchen, geschmolzen zu einer cremigen, perfekt gewürzten Mischung. Jede Gondel ist stilvoll dekoriert und mit Kerzenlicht sowie kuscheligen Decken ausgestattet, sodass Sie sich warm und behaglich fühlen.
 
-Während draußen die verschneiten Berge glitzern, können Sie in gemütlicher Atmosphäre plaudern, lachen und die besondere Stimmung der Winterlandschaft erleben. Dazu servieren wir ausgewählte Weine, frisches Brot und saisonale Beilagen, die das Fondue-Erlebnis abrunden.
+ Dazu servieren wir ausgewählte Weine, frisches Brot und saisonale Beilagen, die das Fondue-Erlebnis abrunden.
 
 Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden – unsere Fondue-Gondeln bieten ein einmaliges kulinarisches Abenteuer mitten im Herzen von MOA Hotel.`,
       schedule: [
@@ -68,7 +68,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
 
   return (
     <div className="bg-[#f7efe7] py-16">
-      <h1 className="text-center text-4xl font-serif mb-12 text-yellow-900 mt-36">
+      <h1 className="text-center md:text-5xl font-light text-[#b38b4d] mb-12  mt-36">
         Geschmackserlebnisse für die Sinne
       </h1>
 
@@ -102,7 +102,9 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
               {item.subtitle}
             </p>
 
-            <h2 className="text-3xl font-serif font-bold mb-6">{item.title}</h2>
+            <h2 className="mb-5 text-2xl sm:text-3xl font-semibold leading-snug text-slate-800">
+              {item.title}
+            </h2>
 
             <p className="text-gray-700 leading-relaxed mb-6">{item.text}</p>
 
@@ -134,7 +136,7 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
               {/* MENU DROPDOWN */}
               <details className="group w-fit">
                 {' '}
-                <summary className="border-2 border-[#c50355] bg-transparent px-3 py-1 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:bg-[#c50355] hover:text-white transition">
+                <summary className="inline-flex items-center justify-center border border-[#c50355] bg-white px-9 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white">
                   Menü herunterladen
                   <span className="transition group-open:rotate-180">⌄</span>
                 </summary>
@@ -149,10 +151,6 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
                   ))}
                 </ul>
               </details>
-              {/* RESERVATION BUTTON */}
-              <button className="border-2 border-[#c50355] bg-transparent px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:bg-[#c50355] hover:text-white transition">
-                Reservieren
-              </button>
             </div>
           </div>
         </div>

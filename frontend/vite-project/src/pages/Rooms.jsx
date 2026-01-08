@@ -14,12 +14,12 @@ export default function Rooms() {
 
       {/* ================= INTRO SECTION ================= */}
       {/* Этот section — якорь для кнопки "Mehr entdecken" */}
-      <section id="rooms-intro" className="bg-[#faf5f0] text-neutral-800">
+      <section id="rooms-intro" className="bg-[#f7efe7] text-neutral-800">
         <IntroSection />
       </section>
 
       {/* ================= MAIN CONTENT ================= */}
-      <main className="bg-[#faf5f0] text-neutral-800 min-h-screen">
+      <main className="bg-[#f7efe7] text-neutral-800 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-20 space-y-20">
           {/* ================= ROOMS SLIDER ================= */}
           <RoomsSlider />

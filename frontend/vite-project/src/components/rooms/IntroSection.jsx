@@ -2,10 +2,10 @@
 
 export default function IntroSection() {
   return (
-    <section className="bg-[#faf5f0] py-20 px-4">
+    <section className="bg-[#f7efe7] py-20 px-4">
       <div className="max-w-4xl mx-auto text-center space-y-6">
         {/* Заголовок */}
-        <h2 className="text-3xl sm:text-4xl font-semibold text-[#b2854e]">
+        <h2 className="text-4xl md:text-5xl font-light text-[#b38b4d] tracking-wide mt-0">
           Zimmer und Suiten
         </h2>
 
