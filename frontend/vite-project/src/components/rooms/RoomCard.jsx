@@ -32,27 +32,12 @@ export default function RoomCard({ room }) {
         {/* Actions */}
         <div className="flex flex-col items-center gap-4">
           {/* Secondary link */}
-          <button className="text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition">
+          <button className="text-sm font-medium text-[#c50355] underline underline-offset-4 hover:text-[#a52348] transition">
             Mehr entdecken
           </button>
 
           {/* Primary action */}
-          <button
-            className="
-            mt-8
-              border border-[#c52b58]
-              px-10
-              py-3
-              text-[11px]
-              font-semibold
-              uppercase
-              tracking-[0.3em]
-              text-[#c52b58]
-              transition
-              hover:bg-[#c52b58]
-              hover:text-white
-            "
-          >
+          <button className="inline-flex items-center justify-center mt-8 border border-[#c50355] px-9 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white">
             Buchen
           </button>
         </div>
