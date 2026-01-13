@@ -5,6 +5,9 @@ import { useTranslation } from "react-i18next";
 import BookingForm from "../components/bookings/BookingForm";
 import { rooms } from "../data/rooms";
 
+// ✅ Background Image
+import HEROO from "../assets/images/buchen/heroo.jpg";
+
 export default function RoomDetails() {
   const { id } = useParams();
   const { t } = useTranslation("rooms");
@@ -16,9 +19,16 @@ export default function RoomDetails() {
 
   if (!room) {
     return (
-      <main className="min-h-screen bg-[#f7f2ec] pt-36 pb-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-700">
+      <main className="relative min-h-screen pt-36 pb-20">
+        {/* Background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${HEROO})` }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative mx-auto max-w-6xl px-4">
+          <div className="rounded-2xl border border-white/20 bg-white/85 p-6 text-slate-700 shadow-lg backdrop-blur-md">
             {t("notFound")}
           </div>
         </div>
@@ -29,18 +39,29 @@ export default function RoomDetails() {
   const roomId = room.id || room._id;
 
   return (
-    <main className="min-h-screen bg-[#f7f2ec] pt-56 pb-20">
-      <div className="mx-auto max-w-6xl px-4">
+    <main className="relative min-h-screen pt-48 md:pt-64 lg:pt-72 pb-20">
+
+      {/* ✅ Full Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${HEROO})` }}
+      />
+      {/* ✅ Overlay for readability */}
+      <div className="absolute inset-0 bg-black/35" />
+
+      {/* Content */}
+      <div className="relative mx-auto max-w-6xl px-4">
         <div className="grid gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-2 rounded-2xl bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.10)] backdrop-blur">
-            <h1 className="text-2xl font-semibold text-slate-900">
+          {/* LEFT CARD */}
+          <div className="lg:col-span-2 rounded-2xl border border-white/20 bg-white/85 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.20)] backdrop-blur-md">
+            <h1 className="text-xl font-semibold text-slate-900">
               {room.title || room.name || t("defaultTitle")}
             </h1>
 
-            {room.subtitle && <p className="mt-2 text-slate-600">{room.subtitle}</p>}
+            {room.subtitle && <p className="mt-2 text-slate-700">{room.subtitle}</p>}
 
             {room.description && (
-              <p className="mt-6 text-slate-700 leading-relaxed">{room.description}</p>
+              <p className="mt-6 text-slate-800 leading-relaxed">{room.description}</p>
             )}
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -67,7 +88,8 @@ export default function RoomDetails() {
             </div>
           </div>
 
-          <div className="lg:col-span-1">
+          {/* RIGHT: Booking form wrapper card */}
+          <div className="lg:col-span-1  rounded-2xl border border-white/20 bg-white/85 p-6 shadow-lg backdrop-blur-md">
             <BookingForm roomId={roomId} />
           </div>
         </div>

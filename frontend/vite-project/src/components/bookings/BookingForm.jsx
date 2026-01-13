@@ -80,8 +80,8 @@ export default function BookingForm({ roomId }) {
 
   return (
     <main>
-      <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm">
-        <div className="text-lg font-semibold text-slate-900">{t("form.title")}</div>
+      <div className="m-auto     p-5 ">
+        <div className="text-xl font-semibold text-slate-900">{t("form.title")}</div>
         <div className="mt-1 text-sm text-slate-600">{t("form.subtitle")}</div>
 
         {error && (
@@ -96,8 +96,8 @@ export default function BookingForm({ roomId }) {
           </div>
         )}
 
-        <form onSubmit={onSubmit} className="mt-5 grid gap-4">
-          <div className="grid gap-4 sm:grid-cols-2">
+        <form onSubmit={onSubmit} className="mt-5 ml-[-18px] grid gap-4">
+          <div className="grid  gap-10 sm:grid-cols-2">
             <label className="grid gap-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
                 {t("form.checkIn")}
@@ -106,7 +106,7 @@ export default function BookingForm({ roomId }) {
                 type="date"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
-                className="rounded-md border border-slate-200 bg-white px-3 py-2 text-slate-900"
+                className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-slate-900"
               />
             </label>
 
