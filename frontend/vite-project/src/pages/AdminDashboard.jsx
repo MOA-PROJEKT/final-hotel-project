@@ -1,5 +1,7 @@
 // src/pages/AdminDashboard.jsx
 import { useEffect, useMemo, useState } from 'react'
+import { getRoomName } from '../utils/roomHelpers'
+
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
@@ -198,7 +200,10 @@ export default function AdminDashboard() {
                       <tr key={b._id} className="border-t border-slate-100">
                         <td className="px-4 py-3 text-slate-900">{b.user?.name || '—'}</td>
                         <td className="px-4 py-3 text-slate-700">{b.user?.email || '—'}</td>
-                        <td className="px-4 py-3 text-slate-700">{b.roomId}</td>
+                        <td className="px-4 py-3 text-slate-700">
+  {getRoomName(b.roomId) || b.roomId || "—"}
+</td>
+
                         <td className="px-4 py-3 text-slate-700">{formatDate(b.checkIn)}</td>
                         <td className="px-4 py-3 text-slate-700">{formatDate(b.checkOut)}</td>
                         <td className="px-4 py-3 text-slate-700">{b.guests}</td>

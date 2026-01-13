@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation("footer");
+
   return (
     <footer id="contact" className="bg-[#f7efe7] text-slate-900">
-      {/* Main Footer */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -20,16 +22,13 @@ export default function Footer() {
                 MOA HOTEL PARADISE
               </span>
             </a>
-            <p className="text-slate-700 leading-relaxed">
-              Erleben Sie unvergleichlichen Luxus und erstklassigen Service in
-              unserem exquisiten 5-Sterne-Hotel.
-            </p>
+            <p className="text-slate-700 leading-relaxed">{t("brandText")}</p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="uppercase tracking-wider text-sm mb-6">
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -37,7 +36,7 @@ export default function Footer() {
                   to="/"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Home
+                  {t("links.home")}
                 </Link>
               </li>
 
@@ -46,24 +45,25 @@ export default function Footer() {
                   to="/rooms"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Zimmer
+                  {t("links.rooms")}
                 </Link>
               </li>
 
               <li>
                 <Link
-                  to="/Restaurant"
+                  to="/restaurant"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Restaurant
+                  {t("links.restaurant")}
                 </Link>
               </li>
+
               <li>
                 <Link
-                  to="/Wellness"
+                  to="/wellness"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Wellness
+                  {t("links.wellness")}
                 </Link>
               </li>
 
@@ -72,7 +72,7 @@ export default function Footer() {
                   to="/gallery"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Galerie
+                  {t("links.gallery")}
                 </Link>
               </li>
 
@@ -81,7 +81,7 @@ export default function Footer() {
                   to="/contact"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  Kontakt
+                  {t("links.contact")}
                 </Link>
               </li>
             </ul>
@@ -89,26 +89,30 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="uppercase tracking-wider text-sm mb-6">Services</h3>
+            <h3 className="uppercase tracking-wider text-sm mb-6">
+              {t("services.title")}
+            </h3>
             <ul className="space-y-3">
-              <li className="text-slate-700">Restaurant & Bar</li>
-              <li className="text-slate-700"> Wellness & Spa</li>
-              <li className="text-slate-700">Fitness Center</li>
-              <li className="text-slate-700">Swimming Pool</li>
-              <li className="text-slate-700">Conference Rooms</li>
+              <li className="text-slate-700">{t("services.items.restaurantBar")}</li>
+              <li className="text-slate-700">{t("services.items.wellnessSpa")}</li>
+              <li className="text-slate-700">{t("services.items.fitness")}</li>
+              <li className="text-slate-700">{t("services.items.pool")}</li>
+              <li className="text-slate-700">{t("services.items.conference")}</li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="uppercase tracking-wider text-sm mb-6">Kontakt</h3>
+            <h3 className="uppercase tracking-wider text-sm mb-6">
+              {t("contact.title")}
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-rose-500 flex-shrink-0 mt-1" />
                 <span className="text-slate-700">
-                  Steinstrasse 123
+                  {t("contact.addressLine1")}
                   <br />
-                  40476 Düsseldorf, Deutschland
+                  {t("contact.addressLine2")}
                 </span>
               </li>
 
@@ -118,7 +122,7 @@ export default function Footer() {
                   href="tel:+49301234567"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  +49 (0)30 123 456 789
+                  {t("contact.phone")}
                 </a>
               </li>
 
@@ -128,7 +132,7 @@ export default function Footer() {
                   href="mailto:info@moa-hotel.de"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
-                  info@moa-hotel.de
+                  {t("contact.email")}
                 </a>
               </li>
             </ul>
@@ -143,6 +147,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-rose-500 hover:text-rose-500 transition-colors"
+              aria-label="Facebook"
+              title="Facebook"
             >
               <Facebook className="w-5 h-5" />
             </a>
@@ -152,6 +158,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-rose-500 hover:text-rose-500 transition-colors"
+              aria-label="Instagram"
+              title="Instagram"
             >
               <Instagram className="w-5 h-5" />
             </a>
@@ -161,15 +169,16 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-rose-500 hover:text-rose-500 transition-colors"
+              aria-label="Twitter"
+              title="Twitter"
             >
               <Twitter className="w-5 h-5" />
             </a>
           </div>
-          <p className="text-neutral-500 text-sm">
-            © 2024 MOA Hotel. Alle Rechte vorbehalten.
-          </p>
+
+          <p className="text-neutral-500 text-sm">{t("copyright")}</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

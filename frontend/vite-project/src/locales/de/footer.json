@@ -1,0 +1,30 @@
+{
+  "brandText": "Erleben Sie unvergleichlichen Luxus und erstklassigen Service in unserem exquisiten 5-Sterne-Hotel.",
+  "quickLinks": "Quick Links",
+  "links": {
+    "home": "Home",
+    "rooms": "Zimmer",
+    "restaurant": "Restaurant",
+    "wellness": "Wellness",
+    "gallery": "Galerie",
+    "contact": "Kontakt"
+  },
+  "services": {
+    "title": "Services",
+    "items": {
+      "restaurantBar": "Restaurant & Bar",
+      "wellnessSpa": "Wellness & Spa",
+      "fitness": "Fitness Center",
+      "pool": "Swimming Pool",
+      "conference": "Conference Rooms"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "addressLine1": "Steinstrasse 123",
+    "addressLine2": "40476 Düsseldorf, Deutschland",
+    "phone": "+49 (0)30 123 456 789",
+    "email": "info@moa-hotel.de"
+  },
+  "copyright": "© 2024 MOA Hotel. Alle Rechte vorbehalten."
+}

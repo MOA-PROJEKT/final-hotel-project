@@ -1,0 +1,42 @@
+{
+  "title": "Admin Dashboard",
+  "subtitle": "Hier siehst du alle Buchungen aus der Datenbank.",
+  "stats": {
+    "total": "Total",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled"
+  },
+  "loading": "Lade Buchungen…",
+  "empty": "Noch keine Buchungen vorhanden.",
+  "table": {
+    "guest": "Gast",
+    "email": "E-Mail",
+    "room": "Zimmer",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Gäste",
+    "status": "Status",
+    "actions": "Aktionen"
+  },
+  "status": {
+  "pending": "Ausstehend",
+  "confirmed": "Bestätigt",
+  "cancelled": "Storniert"
+},
+  "saving": "Speichert…",
+  "delete": "Löschen",
+  "deleting": "Löscht…",
+  "reload": "Neu laden",
+  "confirmDelete": "Buchung wirklich löschen?",
+  "errors": {
+    "noToken": "Kein Token gefunden. Bitte neu einloggen.",
+    "backendUnreachable": "Backend nicht erreichbar. Läuft es auf Port 3000?",
+    "loadFailedWithStatus": "Fehler beim Laden (Status {{status}})",
+    "statusUpdateFailedWithStatus": "Status Update fehlgeschlagen (Status {{status}})",
+    "updateFailed": "Update fehlgeschlagen. Backend erreichbar?",
+    "deleteFailedWithStatus": "Löschen fehlgeschlagen (Status {{status}})",
+    "deleteFailed": "Löschen fehlgeschlagen. Backend erreichbar?"
+  }
+}
+

@@ -1,0 +1,30 @@
+{
+  "notFound": "Room not found.",
+  "defaultTitle": "Room",
+  "labels": {
+    "price": "Price",
+    "maxGuests": "Max guests",
+    "category": "Category"
+  },
+  "hero": {
+    "alt": "Rooms & Suites",
+    "title": "Unforgettable views",
+    "cta": "Discover more"
+  },
+  "card": {
+  "more": "Discover more",
+  "book": "Book"
+},
+
+"intro": {
+  "title": "Rooms & Suites",
+  "text": "Relax and enjoy the view over the Engadin valley. Each room offers an unforgettable view of Lake St. Moritz and plenty of space to fully unwind.",
+  "links": {
+    "included": "Included services",
+    "goodToKnow": "Good to know",
+    "culinaryCredit": "Culinary credit"
+  }
+}
+
+
+}

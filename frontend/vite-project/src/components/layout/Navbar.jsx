@@ -1,17 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, User, ChevronDown, LogOut, Shield } from 'lucide-react'
+import { useTranslation } from "react-i18next";
+
 
 const navLinks = [
-  { label: 'Hotel', to: '/' },
-  { label: 'Zimmer', to: '/rooms' },
-  { label: 'Restaurant', to: '/restaurant' },
-  { label: 'Wellness', to: '/wellness' },
-  { label: 'Galerie', to: '/gallery' },
-  { label: 'Kontakt', to: '/contact' },
-]
+  { key: "hotel", to: "/" },
+  { key: "rooms", to: "/rooms" },
+  { key: "restaurant", to: "/restaurant" },
+  { key: "wellness", to: "/wellness" },
+  { key: "gallery", to: "/gallery" },
+  { key: "contact", to: "/contact" },
+];
+
 
 const LANGUAGES = ['DE', 'EN']
+
+
 
 function LanguageSwitcher({ current, onChange, isDark }) {
   const [open, setOpen] = useState(false)
@@ -20,6 +25,9 @@ function LanguageSwitcher({ current, onChange, isDark }) {
   const hoverText = isDark ? 'hover:text-slate-900' : 'hover:text-white'
   const shadowText = isDark ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
   const dropdownBg = 'bg-slate-900 text-white shadow-lg z-[999]'
+
+
+
 
   return (
     <div className="relative inline-block">
@@ -67,9 +75,16 @@ function readAuthFromStorage() {
 }
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation("nav");
+
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState('DE')
+
+  const [language, setLanguage] = useState(() => {
+  const stored = (localStorage.getItem("lang") || "de").toLowerCase();
+  return stored.startsWith("en") ? "EN" : "DE";
+});
+
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -169,6 +184,14 @@ export default function Navbar() {
     navigate('/rooms')
   }
 
+  const handleLanguageChange = (code) => {
+  setLanguage(code);
+  const next = code === "EN" ? "en" : "de";
+  i18n.changeLanguage(next);
+  localStorage.setItem("lang", next);
+};
+
+
   return (
     <>
       <header
@@ -208,7 +231,8 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
+                 <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
+
 
                   {!isLoggedIn ? (
                     <button
@@ -249,7 +273,8 @@ export default function Navbar() {
                             onClick={goMyBookings}
                             className="w-full text-left px-3 py-2 hover:bg-white/10"
                           >
-                            Meine Buchungen
+                            {t("myBookings")}
+
                           </button>
 
                           {isAdmin && (
@@ -259,7 +284,7 @@ export default function Navbar() {
                               className="w-full text-left px-3 py-2 hover:bg-white/10 flex items-center gap-2"
                             >
                               <Shield className="h-4 w-4" />
-                              Admin Dashboard
+                              {t("admin")}
                             </button>
                           )}
 
@@ -271,7 +296,7 @@ export default function Navbar() {
                             className="w-full text-left px-3 py-2 hover:bg-white/10 flex items-center gap-2"
                           >
                             <LogOut className="h-4 w-4" />
-                            Logout
+                            {t("logout")}
                           </button>
                         </div>
                       )}
@@ -283,7 +308,7 @@ export default function Navbar() {
                     onClick={goRooms}
                     className="hidden md:inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
                   >
-                    Buchen
+                    {t("book")}
                   </button>
                 </div>
               </div>
@@ -293,13 +318,13 @@ export default function Navbar() {
                 <nav className="flex items-center justify-center gap-14 pt-4 pb-2 text-[13px] uppercase tracking-[0.38em]">
                   {navLinks.map((link) => (
                     <NavLink
-                      key={link.label}
+                      key={link.key}
                       to={link.to}
                       className={({ isActive }) =>
                         `${navBase} transition-colors ${isActive ? navActive : ''}`
                       }
                     >
-                      {link.label}
+                      {t(link.key)}
                     </NavLink>
                   ))}
                 </nav>
@@ -321,7 +346,9 @@ export default function Navbar() {
               <nav className="flex items-center justify-center gap-10 text-[12px] uppercase tracking-[0.35em]">
                 {navLinks.map((link) => (
                   <NavLink
-                    key={link.label}
+                    key={link.key}
+
+
                     to={link.to}
                     className={({ isActive }) =>
                       `text-slate-900/70 hover:text-slate-900 transition-colors font-medium ${
@@ -329,7 +356,7 @@ export default function Navbar() {
                       }`
                     }
                   >
-                    {link.label}
+                    {t(link.key)}
                   </NavLink>
                 ))}
               </nav>
@@ -339,14 +366,16 @@ export default function Navbar() {
                 onClick={goRooms}
                 className="inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
               >
-                Buchen
+               {t("book")}
+
               </button>
             </div>
           )}
 
           <div className={`flex lg:hidden flex-col pt-5 pb-2 ${textMain}`}>
             <div className="flex h-16 items-center justify-between gap-4">
-              <LanguageSwitcher current={language} onChange={setLanguage} isDark={useDarkText} />
+             <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
+
 
               <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                 <div
@@ -398,12 +427,13 @@ export default function Navbar() {
           <nav className="flex-1 overflow-y-auto px-8 pt-20 lg:pt-32 space-y-7 lg:space-y-8 text-[14px] lg:text-[15px] tracking-[0.4em] uppercase font-semibold">
             {navLinks.map((link) => (
               <NavLink
-                key={link.label}
+                key={link.key}
+
                 to={link.to}
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full block text-white"
               >
-                <div className="border-b border-white/25 pb-3 pt-1">{link.label}</div>
+                <div className="border-b border-white/25 pb-3 pt-1">{t(link.key)}</div>
               </NavLink>
             ))}
           </nav>
@@ -416,7 +446,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 opacity-90 hover:opacity-100"
               >
                 <User className="h-4 w-4" />
-                <span>Login</span>
+                <span>{t("login")}</span>
               </button>
             ) : (
               <>
@@ -440,7 +470,7 @@ export default function Navbar() {
                   onClick={goMyBookings}
                   className="flex items-center gap-2 opacity-90 hover:opacity-100"
                 >
-                  <span>Meine Buchungen</span>
+                  <span>{t("myBookings")}</span>
                 </button>
 
                 <button
@@ -449,7 +479,8 @@ export default function Navbar() {
                   className="flex items-center gap-2 opacity-90 hover:opacity-100"
                 >
                   <LogOut className="h-4 w-4" />
-                  <span>Logout</span>
+                  <span>{t("logout")}</span>
+
                 </button>
               </>
             )}

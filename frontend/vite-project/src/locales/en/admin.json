@@ -1,0 +1,42 @@
+{
+  "title": "Admin dashboard",
+  "subtitle": "Here you can see all bookings from the database.",
+  "stats": {
+    "total": "Total",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled"
+  },
+  "loading": "Loading bookings…",
+  "empty": "No bookings yet.",
+  "table": {
+    "guest": "Guest",
+    "email": "Email",
+    "room": "Room",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "status": {
+    "pending": "pending",
+    "confirmed": "confirmed",
+    "cancelled": "cancelled"
+  },
+  "saving": "Saving…",
+  "delete": "Delete",
+  "deleting": "Deleting…",
+  "reload": "Reload",
+  "confirmDelete": "Do you really want to delete this booking?",
+  "errors": {
+    "noToken": "No token found. Please log in again.",
+    "backendUnreachable": "Backend not reachable. Is it running on port 3000?",
+    "loadFailedWithStatus": "Failed to load (status {{status}})",
+    "statusUpdateFailedWithStatus": "Status update failed (status {{status}})",
+    "updateFailed": "Update failed. Backend reachable?",
+    "deleteFailedWithStatus": "Delete failed (status {{status}})",
+    "deleteFailed": "Delete failed. Backend reachable?"
+  }
+}
+

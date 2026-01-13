@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ImageCaroussel from "../components/ImageCaroussel.jsx";
+import { useTranslation } from "react-i18next";
 
 import HERO from "../assets/images/hotel/HERO.jpg";
 import herovideodesktop from "../assets/images/hotel/herovideodesktop.mp4";
@@ -31,8 +32,6 @@ import g1 from "../assets/images/hotel/g1.jpg";
 import g2 from "../assets/images/hotel/g2.jpg";
 import g3 from "../assets/images/hotel/g3.jpg";
 import g4 from "../assets/images/hotel/g4.jpg";
-
-
 
 // 6 Slides, alle mit gleichen Layout-Maßen
 const HOTEL_SLIDES = [
@@ -87,25 +86,19 @@ const HOTEL_SLIDES = [
   },
 ];
 
-
-
 const CAROUSEL_IMAGES = [c1, c2, c3, c4, c5, c6];
 
-
-
 export default function Home() {
+  const { t } = useTranslation("home");
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const active = HOTEL_SLIDES[currentSlide];
 
   const goPrev = () =>
-    setCurrentSlide((prev) =>
-      prev === 0 ? HOTEL_SLIDES.length - 1 : prev - 1
-    );
+    setCurrentSlide((prev) => (prev === 0 ? HOTEL_SLIDES.length - 1 : prev - 1));
 
   const goNext = () =>
-    setCurrentSlide((prev) =>
-      prev === HOTEL_SLIDES.length - 1 ? 0 : prev + 1
-    );
+    setCurrentSlide((prev) => (prev === HOTEL_SLIDES.length - 1 ? 0 : prev + 1));
 
   // Automatisches Weiterblättern alle 7 Sekunden
   useEffect(() => {
@@ -143,17 +136,16 @@ export default function Home() {
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="mx-auto pt-12 max-w-3xl px-4 text-center text-white">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-              Ihr privates Refugium im Herzen der Alpen.
+              {t("hero.title")}
             </h1>
 
             <div className="mt-10 flex justify-center">
               <Link
-  to="/rooms"
-  className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
->
-  Buchen
-</Link>
-
+                to="/rooms"
+                className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
+              >
+                {t("hero.book")}
+              </Link>
             </div>
           </div>
         </div>
@@ -301,7 +293,6 @@ export default function Home() {
       <section>
         <ImageCaroussel images={CAROUSEL_IMAGES} />
       </section>
-      
 
       {/* ====== CARLTON-STYLE SEKTION 1 (d1) ====== */}
       <section id="whats-on" className="relative z-20 bg-[#f7efe7] py-14">
@@ -389,7 +380,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* ====== CARLTON-STYLE SEKTION 2 (d2) – REVERSE ====== */}
       <section id="section-2" className="relative z-20 bg-[#f7efe7] py-24">
@@ -485,7 +475,7 @@ export default function Home() {
             {/* Desktop Overlay links */}
             <div
               className="
-             hidden md:block
+                hidden md:block
                 absolute left-[-4%] top-[11%] 
                 w-[72%] max-w-[580px] h-[80%]  
                 bg-white/90
@@ -547,182 +537,161 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* 4 Boxen  carlton hotel journal*/}
-          <div className="mb-24 flex items-center justify-center gap-8">
-            <span className="h-px w-32 bg-[#d9c9bb]" />
-            <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">
-              Moa Hotel Journal
-            </h2>
-            <span className="h-px w-32 bg-[#d9c9bb]" />
-          </div>
-
-
-
-
-         <section className="relative z-20 bg-[#f7efe7] pb-28">
-  <div className="mx-auto max-w-7xl px-4">
-    {/* 2 Spalten – breiter + mehr Abstand */}
-    <div className="grid gap-x-24 gap-y-20 md:grid-cols-2">
-      {/* LINKE SPALTE */}
-      <div className="space-y-20">
-        {/* Card 1 */}
-        <article>
-          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-            <img
-              src={g1}
-              alt="Journal Beitrag 1"
-              className="h-[260px] sm:h-[320px] md:h-[360px] w-full object-cover"
-            />
-          </div>
-
-          <div className="mt-10">
-            <div className="flex items-center gap-7">
-              <span className="h-px w-20 bg-[#d9c9bb]" />
-              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
-                MOA HOTEL
-              </p>
-            </div>
-
-            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
-              Drei Michelin-Keys – Auszeichnung für Exzellenz
-            </h3>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
-              Eine Anerkennung für Service, Atmosphäre und außergewöhnliche
-              Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.
-            </p>
-
-             <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-              Lesen
-            </button>
-          </div>
-        </article>
-
-        {/* Card 3 */}
-        <article>
-          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-            <img
-              src={g3}
-              alt="Journal Beitrag 3"
-              className="h-[280px] sm:h-[340px] md:h-[390px] w-full object-cover"
-            />
-          </div>
-
-          <div className="mt-10">
-            <div className="flex items-center gap-7">
-              <span className="h-px w-20 bg-[#d9c9bb]" />
-              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
-                MOA HOTEL
-              </p>
-            </div>
-
-            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
-              Signature Moments: außergewöhnlich – und ganz persönlich
-            </h3>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
-              Private Winter-Erlebnisse, Concierge-Service und kleine Details,
-              die aus einem Aufenthalt eine Erinnerung machen.
-            </p>
-
-             <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-              Lesen
-            </button>
-          </div>
-        </article>
+      <div className="mb-24 flex items-center justify-center gap-8">
+        <span className="h-px w-32 bg-[#d9c9bb]" />
+        <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">
+          Moa Hotel Journal
+        </h2>
+        <span className="h-px w-32 bg-[#d9c9bb]" />
       </div>
 
-      {/* RECHTE SPALTE (weiter nach unten + etwas nach rechts) */}
-      <div className="space-y-20 md:mt-28 md:pl-8">
-        {/* Card 2 */}
-        <article>
-          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-            <img
-              src={g2}
-              alt="Journal Beitrag 2"
-              className="h-[300px] sm:h-[360px] md:h-[420px] w-full object-cover"
-            />
-          </div>
+      <section className="relative z-20 bg-[#f7efe7] pb-28">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-x-24 gap-y-20 md:grid-cols-2">
+            <div className="space-y-20">
+              <article>
+                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                  <img
+                    src={g1}
+                    alt="Journal Beitrag 1"
+                    className="h-[260px] sm:h-[320px] md:h-[360px] w-full object-cover"
+                  />
+                </div>
 
-          <div className="mt-10">
-            <div className="flex items-center gap-7">
-              <span className="h-px w-20 bg-[#d9c9bb]" />
-              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
-                MOA HOTEL
-              </p>
+                <div className="mt-10">
+                  <div className="flex items-center gap-7">
+                    <span className="h-px w-20 bg-[#d9c9bb]" />
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                      MOA HOTEL
+                    </p>
+                  </div>
+
+                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+                    Drei Michelin-Keys – Auszeichnung für Exzellenz
+                  </h3>
+
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+                    Eine Anerkennung für Service, Atmosphäre und außergewöhnliche
+                    Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.
+                  </p>
+
+                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
+                    Lesen
+                  </button>
+                </div>
+              </article>
+
+              <article>
+                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                  <img
+                    src={g3}
+                    alt="Journal Beitrag 3"
+                    className="h-[280px] sm:h-[340px] md:h-[390px] w-full object-cover"
+                  />
+                </div>
+
+                <div className="mt-10">
+                  <div className="flex items-center gap-7">
+                    <span className="h-px w-20 bg-[#d9c9bb]" />
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                      MOA HOTEL
+                    </p>
+                  </div>
+
+                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+                    Signature Moments: außergewöhnlich – und ganz persönlich
+                  </h3>
+
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+                    Private Winter-Erlebnisse, Concierge-Service und kleine Details,
+                    die aus einem Aufenthalt eine Erinnerung machen.
+                  </p>
+
+                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
+                    Lesen
+                  </button>
+                </div>
+              </article>
             </div>
 
-            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
-              Unter den Besten: ein Hotel für besondere Ansprüche
-            </h3>
+            <div className="space-y-20 md:mt-28 md:pl-8">
+              <article>
+                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                  <img
+                    src={g2}
+                    alt="Journal Beitrag 2"
+                    className="h-[300px] sm:h-[360px] md:h-[420px] w-full object-cover"
+                  />
+                </div>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
-              Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und
-              erstklassigen Service – mitten in den Bergen.
-            </p>
+                <div className="mt-10">
+                  <div className="flex items-center gap-7">
+                    <span className="h-px w-20 bg-[#d9c9bb]" />
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                      MOA HOTEL
+                    </p>
+                  </div>
 
-            <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-              Lesen
-            </button>
-          </div>
-        </article>
+                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+                    Unter den Besten: ein Hotel für besondere Ansprüche
+                  </h3>
 
-        {/* Card 4 */}
-        <article>
-          <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-            <img
-              src={g4}
-              alt="Journal Beitrag 4"
-              className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover"
-            />
-          </div>
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+                    Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und
+                    erstklassigen Service – mitten in den Bergen.
+                  </p>
 
-          <div className="mt-10">
-            <div className="flex items-center gap-7">
-              <span className="h-px w-20 bg-[#d9c9bb]" />
-              <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
-                MOA HOTEL
-              </p>
+                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
+                    Lesen
+                  </button>
+                </div>
+              </article>
+
+              <article>
+                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                  <img
+                    src={g4}
+                    alt="Journal Beitrag 4"
+                    className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover"
+                  />
+                </div>
+
+                <div className="mt-10">
+                  <div className="flex items-center gap-7">
+                    <span className="h-px w-20 bg-[#d9c9bb]" />
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+                      MOA HOTEL
+                    </p>
+                  </div>
+
+                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+                    Spa & Wellness: Entspannung auf einem neuen Niveau
+                  </h3>
+
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+                    Pool, Ruhezonen und Treatments – gestaltet für Regeneration,
+                    Stille und neue Energie nach einem Wintertag.
+                  </p>
+
+                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
+                    Lesen
+                  </button>
+                </div>
+              </article>
             </div>
+          </div>
 
-            <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
-              Spa & Wellness: Entspannung auf einem neuen Niveau
-            </h3>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
-              Pool, Ruhezonen und Treatments – gestaltet für Regeneration,
-              Stille und neue Energie nach einem Wintertag.
-            </p>
-
-            <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-              Lesen
+          <div className="mt-24 flex justify-center">
+            <button
+              type="button"
+              className="border border-[#c50355] px-14 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+            >
+              Mehr anzeigen
             </button>
           </div>
-        </article>
-      </div>
-    </div>
-
-    {/* Unterer Button */}
-    <div className="mt-24 flex justify-center">
-      <button
-        type="button"
-        className="border border-[#c50355] px-14 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
-      >
-        Mehr anzeigen
-      </button>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-  
+        </div>
+      </section>
     </main>
   );
 }

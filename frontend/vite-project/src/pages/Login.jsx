@@ -1,96 +1,96 @@
 // src/pages/Login.jsx
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { t } = useTranslation("auth");
 
-  const [mode, setMode] = useState('login')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [mode, setMode] = useState("login");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const submit = async (e) => {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
-      const url =
-        mode === 'login' ? `${API_URL}/auth/login` : `${API_URL}/auth/register`
-
-      const payload = mode === 'login' ? { email, password } : { name, email, password }
+      const url = mode === "login" ? `${API_URL}/auth/login` : `${API_URL}/auth/register`;
+      const payload = mode === "login" ? { email, password } : { name, email, password };
 
       const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (!res.ok) {
-        setError(data?.msg || 'Fehler beim Login.')
-        setLoading(false)
-        return
+        setError(data?.msg || t("errors.loginFailed"));
+        setLoading(false);
+        return;
       }
 
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       // Navbar im selben Tab informieren
-      window.dispatchEvent(new Event('auth-changed'))
+      window.dispatchEvent(new Event("auth-changed"));
 
-      if (data.user?.role === 'admin') navigate('/admin')
-      else navigate('/rooms')
+      if (data.user?.role === "admin") navigate("/admin");
+      else navigate("/rooms");
     } catch (err) {
-      setError('Server nicht erreichbar. Läuft Backend auf Port 3000?')
+      setError(t("errors.serverUnreachable"));
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <main className="min-h-screen bg-[#f7f2ec] pt-40 lg:pt-56 pb-20">
       <div className="mx-auto max-w-xl px-4">
         <div className="rounded-2xl bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
           <h1 className="text-2xl font-semibold tracking-wide text-slate-900">
-            {mode === 'login' ? 'Login' : 'Registrieren'}
+            {mode === "login" ? t("titleLogin") : t("titleRegister")}
           </h1>
 
           <div className="mt-6 flex gap-2">
             <button
               type="button"
-              onClick={() => setMode('login')}
+              onClick={() => setMode("login")}
               className={`rounded-lg px-4 py-2 text-sm font-medium ${
-                mode === 'login'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-white text-slate-900 border border-slate-200'
+                mode === "login"
+                  ? "bg-slate-900 text-white"
+                  : "bg-white text-slate-900 border border-slate-200"
               }`}
             >
-              Login
+              {t("tabLogin")}
             </button>
             <button
               type="button"
-              onClick={() => setMode('register')}
+              onClick={() => setMode("register")}
               className={`rounded-lg px-4 py-2 text-sm font-medium ${
-                mode === 'register'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-white text-slate-900 border border-slate-200'
+                mode === "register"
+                  ? "bg-slate-900 text-white"
+                  : "bg-white text-slate-900 border border-slate-200"
               }`}
             >
-              Registrieren
+              {t("tabRegister")}
             </button>
           </div>
 
           <form onSubmit={submit} className="mt-6 space-y-4">
-            {mode === 'register' && (
+            {mode === "register" && (
               <div>
-                <label className="block text-sm font-medium text-slate-700">Name</label>
+                <label className="block text-sm font-medium text-slate-700">{t("name")}</label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -101,7 +101,7 @@ export default function Login() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-slate-700">E-Mail</label>
+              <label className="block text-sm font-medium text-slate-700">{t("email")}</label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -112,7 +112,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700">Passwort</label>
+              <label className="block text-sm font-medium text-slate-700">{t("password")}</label>
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -132,11 +132,15 @@ export default function Login() {
               disabled={loading}
               className="mt-2 w-full rounded-lg bg-[#c50355] px-4 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white hover:opacity-95 disabled:opacity-60"
             >
-              {loading ? 'Bitte warten…' : mode === 'login' ? 'Einloggen' : 'Konto erstellen'}
+              {loading
+                ? t("pleaseWait")
+                : mode === "login"
+                ? t("submitLogin")
+                : t("submitRegister")}
             </button>
           </form>
         </div>
       </div>
     </main>
-  )
+  );
 }

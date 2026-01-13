@@ -71,3 +71,31 @@ export const deleteBooking = async (req, res) => {
   }
 }
 
+export const cancelMyBooking = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id)
+
+    if (!booking) return res.status(404).json({ msg: 'Booking not found.' })
+
+    // Nur Besitzer darf stornieren
+    if (String(booking.user) !== String(req.user._id)) {
+      return res.status(403).json({ msg: 'Forbidden: Not your booking.' })
+    }
+
+    // Schon storniert?
+    if (booking.status === 'cancelled') {
+      return res.status(400).json({ msg: 'Booking already cancelled.' })
+    }
+
+    booking.status = 'cancelled'
+    await booking.save()
+
+    const updated = await Booking.findById(booking._id).populate('user', 'name email')
+    res.json({ booking: updated })
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ msg: 'Server error!' })
+  }
+}
+
+

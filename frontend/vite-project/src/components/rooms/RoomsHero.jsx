@@ -1,25 +1,35 @@
-import heroImage from '../../assets/images/zimmer/hero.webp'
+import heroImage from "../../assets/images/zimmer/hero.webp";
+import { useTranslation } from "react-i18next";
 
 export default function RoomsHero() {
+  const { t } = useTranslation("rooms");
+
+  const scrollToIntro = () => {
+    const el = document.getElementById("rooms-intro");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="relative h-[70vh] w-full pt-24 overflow-hidden">
       <img
         src={heroImage}
-        alt="Zimmer & Suiten"
+        alt={t("hero.alt")}
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Overlay — бежевый с прозрачностью */}
       <div className="absolute inset-0 bg-beige/30" />
 
-      {/* Text + Button */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
         <h1 className="text-white text-4xl sm:text-5xl font-semibold tracking-wide mb-4">
-          Unvergessliche Aussichten
+          {t("hero.title")}
         </h1>
 
-        <button className="inline-flex items-center gap-2 mt-4 px-6 py-3 border border-white text-white font-medium uppercase tracking-wider hover:bg-white hover:text-slate-950 transition">
-          Mehr entdecken
+        <button
+          type="button"
+          onClick={scrollToIntro}
+          className="inline-flex items-center gap-2 mt-4 px-6 py-3 border border-white text-white font-medium uppercase tracking-wider hover:bg-white hover:text-slate-950 transition"
+        >
+          {t("hero.cta")}
           <svg
             width="26"
             height="14"
@@ -36,5 +46,5 @@ export default function RoomsHero() {
         </button>
       </div>
     </section>
-  )
+  );
 }

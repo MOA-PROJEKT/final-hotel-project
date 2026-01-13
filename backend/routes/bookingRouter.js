@@ -7,6 +7,8 @@ const bookingRouter = Router()
 // User
 bookingRouter.post('/', protect, booking.createBooking)
 bookingRouter.get('/me', protect, booking.getMyBookings)
+bookingRouter.patch('/:id/cancel', protect, booking.cancelMyBooking)
+
 
 // Admin
 bookingRouter.get('/', protect, restrictTo('admin'), booking.getAllBookings)

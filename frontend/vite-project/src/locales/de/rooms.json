@@ -1,0 +1,31 @@
+{
+  "notFound": "Zimmer nicht gefunden.",
+  "defaultTitle": "Zimmer",
+  "labels": {
+    "price": "Preis",
+    "maxGuests": "Max Gäste",
+    "category": "Kategorie"
+  },
+  "hero": {
+    "alt": "Zimmer & Suiten",
+    "title": "Unvergessliche Aussichten",
+    "cta": "Mehr entdecken"
+  },
+  
+  "card": {
+  "more": "Mehr entdecken",
+  "book": "Buchen"
+},
+
+"intro": {
+  "title": "Zimmer und Suiten",
+  "text": "Ruhen Sie sich aus und blicken Sie auf das Engadiner Tal hinunter. Jedes Zimmer im Carlton bietet einen unvergesslichen Blick auf den St. Moritzersee und Raum, um sich ganz zu entspannen.",
+  "links": {
+    "included": "Inklusivleistungen",
+    "goodToKnow": "Gut zu wissen",
+    "culinaryCredit": "Culinary Credit"
+  }
+}
+
+
+}

@@ -1,0 +1,46 @@
+{
+  "title": "Meine Buchungen",
+  "subtitle": "Hier siehst du alle Buchungen, die mit deinem Account erstellt wurden.",
+  "bookingNumber": "Buchungsnummer",
+  "room": "Zimmer",
+  "checkIn": "Anreise",
+  "checkOut": "Abreise",
+  "guests": "Gäste",
+  "createdAt": "Erstellt am",
+  "loading": "Lädt...",
+  "none": "Keine Buchungen gefunden.",
+  "notLoggedIn": "Du bist nicht eingeloggt. Bitte zuerst einloggen.",
+  "cancel": "Stornieren",
+  "cancelled": "Storniert",
+  "confirmCancel": "Willst du diese Buchung wirklich stornieren?",
+  "errors": {
+    "loadFailed": "Fehler beim Laden der Buchungen.",
+    "cancelFailed": "Stornieren fehlgeschlagen.",
+    "unknown": "Unbekannter Fehler."
+  },
+  "form": {
+    "title": "Zimmer buchen",
+    "subtitle": "Wähle Datum und Gäste.",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Gäste",
+    "submit": "Buchen",
+    "saving": "Speichert…",
+    "mustLogin": "Du musst eingeloggt sein, um zu buchen.",
+    "success": {
+      "created": "Buchung erstellt."
+    },
+    "errors": {
+      "invalid": "Bitte prüfe Check in, Check out und Gäste.",
+      "backendUnreachable": "Backend nicht erreichbar. Läuft es auf Port 3000?",
+      "bookFailedWithStatus": "Buchen fehlgeschlagen (Status {{status}})"
+    }
+  },
+  
+  "status": {
+  "pending": "Ausstehend",
+  "confirmed": "Bestätigt",
+  "cancelled": "Storniert"
+}
+
+}

@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
+import { getRoomName } from "../utils/roomHelpers";
+import { useTranslation } from "react-i18next";
 
-const API_URL = "http://localhost:3000";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export default function MyBookings() {
+  const { t } = useTranslation("bookings");
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [cancellingId, setCancellingId] = useState(null);
+  
+
 
   const token = localStorage.getItem("token");
 
@@ -22,9 +29,7 @@ export default function MyBookings() {
 
       try {
         const res = await fetch(`${API_URL}/bookings/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         if (!res.ok) {
@@ -33,8 +38,7 @@ export default function MyBookings() {
         }
 
         const data = await res.json();
-setBookings(Array.isArray(data.bookings) ? data.bookings : []);
-
+        setBookings(Array.isArray(data.bookings) ? data.bookings : []);
       } catch (e) {
         setError(e.message || "Unbekannter Fehler.");
       } finally {
@@ -50,6 +54,47 @@ setBookings(Array.isArray(data.bookings) ? data.bookings : []);
     const d = new Date(value);
     if (Number.isNaN(d.getTime())) return String(value);
     return d.toLocaleDateString();
+  };
+
+  const cancelBooking = async (id) => {
+  if (!token) return;
+
+  const ok = window.confirm("Willst du diese Buchung wirklich stornieren?");
+  if (!ok) return;
+
+  try {
+    setCancellingId(id);
+
+    const res = await fetch(`${API_URL}/bookings/${id}/cancel`, {
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data?.msg || "Stornieren fehlgeschlagen.");
+    }
+
+    // UI sofort updaten
+    setBookings((prev) =>
+      prev.map((b) => (b._id === id ? { ...b, status: "cancelled" } : b))
+    );
+  } catch (e) {
+    alert(e.message || "Unbekannter Fehler.");
+  } finally {
+    setCancellingId(null);
+  }
+};
+
+
+  const renderRoomLabel = (roomId) => {
+    // falls Backend irgendwann mal roomId populated als Object zurückgibt:
+    if (typeof roomId === "object" && roomId) {
+      return roomId.title || roomId.name || "-";
+    }
+    const name = getRoomName(roomId);
+    return name || String(roomId || "-");
   };
 
   return (
@@ -93,18 +138,38 @@ setBookings(Array.isArray(data.bookings) ? data.bookings : []);
                     <div className="font-mono text-sm text-black">{b._id}</div>
                   </div>
 
-                  <div className="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black">
-                    {b.status || "pending"}
-                  </div>
+                  <div className="flex items-center gap-3">
+  <div className="inline-flex items-center rounded-full border border-black/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black">
+    {t(`status.${b.status || "pending"}`, { defaultValue: b.status || "pending" })}
+
+
+  </div>
+
+  {b.status !== "cancelled" ? (
+    <button
+      onClick={() => cancelBooking(b._id)}
+      disabled={cancellingId === b._id}
+      className="rounded-full border border-black/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black hover:bg-red-600 hover:text-white disabled:opacity-50"
+    >
+      {cancellingId === b._id ? "..." : "Stornieren"}
+    </button>
+  ) : (
+    <button
+      disabled
+      className="rounded-full border border-black/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black/40"
+    >
+      Storniert
+    </button>
+  )}
+</div>
+
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="rounded-xl border border-black/10 p-4">
                     <div className="text-xs text-black/60">Zimmer</div>
                     <div className="mt-1 text-sm font-semibold text-black">
-                      {typeof b.roomId === "object" && b.roomId?.title
-                        ? b.roomId.title
-                        : String(b.roomId || "-")}
+                      {renderRoomLabel(b.roomId)}
                     </div>
                   </div>
 

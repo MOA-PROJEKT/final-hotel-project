@@ -1,0 +1,14 @@
+{
+  "hotel": "Hotel",
+  "rooms": "Zimmer",
+  "restaurant": "Restaurant",
+  "wellness": "Wellness",
+  "gallery": "Galerie",
+  "contact": "Kontakt",
+  "book": "Buchen",
+  "myBookings": "Meine Buchungen",
+  "admin": "Admin Dashboard",
+  "logout": "Abmelden",
+  "login": "Login"
+}
+

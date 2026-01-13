@@ -1,0 +1,46 @@
+{
+  "title": "My bookings",
+  "subtitle": "Here you can see all bookings created with your account.",
+  "bookingNumber": "Booking ID",
+  "room": "Room",
+  "checkIn": "Check-in",
+  "checkOut": "Check-out",
+  "guests": "Guests",
+  "createdAt": "Created on",
+  "loading": "Loading...",
+  "none": "No bookings found.",
+  "notLoggedIn": "You are not logged in. Please log in first.",
+  "cancel": "Cancel",
+  "cancelled": "Cancelled",
+  "confirmCancel": "Do you really want to cancel this booking?",
+  "errors": {
+    "loadFailed": "Failed to load bookings.",
+    "cancelFailed": "Cancel failed.",
+    "unknown": "Unknown error."
+  },
+  "form": {
+    "title": "Book a room",
+    "subtitle": "Choose dates and guests.",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "submit": "Book",
+    "saving": "Saving…",
+    "mustLogin": "You must be logged in to book.",
+    "success": {
+      "created": "Booking created."
+    },
+    "errors": {
+      "invalid": "Please check check-in, check-out and guests.",
+      "backendUnreachable": "Backend not reachable. Is it running on port 3000?",
+      "bookFailedWithStatus": "Booking failed (status {{status}})"
+    }
+  },
+
+  "status": {
+  "pending": "Pending",
+  "confirmed": "Confirmed",
+  "cancelled": "Cancelled"
+}
+
+}

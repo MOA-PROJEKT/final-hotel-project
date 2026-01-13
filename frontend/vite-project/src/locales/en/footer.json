@@ -1,0 +1,30 @@
+{
+  "brandText": "Experience unmatched luxury and first-class service in our exquisite 5-star hotel.",
+  "quickLinks": "Quick Links",
+  "links": {
+    "home": "Home",
+    "rooms": "Rooms",
+    "restaurant": "Restaurant",
+    "wellness": "Wellness",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "services": {
+    "title": "Services",
+    "items": {
+      "restaurantBar": "Restaurant & Bar",
+      "wellnessSpa": "Wellness & Spa",
+      "fitness": "Fitness Center",
+      "pool": "Swimming Pool",
+      "conference": "Conference Rooms"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "addressLine1": "Steinstrasse 123",
+    "addressLine2": "40476 Düsseldorf, Germany",
+    "phone": "+49 (0)30 123 456 789",
+    "email": "info@moa-hotel.de"
+  },
+  "copyright": "© 2024 MOA Hotel. All rights reserved."
+}
