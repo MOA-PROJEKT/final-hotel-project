@@ -33,6 +33,9 @@ import g2 from "../assets/images/hotel/g2.jpg";
 import g3 from "../assets/images/hotel/g3.jpg";
 import g4 from "../assets/images/hotel/g4.jpg";
 
+import e1 from "../assets/images/hotel/e1.jpg";
+import e2 from "../assets/images/hotel/e2.jpg";
+
 // 6 Slides, alle mit gleichen Layout-Maßen
 const HOTEL_SLIDES = [
   {
@@ -117,6 +120,54 @@ export default function Home() {
     "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel – von Genuss bis Erlebnis.";
   const winterTextShort =
     "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel.";
+
+  // ===== Journal "Lesen" Toggle (Accordion) =====
+  const [openJournal, setOpenJournal] = useState(null);
+  const toggleJournal = (id) =>
+    setOpenJournal((prev) => (prev === id ? null : id));
+
+  const JOURNAL_MORE = {
+    g1: "Drei Michelin-Keys stehen für außergewöhnliche Gastfreundschaft, stimmige Atmosphäre und konstante Qualität – vom ersten Empfang bis zum letzten Detail. Für uns ist es Motivation, Service und Kulinarik jeden Tag weiter zu verfeinern.",
+    g2: "Wer bei uns ankommt, sucht Ruhe ohne Verzicht: großzügige Zimmer, ein Blick auf die Berge und ein Haus, das sich Zeit nimmt. Ob Kaminlounge, Concierge oder kleine Aufmerksamkeiten – hier zählt das Gefühl, wirklich willkommen zu sein.",
+    g3: "Signature Moments sind Erlebnisse, die wir exklusiv für dich gestalten: private Tastings, Winter-Picknicks, individuelle Touren oder ein Dinner an einem besonderen Ort. So wird aus einer Reise ein persönlicher Moment, der bleibt.",
+    g4: "Nach einem Tag in der Kälte wartet Wärme: Pool, Ruhezonen und Treatments, die Muskulatur lösen und Energie zurückbringen. Sanfte Düfte, leises Licht und stille Bereiche sorgen dafür, dass Kopf und Körper wirklich abschalten.",
+    e1: "Abseits der bekannten Wege zeigen sich St. Moritz und das Engadin von ihrer stillen Seite: verschneite Waldpfade, kleine Aussichtspunkte und Orte, an denen man die Natur ganz nah spürt. Perfekt für einen Spaziergang, der den Kopf frei macht.",
+    e2: "Das Grand Restaurant verbindet klassische Eleganz mit feinen, regionalen Aromen. Saisonale Menüs, ruhige Atmosphäre und ein Service, der aufmerksam bleibt, ohne aufdringlich zu sein – ideal für Abende, die in Erinnerung bleiben.",
+  };
+
+  const isOpen = (id) => openJournal === id;
+
+  // ===== "Mehr anzeigen" (2 zusätzliche Journal-Karten) =====
+  const [showMoreJournal, setShowMoreJournal] = useState(false);
+const [animateMoreJournal, setAnimateMoreJournal] = useState(false);
+
+const toggleMoreJournal = () => {
+  // ✅ Öffnen
+  if (!showMoreJournal) {
+    setShowMoreJournal(true);
+
+    // kurz warten damit die neuen Artikel im DOM sind
+    setTimeout(() => {
+      setAnimateMoreJournal(true);
+
+      // dann langsam dahin scrollen
+      setTimeout(() => {
+        const el = document.getElementById("more-journal");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+    }, 10);
+
+    return;
+  }
+
+  // ✅ Schließen: erst hochscrollen, dann zuklappen, dann entfernen
+  const topEl = document.getElementById("journal-top");
+  if (topEl) topEl.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  setAnimateMoreJournal(false);
+  setTimeout(() => setShowMoreJournal(false), 550);
+};
+
 
   return (
     <main className="bg-[#f7efe7] text-slate-900">
@@ -548,7 +599,8 @@ export default function Home() {
 
       <section className="relative z-20 bg-[#f7efe7] pb-28">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-x-24 gap-y-20 md:grid-cols-2">
+          <div id="journal-top" className="grid gap-x-24 gap-y-20 md:grid-cols-2">
+
             <div className="space-y-20">
               <article>
                 <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
@@ -576,8 +628,26 @@ export default function Home() {
                     Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.
                   </p>
 
-                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-                    Lesen
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                      isOpen("g1")
+                        ? "mt-4 grid-rows-[1fr] opacity-100"
+                        : "mt-0 grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                        {JOURNAL_MORE.g1}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleJournal("g1")}
+                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                  >
+                    {isOpen("g1") ? "Weniger" : "Lesen"}
                   </button>
                 </div>
               </article>
@@ -604,12 +674,30 @@ export default function Home() {
                   </h3>
 
                   <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
-                    Private Winter-Erlebnisse, Concierge-Service und kleine Details,
-                    die aus einem Aufenthalt eine Erinnerung machen.
+                    Private Winter-Erlebnisse, Concierge-Service und kleine
+                    Details, die aus einem Aufenthalt eine Erinnerung machen.
                   </p>
 
-                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-                    Lesen
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                      isOpen("g3")
+                        ? "mt-4 grid-rows-[1fr] opacity-100"
+                        : "mt-0 grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                        {JOURNAL_MORE.g3}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleJournal("g3")}
+                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                  >
+                    {isOpen("g3") ? "Weniger" : "Lesen"}
                   </button>
                 </div>
               </article>
@@ -642,8 +730,26 @@ export default function Home() {
                     erstklassigen Service – mitten in den Bergen.
                   </p>
 
-                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-                    Lesen
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                      isOpen("g2")
+                        ? "mt-4 grid-rows-[1fr] opacity-100"
+                        : "mt-0 grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                        {JOURNAL_MORE.g2}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleJournal("g2")}
+                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                  >
+                    {isOpen("g2") ? "Weniger" : "Lesen"}
                   </button>
                 </div>
               </article>
@@ -674,20 +780,162 @@ export default function Home() {
                     Stille und neue Energie nach einem Wintertag.
                   </p>
 
-                  <button className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80">
-                    Lesen
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                      isOpen("g4")
+                        ? "mt-4 grid-rows-[1fr] opacity-100"
+                        : "mt-0 grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                        {JOURNAL_MORE.g4}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleJournal("g4")}
+                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                  >
+                    {isOpen("g4") ? "Weniger" : "Lesen"}
                   </button>
                 </div>
               </article>
             </div>
           </div>
 
+          {/* ====== 2 zusätzliche Journal-Karten (e1/e2) ====== */}
+          {showMoreJournal && (
+  <div
+    id="more-journal"
+    className={`
+      mt-20 overflow-hidden
+      transition-[max-height,opacity,transform] duration-500 ease-out
+      ${
+        animateMoreJournal
+          ? "max-h-[2200px] opacity-100 translate-y-0"
+          : "max-h-0 opacity-0 -translate-y-2"
+      }
+    `}
+  >
+    <div className="grid gap-x-24 gap-y-20 md:grid-cols-2">
+      {/* ===== Artikel e1 ===== */}
+      <article>
+        <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+          <img
+            src={e1}
+            alt="Journal Beitrag 5"
+            className="h-[300px] sm:h-[360px] md:h-[420px] w-full object-cover"
+          />
+        </div>
+
+        <div className="mt-10">
+          <div className="flex items-center gap-7">
+            <span className="h-px w-20 bg-[#d9c9bb]" />
+            <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+              REST
+            </p>
+          </div>
+
+          <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+            Die Hidden Places von St. Moritz
+          </h3>
+
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+            St. Moritz ist mit seinem belebten Dorfkern und den berühmten Pisten
+            eine weltweit beliebte Reisedestination. Auch abseits der
+            touristischen Hotspots bietet die Region inspirierende Orte.
+          </p>
+
+          <div
+            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+              isOpen("e1")
+                ? "mt-4 grid-rows-[1fr] opacity-100"
+                : "mt-0 grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                {JOURNAL_MORE.e1}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => toggleJournal("e1")}
+            className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+          >
+            {isOpen("e1") ? "Weniger" : "Lesen"}
+          </button>
+        </div>
+      </article>
+
+      {/* ===== Artikel e2 ===== */}
+      <article className="md:mt-28 md:pl-8">
+        <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+          <img
+            src={e2}
+            alt="Journal Beitrag 6"
+            className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover"
+          />
+        </div>
+
+        <div className="mt-10">
+          <div className="flex items-center gap-7">
+            <span className="h-px w-20 bg-[#d9c9bb]" />
+            <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">
+              CARLTON HOTEL
+            </p>
+          </div>
+
+          <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">
+            Inspiration aus der Natur: Das Grand Restaurant
+          </h3>
+
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">
+            Das Grand Restaurant ist eine Hommage an die Natur und die
+            kulinarischen Köstlichkeiten des Engadins. Regionale Produkte, feine
+            Aromen und ruhige Eleganz prägen den Abend.
+          </p>
+
+          <div
+            className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+              isOpen("e2")
+                ? "mt-4 grid-rows-[1fr] opacity-100"
+                : "mt-0 grid-rows-[0fr] opacity-0"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <p className="max-w-xl text-base leading-relaxed text-slate-700">
+                {JOURNAL_MORE.e2}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => toggleJournal("e2")}
+            className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+          >
+            {isOpen("e2") ? "Weniger" : "Lesen"}
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+)}
+
+
           <div className="mt-24 flex justify-center">
             <button
               type="button"
+              onClick={toggleMoreJournal}
               className="border border-[#c50355] px-14 py-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
             >
-              Mehr anzeigen
+              {showMoreJournal ? "Weniger anzeigen" : "Mehr anzeigen"}
             </button>
           </div>
         </div>
