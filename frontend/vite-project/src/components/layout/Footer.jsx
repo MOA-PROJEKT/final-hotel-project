@@ -119,7 +119,7 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <a
-                  href="tel:+49301234567"
+                  href="tel:+41 11 123 45 67"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
                   {t("contact.phone")}
@@ -129,7 +129,7 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <a
-                  href="mailto:info@moa-hotel.de"
+                  href="mailto:moa@hotel.ch"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
                   {t("contact.email")}

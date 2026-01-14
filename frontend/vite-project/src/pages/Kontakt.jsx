@@ -23,21 +23,8 @@ const SALES_CONTACTS = [
     address: 'Musterstrasse 10',
     phone: '+41 81 000 00 00',
     email: 'sales@hotel.ch',
-  },
-  {
-    id: 4,
-    title: 'Firma 4',
-    address: 'Musterstrasse 10',
-    phone: '+41 81 000 00 00',
-    email: 'sales@hotel.ch',
-  },
-  {
-    id: 5,
-    title: 'Firma 5',
-    address: 'Musterstrasse 10',
-    phone: '+41 81 000 00 00',
-    email: 'sales@hotel.ch',
-  },
+  }
+
 ]
 
 export default function Kontakt() {
@@ -79,7 +66,7 @@ export default function Kontakt() {
               <p>
                 Via Musterstrasse 11
                 <br />
-                CH-7500 St. Moritz
+                CH-7000 St. Moritz
               </p>
             </div>
 
@@ -87,16 +74,16 @@ export default function Kontakt() {
               <p className="font-medium text-[#b38b4d] uppercase tracking-[0.2em]">
                 Telefon
               </p>
-              <p className="mb-4 text-base">+41 81 123 70 00</p>
+              <p className="mb-4 text-base">+41 11 123 45 67</p>
 
               <p className="font-medium text-[#b38b4d] uppercase tracking-[0.2em]">
                 E-Mail
               </p>
               <a
-                href="mailto:info@hotel.ch"
+                href="mailto:moa@hotel.ch"
                 className="text-[#c50355] hover:underline text-base"
               >
-                info@hotel.ch
+                moa@hotel.ch
               </a>
             </div>
           </div>
@@ -150,13 +137,7 @@ export default function Kontakt() {
               tel: '+41 81 836 71 04',
               mail: 'fb@moa-hotel.ch',
             },
-            {
-              name: 'Concierge',
-              person: 'Pascal Huber',
-              title: 'Chef Concierge',
-              tel: '+41 81 836 71 05',
-              mail: 'concierge@moa-hotel.ch',
-            },
+           
             {
               name: 'Küche',
               person: 'Daniel Frei',
@@ -171,13 +152,7 @@ export default function Kontakt() {
               tel: '+41 81 836 71 07',
               mail: 'housekeeping@moa-hotel.ch',
             },
-            {
-              name: 'Technik',
-              person: 'Oliver Tanner',
-              title: 'Chief Engineer',
-              tel: '+41 81 836 71 08',
-              mail: 'technik@moa-hotel.ch',
-            },
+           
             {
               name: 'Spa',
               person: 'Natalie Schwarz',
@@ -253,23 +228,7 @@ export default function Kontakt() {
           ))}
         </div>
 
-        <div className="flex justify-center">
-          <div className="w-80 bg-white p-10 rounded-2xl shadow-md min-h-[350px] flex flex-col justify-between items-center text-center">
-            <div className="space-y-3 flex flex-col items-center">
-              <h3 className="text-2xl font-semibold text-[#b38b4d] mb-2">
-                Presse 4
-              </h3>
-              <p>Adresse Musterstrasse 5</p>
-              <p>Tel: +41 81 000 00 00</p>
-            </div>
-            <a
-              href="mailto:presse@hotel.ch"
-              className="mt-6 text-[#c50355] font-medium hover:underline"
-            >
-              presse@hotel.ch
-            </a>
-          </div>
-        </div>
+     
       </section>
 
       {/* HOTEL KONTAKT – FORMULAR */}
