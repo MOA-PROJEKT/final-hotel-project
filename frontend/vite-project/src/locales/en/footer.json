@@ -20,11 +20,11 @@
     }
   },
   "contact": {
-    "title": "Contact",
+   "title": "Kontakt",
     "addressLine1": "Steinstrasse 123",
-    "addressLine2": "40476 Düsseldorf, Germany",
-    "phone": "+49 (0)30 123 456 789",
-    "email": "info@moa-hotel.de"
+    "addressLine2": "CH-7000 St. Moritz",
+    "phone": "+41 11 123 45 67",
+    "email": "moa@hotel.ch"
   },
   "copyright": "© 2024 MOA Hotel. All rights reserved."
 }
