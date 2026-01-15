@@ -41,14 +41,10 @@ export default function Gallery() {
           <div className="relative flex h-full items-center pt-[140px] justify-center px-4">
             <div className="text-center  max-w-3xl">
              
-              <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-                Moments at MOA
+              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-semibold ">
+                Verlieren Sie sich in der Schönheit einer Ikone
               </h1>
-              <p className="mt-4 text-sm sm:text-base text-slate-100/85">
-                Ihr privater Rückzugsort in den Alpen: ruhige Pools, warme
-                Lichter und weiche Texturen. Eine Auswahl an Eindrücken aus
-                unserem Spa- &amp; Wellnessbereich.
-              </p>
+             
             </div>
           </div>
         </div>
