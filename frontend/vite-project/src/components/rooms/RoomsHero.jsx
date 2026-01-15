@@ -50,7 +50,7 @@ export default function RoomsHero() {
         <button
           type="button"
           onClick={scrollToIntro}
-          className="inline-flex mt-8 items-center gap-2 px-6 py-3 text-white font-medium uppercase tracking-wider hover:bg-white hover:text-slate-950 transition"
+          className="inline-flex mt-8 items-center gap-2 px-6 py-3 text-white font-medium uppercase tracking-wider hover:text-[#a52348] transition"
         >
           {t('hero.cta')}
           <svg
