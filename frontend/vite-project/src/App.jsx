@@ -20,6 +20,9 @@ import AdminDashboard from './pages/AdminDashboard'
 import AdminRoute from './components/auth/AdminRoute'
 import RoomDetails from './pages/RoomDetails'
 
+import DeluxeDoppelzimmer from "./pages/DeluxeDoppelzimmer";
+import JuniorSuiteMedium from "./pages/JuniorSuiteMedium";
+
 export default function App() {
   const location = useLocation()
   const path = location.pathname
@@ -43,6 +46,10 @@ const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/lo
         <Route path="/contact" element={<Kontakt />} />
 
         <Route path="/login" element={<Login />} />
+
+        <Route path="/rooms/deluxe-doppelzimmer" element={<DeluxeDoppelzimmer />} />
+        <Route path="/rooms/junior-suite-medium" element={<JuniorSuiteMedium />} />
+        
 
         <Route
           path="/admin"

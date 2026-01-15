@@ -4,6 +4,10 @@ import { useTranslation } from "react-i18next";
 export default function RoomCard({ room }) {
   const { t } = useTranslation("rooms");
 
+  // ✅ Nur für Deluxe Doppelzimmer auf die neue Detailseite
+  const detailsLink =
+    room.id === "deluxe-double" ? "/rooms/deluxe-doppelzimmer" : `/rooms/${room.id}`;
+
   return (
     <article className="flex flex-col">
       <div className="w-full">
@@ -19,20 +23,24 @@ export default function RoomCard({ room }) {
           {room.name}
         </h3>
 
-        {room.size && <p className="text-sm text-neutral-700 mb-4">{room.size}</p>}
+        {room.size && (
+          <p className="text-sm text-neutral-700 mb-4">{room.size}</p>
+        )}
 
         <p className="mx-auto max-w-md text-sm text-neutral-500 leading-relaxed mb-8">
           {room.shortDescription}
         </p>
 
         <div className="flex flex-col items-center gap-4">
+          {/* ✅ Mehr erfahren -> neue Seite nur für deluxe-double */}
           <Link
-            to={`/rooms/${room.id}`}
+            to={detailsLink}
             className="text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition"
           >
             {t("card.more")}
           </Link>
 
+          {/* ✅ Buchen bleibt wie vorher (eure bestehende Logik) */}
           <Link
             to={`/rooms/${room.id}`}
             className="mt-8 border border-[#c52b58] px-10 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c52b58] transition hover:bg-[#c52b58] hover:text-white"
