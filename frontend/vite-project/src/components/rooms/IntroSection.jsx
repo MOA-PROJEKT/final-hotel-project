@@ -11,7 +11,6 @@ export default function IntroSection() {
     <section className="bg-[#f7efe7] py-20 px-4">
       <div className="max-w-4xl mx-auto text-center space-y-6">
         {/* 🔹 ЗАГОЛОВОК */}
-
         <h2 className="text-4xl md:text-5xl font-light text-[#b38b4d] tracking-wide">
           {t('intro.title')}
         </h2>
