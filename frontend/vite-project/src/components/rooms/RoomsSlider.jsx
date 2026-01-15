@@ -1,6 +1,5 @@
-// src/components/rooms/RoomsSlider.jsx
-
 import { useState, useEffect } from 'react'
+
 import slide1 from '../../assets/images/zimmer/slider1.webp'
 import slide2 from '../../assets/images/zimmer/slider2.webp'
 import slide3 from '../../assets/images/zimmer/slider3.webp'
@@ -12,23 +11,36 @@ const sliderImages = [slide1, slide2, slide3, slide4, slide5, slide6]
 
 export default function RoomsSlider() {
   const [current, setCurrent] = useState(0)
+  const [animate, setAnimate] = useState(true)
   const length = sliderImages.length
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setAnimate(current !== length - 1)
+
       setCurrent((prev) => (prev === length - 1 ? 0 : prev + 1))
     }, 3000)
-    return () => clearInterval(interval)
-  }, [length])
 
-  const prevSlide = () => setCurrent(current === 0 ? length - 1 : current - 1)
-  const nextSlide = () => setCurrent(current === length - 1 ? 0 : current + 1)
+    return () => clearInterval(interval)
+  }, [current, length])
+
+  const prevSlide = () => {
+    setAnimate(current !== 0)
+    setCurrent(current === 0 ? length - 1 : current - 1)
+  }
+
+  const nextSlide = () => {
+    setAnimate(current !== length - 1)
+    setCurrent(current === length - 1 ? 0 : current + 1)
+  }
 
   return (
     <div className="relative w-full overflow-hidden mb-24">
-      {/* Слайды */}
+      {/* Slides */}
       <div
-        className="flex transition-transform duration-700"
+        className={`flex ${
+          animate ? 'transition-transform duration-700 ease-in-out' : ''
+        }`}
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {sliderImages.map((img, index) => (
@@ -36,34 +48,35 @@ export default function RoomsSlider() {
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[400px] sm:h-[500px] object-cover rounded-2xl"
+              className="w-full h-[400px] sm:h-[500px] object-cover"
             />
           </div>
         ))}
       </div>
 
-      {/* Стрелки навигации */}
+      {/* Arrows */}
       <button
         onClick={prevSlide}
         className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition"
-        aria-label="Previous Slide"
+        aria-label="Previous slide"
       >
         &#10094;
       </button>
+
       <button
         onClick={nextSlide}
         className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition"
-        aria-label="Next Slide"
+        aria-label="Next slide"
       >
         &#10095;
       </button>
 
-      {/* Индикаторы */}
+      {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
         {sliderImages.map((_, index) => (
           <span
             key={index}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-3 h-3 rounded-full transition ${
               index === current ? 'bg-amber-400' : 'bg-neutral-400/50'
             }`}
           />
