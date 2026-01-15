@@ -246,25 +246,24 @@ export default function Navbar() {
                     </button>
                   ) : (
                     <div ref={userMenuRef} className="relative hidden sm:block">
-                      <button
-                        type="button"
-                        onClick={() => setUserMenuOpen((v) => !v)}
-                        className={`flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
-                        aria-label="User menu"
-                        title={userName}
-                      >
-                        <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-full border ${borderSoft} text-[12px] font-semibold ${textMain}`}
-                        >
-                          {userInitial}
-                        </span>
-                        <span className={`text-[12px] tracking-[0.22em] uppercase ${textMain}`}>
-                          {userName}
-                        </span>
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
-                        />
-                      </button>
+                     <button
+  type="button"
+  onClick={() => setUserMenuOpen((v) => !v)}
+  className={`flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
+  aria-label="User menu"
+  title={userName}
+>
+  <span
+    className={`flex h-8 w-8 items-center justify-center rounded-full border ${borderSoft} text-[12px] font-semibold ${textMain}`}
+  >
+    {userInitial}
+  </span>
+
+  <ChevronDown
+    className={`h-4 w-4 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
+  />
+</button>
+
 
                       {userMenuOpen && (
                         <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[100px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
@@ -450,9 +449,13 @@ export default function Navbar() {
               </button>
             ) : (
               <>
-                <div className="opacity-90">
-                  Eingeloggt: <span className="font-semibold">{userName}</span>
-                </div>
+               <div className="opacity-90 flex items-center gap-2">
+  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-[11px] font-semibold">
+    {userInitial}
+  </span>
+  <span>{t("loggedIn")}</span>
+</div>
+
 
                 {isAdmin && (
                   <button
