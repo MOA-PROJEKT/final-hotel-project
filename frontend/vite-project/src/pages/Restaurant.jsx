@@ -6,6 +6,7 @@ import img2 from '../assets/images/img_restaurant/2.jpg'
 import img3 from '../assets/images/img_restaurant/3.jpg'
 import img4 from '../assets/images/img_restaurant/4.jpg'
 import img5 from '../assets/images/img_restaurant/5.jpg'
+import { motion } from "framer-motion";
 
 export default function Restaurant() {
   const [openIndex, setOpenIndex] = useState(null)
@@ -156,19 +157,37 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
         </div>
       ))}
 
-      {/* GALLERY */}
-      <div className="max-w-7xl mx-auto mt-24">
-        <h2 className="text-2xl font-serif text-center mb-6">Galerie</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[img1, img2, img3, img4].map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              className="rounded-lg shadow-md object-cover h-48 w-full"
-            />
-          ))}
-        </div>
-      </div>
+     {/* GALLERY */}
+<div className="max-w-7xl mx-auto mt-24">
+  <h2 className="text-2xl font-serif text-center text-slate-800 mb-6">Genussmomente</h2>
+
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {[img1, img2, img3, img4].map((src, i) => (
+      <a key={i} href="/gallery" className="block">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-lg shadow-md"
+        >
+          <img
+            src={src}
+            className="object-cover h-58 w-full"
+          />
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            className="absolute inset-0 bg-black/40 flex items-center justify-center"
+          >
+            <span className="text-white text-sm uppercase tracking-wider">
+              Galerie ansehen
+            </span>
+          </motion.div>
+        </motion.div>
+      </a>
+    ))}
+  </div>
+</div>
     </div>
   )
 }
