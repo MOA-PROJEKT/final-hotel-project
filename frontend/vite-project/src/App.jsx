@@ -23,6 +23,19 @@ import RoomDetails from './pages/RoomDetails'
 import DeluxeDoppelzimmer from "./pages/DeluxeDoppelzimmer";
 import JuniorSuiteMedium from "./pages/JuniorSuiteMedium";
 
+import DeluxeSuite from "./pages/DeluxeSuite";
+import TwinJuniorSuite from "./pages/TwinJuniorSuite";
+import JuniorSuiteLarge from "./pages/JuniorSuiteLarge";
+import CornerJuniorSuite from "./pages/CornerJuniorSuite";
+import GrandSuite from "./pages/GrandSuite";
+import PenthouseSuite from "./pages/PenthouseSuite";
+
+
+
+
+
+
+
 export default function App() {
   const location = useLocation()
   const path = location.pathname
@@ -48,8 +61,18 @@ const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/lo
         <Route path="/login" element={<Login />} />
 
         <Route path="/rooms/deluxe-doppelzimmer" element={<DeluxeDoppelzimmer />} />
-        <Route path="/rooms/junior-suite-medium" element={<JuniorSuiteMedium />} />
-        
+        <Route path="/zimmer/junior-suite-medium" element={<JuniorSuiteMedium />} />
+
+
+        <Route path="/zimmer/deluxe-suite" element={<DeluxeSuite />} />
+        <Route path="/zimmer/twin-junior-suite" element={<TwinJuniorSuite />} />
+        <Route path="/zimmer/junior-suite-large" element={<JuniorSuiteLarge />} />
+        <Route path="/zimmer/corner-junior-suite" element={<CornerJuniorSuite />} />
+        <Route path="/zimmer/grand-suite" element={<GrandSuite />} />
+        <Route path="/zimmer/penthouse-suite" element={<PenthouseSuite />} />
+
+
+
 
         <Route
           path="/admin"

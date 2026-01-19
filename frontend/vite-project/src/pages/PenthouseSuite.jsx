@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { rooms } from "../data/rooms";
 
-// ✅ gleiche Bilder wie Deluxe Doppelzimmer – aber statisch importiert (Vite-sicher)
+// ✅ gleiche Bilder wie Deluxe Doppelzimmer
 import z1 from "../assets/images/zimmer/deluxe-Doppelzimmer/z1.jpg";
 import z2 from "../assets/images/zimmer/deluxe-Doppelzimmer/z2.jpg";
 import z3 from "../assets/images/zimmer/deluxe-Doppelzimmer/z3.jpg";
@@ -13,28 +13,30 @@ import z7 from "../assets/images/zimmer/deluxe-Doppelzimmer/z7.jpg";
 import z8 from "../assets/images/zimmer/deluxe-Doppelzimmer/z8.jpg";
 import z9 from "../assets/images/zimmer/deluxe-Doppelzimmer/z9.jpg";
 
-export default function JuniorSuiteMedium() {
+export default function PenthouseSuite() {
   useEffect(() => window.scrollTo(0, 0), []);
 
-  const room = useMemo(
-    () => rooms.find((r) => r.id === "junior-suite-medium"),
-    []
-  );
-
-  // ✅ gleiche Reihenfolge wie vorher (z1..z9)
+  const room = useMemo(() => rooms.find((r) => r.id === "penthouse-suite"), []);
   const images = useMemo(() => [z1, z2, z3, z4, z5, z6, z7, z8, z9], []);
 
-  // ✅ Hero: C2 = bei dir bisher Index 1 (z2)
-  const DEFAULT_HERO_INDEX = 1;
+  // ✅ Hero
+  const DEFAULT_HERO_INDEX = 8; // z9
 
   const [active, setActive] = useState(DEFAULT_HERO_INDEX);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (active >= images.length) setActive(DEFAULT_HERO_INDEX);
+  }, [images.length, active]);
 
   if (!room) {
     return (
       <main className="min-h-screen bg-[#f7efe7] text-neutral-800 flex items-center justify-center px-4">
         <div className="max-w-xl text-center bg-white/70 border border-black/10 rounded-2xl p-8">
           <h1 className="text-2xl font-semibold mb-2">Zimmer nicht gefunden</h1>
+          <p className="text-neutral-600">
+            Prüfe bitte, ob in <code>rooms.js</code> die ID <b>penthouse-suite</b> existiert.
+          </p>
           <Link
             to="/rooms"
             className="inline-block mt-6 border border-[#c52b58] px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#c52b58] hover:bg-[#c52b58] hover:text-white transition"
@@ -59,6 +61,7 @@ export default function JuniorSuiteMedium() {
         <div className="h-[320px] sm:h-[420px] w-full overflow-hidden">
           <img src={hero} alt={room.name} className="h-full w-full object-cover" />
         </div>
+
         <div className="absolute inset-0 bg-black/25" />
 
         <div className="absolute bottom-6 left-0 right-0">
@@ -71,13 +74,11 @@ export default function JuniorSuiteMedium() {
               <span className="font-medium text-white">{room.name}</span>
             </div>
 
-            <h1 className="mt-2 text-white text-3xl sm:text-4xl font-semibold">
-              {room.name}
-            </h1>
+            <h1 className="mt-2 text-white text-3xl sm:text-4xl font-semibold">{room.name}</h1>
 
             <p className="mt-2 text-white/90 max-w-2xl text-sm sm:text-base leading-relaxed">
-              Gemütliche Junior Suite mit kombiniertem Wohn- und Schlafraum, Kingsize-Bett und nach
-              Süden ausgerichtetem Blick auf die Landschaft mit Panoramablick über den See.
+              Fünf Balkone, ein Panorama-Rundumblick und ein Wohnbereich, der sich wie ein privates
+              Refugium anfühlt. Die Penthouse Suite nimmt die gesamte oberste Etage ein.
             </p>
           </div>
         </div>
@@ -91,9 +92,7 @@ export default function JuniorSuiteMedium() {
             <div className="bg-white/70 border border-black/10 rounded-2xl p-6 h-[590px]">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">
-                    {room.category}
-                  </p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">{room.category}</p>
                   <h2 className="text-2xl font-semibold mt-2">Überblick</h2>
                 </div>
                 <div className="text-right">
@@ -103,42 +102,27 @@ export default function JuniorSuiteMedium() {
               </div>
 
               <p className="mt-4 text-neutral-700 leading-relaxed">
-                Gemütliche Junior Suite mit kombiniertem Wohn- und Schlafraum, Kingsize-Bett und nach
-                Süden ausgerichtetem Blick auf die Landschaft mit Panoramablick über den See.
-                <br /><br />
+                Fünf Balkone, ein Panorama-Rundumblick und ein Wohnbereich, der sich wie ein privates
+                Refugium anfühlt. Die Penthouse Suite nimmt die gesamte oberste Etage ein.
               </p>
 
               <div className="mt-6 border-t border-black/10 pt-6">
                 <h3 className="text-lg font-semibold mb-3">Ausstattung</h3>
                 <ul className="space-y-2 text-neutral-700">
-                  <li className="flex gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />
-                    55 m² kombinierter Wohn- & Schlafbereich
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />
-                    Kingsize-Bett
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />
-                    Blick nach Süden (Panorama)
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />
-                    Panoramablick über den See
-                  </li>
+                  <li className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />386 m² Wohnfläche</li>
+                  <li className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />Fünf Balkone</li>
+                  <li className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />Panorama-Rundumblick</li>
+                  <li className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-[#c52b58]" />Gesamte oberste Etage</li>
                 </ul>
 
                 <div className="mt-6 flex items-center justify-between">
                   <div>
                     <p className="text-xs text-neutral-500">ab</p>
                     <p className="text-2xl font-semibold">
-                      CHF {room.price}{" "}
-                      <span className="text-sm font-normal text-neutral-500">/ Nacht</span>
+                      CHF {room.price} <span className="text-sm font-normal text-neutral-500">/ Nacht</span>
                     </p>
                     <p className="text-xs text-neutral-500 mt-1">
-                      Max. Gäste:{" "}
-                      <span className="text-neutral-800 font-medium">{room.maxGuests}</span>
+                      Max. Gäste: <span className="text-neutral-800 font-medium">{room.maxGuests}</span>
                     </p>
                   </div>
 
@@ -163,25 +147,25 @@ export default function JuniorSuiteMedium() {
           {/* RIGHT */}
           <div className="lg:col-span-7 space-y-4">
             <div className="bg-white/70 border border-black/10 rounded-2xl p-4 h-[590px]">
-              <div className="relative rounded-xl overflow-hidden">
+              <div className="relative rounded-xl overflow-hidden shadow-sm">
                 <img
                   src={images[active] || hero}
                   alt={`${room.name} ${active + 1}`}
-                  className="w-full h-[280px] sm:h-[460px] object-cover"
+                  className="w-full h-[280px] sm:h-[460px] object-cover transition-opacity duration-300"
                   onClick={() => setOpen(true)}
                   style={{ cursor: "zoom-in" }}
                 />
 
                 <button
                   onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white transition-colors"
                   aria-label="Vorheriges Bild"
                 >
                   ‹
                 </button>
                 <button
                   onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white transition-colors"
                   aria-label="Nächstes Bild"
                 >
                   ›
@@ -198,7 +182,7 @@ export default function JuniorSuiteMedium() {
                     <button
                       key={src}
                       onClick={() => setActive(idx)}
-                      className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 transform ${
+                      className={`relative rounded-lg overflow-hidden border-2 transition-all ${
                         idx === active
                           ? "border-[#c52b58] scale-105 z-10"
                           : "border-transparent opacity-70 hover:opacity-100 hover:scale-110 hover:z-20 hover:shadow-lg"
@@ -218,13 +202,13 @@ export default function JuniorSuiteMedium() {
       {/* MODAL */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center px-4"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center px-4"
           onClick={() => setOpen(false)}
         >
           <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setOpen(false)}
-              className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white text-neutral-900 flex items-center justify-center"
+              className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white text-neutral-900 flex items-center justify-center text-xl"
               aria-label="Schließen"
             >
               ✕
@@ -234,22 +218,20 @@ export default function JuniorSuiteMedium() {
               <img
                 src={images[active] || hero}
                 alt="Großansicht"
-                className="w-full max-h-[80vh] object-contain"
+                className="w-full max-h-[85vh] object-contain"
               />
 
               {images.length > 1 && (
                 <>
                   <button
                     onClick={prev}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white"
-                    aria-label="Vorheriges Bild"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 text-white border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all"
                   >
                     ‹
                   </button>
                   <button
                     onClick={next}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 border border-black/10 flex items-center justify-center hover:bg-white"
-                    aria-label="Nächstes Bild"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/40 text-white border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all"
                   >
                     ›
                   </button>

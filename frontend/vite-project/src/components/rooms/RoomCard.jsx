@@ -5,8 +5,23 @@ export default function RoomCard({ room }) {
   const { t } = useTranslation("rooms");
 
   // ✅ Nur für Deluxe Doppelzimmer auf die neue Detailseite
-  const detailsLink =
-    room.id === "deluxe-double" ? "/rooms/deluxe-doppelzimmer" : `/rooms/${room.id}`;
+  // ✅ Detailseiten: deluxe-double + deluxe-suite (alles andere bleibt Booking-Route)
+const detailRoutes = {
+  "deluxe-double": "/rooms/deluxe-doppelzimmer",
+  "deluxe-suite": "/zimmer/deluxe-suite",
+  "junior-suite-medium": "/zimmer/junior-suite-medium",
+  "twin-junior-suite": "/zimmer/twin-junior-suite",
+  "junior-suite-large": "/zimmer/junior-suite-large",
+  "corner-junior-suite": "/zimmer/corner-junior-suite",
+  "grand-suite": "/zimmer/grand-suite",
+  "penthouse-suite": "/zimmer/penthouse-suite",
+
+};
+
+const detailsLink = detailRoutes[room.id] ?? `/rooms/${room.id}`;
+
+    
+
 
   return (
     <article className="flex flex-col">
