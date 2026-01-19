@@ -41,6 +41,13 @@
   "pending": "Ausstehend",
   "confirmed": "Bestätigt",
   "cancelled": "Storniert"
+},
+
+"statusDesc": {
+  "pending": "Wir prüfen deine Anfrage.",
+  "confirmed": "Bestätigt – wir freuen uns auf dich.",
+  "cancelled": "Diese Buchung wurde storniert.",
+  "rejected": "Diese Buchung wurde abgelehnt."
 }
 
 }
