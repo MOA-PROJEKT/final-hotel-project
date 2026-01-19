@@ -491,7 +491,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={goRooms}
-              className="mt-2 inline-flex w-full items-center justify-center rounded-sm border border-rose-300 bg-rose-500 px-5 py-3 text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-transparent hover:text-rose-200 transition-colors"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-sm border border-rose-300 bg-[#c50355] px-5 py-3 text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-transparent hover:text-rose-200 transition-colors"
             >
               Buchen
             </button>

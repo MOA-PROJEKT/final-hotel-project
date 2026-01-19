@@ -19,6 +19,9 @@ import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminRoute from './components/auth/AdminRoute'
 import RoomDetails from './pages/RoomDetails'
+import Danke from './pages/Danke'
+import Datenschutz from './pages/Datenschutz'
+import Impressum from './pages/Impressum'
 
 import DeluxeDoppelzimmer from "./pages/DeluxeDoppelzimmer";
 import JuniorSuiteMedium from "./pages/JuniorSuiteMedium";
@@ -40,8 +43,8 @@ export default function App() {
   const location = useLocation()
   const path = location.pathname
 
-  const hideNavbar = path === '/login'
-const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/login'
+  const hideNavbar = path === '/login' || path === '/danke'
+const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/login' || path === '/danke'
 
 
   return (
@@ -57,6 +60,9 @@ const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/lo
         <Route path="/wellness" element={<Wellness />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Kontakt />} />
+        <Route path="/danke" element={<Danke />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/impressum" element={<Impressum />} /> 
 
         <Route path="/login" element={<Login />} />
 
