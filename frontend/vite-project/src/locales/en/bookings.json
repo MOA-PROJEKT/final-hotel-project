@@ -41,6 +41,13 @@
   "pending": "Pending",
   "confirmed": "Confirmed",
   "cancelled": "Cancelled"
+},
+
+"statusDesc": {
+  "pending": "We are reviewing your request.",
+  "confirmed": "Confirmed – we look forward to welcoming you.",
+  "cancelled": "This booking has been cancelled.",
+  "rejected": "This booking has been rejected."
 }
 
 }

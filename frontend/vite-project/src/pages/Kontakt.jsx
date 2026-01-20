@@ -23,8 +23,7 @@ const SALES_CONTACTS = [
     address: 'Musterstrasse 10',
     phone: '+41 81 000 00 00',
     email: 'sales@hotel.ch',
-  }
-
+  },
 ]
 
 export default function Kontakt() {
@@ -137,7 +136,7 @@ export default function Kontakt() {
               tel: '+41 81 836 71 04',
               mail: 'fb@moa-hotel.ch',
             },
-           
+
             {
               name: 'Küche',
               person: 'Daniel Frei',
@@ -152,7 +151,7 @@ export default function Kontakt() {
               tel: '+41 81 836 71 07',
               mail: 'housekeeping@moa-hotel.ch',
             },
-           
+
             {
               name: 'Spa',
               person: 'Natalie Schwarz',
@@ -227,8 +226,6 @@ export default function Kontakt() {
             </div>
           ))}
         </div>
-
-     
       </section>
 
       {/* HOTEL KONTAKT – FORMULAR */}
@@ -249,30 +246,57 @@ export default function Kontakt() {
           </p>
         </div>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <form
+          action="https://formspree.io/f/maqqoaal"
+          method="POST"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+        >
+          {/* Redirect zur Danke-Seite */}
+          <input type="hidden" name="_redirect" value="https://hotel-projekt.vite.app/danke" />
+
           <div className="flex flex-col">
             <label className="mb-1 font-medium">Vorname</label>
-            <input type="text" className="border rounded-lg px-4 py-2" required />
+            <input
+              type="text"
+              name="vorname"
+              className="border rounded-lg px-4 py-2"
+              required
+            />
           </div>
 
           <div className="flex flex-col">
             <label className="mb-1 font-medium">Nachname</label>
-            <input type="text" className="border rounded-lg px-4 py-2" required />
+            <input
+              type="text"
+              name="nachname"
+              className="border rounded-lg px-4 py-2"
+              required
+            />
           </div>
 
           <div className="flex flex-col">
             <label className="mb-1 font-medium">Telefon</label>
-            <input type="tel" className="border rounded-lg px-4 py-2" />
+            <input
+              type="tel"
+              name="telefon"
+              className="border rounded-lg px-4 py-2"
+            />
           </div>
 
           <div className="flex flex-col">
             <label className="mb-1 font-medium">E-Mail</label>
-            <input type="email" className="border rounded-lg px-4 py-2" required />
+            <input
+              type="email"
+              name="email"
+              className="border rounded-lg px-4 py-2"
+              required
+            />
           </div>
 
           <div className="md:col-span-2 flex flex-col">
             <label className="mb-1 font-medium">Nachricht</label>
             <textarea
+              name="nachricht"
               rows="6"
               className="border rounded-lg px-4 py-2"
               required
@@ -282,13 +306,14 @@ export default function Kontakt() {
           <div className="md:col-span-2 text-center">
             <button
               type="submit"
-              className="bg-[#c50355] text-white px-10 py-3 rounded-lg text-lg  transition"
+              className="bg-[#c50355] text-white px-10 py-3 rounded-lg text-lg transition"
             >
               Abschicken
             </button>
           </div>
         </form>
       </section>
+      button
     </main>
   )
 }
