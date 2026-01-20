@@ -30,8 +30,8 @@ export default function Kontakt() {
   return (
     <main className="bg-[#f7efe7] min-h-screen text-[#2a2a2a] pt-20">
       {/* HERO-TEXT */}
-      <section className="max-w-6xl mx-auto text-center px-6 pt-32 pb-12">
-        <h1 className="text-4xl md:text-5xl font-light text-[#b38b4d] tracking-wide mt-0">
+      <section className="max-w-6xl mx-auto text-center px-6 md:pt-32 pt-12  pb-10">
+        <h1 className="text-4xl md:text-5xl font-light text-[#b2854e] tracking-wide mt-0">
           Kontaktieren Sie uns
         </h1>
         <p className="mt-4 text-lg">
@@ -313,7 +313,6 @@ export default function Kontakt() {
           </div>
         </form>
       </section>
-      button
     </main>
   )
 }

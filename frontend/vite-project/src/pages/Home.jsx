@@ -185,8 +185,8 @@ const toggleMoreJournal = () => {
         <div className="absolute inset-0 bg-slate-900/35" />
 
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
-          <div className="mx-auto pt-12 max-w-3xl px-4 text-center text-white">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+          <div className="mx-auto pt-16 max-w-3xl px-4 text-center text-white">
+            <h1 className="text-3xl  md:text-5xl font-semibold leading-tight">
               {t("hero.title")}
             </h1>
 
@@ -308,14 +308,15 @@ const toggleMoreJournal = () => {
             />
 
             <div
-              className="
-                absolute left-[-8%] top-[-10%]
-                w-[70%] h-[55%] max-w-[740px]
-                bg-white/50 backdrop-blur-[2px]
-                px-16 py-10
-                shadow-[0_30px_70px_rgba(15,23,42,0.28)]
-              "
-            >
+  className="
+    absolute left-[-8%] top-[-10%]
+    w-[80%] h-[80%] md:h-[55%] max-w-[740px]
+    bg-white/50 backdrop-blur-[2px]
+    px-16 py-10
+    shadow-[0_30px_70px_rgba(15,23,42,0.28)]
+  "
+>
+
               <p className="mb-4 text-xs tracking-[0.35em] uppercase text-slate-400">
                 Moving Mountains
               </p>

@@ -410,7 +410,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`relative h-full w-full lg:max-w-md bg-amber-900/95 text-white flex flex-col transform transition-transform duration-500 ${
+          className={`relative h-full w-full lg:max-w-md bg-[#b2854e] text-white flex flex-col transform transition-transform duration-500 ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
@@ -488,13 +488,7 @@ export default function Navbar() {
               </>
             )}
 
-            <button
-              type="button"
-              onClick={goRooms}
-              className="mt-2 inline-flex w-full items-center justify-center rounded-sm border border-rose-300 bg-[#c50355] px-5 py-3 text-[11px] font-semibold tracking-[0.25em] uppercase hover:bg-transparent hover:text-rose-200 transition-colors"
-            >
-              Buchen
-            </button>
+           
           </div>
         </div>
 

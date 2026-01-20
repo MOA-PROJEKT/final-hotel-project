@@ -122,7 +122,8 @@ export default function DeluxeDoppelzimmer() {
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           {/* LEFT: Text + Ausstattung */}
           <div className="lg:col-span-5 space-y-6 ">
-            <div className="bg-white/70 border border-black/10 rounded-2xl p-6 h-[590px]">
+            <div className="bg-white/70 border border-black/10 rounded-2xl p-6 h-auto lg:h-[590px]">
+
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.35em] text-neutral-500">
@@ -189,16 +190,18 @@ export default function DeluxeDoppelzimmer() {
             </div>
 
             <Link
-              to="/rooms"
-              className="inline-block text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition"
-            >
+  to="/rooms"
+  className="inline-block mt-4 lg:mt-0 text-sm font-medium text-[#c52b58] underline underline-offset-4 hover:text-[#a52348] transition"
+>
+
               ← Zurück zur Zimmerübersicht
             </Link>
           </div>
 
           {/* RIGHT: Galerie */}
           <div className="lg:col-span-7 space-y-4 ">
-            <div className="bg-white/70 border border-black/10 rounded-2xl p-4 h-[590px] ">
+            <div className="bg-white/70 border border-black/10 rounded-2xl p-4 h-auto lg:h-[590px]">
+
               <div className="relative rounded-xl overflow-hidden shadow-sm">
                 <img
                   src={images[active] || hero}

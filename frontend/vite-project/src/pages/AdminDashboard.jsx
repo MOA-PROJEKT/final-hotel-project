@@ -185,7 +185,7 @@ export default function AdminDashboard() {
         return {
           label: "Ausstehend",
           chip: "bg-amber-50/70 text-amber-900 border-amber-200",
-          icon: "⏳",
+  
           iconClass: "text-amber-700",
         };
     }
@@ -232,14 +232,14 @@ export default function AdminDashboard() {
             {kpiCard({
               title: "Total",
               value: stats.total,
-              icon: "📦",
+              
               iconClass: "text-slate-400",
               accentClass: "border-l-slate-300",
             })}
             {kpiCard({
               title: "Ausstehend",
               value: stats.pending,
-              icon: "⏳",
+              
               iconClass: "text-amber-700",
               accentClass: "border-l-amber-400",
             })}
@@ -369,7 +369,7 @@ export default function AdminDashboard() {
                               type="button"
                               disabled={deletingId === b._id}
                               onClick={() => deleteBooking(b._id)}
-                              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+                              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-red-100 disabled:opacity-50"
                               title="Buchung löschen"
                             >
                               {deletingId === b._id ? "Löscht…" : "Löschen"}
