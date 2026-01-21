@@ -1,0 +1,55 @@
+{
+  "title": "Mein Profil",
+  "subtitle": "Hier kannst du deine Daten verwalten.",
+  "loading": "Lädt…",
+  "saving": "Speichert…",
+  "deleting": "Löscht…",
+
+  "notLoggedIn": "Du bist nicht eingeloggt. Bitte zuerst einloggen.",
+  "goToLogin": "Zum Login",
+  "confirmDelete": "Willst du deinen Account wirklich löschen? Diese Aktion kann man nicht rückgängig machen.",
+
+  "labels": {
+    "name": "Name",
+    "email": "E-Mail",
+    "role": "Rolle",
+    "newEmail": "Neue E-Mail",
+    "password": "Passwort",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort"
+  },
+
+  "sections": {
+    "email": {
+      "title": "E-Mail ändern",
+      "text": "Gib eine neue E-Mail ein und bestätige mit deinem Passwort."
+    },
+    "password": {
+      "title": "Passwort ändern",
+      "text": "Gib dein aktuelles Passwort ein und wähle ein neues."
+    },
+    "delete": {
+      "title": "Account löschen",
+      "text": "Wenn du deinen Account löschst, werden deine Daten und Buchungen entfernt."
+    }
+  },
+
+  "actions": {
+    "updateEmail": "E-Mail aktualisieren",
+    "updatePassword": "Passwort aktualisieren",
+    "deleteAccount": "Account löschen"
+  },
+
+  "success": {
+    "emailUpdated": "E-Mail wurde aktualisiert.",
+    "passwordUpdated": "Passwort wurde aktualisiert."
+  },
+
+  "errors": {
+    "loadFailed": "Fehler beim Laden des Profils.",
+    "emailUpdateFailed": "E-Mail ändern fehlgeschlagen.",
+    "passwordUpdateFailed": "Passwort ändern fehlgeschlagen.",
+    "deleteFailed": "Account löschen fehlgeschlagen.",
+    "unknown": "Unbekannter Fehler."
+  }
+}

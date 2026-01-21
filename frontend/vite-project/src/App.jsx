@@ -33,6 +33,9 @@ import CornerJuniorSuite from "./pages/CornerJuniorSuite";
 import GrandSuite from "./pages/GrandSuite";
 import PenthouseSuite from "./pages/PenthouseSuite";
 
+import Profile from "./pages/Profile";
+
+
 
 
 
@@ -76,6 +79,9 @@ const hideFooter = path === '/my-bookings' || path === '/admin' || path === '/lo
         <Route path="/zimmer/corner-junior-suite" element={<CornerJuniorSuite />} />
         <Route path="/zimmer/grand-suite" element={<GrandSuite />} />
         <Route path="/zimmer/penthouse-suite" element={<PenthouseSuite />} />
+
+        <Route path="/profile" element={<Profile />} />
+
 
 
 

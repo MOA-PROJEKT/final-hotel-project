@@ -3,7 +3,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, User, ChevronDown, LogOut, Shield } from 'lucide-react'
 import { useTranslation } from "react-i18next";
 
-
 const navLinks = [
   { key: "hotel", to: "/" },
   { key: "rooms", to: "/rooms" },
@@ -13,10 +12,7 @@ const navLinks = [
   { key: "contact", to: "/contact" },
 ];
 
-
 const LANGUAGES = ['DE', 'EN']
-
-
 
 function LanguageSwitcher({ current, onChange, isDark }) {
   const [open, setOpen] = useState(false)
@@ -25,9 +21,6 @@ function LanguageSwitcher({ current, onChange, isDark }) {
   const hoverText = isDark ? 'hover:text-slate-900' : 'hover:text-white'
   const shadowText = isDark ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
   const dropdownBg = 'bg-slate-900 text-white shadow-lg z-[999]'
-
-
-
 
   return (
     <div className="relative inline-block">
@@ -81,10 +74,9 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const [language, setLanguage] = useState(() => {
-  const stored = (localStorage.getItem("lang") || "de").toLowerCase();
-  return stored.startsWith("en") ? "EN" : "DE";
-});
-
+    const stored = (localStorage.getItem("lang") || "de").toLowerCase();
+    return stored.startsWith("en") ? "EN" : "DE";
+  });
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -179,18 +171,23 @@ export default function Navbar() {
     navigate('/my-bookings')
   }
 
+  // ✅ NEU: Profil-Seite
+  const goProfile = () => {
+    closeAllMenus()
+    navigate('/profile')
+  }
+
   const goRooms = () => {
     closeAllMenus()
     navigate('/rooms')
   }
 
   const handleLanguageChange = (code) => {
-  setLanguage(code);
-  const next = code === "EN" ? "en" : "de";
-  i18n.changeLanguage(next);
-  localStorage.setItem("lang", next);
-};
-
+    setLanguage(code);
+    const next = code === "EN" ? "en" : "de";
+    i18n.changeLanguage(next);
+    localStorage.setItem("lang", next);
+  };
 
   return (
     <>
@@ -231,8 +228,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3 sm:gap-4">
-                 <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
-
+                  <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
 
                   {!isLoggedIn ? (
                     <button
@@ -246,34 +242,41 @@ export default function Navbar() {
                     </button>
                   ) : (
                     <div ref={userMenuRef} className="relative hidden sm:block">
-                     <button
-  type="button"
-  onClick={() => setUserMenuOpen((v) => !v)}
-  className={`flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
-  aria-label="User menu"
-  title={userName}
->
-  <span
-    className={`flex h-8 w-8 items-center justify-center rounded-full border ${borderSoft} text-[12px] font-semibold ${textMain}`}
-  >
-    {userInitial}
-  </span>
+                      <button
+                        type="button"
+                        onClick={() => setUserMenuOpen((v) => !v)}
+                        className={`flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
+                        aria-label="User menu"
+                        title={userName}
+                      >
+                        <span
+                          className={`flex h-8 w-8 items-center justify-center rounded-full border ${borderSoft} text-[12px] font-semibold ${textMain}`}
+                        >
+                          {userInitial}
+                        </span>
 
-  <ChevronDown
-    className={`h-4 w-4 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
-  />
-</button>
-
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
 
                       {userMenuOpen && (
-                        <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[100px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
+                        <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[160px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
+                          {/* ✅ NEU: Profil */}
+                          <button
+                            type="button"
+                            onClick={goProfile}
+                            className="w-full text-left px-3 py-2 hover:bg-white/10"
+                          >
+                            {t("profile") || "My profile"}
+                          </button>
+
                           <button
                             type="button"
                             onClick={goMyBookings}
                             className="w-full text-left px-3 py-2 hover:bg-white/10"
                           >
                             {t("myBookings")}
-
                           </button>
 
                           {isAdmin && (
@@ -346,8 +349,6 @@ export default function Navbar() {
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.key}
-
-
                     to={link.to}
                     className={({ isActive }) =>
                       `text-slate-900/70 hover:text-slate-900 transition-colors font-medium ${
@@ -365,16 +366,14 @@ export default function Navbar() {
                 onClick={goRooms}
                 className="inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
               >
-               {t("book")}
-
+                {t("book")}
               </button>
             </div>
           )}
 
           <div className={`flex lg:hidden flex-col pt-5 pb-2 ${textMain}`}>
             <div className="flex h-16 items-center justify-between gap-4">
-             <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
-
+              <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
 
               <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                 <div
@@ -427,7 +426,6 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <NavLink
                 key={link.key}
-
                 to={link.to}
                 onClick={() => setIsMenuOpen(false)}
                 className="w-full block text-white"
@@ -449,13 +447,21 @@ export default function Navbar() {
               </button>
             ) : (
               <>
-               <div className="opacity-90 flex items-center gap-2">
-  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-[11px] font-semibold">
-    {userInitial}
-  </span>
-  <span>{t("loggedIn")}</span>
-</div>
+                <div className="opacity-90 flex items-center gap-2">
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/60 text-[11px] font-semibold">
+                    {userInitial}
+                  </span>
+                  <span>{t("loggedIn")}</span>
+                </div>
 
+                {/* ✅ NEU: Profil */}
+                <button
+                  type="button"
+                  onClick={goProfile}
+                  className="flex items-center gap-2 opacity-90 hover:opacity-100"
+                >
+                  <span>{t("profile") || "My profile"}</span>
+                </button>
 
                 {isAdmin && (
                   <button
@@ -483,12 +489,9 @@ export default function Navbar() {
                 >
                   <LogOut className="h-4 w-4" />
                   <span>{t("logout")}</span>
-
                 </button>
               </>
             )}
-
-           
           </div>
         </div>
 
