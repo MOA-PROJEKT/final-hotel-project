@@ -11,6 +11,9 @@ import fitness from '../assets/images/galerie/fitness.webp'
 import snow from '../assets/images/galerie/schnee.webp'
 import pool3 from '../assets/images/galerie/pool3.webp'
 
+import { useTranslation } from "react-i18next";
+
+
 function GalleryCard({ src, alt, height = 'h-64' }) {
   return (
     <figure
@@ -27,6 +30,7 @@ function GalleryCard({ src, alt, height = 'h-64' }) {
 }
 
 export default function Gallery() {
+  const { t } = useTranslation("gallery");
   return (
     <main className=" text-white bg-[#f7efe7] min-h-screen">
       {/* HERO: volle Breite, Header liegt darüber */}
@@ -42,8 +46,9 @@ export default function Gallery() {
             <div className="text-center  max-w-3xl">
              
               <h1 className="mt-6 text-3xl sm:text-3xl lg:text-5xl font-semibold ">
-                Verlieren Sie sich in der Schönheit einer Ikone
-              </h1>
+  {t("hero.title")}
+</h1>
+
              
             </div>
           </div>
@@ -53,8 +58,9 @@ export default function Gallery() {
 <div className="mt-16 flex items-center justify-center gap-4 sm:gap-8 px-4">
   <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
   <h2 className="font-serif text-xl md:text-3xl tracking-wide text-[#b2854e] whitespace-nowrap text-center">
-    Moa Hotel Gallery
-  </h2>
+  {t("section.title")}
+</h2>
+
   <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
 </div>
 

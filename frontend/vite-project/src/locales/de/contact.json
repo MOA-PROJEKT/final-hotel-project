@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Das Team des MOA_Hotel steht Ihnen gerne zur Verfügung."
+  },
+  "mapAlt": "Anreise nach St. Moritz – Karte Schweiz",
+  "visit": {
+    "label": "Kontakt",
+    "title": "Besuchen Sie uns",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-Mail"
+  },
+  "team": {
+    "title": "Kontaktieren Sie Unser Team",
+    "addressLine": "Via Stella 22, CH-7500 St. Moritz",
+    "phoneInline": "Telefon",
+    "departments": {
+      "management": { "name": "Management", "role": "General Managers" },
+      "reservation": { "name": "Reservation & Revenue", "role": "Director of Revenue" },
+      "frontOffice": { "name": "Front Office", "role": "Front Office Manager" },
+      "hr": { "name": "Human Resources", "role": "HR Manager" },
+      "fb": { "name": "Food & Beverage", "role": "F&B Manager" },
+      "kitchen": { "name": "Küche", "role": "Executive Chef" },
+      "housekeeping": { "name": "Housekeeping", "role": "Executive Housekeeper" },
+      "spa": { "name": "Spa", "role": "Spa Manager" }
+    }
+  },
+  "sales": {
+    "title": "Sales Kontakt"
+  },
+  "press": {
+    "title": "Presse Kontakt",
+    "boxTitle": "Presse",
+    "address": "Adresse Musterstrasse 5",
+    "tel": "Tel"
+  },
+  "form": {
+    "title": "Hotel Kontakt",
+    "subtitle1": "Für weitere Informationen füllen Sie bitte das",
+    "subtitle2": "untenstehende Formular aus.",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "submit": "Abschicken"
+  }
+}

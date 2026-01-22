@@ -1,55 +1,57 @@
 {
-  "title": "My Profile",
-  "subtitle": "Manage your account details here.",
-  "loading": "Loading…",
-  "saving": "Saving…",
-  "deleting": "Deleting…",
-
-  "notLoggedIn": "You are not logged in. Please log in first.",
-  "goToLogin": "Go to login",
-  "confirmDelete": "Do you really want to delete your account? This cannot be undone.",
-
-  "labels": {
-    "name": "Name",
-    "email": "Email",
-    "role": "Role",
-    "newEmail": "New email",
-    "password": "Password",
-    "currentPassword": "Current password",
-    "newPassword": "New password"
+  "header": {
+    "kicker": "Account",
+    "title": "My profile",
+    "subtitle": "Manage your account details here.",
+    "loggedInAs": "Logged in as"
   },
-
-  "sections": {
-    "email": {
-      "title": "Change email",
-      "text": "Enter a new email and confirm with your password."
-    },
-    "password": {
-      "title": "Change password",
-      "text": "Enter your current password and choose a new one."
-    },
-    "delete": {
-      "title": "Delete account",
-      "text": "Deleting your account will remove your data and bookings."
-    }
-  },
-
+  "states": { "loading": "Loading…" },
   "actions": {
-    "updateEmail": "Update email",
-    "updatePassword": "Update password",
-    "deleteAccount": "Delete account"
+    "show": "Show",
+    "hide": "Hide",
+    "save": "Save",
+    "saving": "Saving…",
+    "deleting": "Deleting…"
   },
-
+  "email": {
+    "title": "Change email",
+    "subtitle": "New email + confirm with your password.",
+    "newEmailLabel": "New email",
+    "confirmPasswordLabel": "Confirm password",
+    "emailPlaceholder": "name@mail.com"
+  },
+  "password": {
+    "title": "Change password",
+    "subtitle": "Current password + new password.",
+    "currentLabel": "Current password",
+    "newLabel": "New password",
+    "button": "Change password"
+  },
+  "delete": {
+    "title": "Delete account",
+    "subtitle": "Warning: This cannot be undone.",
+    "confirmPasswordLabel": "Confirm password",
+    "button": "Delete account"
+  },
+  "confirm": {
+    "deleteAccount": "Delete your account? This cannot be undone."
+  },
   "success": {
-    "emailUpdated": "Email updated.",
-    "passwordUpdated": "Password updated."
+    "emailSaved": "✅ Email has been saved.",
+    "passwordChanged": "✅ Password has been changed.",
+    "accountDeleted": "✅ Account deleted. You are now logged out."
   },
-
   "errors": {
-    "loadFailed": "Failed to load profile.",
-    "emailUpdateFailed": "Failed to update email.",
-    "passwordUpdateFailed": "Failed to update password.",
-    "deleteFailed": "Failed to delete account.",
-    "unknown": "Unknown error."
+    "notLoggedIn": "You are not logged in.",
+    "profileLoadFailed": "Could not load profile.",
+    "unknown": "Unknown error.",
+    "enterNewEmail": "Please enter a new email.",
+    "confirmPassword": "Please confirm your password.",
+    "emailChangeFailed": "Failed to change email.",
+    "enterCurrentPassword": "Please enter your current password.",
+    "enterNewPassword": "Please enter a new password.",
+    "passwordMin": "New password must be at least 6 characters.",
+    "passwordChangeFailed": "Failed to change password.",
+    "deleteFailed": "Failed to delete account."
   }
 }

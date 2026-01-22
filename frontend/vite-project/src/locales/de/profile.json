@@ -1,55 +1,57 @@
 {
-  "title": "Mein Profil",
-  "subtitle": "Hier kannst du deine Daten verwalten.",
-  "loading": "Lädt…",
-  "saving": "Speichert…",
-  "deleting": "Löscht…",
-
-  "notLoggedIn": "Du bist nicht eingeloggt. Bitte zuerst einloggen.",
-  "goToLogin": "Zum Login",
-  "confirmDelete": "Willst du deinen Account wirklich löschen? Diese Aktion kann man nicht rückgängig machen.",
-
-  "labels": {
-    "name": "Name",
-    "email": "E-Mail",
-    "role": "Rolle",
-    "newEmail": "Neue E-Mail",
-    "password": "Passwort",
-    "currentPassword": "Aktuelles Passwort",
-    "newPassword": "Neues Passwort"
+  "header": {
+    "kicker": "Account",
+    "title": "Mein Profil",
+    "subtitle": "Hier kannst du deine Daten verwalten.",
+    "loggedInAs": "Eingeloggt als"
   },
-
-  "sections": {
-    "email": {
-      "title": "E-Mail ändern",
-      "text": "Gib eine neue E-Mail ein und bestätige mit deinem Passwort."
-    },
-    "password": {
-      "title": "Passwort ändern",
-      "text": "Gib dein aktuelles Passwort ein und wähle ein neues."
-    },
-    "delete": {
-      "title": "Account löschen",
-      "text": "Wenn du deinen Account löschst, werden deine Daten und Buchungen entfernt."
-    }
-  },
-
+  "states": { "loading": "Lädt…" },
   "actions": {
-    "updateEmail": "E-Mail aktualisieren",
-    "updatePassword": "Passwort aktualisieren",
-    "deleteAccount": "Account löschen"
+    "show": "Anzeigen",
+    "hide": "Verbergen",
+    "save": "Speichern",
+    "saving": "Speichert…",
+    "deleting": "Löscht…"
   },
-
+  "email": {
+    "title": "E-Mail ändern",
+    "subtitle": "Neue E-Mail + Passwort bestätigen.",
+    "newEmailLabel": "Neue E-Mail",
+    "confirmPasswordLabel": "Passwort bestätigen",
+    "emailPlaceholder": "name@mail.com"
+  },
+  "password": {
+    "title": "Passwort ändern",
+    "subtitle": "Aktuelles Passwort + neues Passwort.",
+    "currentLabel": "Aktuelles Passwort",
+    "newLabel": "Neues Passwort",
+    "button": "Passwort ändern"
+  },
+  "delete": {
+    "title": "Account löschen",
+    "subtitle": "Achtung: Das kann man nicht rückgängig machen.",
+    "confirmPasswordLabel": "Passwort bestätigen",
+    "button": "Account löschen"
+  },
+  "confirm": {
+    "deleteAccount": "Account wirklich löschen? Das kann man NICHT rückgängig machen."
+  },
   "success": {
-    "emailUpdated": "E-Mail wurde aktualisiert.",
-    "passwordUpdated": "Passwort wurde aktualisiert."
+    "emailSaved": "✅ E-Mail wurde gespeichert.",
+    "passwordChanged": "✅ Passwort wurde geändert.",
+    "accountDeleted": "✅ Account gelöscht. Du bist jetzt ausgeloggt."
   },
-
   "errors": {
-    "loadFailed": "Fehler beim Laden des Profils.",
-    "emailUpdateFailed": "E-Mail ändern fehlgeschlagen.",
-    "passwordUpdateFailed": "Passwort ändern fehlgeschlagen.",
-    "deleteFailed": "Account löschen fehlgeschlagen.",
-    "unknown": "Unbekannter Fehler."
+    "notLoggedIn": "Du bist nicht eingeloggt.",
+    "profileLoadFailed": "Profil konnte nicht geladen werden.",
+    "unknown": "Unbekannter Fehler.",
+    "enterNewEmail": "Bitte neue E-Mail eingeben.",
+    "confirmPassword": "Bitte Passwort bestätigen.",
+    "emailChangeFailed": "E-Mail ändern fehlgeschlagen.",
+    "enterCurrentPassword": "Bitte aktuelles Passwort eingeben.",
+    "enterNewPassword": "Bitte neues Passwort eingeben.",
+    "passwordMin": "Neues Passwort muss mind. 6 Zeichen haben.",
+    "passwordChangeFailed": "Passwort ändern fehlgeschlagen.",
+    "deleteFailed": "Account löschen fehlgeschlagen."
   }
 }

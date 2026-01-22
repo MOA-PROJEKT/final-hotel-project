@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "title": "Geschmackserlebnisse für die Sinne",
+    "subtitle": "Hochwertigste Zutaten, verarbeitet von Michelin-gekürten Köchen, verschmelzen zu kreativen Gerichten. Passend dazu das Ambiente: Edel, stilvoll und doch gelassen."
+  },
+  "ui": {
+    "more": "MEHR",
+    "less": "WENIGER",
+    "downloadMenu": "Menü herunterladen",
+    "galleryTitle": "Genussmomente",
+    "viewGallery": "Galerie ansehen"
+  },
+  "items": [
+    {
+      "subtitle": "ESSEN UND TRINKEN",
+      "title": "MOA Restaurant",
+      "text": "Küchenchef Salvatore Frequente aus Sizilien und sein Team kümmern sich um die kulinarischen Belange der Gäste. Dabei haben Sie sich für neue Kreationen Inspiration in der Engadiner Natur geholt. Unterstützt wird das Konzept von der stilvollen Einrichtung des Tessiner Interior Designer Carlo Rampazzi, welcher ebenfalls auf natürliche Materialien und warmes Licht setzt.",
+      "schedule": [
+        { "label": "Frühstück", "time": "07.00 – 11.00 Uhr" },
+        { "label": "Abendessen", "time": "19.00 – 22.00 Uhr" }
+      ],
+      "menus": ["Frühstück", "À la Carte", "Kinder-Menü"]
+    },
+    {
+      "subtitle": "ESSEN UND TRINKEN",
+      "title": "MOA Bar und Lounge",
+      "text": "Die perfekte Mischung aus Eleganz und Entspannung. Genießen Sie kleine Snacks, Cocktails und atemberaubende Ausblicke. Das Herzstück des Hauses. Geschaffen, um zu bleiben, zu verweilen. Kleine Snacks oder aber den berühmten Carlton Afternoon Tea, beides können Sie hier zelebrieren. Der Blick gleitet dabei durch die imposanten Fenster auf die schneebedeckten Berge.",
+      "schedule": [],
+      "menus": ["Bar-Menü", "Tea Time", "Snacks"]
+    },
+    {
+      "subtitle": "ESSEN UND TRINKEN",
+      "title": "MOA Sonnenterrasse",
+      "text": "Die MOA Sonnenterrasse bietet ein unvergleichliches Ambiente, um den Tag entspannt zu genießen. Gäste können hier zum Aperitivo oder Lunch verweilen, sich mit Freunden treffen oder einfach die Sonne genießen. Unsere Terrasse ist elegant gestaltet, mit komfortablen Sitzmöglichkeiten, stilvollen Sonnenschirmen und liebevollen Dekorationen, die ein Wohlfühlgefühl erzeugen.\n\nOb für ein gemütliches Frühstück im Freien, ein leichtes Mittagessen oder einen entspannten Nachmittag bei Cocktails – die MOA Sonnenterrasse lädt dazu ein, die Zeit zu genießen und sich inspirieren zu lassen.\n\nDie offene Gestaltung der Terrasse schafft ein Gefühl von Freiheit und gleichzeitig Intimität. Gäste können die Ruhe genießen, während sie den Blick über die stilvoll gestaltete Hotelanlage schweifen lassen.",
+      "schedule": [{ "label": "Mittagessen", "time": "12.00 – 15.00 Uhr" }],
+      "menus": ["Lunch Menü", "Aperitivo Karte", "Getränke"]
+    },
+    {
+      "subtitle": "ESSEN UND TRINKEN",
+      "title": "Fondue Gondeln",
+      "text": "Käsefondue und Schweizer Winter - gibt es eine treffendere Kombination? Im MOA Hotel kreieren wir daraus ein unverwechselbares Erlebnis mit unseren Fondue-Gondeln für zwei bis vier Personen.\n\nGenießen Sie den authentischen Schweizer Käse, sorgfältig ausgewählt von unseren erfahrenen Köchen, geschmolzen zu einer cremigen, perfekt gewürzten Mischung. Jede Gondel ist stilvoll dekoriert und mit Kerzenlicht sowie kuscheligen Decken ausgestattet, sodass Sie sich warm und behaglich fühlen.\n\nDazu servieren wir ausgewählte Weine, frisches Brot und saisonale Beilagen, die das Fondue-Erlebnis abrunden.\n\nOb für ein romantisches Abendessen oder einen geselligen Abend mit Freunden – unsere Fondue-Gondeln bieten ein einmaliges kulinarisches Abenteuer mitten im Herzen von MOA Hotel.",
+      "schedule": [
+        { "label": "Mittagessen", "time": "12.00 – 15.00 Uhr" },
+        { "label": "Abendessen", "time": "18.00 – 22.00 Uhr" }
+      ],
+      "menus": ["Fondue Menü", "Weinkarte", "Dessert"]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, User, ChevronDown, LogOut, Shield } from 'lucide-react'
+import { Menu, X, User, ChevronDown, LogOut, Shield, UserCircle } from 'lucide-react'
 import { useTranslation } from "react-i18next";
 
 const navLinks = [
@@ -91,7 +91,15 @@ export default function Navbar() {
   const isLoggedIn = !!auth.token && !!auth.user
   const isAdmin = auth.user?.role === 'admin'
 
-  const isLightPage = path === '/contact' || path === '/restaurant'
+  // ✅ HIER IST DIE WICHTIGE ÄNDERUNG:
+  // /profile dazu, damit Header wie Restaurant = dunkle Schrift
+  const isLightPage =
+    path === '/contact' ||
+    path === '/restaurant' ||
+    path === '/profile' ||
+    path === '/my-bookings' ||
+    path === '/admin'
+
   const useDarkText = isScrolled || isLightPage
 
   useEffect(() => {
@@ -171,7 +179,7 @@ export default function Navbar() {
     navigate('/my-bookings')
   }
 
-  // ✅ NEU: Profil-Seite
+  // ✅ Profil-Seite
   const goProfile = () => {
     closeAllMenus()
     navigate('/profile')
@@ -261,23 +269,28 @@ export default function Navbar() {
                       </button>
 
                       {userMenuOpen && (
-                        <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[160px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
-                          {/* ✅ NEU: Profil */}
+                        <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[135px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
+                          {/* ✅ Änderung #1: Profil mit Icon + "Profil" */}
                           <button
                             type="button"
                             onClick={goProfile}
-                            className="w-full text-left px-3 py-2 hover:bg-white/10"
+                            className="w-full text-left px-3 py-2 hover:bg-white/10 flex items-center gap-2"
                           >
-                            {t("profile") || "My profile"}
+                            <UserCircle className="h-4 w-4" />
+                            <span>{t("profile")}</span>
+
                           </button>
 
-                          <button
-                            type="button"
-                            onClick={goMyBookings}
-                            className="w-full text-left px-3 py-2 hover:bg-white/10"
-                          >
-                            {t("myBookings")}
-                          </button>
+                          {/* ✅ Änderung #2: My bookings nur wenn NICHT Admin */}
+                          {!isAdmin && (
+                            <button
+                              type="button"
+                              onClick={goMyBookings}
+                              className="w-full text-left px-3 py-2 hover:bg-white/10"
+                            >
+                              {t("myBookings")}
+                            </button>
+                          )}
 
                           {isAdmin && (
                             <button
@@ -454,13 +467,14 @@ export default function Navbar() {
                   <span>{t("loggedIn")}</span>
                 </div>
 
-                {/* ✅ NEU: Profil */}
+                {/* ✅ Änderung #1 (mobile): Profil mit Icon + "Profil" */}
                 <button
                   type="button"
                   onClick={goProfile}
                   className="flex items-center gap-2 opacity-90 hover:opacity-100"
                 >
-                  <span>{t("profile") || "My profile"}</span>
+                  <UserCircle className="h-4 w-4" />
+                  <span>{t("profile")}</span>
                 </button>
 
                 {isAdmin && (
@@ -474,13 +488,16 @@ export default function Navbar() {
                   </button>
                 )}
 
-                <button
-                  type="button"
-                  onClick={goMyBookings}
-                  className="flex items-center gap-2 opacity-90 hover:opacity-100"
-                >
-                  <span>{t("myBookings")}</span>
-                </button>
+                {/* ✅ Änderung #2 (mobile): My bookings nur wenn NICHT Admin */}
+                {!isAdmin && (
+                  <button
+                    type="button"
+                    onClick={goMyBookings}
+                    className="flex items-center gap-2 opacity-90 hover:opacity-100"
+                  >
+                    <span>{t("myBookings")}</span>
+                  </button>
+                )}
 
                 <button
                   type="button"

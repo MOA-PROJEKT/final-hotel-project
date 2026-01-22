@@ -1,10 +1,10 @@
 // src/pages/Home.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ImageCaroussel from "../components/ImageCaroussel.jsx";
 import { useTranslation } from "react-i18next";
 
-import HERO from "../assets/images/hotel/HERO.jpg";
+
 import herovideodesktop from "../assets/images/hotel/herovideodesktop.mp4";
 
 import n1 from "../assets/images/hotel/n1.jpg";
@@ -95,6 +95,25 @@ export default function Home() {
   const { t } = useTranslation("home");
 
   const [currentSlide, setCurrentSlide] = useState(0);
+
+    // ✅ Video Play/Pause (wie Carlton)
+  const videoRef = useRef(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+
+  const toggleVideo = () => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    if (v.paused) {
+      v.play();
+      setIsVideoPlaying(true);
+    } else {
+      v.pause();
+      setIsVideoPlaying(false);
+    }
+  };
+
+
   const active = HOTEL_SLIDES[currentSlide];
 
   const goPrev = () =>
@@ -171,36 +190,114 @@ const toggleMoreJournal = () => {
 
   return (
     <main className="bg-[#f7efe7] text-slate-900">
-      {/* HERO – großes Startbild */}
-      <section id="hero" className="relative min-h-[100vh] overflow-hidden">
-        <video
-          src={herovideodesktop}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-slate-900/35" />
+     {/* HERO – großes Startbild */}
+<section id="hero" className="relative min-h-[100vh] overflow-hidden">
+  <video
+  ref={videoRef}
+  src={herovideodesktop}
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  className="absolute inset-0 h-full w-full object-cover"
+/> 
+  <div className="absolute inset-0 bg-slate-900/35" />
 
-        <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
-          <div className="mx-auto pt-16 max-w-3xl px-4 text-center text-white">
-            <h1 className="text-3xl  md:text-5xl font-semibold leading-tight">
-              {t("hero.title")}
-            </h1>
+  {/* ✅ Play / Pause Button (unten links) */}
+<button
+  type="button"
+  onClick={toggleVideo}
+  aria-label={isVideoPlaying ? "Video pausieren" : "Video abspielen"}
+  className="
+    absolute bottom-6 left-6 z-20
+    flex h-10 w-10 items-center justify-center
+    rounded-full bg-black/15 backdrop-blur-sm
+    text-white/70 hover:bg-black/50
+    border border-white/10
+    transition
+  "
+>
+  {isVideoPlaying ? (
+    // Pause Icon
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <rect x="6" y="5" width="4" height="14" rx="1" />
+      <rect x="14" y="5" width="4" height="14" rx="1" />
+    </svg>
+  ) : (
+    // Play Icon
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8 5v14l11-7-11-7z" />
+    </svg>
+  )}
+</button>
 
-            <div className="mt-10 flex justify-center">
-              <Link
-                to="/rooms"
-                className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
-              >
-                {t("hero.book")}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
+  <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
+    <div className="mx-auto pt-16 max-w-3xl px-4 text-center text-white">
+      <h1 className="text-3xl  md:text-5xl font-semibold leading-tight">
+        {t("hero.title")}
+      </h1>
+
+      <div className="mt-10 flex justify-center">
+        <Link
+          to="/rooms"
+          className="inline-flex items-center justify-center border-2 border-[#c50355] bg-[#c50355] px-10 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition hover:bg-transparent hover:text-[#c50355]"
+        >
+          {t("hero.book")}
+        </Link>
+      </div>
+
+      {/* ✅ HINZUGEFÜGT: "Mehr Entdecken" Button wie in Wellness */}
+      <button
+        onClick={() => {
+          const scrollDuration = 1500
+          const targetScroll = window.innerHeight
+          const start = window.scrollY
+          const startTime = performance.now()
+
+          function scrollStep(timestamp) {
+            const elapsed = timestamp - startTime
+            const progress = Math.min(elapsed / scrollDuration, 1)
+            const ease =
+              progress < 0.5
+                ? 2 * progress * progress
+                : -1 + (4 - 2 * progress) * progress
+            window.scrollTo(0, start + targetScroll * ease)
+            if (progress < 1) requestAnimationFrame(scrollStep)
+          }
+          requestAnimationFrame(scrollStep)
+        }}
+        aria-label="Nach unten scrollen"
+        className="
+          absolute bottom-[-6rem] left-1/2 -translate-x-1/2
+          flex flex-col items-center
+          text-white hover:text-[#c50355] opacity-80 hover:opacity-100 transition
+        "
+      >
+        <span className="text-sm uppercase tracking-widest mb-2">
+          Mehr Entdecken
+        </span>
+
+        <svg
+          className="w-9 h-9 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
+      {/* ✅ Ende Button */}
+    </div>
+  </div>
+</section>
+
 
       {/* HOTEL – wie Carlton: Bild links, halbtransparente Box rechts */}
       <section id="hotel" className="relative z-20 bg-[#f7efe7] py-28">

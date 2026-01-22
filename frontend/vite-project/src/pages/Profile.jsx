@@ -1,10 +1,13 @@
 // src/pages/Profile.jsx
 import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export default function Profile() {
+  const { t } = useTranslation("profile");
+
   const token = localStorage.getItem("token");
 
   const [me, setMe] = useState(null);
@@ -35,7 +38,9 @@ export default function Profile() {
       setMsg("");
 
       if (!token) {
-        setErr("Du bist nicht eingeloggt.");
+        setErr(
+          t("errors.notLoggedIn", { defaultValue: "Du bist nicht eingeloggt." })
+        );
         setLoading(false);
         return;
       }
@@ -46,19 +51,29 @@ export default function Profile() {
         });
 
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data?.msg || "Profil konnte nicht geladen werden.");
+        if (!res.ok) {
+          throw new Error(
+            data?.msg ||
+              t("errors.profileLoadFailed", {
+                defaultValue: "Profil konnte nicht geladen werden.",
+              })
+          );
+        }
 
         setMe(data.user || data);
         setNewEmail(data.user?.email || data.email || "");
       } catch (e) {
-        setErr(e.message || "Unbekannter Fehler.");
+        setErr(
+          e.message ||
+            t("errors.unknown", { defaultValue: "Unbekannter Fehler." })
+        );
       } finally {
         setLoading(false);
       }
     };
 
     loadMe();
-  }, [token]);
+  }, [token, t]);
 
   // ---- styles ----
   const pageWrap = "min-h-screen bg-[#f7f2ec] pt-40 lg:pt-48 pb-20";
@@ -96,8 +111,18 @@ export default function Profile() {
     setMsg("");
     setErr("");
 
-    if (!newEmail.trim()) return setErr("Bitte neue E-Mail eingeben.");
-    if (!emailPassword) return setErr("Bitte Passwort bestätigen.");
+    if (!newEmail.trim()) {
+      return setErr(
+        t("errors.enterNewEmail", { defaultValue: "Bitte neue E-Mail eingeben." })
+      );
+    }
+    if (!emailPassword) {
+      return setErr(
+        t("errors.confirmPassword", {
+          defaultValue: "Bitte Passwort bestätigen.",
+        })
+      );
+    }
 
     setBusy("email");
     try {
@@ -108,12 +133,21 @@ export default function Profile() {
       });
 
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.msg || "E-Mail ändern fehlgeschlagen.");
+      if (!res.ok) {
+        throw new Error(
+          data?.msg ||
+            t("errors.emailChangeFailed", {
+              defaultValue: "E-Mail ändern fehlgeschlagen.",
+            })
+        );
+      }
 
       // UI updaten
       const updatedUser = data.user || { ...me, email: newEmail };
       setMe(updatedUser);
-      setMsg("✅ E-Mail wurde gespeichert.");
+      setMsg(
+        t("success.emailSaved", { defaultValue: "✅ E-Mail wurde gespeichert." })
+      );
 
       // localStorage updaten, damit Navbar & Dropdown sofort richtig sind
       try {
@@ -127,7 +161,10 @@ export default function Profile() {
 
       setEmailPassword("");
     } catch (e) {
-      setErr(e.message || "Unbekannter Fehler.");
+      setErr(
+        e.message ||
+          t("errors.unknown", { defaultValue: "Unbekannter Fehler." })
+      );
     } finally {
       setBusy("");
     }
@@ -138,9 +175,27 @@ export default function Profile() {
     setMsg("");
     setErr("");
 
-    if (!currentPassword) return setErr("Bitte aktuelles Passwort eingeben.");
-    if (!newPassword) return setErr("Bitte neues Passwort eingeben.");
-    if (newPassword.length < 6) return setErr("Neues Passwort muss mind. 6 Zeichen haben.");
+    if (!currentPassword) {
+      return setErr(
+        t("errors.enterCurrentPassword", {
+          defaultValue: "Bitte aktuelles Passwort eingeben.",
+        })
+      );
+    }
+    if (!newPassword) {
+      return setErr(
+        t("errors.enterNewPassword", {
+          defaultValue: "Bitte neues Passwort eingeben.",
+        })
+      );
+    }
+    if (newPassword.length < 6) {
+      return setErr(
+        t("errors.passwordMin", {
+          defaultValue: "Neues Passwort muss mind. 6 Zeichen haben.",
+        })
+      );
+    }
 
     setBusy("password");
     try {
@@ -151,13 +206,27 @@ export default function Profile() {
       });
 
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.msg || "Passwort ändern fehlgeschlagen.");
+      if (!res.ok) {
+        throw new Error(
+          data?.msg ||
+            t("errors.passwordChangeFailed", {
+              defaultValue: "Passwort ändern fehlgeschlagen.",
+            })
+        );
+      }
 
-      setMsg("✅ Passwort wurde geändert.");
+      setMsg(
+        t("success.passwordChanged", {
+          defaultValue: "✅ Passwort wurde geändert.",
+        })
+      );
       setCurrentPassword("");
       setNewPassword("");
     } catch (e) {
-      setErr(e.message || "Unbekannter Fehler.");
+      setErr(
+        e.message ||
+          t("errors.unknown", { defaultValue: "Unbekannter Fehler." })
+      );
     } finally {
       setBusy("");
     }
@@ -168,9 +237,20 @@ export default function Profile() {
     setMsg("");
     setErr("");
 
-    if (!deletePassword) return setErr("Bitte Passwort bestätigen.");
+    if (!deletePassword) {
+      return setErr(
+        t("errors.confirmPassword", {
+          defaultValue: "Bitte Passwort bestätigen.",
+        })
+      );
+    }
 
-    const ok = window.confirm("Account wirklich löschen? Das kann man NICHT rückgängig machen.");
+    const ok = window.confirm(
+      t("confirm.deleteAccount", {
+        defaultValue:
+          "Account wirklich löschen? Das kann man NICHT rückgängig machen.",
+      })
+    );
     if (!ok) return;
 
     setBusy("delete");
@@ -182,42 +262,60 @@ export default function Profile() {
       });
 
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.msg || "Account löschen fehlgeschlagen.");
+      if (!res.ok) {
+        throw new Error(
+          data?.msg ||
+            t("errors.deleteFailed", {
+              defaultValue: "Account löschen fehlgeschlagen.",
+            })
+        );
+      }
 
       // logout
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.dispatchEvent(new Event("auth-changed"));
 
-      setMsg("✅ Account gelöscht. Du bist jetzt ausgeloggt.");
-      // optional: redirect
+      setMsg(
+        t("success.accountDeleted", {
+          defaultValue: "✅ Account gelöscht. Du bist jetzt ausgeloggt.",
+        })
+      );
+
       window.location.href = "/";
     } catch (e) {
-      setErr(e.message || "Unbekannter Fehler.");
+      setErr(
+        e.message ||
+          t("errors.unknown", { defaultValue: "Unbekannter Fehler." })
+      );
     } finally {
       setBusy("");
     }
   };
 
   return (
-    <main className={pageWrap}>
-      <div className="mx-auto max-w-6xl px-6 pt-12">
+    <main className={pageWrap} style={{ backgroundColor: "#f7efe7" }}>
+      <div className="mx-auto max-w-6xl px-6 mt-[-40px] md:pt-24">
         <div className={`${shell} p-8`}>
           <div className="flex justify-between">
             <div>
               <div className="text-xs tracking-[0.3em] uppercase text-slate-500">
-                Account
+                {t("header.kicker", { defaultValue: "Account" })}
               </div>
-              <h1 className="mt-2 text-2xl font-semibold">Mein Profil</h1>
+              <h1 className="mt-2 text-2xl font-semibold">
+                {t("header.title", { defaultValue: "Mein Profil" })}
+              </h1>
               <p className="mt-2 text-slate-600">
-                Hier kannst du deine Daten verwalten.
+                {t("header.subtitle", {
+                  defaultValue: "Hier kannst du deine Daten verwalten.",
+                })}
               </p>
             </div>
 
             {me?.email && (
               <div className="text-right">
                 <div className="text-xs uppercase tracking-[0.3em] text-slate-500">
-                  Eingeloggt als
+                  {t("header.loggedInAs", { defaultValue: "Eingeloggt als" })}
                 </div>
                 <div className="mt-1 font-semibold">{me.email}</div>
               </div>
@@ -228,7 +326,7 @@ export default function Profile() {
 
           {loading && (
             <div className="mt-7 rounded-xl border border-[#eadfce] bg-white/70 p-6 text-slate-700">
-              Lädt…
+              {t("states.loading", { defaultValue: "Lädt…" })}
             </div>
           )}
 
@@ -249,21 +347,35 @@ export default function Profile() {
               {/* EMAIL */}
               <section className={box}>
                 <div className={boxInner}>
-                  <h2 className={title}>E-Mail ändern</h2>
-                  <p className={sub}>Neue E-Mail + Passwort bestätigen.</p>
+                  <h2 className={title}>
+                    {t("email.title", { defaultValue: "E-Mail ändern" })}
+                  </h2>
+                  <p className={sub}>
+                    {t("email.subtitle", {
+                      defaultValue: "Neue E-Mail + Passwort bestätigen.",
+                    })}
+                  </p>
 
                   <div className="mt-5">
-                    <div className={label}>Neue E-Mail</div>
+                    <div className={label}>
+                      {t("email.newEmailLabel", { defaultValue: "Neue E-Mail" })}
+                    </div>
                     <input
                       className={inputNoEye}
                       value={newEmail}
                       onChange={(e) => setNewEmail(e.target.value)}
-                      placeholder="name@mail.com"
+                      placeholder={t("email.emailPlaceholder", {
+                        defaultValue: "name@mail.com",
+                      })}
                     />
                   </div>
 
                   <div className="mt-5">
-                    <div className={label}>Passwort bestätigen</div>
+                    <div className={label}>
+                      {t("email.confirmPasswordLabel", {
+                        defaultValue: "Passwort bestätigen",
+                      })}
+                    </div>
                     <div className={inputWrap}>
                       <input
                         className={input}
@@ -276,7 +388,11 @@ export default function Profile() {
                         type="button"
                         className={eyeBtn}
                         onClick={() => setShowEmailPw((v) => !v)}
-                        title={showEmailPw ? "Verbergen" : "Anzeigen"}
+                        title={
+                          showEmailPw
+                            ? t("actions.hide", { defaultValue: "Verbergen" })
+                            : t("actions.show", { defaultValue: "Anzeigen" })
+                        }
                       >
                         {showEmailPw ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -289,7 +405,9 @@ export default function Profile() {
                     disabled={busy === "email"}
                     onClick={handleUpdateEmail}
                   >
-                    {busy === "email" ? "Speichert…" : "Speichern"}
+                    {busy === "email"
+                      ? t("actions.saving", { defaultValue: "Speichert…" })
+                      : t("actions.save", { defaultValue: "Speichern" })}
                   </button>
                 </div>
               </section>
@@ -297,11 +415,21 @@ export default function Profile() {
               {/* PASSWORD */}
               <section className={box}>
                 <div className={boxInner}>
-                  <h2 className={title}>Passwort ändern</h2>
-                  <p className={sub}>Aktuelles Passwort + neues Passwort.</p>
+                  <h2 className={title}>
+                    {t("password.title", { defaultValue: "Passwort ändern" })}
+                  </h2>
+                  <p className={sub}>
+                    {t("password.subtitle", {
+                      defaultValue: "Aktuelles Passwort + neues Passwort.",
+                    })}
+                  </p>
 
                   <div className="mt-5">
-                    <div className={label}>Aktuelles Passwort</div>
+                    <div className={label}>
+                      {t("password.currentLabel", {
+                        defaultValue: "Aktuelles Passwort",
+                      })}
+                    </div>
                     <div className={inputWrap}>
                       <input
                         className={input}
@@ -314,7 +442,11 @@ export default function Profile() {
                         type="button"
                         className={eyeBtn}
                         onClick={() => setShowCurrentPw((v) => !v)}
-                        title={showCurrentPw ? "Verbergen" : "Anzeigen"}
+                        title={
+                          showCurrentPw
+                            ? t("actions.hide", { defaultValue: "Verbergen" })
+                            : t("actions.show", { defaultValue: "Anzeigen" })
+                        }
                       >
                         {showCurrentPw ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -322,7 +454,9 @@ export default function Profile() {
                   </div>
 
                   <div className="mt-5">
-                    <div className={label}>Neues Passwort</div>
+                    <div className={label}>
+                      {t("password.newLabel", { defaultValue: "Neues Passwort" })}
+                    </div>
                     <div className={inputWrap}>
                       <input
                         className={input}
@@ -335,7 +469,11 @@ export default function Profile() {
                         type="button"
                         className={eyeBtn}
                         onClick={() => setShowNewPw((v) => !v)}
-                        title={showNewPw ? "Verbergen" : "Anzeigen"}
+                        title={
+                          showNewPw
+                            ? t("actions.hide", { defaultValue: "Verbergen" })
+                            : t("actions.show", { defaultValue: "Anzeigen" })
+                        }
                       >
                         {showNewPw ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -348,7 +486,9 @@ export default function Profile() {
                     disabled={busy === "password"}
                     onClick={handleUpdatePassword}
                   >
-                    {busy === "password" ? "Speichert…" : "Passwort ändern"}
+                    {busy === "password"
+                      ? t("actions.saving", { defaultValue: "Speichert…" })
+                      : t("password.button", { defaultValue: "Passwort ändern" })}
                   </button>
                 </div>
               </section>
@@ -356,11 +496,21 @@ export default function Profile() {
               {/* DELETE */}
               <section className={`${box} border-rose-200`}>
                 <div className={boxInner}>
-                  <h2 className={title}>Account löschen</h2>
-                  <p className={sub}>Achtung: Das kann man nicht rückgängig machen.</p>
+                  <h2 className={title}>
+                    {t("delete.title", { defaultValue: "Account löschen" })}
+                  </h2>
+                  <p className={sub}>
+                    {t("delete.subtitle", {
+                      defaultValue: "Achtung: Das kann man nicht rückgängig machen.",
+                    })}
+                  </p>
 
                   <div className="mt-5">
-                    <div className={label}>Passwort bestätigen</div>
+                    <div className={label}>
+                      {t("delete.confirmPasswordLabel", {
+                        defaultValue: "Passwort bestätigen",
+                      })}
+                    </div>
                     <div className={inputWrap}>
                       <input
                         className={input}
@@ -373,7 +523,11 @@ export default function Profile() {
                         type="button"
                         className={eyeBtn}
                         onClick={() => setShowDeletePw((v) => !v)}
-                        title={showDeletePw ? "Verbergen" : "Anzeigen"}
+                        title={
+                          showDeletePw
+                            ? t("actions.hide", { defaultValue: "Verbergen" })
+                            : t("actions.show", { defaultValue: "Anzeigen" })
+                        }
                       >
                         {showDeletePw ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -386,7 +540,9 @@ export default function Profile() {
                     disabled={busy === "delete"}
                     onClick={handleDeleteMe}
                   >
-                    {busy === "delete" ? "Löscht…" : "Account löschen"}
+                    {busy === "delete"
+                      ? t("actions.deleting", { defaultValue: "Löscht…" })
+                      : t("delete.button", { defaultValue: "Account löschen" })}
                   </button>
                 </div>
               </section>

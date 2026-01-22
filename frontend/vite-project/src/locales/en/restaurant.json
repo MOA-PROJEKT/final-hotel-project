@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "title": "A feast for the senses",
+    "subtitle": "Finest ingredients, crafted by Michelin-starred chefs, come together in creative dishes. The atmosphere matches: elegant, stylish, and effortlessly relaxed."
+  },
+  "ui": {
+    "more": "MORE",
+    "less": "LESS",
+    "downloadMenu": "Download menu",
+    "galleryTitle": "Moments of indulgence",
+    "viewGallery": "View gallery"
+  },
+  "items": [
+    {
+      "subtitle": "FOOD & DRINK",
+      "title": "MOA Restaurant",
+      "text": "Head chef Salvatore Frequente from Sicily and his team take care of every culinary detail. New creations are inspired by the Engadin nature. The concept is complemented by the refined interior design of Ticino designer Carlo Rampazzi, who also focuses on natural materials and warm light.",
+      "schedule": [
+        { "label": "Breakfast", "time": "07:00 – 11:00" },
+        { "label": "Dinner", "time": "19:00 – 22:00" }
+      ],
+      "menus": ["Breakfast", "À la Carte", "Kids' Menu"]
+    },
+    {
+      "subtitle": "FOOD & DRINK",
+      "title": "MOA Bar & Lounge",
+      "text": "The perfect blend of elegance and relaxation. Enjoy light bites, cocktails, and breathtaking views. The heart of the house—made for lingering. From small snacks to the famous Carlton Afternoon Tea, everything is meant to be savored while the view glides through grand windows towards snow-covered peaks.",
+      "schedule": [],
+      "menus": ["Bar Menu", "Tea Time", "Snacks"]
+    },
+    {
+      "subtitle": "FOOD & DRINK",
+      "title": "MOA Sun Terrace",
+      "text": "The MOA Sun Terrace offers an exceptional setting to enjoy the day at ease. Stay for an aperitivo or lunch, meet friends, or simply soak up the sun. Elegant seating, stylish parasols, and thoughtful details create a true feel-good atmosphere.\n\nWhether it’s breakfast outdoors, a light lunch, or an afternoon cocktail—the terrace invites you to relax and be inspired.\n\nIts open design creates a sense of freedom while remaining intimate, with a calm view over the beautifully designed hotel grounds.",
+      "schedule": [{ "label": "Lunch", "time": "12:00 – 15:00" }],
+      "menus": ["Lunch Menu", "Aperitivo List", "Drinks"]
+    },
+    {
+      "subtitle": "FOOD & DRINK",
+      "title": "Fondue Gondolas",
+      "text": "Cheese fondue and a Swiss winter—can there be a better match? At MOA Hotel we turn it into a memorable experience with our fondue gondolas for two to four guests.\n\nEnjoy authentic Swiss cheese, carefully selected by our chefs and melted into a creamy, perfectly seasoned blend. Each gondola is warmly decorated with candlelight and cozy blankets.\n\nWe serve selected wines, fresh bread, and seasonal sides to complete the fondue experience.\n\nPerfect for a romantic dinner or a fun evening with friends—our fondue gondolas offer a unique culinary adventure at the heart of MOA Hotel.",
+      "schedule": [
+        { "label": "Lunch", "time": "12:00 – 15:00" },
+        { "label": "Dinner", "time": "18:00 – 22:00" }
+      ],
+      "menus": ["Fondue Menu", "Wine List", "Dessert"]
+    }
+  ]
+}

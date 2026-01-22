@@ -30,9 +30,14 @@ import enHome from "../locales/en/home.json";
 import profileDE from "../locales/de/profile.json";
 import profileEN from "../locales/en/profile.json";
 
+import deRestaurant from "../locales/de/restaurant.json";
+import enRestaurant from "../locales/en/restaurant.json";
 
+import deGallery from "../locales/de/gallery.json";
+import enGallery from "../locales/en/gallery.json";
 
-
+import deContact from "../locales/de/contact.json";
+import enContact from "../locales/en/contact.json";
 
 i18n
   .use(LanguageDetector)
@@ -40,9 +45,22 @@ i18n
   .init({
     fallbackLng: "de",
     supportedLngs: ["de", "en"],
-    ns: ["common", "nav", "auth", "bookings", "admin", "rooms", "footer", "home", "profile"],
-
+    ns: [
+      "common",
+      "nav",
+      "auth",
+      "bookings",
+      "admin",
+      "rooms",
+      "footer",
+      "home",
+      "profile",
+      "restaurant",
+      "gallery",
+      "contact",
+    ],
     defaultNS: "common",
+
     resources: {
       de: {
         common: deCommon,
@@ -54,7 +72,9 @@ i18n
         footer: deFooter,
         home: deHome,
         profile: profileDE,
-
+        restaurant: deRestaurant,
+        gallery: deGallery,
+        contact: deContact,
       },
       en: {
         common: enCommon,
@@ -66,14 +86,21 @@ i18n
         footer: enFooter,
         home: enHome,
         profile: profileEN,
+        restaurant: enRestaurant,
+        gallery: enGallery,
+        contact: enContact,
       },
     },
+
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
       lookupLocalStorage: "lang",
     },
-    interpolation: { escapeValue: false },
+
+    interpolation: {
+      escapeValue: false,
+    },
   });
 
 export default i18n;
