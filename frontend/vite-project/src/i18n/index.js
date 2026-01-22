@@ -39,12 +39,17 @@ import enGallery from "../locales/en/gallery.json";
 import deContact from "../locales/de/contact.json";
 import enContact from "../locales/en/contact.json";
 
+// ✅ richtig: wellness (mit 2 x s)
+import deWellness from "../locales/de/wellnes.json";
+import enWellness from "../locales/en/wellnes.json";
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     fallbackLng: "de",
     supportedLngs: ["de", "en"],
+
     ns: [
       "common",
       "nav",
@@ -58,6 +63,7 @@ i18n
       "restaurant",
       "gallery",
       "contact",
+      "wellness",
     ],
     defaultNS: "common",
 
@@ -75,6 +81,7 @@ i18n
         restaurant: deRestaurant,
         gallery: deGallery,
         contact: deContact,
+        wellness: deWellness,
       },
       en: {
         common: enCommon,
@@ -89,6 +96,7 @@ i18n
         restaurant: enRestaurant,
         gallery: enGallery,
         contact: enContact,
+        wellness: enWellness,
       },
     },
 

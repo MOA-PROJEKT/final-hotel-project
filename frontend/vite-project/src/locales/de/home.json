@@ -1,6 +1,141 @@
 {
   "hero": {
     "title": "Ihr privates Refugium im Herzen der Alpen.",
-    "book": "Buchen"
+    "book": "Buchen",
+    "discoverMore": "Mehr entdecken",
+    "scrollDownLabel": "Nach unten scrollen",
+    "videoPause": "Video pausieren",
+    "videoPlay": "Video abspielen"
+  },
+
+  "seasonIntro": {
+    "title": "Wintersaison: 12. Dezember 2025 – 22. März 2026",
+    "text": "Hoch über dem See gelegen, ist das MOA Hotel das edelste Refugium der Region – mit weitem Blick über Berge, Stadtlichter und den winterlichen See."
+  },
+
+  "buttons": {
+    "learnMore": "Mehr erfahren",
+    "discoverMore": "Mehr entdecken",
+    "toRestaurant": "Zum Restaurant",
+    "read": "Lesen",
+    "less": "Weniger",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen"
+  },
+
+  "hotel": {
+    "altImpression": "Hotel Impression",
+    "prev": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "slideCounter": "{{current}} / {{total}}"
+  },
+
+  "movingMountains": {
+    "kicker": "Moving Mountains",
+    "title": "Moving Mountains – unser ganzheitliches Programm",
+    "text": "Ein Konzept, das Vitalität stärkt, die Natur neu erlebbar macht und die Freude an Bewegung, Genuss und Entspannung verbindet.",
+    "alt": "Moving Mountains – Winter in den Bergen"
+  },
+
+  "sections": {
+    "news": "Aktuelles",
+    "journal": "Moa Hotel Journal"
+  },
+
+  "common": {
+    "kickerHotel": "MOA HOTEL"
+  },
+
+  "winter": {
+    "title": "Ein Winter voller Möglichkeiten",
+    "textLong": "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel – von Genuss bis Erlebnis.",
+    "textShort": "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel."
+  },
+
+  "whatsOn": {
+    "alt": "Aktuelles – Winter"
+  },
+  "section2": {
+    "alt": "Winter Highlight"
+  },
+  "section3": {
+    "alt": "Winter Highlight"
+  },
+
+  "hotelSlides": {
+    "kicker": "MOA HOTEL",
+    "1": {
+      "title": "Grand Restaurant",
+      "text1": "Feine Küche mit Blick auf Berge und See.",
+      "text2": "Regionale Zutaten, ruhige Atmosphäre und persönlicher Service für besondere Abende."
+    },
+    "2": {
+      "title": "Verantwortung übernehmen\nund Bewusstsein schaffen",
+      "text1": "Nachhaltige Architektur trifft auf modernen Komfort und bewussten Umgang mit Ressourcen."
+    },
+    "3": {
+      "title": "Ein Rückzugsort hoch über dem Tal",
+      "text1": "Weiter Blick über Berge, Stadtlichter und See – perfekt für ruhige Tage und lange Abende."
+    },
+    "4": {
+      "title": "Wintertage am Kamin",
+      "text1": "Nach einem Tag im Schnee wartet die Lounge mit Kamin, warmen Drinks und leiser Musik."
+    },
+    "5": {
+      "title": "Private Erlebnisse",
+      "text1": "Helikopterflüge, Spa-Suiten oder private Dinner – wir gestalten Erlebnisse nach Wunsch."
+    },
+    "6": {
+      "title": "Ankommen und Abschalten",
+      "text1": "Klare Linien, warme Materialien und viel Licht sorgen schon beim Ankommen für Ruhe."
+    }
+  },
+
+  "journal": {
+    "kicker": "MOA HOTEL",
+
+    "g1": {
+      "alt": "Journal Beitrag 1",
+      "title": "Drei Michelin-Keys – Auszeichnung für Exzellenz",
+      "intro": "Eine Anerkennung für Service, Atmosphäre und außergewöhnliche Erlebnisse – und ein Ansporn, jeden Tag noch besser zu werden.",
+      "more": "Drei Michelin-Keys stehen für außergewöhnliche Gastfreundschaft, stimmige Atmosphäre und konstante Qualität – vom ersten Empfang bis zum letzten Detail. Für uns ist es Motivation, Service und Kulinarik jeden Tag weiter zu verfeinern."
+    },
+
+    "g2": {
+      "alt": "Journal Beitrag 2",
+      "title": "Unter den Besten: ein Hotel für besondere Ansprüche",
+      "intro": "Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und erstklassigen Service – mitten in den Bergen.",
+      "more": "Wer bei uns ankommt, sucht Ruhe ohne Verzicht: großzügige Zimmer, ein Blick auf die Berge und ein Haus, das sich Zeit nimmt. Ob Kaminlounge, Concierge oder kleine Aufmerksamkeiten – hier zählt das Gefühl, wirklich willkommen zu sein."
+    },
+
+    "g3": {
+      "alt": "Journal Beitrag 3",
+      "title": "Signature Moments: außergewöhnlich – und ganz persönlich",
+      "intro": "Private Winter-Erlebnisse, Concierge-Service und kleine Details, die aus einem Aufenthalt eine Erinnerung machen.",
+      "more": "Signature Moments sind Erlebnisse, die wir exklusiv für dich gestalten: private Tastings, Winter-Picknicks, individuelle Touren oder ein Dinner an einem besonderen Ort. So wird aus einer Reise ein persönlicher Moment, der bleibt."
+    },
+
+    "g4": {
+      "alt": "Journal Beitrag 4",
+      "title": "Spa & Wellness: Entspannung auf einem neuen Niveau",
+      "intro": "Pool, Ruhezonen und Treatments – gestaltet für Regeneration, Stille und neue Energie nach einem Wintertag.",
+      "more": "Nach einem Tag in der Kälte wartet Wärme: Pool, Ruhezonen und Treatments, die Muskulatur lösen und Energie zurückbringen. Sanfte Düfte, leises Licht und stille Bereiche sorgen dafür, dass Kopf und Körper wirklich abschalten."
+    },
+
+    "e1": {
+      "alt": "Journal Beitrag 5",
+      "kicker": "REST",
+      "title": "Die Hidden Places von St. Moritz",
+      "intro": "St. Moritz ist mit seinem belebten Dorfkern und den berühmten Pisten eine weltweit beliebte Reisedestination. Auch abseits der touristischen Hotspots bietet die Region inspirierende Orte.",
+      "more": "Abseits der bekannten Wege zeigen sich St. Moritz und das Engadin von ihrer stillen Seite: verschneite Waldpfade, kleine Aussichtspunkte und Orte, an denen man die Natur ganz nah spürt. Perfekt für einen Spaziergang, der den Kopf frei macht."
+    },
+
+    "e2": {
+      "alt": "Journal Beitrag 6",
+      "kicker": "CARLTON HOTEL",
+      "title": "Inspiration aus der Natur: Das Grand Restaurant",
+      "intro": "Das Grand Restaurant ist eine Hommage an die Natur und die kulinarischen Köstlichkeiten des Engadins. Regionale Produkte, feine Aromen und ruhige Eleganz prägen den Abend.",
+      "more": "Das Grand Restaurant verbindet klassische Eleganz mit feinen, regionalen Aromen. Saisonale Menüs, ruhige Atmosphäre und ein Service, der aufmerksam bleibt, ohne aufdringlich zu sein – ideal für Abende, die in Erinnerung bleiben."
+    }
   }
 }
