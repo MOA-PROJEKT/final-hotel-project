@@ -7,7 +7,8 @@ import bookingRouter from './routes/bookingRouter.js'
 
 connectDB()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000;
+
 
 const app = express()
 
