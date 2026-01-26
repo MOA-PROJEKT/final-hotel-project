@@ -1,8 +1,12 @@
-import { Router } from 'express'
-import * as user from '../controllers/userController.js'
+// backend/routes/userRouter.js
+import { Router } from "express";
+import { protect } from "../middleware/authMiddleware.js";
+import { updateEmail, deleteMe } from "../controllers/userController.js";
 
-const userRouter = Router()
+const userRouter = Router();
 
-userRouter.post('/', user.createUser)
+// Eingeloggt nötig
+userRouter.patch("/me/email", protect, updateEmail);
+userRouter.delete("/me", protect, deleteMe);
 
-export default userRouter
+export default userRouter;

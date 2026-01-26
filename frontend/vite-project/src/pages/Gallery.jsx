@@ -31,7 +31,7 @@ export default function Gallery() {
     <main className=" text-white bg-[#f7efe7] min-h-screen">
       {/* HERO: volle Breite, Header liegt darüber */}
       <section className="relative -mt-24 sm:-mt-28 lg:-mt-32">
-        <div className="relative h-[90vh] min-h-[460px] w-full overflow-hidden">
+        <div className="relative md:h-[97vh] h-[94vh] min-h-[460px] w-full overflow-hidden">
           <img
             src={spaHero}
             alt="Infinity-Pool mit Blick auf die Berge"
@@ -41,7 +41,7 @@ export default function Gallery() {
           <div className="relative flex h-full items-center pt-[140px] justify-center px-4">
             <div className="text-center  max-w-3xl">
              
-              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-semibold ">
+              <h1 className="mt-6 text-3xl sm:text-3xl lg:text-5xl font-semibold ">
                 Verlieren Sie sich in der Schönheit einer Ikone
               </h1>
              
@@ -49,6 +49,15 @@ export default function Gallery() {
           </div>
         </div>
       </section>
+
+<div className="mt-16 flex items-center justify-center gap-4 sm:gap-8 px-4">
+  <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
+  <h2 className="font-serif text-xl md:text-3xl tracking-wide text-[#b2854e] whitespace-nowrap text-center">
+    Moa Hotel Gallery
+  </h2>
+  <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
+</div>
+
 
       {/* GALLERY-BEREICH – groß & edel */}
       <section className="mt-16 mx-auto max-w-7xl px-4 sm:px-8 lg:px-10 pb-20 space-y-10">

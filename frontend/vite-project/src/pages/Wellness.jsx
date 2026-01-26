@@ -10,7 +10,7 @@ import Hero from '../assets/images/wellness/Hero.webp'
 // Images – Spa
 import spaMassage from '../assets/images/wellness/spaMassage.jpg'
 import spaSauna from '../assets/images/wellness/spaSauna.jpg'
-import spaPool2 from '../assets/images/wellness/spaPool2.jpg'
+import spaPool2 from '../assets/images/wellness/yoga1.webp'
 
 // Images – Yoga & Fitness
 import yogaSession from '../assets/images/wellness/yogaSession.jpg'
@@ -40,7 +40,7 @@ export default function Wellness() {
 
         <div className="relative z-10 flex min-h-[90vh]  items-center justify-center">
           <div className="text-center lg:mt-16 max-w-3xl text-white">
-            <h1 className="mt-4 text-4xl  sm:text-5xl md:text-6xl font-semibold leading-tight">
+            <h1 className="mt-4 text-3xl   md:text-6xl font-semibold leading-tight">
               Wellness, Spa & Fitness
             </h1>
 
@@ -109,7 +109,7 @@ export default function Wellness() {
       </section>
 
       {/* ================= SPA SECTION ================= */}
-      <section className="max-w-7xl mx-auto px-6 pt-12 space-y-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-12 space-y-16 md:space-y-32">
         <WellnessSection
           index={0}
           image={spaPool2}
@@ -184,7 +184,7 @@ export default function Wellness() {
             md:-ml-10
           "
               >
-                <h2 className="text-4xl font-bold  text-slate-900 tracking-wide mb-4">
+                <h2 className="text-4xl font-bold  text-[#b2854e] tracking-wide mb-4">
                   Yoga & Meditation
                 </h2>
                 <h3 className="text-2xl font-semibold text-slate-700  mb-4">
@@ -232,7 +232,7 @@ export default function Wellness() {
             md:-mr-10
           "
               >
-                <h2 className="text-4xl font-bold text-slate-900 tracking-wide mb-4">
+                <h2 className="text-4xl font-bold text-[#b2854e] tracking-wide mb-4">
                   Fitness & Gym
                 </h2>
                 <h3 className="text-2xl font-semibold text-slate-700 mb-4">

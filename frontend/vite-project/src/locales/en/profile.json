@@ -1,0 +1,55 @@
+{
+  "title": "My Profile",
+  "subtitle": "Manage your account details here.",
+  "loading": "Loading…",
+  "saving": "Saving…",
+  "deleting": "Deleting…",
+
+  "notLoggedIn": "You are not logged in. Please log in first.",
+  "goToLogin": "Go to login",
+  "confirmDelete": "Do you really want to delete your account? This cannot be undone.",
+
+  "labels": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "newEmail": "New email",
+    "password": "Password",
+    "currentPassword": "Current password",
+    "newPassword": "New password"
+  },
+
+  "sections": {
+    "email": {
+      "title": "Change email",
+      "text": "Enter a new email and confirm with your password."
+    },
+    "password": {
+      "title": "Change password",
+      "text": "Enter your current password and choose a new one."
+    },
+    "delete": {
+      "title": "Delete account",
+      "text": "Deleting your account will remove your data and bookings."
+    }
+  },
+
+  "actions": {
+    "updateEmail": "Update email",
+    "updatePassword": "Update password",
+    "deleteAccount": "Delete account"
+  },
+
+  "success": {
+    "emailUpdated": "Email updated.",
+    "passwordUpdated": "Password updated."
+  },
+
+  "errors": {
+    "loadFailed": "Failed to load profile.",
+    "emailUpdateFailed": "Failed to update email.",
+    "passwordUpdateFailed": "Failed to update password.",
+    "deleteFailed": "Failed to delete account.",
+    "unknown": "Unknown error."
+  }
+}

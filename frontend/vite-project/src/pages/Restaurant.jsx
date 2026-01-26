@@ -68,12 +68,12 @@ Ob für ein romantisches Abendessen oder einen geselligen Abend mit Freunden –
   ]
 
   return (
-    <div className="bg-[#f7efe7] py-16">
-      <h1 className="text-center md:text-5xl font-light text-[#b38b4d] mb-12  mt-36">
+    <div className="bg-[#f7efe7] py-32  md:py-16">
+      <h1 className="text-center md:text-5xl text-3xl font-light text-[#b2854e] mb-12  md:mt-36 ">
         Geschmackserlebnisse für die Sinne
       </h1>
 
-      <p className="text-center text-2xl font-serif mb-12 max-w-3xl mx-auto px-4 text-gray-500">
+      <p className="text-center md:text-2xl text-lg font-serif mb-12 max-w-3xl mx-auto px-4 text-gray-500">
         Hochwertigste Zutaten, verarbeitet von Michelin-gekürten Köchen,
         verschmelzen zu kreativen Gerichten. Passend dazu das Ambiente: Edel,
         stilvoll und doch gelassen.

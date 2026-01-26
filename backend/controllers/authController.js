@@ -139,3 +139,65 @@ export const updatePassword = async (req, res) => {
     return res.status(500).json({ msg: 'Server error!' })
   }
 }
+
+
+export const updateEmail = async (req, res) => {
+  try {
+    const { email, password } = req.body
+
+    if (!email || !isEmail(email)) {
+      return res.status(400).json({ msg: 'Valid email is required.' })
+    }
+    if (!password) {
+      return res.status(400).json({ msg: 'Password is required.' })
+    }
+
+    const normalizedEmail = email.toLowerCase().trim()
+
+    // schon vergeben?
+    const existing = await User.findOne({
+      email: normalizedEmail,
+      _id: { $ne: req.user._id },
+    })
+    if (existing) {
+      return res.status(409).json({ msg: 'Email already in use.' })
+    }
+
+    // Passwort prüfen
+    const user = await User.findById(req.user._id).select('+passwordHash')
+    if (!user) return res.status(404).json({ msg: 'User not found.' })
+
+    const ok = await bcrypt.compare(password, user.passwordHash)
+    if (!ok) return res.status(401).json({ msg: 'Password is wrong.' })
+
+    user.email = normalizedEmail
+    await user.save()
+
+    return res.json({ msg: 'Email updated.', user: sanitizeUser(user) })
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ msg: 'Server error!' })
+  }
+}
+
+export const deleteMe = async (req, res) => {
+  try {
+    const { password } = req.body
+    if (!password) {
+      return res.status(400).json({ msg: 'Password is required.' })
+    }
+
+    const user = await User.findById(req.user._id).select('+passwordHash')
+    if (!user) return res.status(404).json({ msg: 'User not found.' })
+
+    const ok = await bcrypt.compare(password, user.passwordHash)
+    if (!ok) return res.status(401).json({ msg: 'Password is wrong.' })
+
+    await User.findByIdAndDelete(req.user._id)
+
+    return res.json({ msg: 'Account deleted.' })
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({ msg: 'Server error!' })
+  }
+}

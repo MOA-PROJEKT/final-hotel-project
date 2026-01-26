@@ -185,7 +185,7 @@ export default function AdminDashboard() {
         return {
           label: "Ausstehend",
           chip: "bg-amber-50/70 text-amber-900 border-amber-200",
-          icon: "⏳",
+  
           iconClass: "text-amber-700",
         };
     }
@@ -232,14 +232,14 @@ export default function AdminDashboard() {
             {kpiCard({
               title: "Total",
               value: stats.total,
-              icon: "📦",
+              
               iconClass: "text-slate-400",
               accentClass: "border-l-slate-300",
             })}
             {kpiCard({
               title: "Ausstehend",
               value: stats.pending,
-              icon: "⏳",
+              
               iconClass: "text-amber-700",
               accentClass: "border-l-amber-400",
             })}
@@ -302,24 +302,45 @@ export default function AdminDashboard() {
                           key={b._id}
                           className="border-t border-slate-100 hover:bg-slate-50/60 transition odd:bg-white even:bg-slate-50/30"
                         >
-                          <td className="px-4 py-4">
-                            <div className="font-medium text-slate-900">{b.user?.name || "—"}</div>
-                            <div className="text-xs text-slate-500">{b.user?.email || "—"}</div>
+                         
+                         <td className="px-4 py-4">
+  {(() => {
+    const userMissing = !b.user;
+    const guestName = b.user?.name || (userMissing ? "Konto gelöscht !" : "—");
+    const guestEmail = b.user?.email || (userMissing ? "Gastdaten nicht verfügbar" : "—");
 
-                            <div className="mt-1 inline-flex items-center gap-2">
-                              <button
-                                type="button"
-                                onClick={() => handleCopyId(b._id)}
-                                className="inline-flex items-center gap-2 text-left text-xs text-slate-400 hover:text-slate-600"
-                                title="ID kopieren"
-                              >
-                                <span>ID: {shortId(b._id)}</span>
-                                <span className="text-slate-300" aria-hidden="true">
-                                  ⧉
-                                </span>
-                              </button>
-                            </div>
-                          </td>
+    return (
+      <>
+        <div className="flex items-center gap-2">
+          <div
+  className={`font-medium ${userMissing ? "text-rose-500" : "text-slate-900"}`}
+>
+  {guestName}
+</div>
+
+          
+        </div>
+
+        <div className="text-xs text-slate-500">{guestEmail}</div>
+
+        <div className="mt-1 inline-flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => handleCopyId(b._id)}
+            className="inline-flex items-center gap-2 text-left text-xs text-slate-400 hover:text-slate-600"
+            title="ID kopieren"
+          >
+            <span>ID: {shortId(b._id)}</span>
+            <span className="text-slate-300" aria-hidden="true">
+              ⧉
+            </span>
+          </button>
+        </div>
+      </>
+    );
+  })()}
+</td>
+
 
                           <td className="px-4 py-4 text-slate-700">
                             {getRoomName(b.roomId) || b.roomId || "—"}
@@ -369,7 +390,7 @@ export default function AdminDashboard() {
                               type="button"
                               disabled={deletingId === b._id}
                               onClick={() => deleteBooking(b._id)}
-                              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+                              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-red-100 disabled:opacity-50"
                               title="Buchung löschen"
                             >
                               {deletingId === b._id ? "Löscht…" : "Löschen"}

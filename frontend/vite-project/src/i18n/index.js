@@ -27,6 +27,10 @@ import enFooter from "../locales/en/footer.json";
 import deHome from "../locales/de/home.json";
 import enHome from "../locales/en/home.json";
 
+import profileDE from "../locales/de/profile.json";
+import profileEN from "../locales/en/profile.json";
+
+
 
 
 
@@ -36,7 +40,8 @@ i18n
   .init({
     fallbackLng: "de",
     supportedLngs: ["de", "en"],
-    ns: ["common", "nav", "auth", "bookings", "admin", "rooms", "footer", "home"],
+    ns: ["common", "nav", "auth", "bookings", "admin", "rooms", "footer", "home", "profile"],
+
     defaultNS: "common",
     resources: {
       de: {
@@ -48,6 +53,7 @@ i18n
         rooms: deRooms,
         footer: deFooter,
         home: deHome,
+        profile: profileDE,
 
       },
       en: {
@@ -58,7 +64,8 @@ i18n
         admin: enAdmin,
         rooms: enRooms,
         footer: enFooter,
-        home: enHome
+        home: enHome,
+        profile: profileEN,
       },
     },
     detection: {
