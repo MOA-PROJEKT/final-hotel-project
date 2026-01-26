@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "title": "Contact us",
+    "subtitle": "The MOA_Hotel team will be happy to assist you."
+  },
+  "mapAlt": "How to get to St. Moritz – map of Switzerland",
+  "visit": {
+    "label": "Contact",
+    "title": "Visit us",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
+  },
+  "team": {
+    "title": "Contact our team",
+    "addressLine": "Via Stella 22, CH-7500 St. Moritz",
+    "phoneInline": "Phone",
+    "departments": {
+      "management": { "name": "Management", "role": "General Managers" },
+      "reservation": { "name": "Reservation & Revenue", "role": "Director of Revenue" },
+      "frontOffice": { "name": "Front Office", "role": "Front Office Manager" },
+      "hr": { "name": "Human Resources", "role": "HR Manager" },
+      "fb": { "name": "Food & Beverage", "role": "F&B Manager" },
+      "kitchen": { "name": "Kitchen", "role": "Executive Chef" },
+      "housekeeping": { "name": "Housekeeping", "role": "Executive Housekeeper" },
+      "spa": { "name": "Spa", "role": "Spa Manager" }
+    }
+  },
+  "sales": {
+    "title": "Sales contact"
+  },
+  "press": {
+    "title": "Press contact",
+    "boxTitle": "Press",
+    "address": "Address Musterstrasse 5",
+    "tel": "Tel"
+  },
+  "form": {
+    "title": "Hotel contact",
+    "subtitle1": "For more information, please fill out the",
+    "subtitle2": "form below.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send"
+  }
+}

@@ -9,6 +9,8 @@
   "myBookings": "My bookings",
   "admin": "Admin dashboard",
   "logout": "Logout",
-  "login": "Login"
+  "login": "Login",
+  "profile": "Profile"
+
 }
 

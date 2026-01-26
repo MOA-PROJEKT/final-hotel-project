@@ -1,0 +1,143 @@
+{
+  "hero": {
+    "title": "Wellness, Spa & Fitness",
+    "discoverMore": "Discover more",
+    "scrollDownLabel": "Scroll down",
+    "alt": "Wellness hero image"
+  },
+
+  "section": {
+    "showInfo": "Show more info",
+    "hideInfo": "Hide info"
+  },
+
+  "intro": {
+    "text": "Discover our exclusive wellness world — from relaxing spa treatments and calm yoga sessions to a modern fitness area for a complete feel-good experience."
+  },
+
+  "spa": {
+    "pool": {
+      "tag": "MOA Hotel — Pool",
+      "title": "Relaxation with a view of the water",
+      "description": "The indoor pool at MOA Hotel offers calm, pleasant temperatures and an elegant atmosphere to unwind.",
+      "details": {
+        "openingHours": "Opening hours",
+        "temperature": "Temperature",
+        "access": "Access"
+      },
+      "values": {
+        "openingHours": "07:00 – 21:00",
+        "temperature": "28 °C",
+        "access": "Hotel guests"
+      },
+      "extra": {
+        "bestTime": {
+          "label": "Best time to visit",
+          "value": "07:00 – 10:00 or after 18:00"
+        },
+        "towels": {
+          "label": "Towels & amenities",
+          "value": "Bathrobe & slippers included"
+        },
+        "privateSpa": {
+          "label": "Private spa",
+          "value": "Available on request"
+        },
+        "kids": {
+          "label": "Kids",
+          "value": "Allowed from age 12"
+        }
+      }
+    },
+
+    "sauna": {
+      "tag": "MOA Hotel — Sauna",
+      "title": "Soothing warmth for body & mind",
+      "description": "Our sauna is a place for regeneration and relaxation — perfect after an active day.",
+      "details": {
+        "openingHours": "Opening hours",
+        "temperature": "Temperature",
+        "restArea": "Relaxation area"
+      },
+      "values": {
+        "openingHours": "14:00 – 22:00",
+        "temperature": "80 – 90 °C",
+        "restArea": "included"
+      },
+      "extra": {
+        "bestTime": {
+          "label": "Best time to visit",
+          "value": "After 16:00 — usually quieter"
+        },
+        "towels": {
+          "label": "Towels & amenities",
+          "value": "Towels included (bathrobe in your room)"
+        },
+        "privateSpa": {
+          "label": "Private spa",
+          "value": "Available on request"
+        },
+        "kids": {
+          "label": "Kids",
+          "value": "Allowed from age 12"
+        }
+      }
+    },
+
+    "massage": {
+      "tag": "MOA Hotel — Massage",
+      "title": "Individual massages for your wellbeing",
+      "description": "Enjoy tailored massages that bring body and mind into balance.",
+      "details": {
+        "treatments": "Treatments",
+        "duration": "Duration",
+        "appointments": "Appointments"
+      },
+      "values": {
+        "treatments": "Full body, aroma, hot stone",
+        "duration": "30 – 90 minutes",
+        "appointments": "by appointment"
+      },
+      "extra": {
+        "recommendation": {
+          "label": "Recommendation",
+          "value": "Please arrive 10 minutes before your appointment"
+        },
+        "prep": {
+          "label": "Preparation",
+          "value": "Comfortable clothing — we provide everything you need"
+        },
+        "cancellation": {
+          "label": "Cancellation",
+          "value": "Free of charge up to 24 hours before"
+        }
+      }
+    }
+  },
+
+  "yoga": {
+    "imageAlt": "Yoga session",
+    "title": "Yoga & Meditation",
+    "subtitle": "Daily yoga classes",
+    "text": "Find inner calm and balance in our dedicated yoga area. Perfect for beginners and advanced practitioners.",
+    "list": [
+      "Morning yoga for energy",
+      "Evening relaxation yoga",
+      "Meditation & breathing exercises",
+      "Private yoga sessions"
+    ]
+  },
+
+  "fitness": {
+    "imageAlt": "Fitness gym",
+    "title": "Fitness & Gym",
+    "subtitle": "Modern fitness studio",
+    "text": "Our fitness area features the latest equipment, functional training zones and a friendly team to support you.",
+    "list": [
+      "Treadmills & cross trainers",
+      "Free weights area",
+      "Strength machines & functional training",
+      "Personal trainer on request"
+    ]
+  }
+}

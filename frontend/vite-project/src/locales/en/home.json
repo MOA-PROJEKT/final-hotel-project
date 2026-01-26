@@ -1,6 +1,141 @@
 {
   "hero": {
     "title": "Your private retreat in the heart of the Alps.",
-    "book": "Book"
+    "book": "Book",
+    "discoverMore": "Discover more",
+    "scrollDownLabel": "Scroll down",
+    "videoPause": "Pause video",
+    "videoPlay": "Play video"
+  },
+
+  "seasonIntro": {
+    "title": "Winter season: 12 December 2025 – 22 March 2026",
+    "text": "Perched high above the lake, MOA Hotel is the region’s most exclusive refuge — with sweeping views of mountains, city lights and the winter lake."
+  },
+
+  "buttons": {
+    "learnMore": "Learn more",
+    "discoverMore": "Discover more",
+    "toRestaurant": "To the restaurant",
+    "read": "Read",
+    "less": "Less",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+
+  "hotel": {
+    "altImpression": "Hotel impression",
+    "prev": "Previous image",
+    "next": "Next image",
+    "slideCounter": "{{current}} / {{total}}"
+  },
+
+  "movingMountains": {
+    "kicker": "Moving Mountains",
+    "title": "Moving Mountains — our holistic program",
+    "text": "A concept that strengthens vitality, brings nature closer, and combines movement, pleasure and relaxation.",
+    "alt": "Moving Mountains — winter in the mountains"
+  },
+
+  "sections": {
+    "news": "What’s on",
+    "journal": "Moa Hotel Journal"
+  },
+
+  "common": {
+    "kickerHotel": "MOA HOTEL"
+  },
+
+  "winter": {
+    "title": "A winter full of possibilities",
+    "textLong": "Discover seasonal highlights, special events and new winter moments at MOA Hotel — from indulgence to experiences.",
+    "textShort": "Discover seasonal highlights, special events and new winter moments at MOA Hotel."
+  },
+
+  "whatsOn": {
+    "alt": "What’s on — winter"
+  },
+  "section2": {
+    "alt": "Winter highlight"
+  },
+  "section3": {
+    "alt": "Winter highlight"
+  },
+
+  "hotelSlides": {
+    "kicker": "MOA HOTEL",
+    "1": {
+      "title": "Grand Restaurant",
+      "text1": "Fine dining with views of mountains and the lake.",
+      "text2": "Regional ingredients, a calm atmosphere and attentive service for unforgettable evenings."
+    },
+    "2": {
+      "title": "Taking responsibility\nand raising awareness",
+      "text1": "Sustainable architecture meets modern comfort and a mindful use of resources."
+    },
+    "3": {
+      "title": "A retreat high above the valley",
+      "text1": "Wide views over mountains, city lights and the lake — perfect for quiet days and long evenings."
+    },
+    "4": {
+      "title": "Winter days by the fireplace",
+      "text1": "After a day in the snow, the lounge awaits with a fireplace, warm drinks and soft music."
+    },
+    "5": {
+      "title": "Private experiences",
+      "text1": "Helicopter flights, spa suites or private dinners — we create experiences tailored to your wishes."
+    },
+    "6": {
+      "title": "Arrive and unwind",
+      "text1": "Clean lines, warm materials and plenty of light create a sense of calm from the very first moment."
+    }
+  },
+
+  "journal": {
+    "kicker": "MOA HOTEL",
+
+    "g1": {
+      "alt": "Journal post 1",
+      "title": "Three Michelin Keys — an award for excellence",
+      "intro": "Recognition for service, atmosphere and exceptional experiences — and motivation to become even better every day.",
+      "more": "Three Michelin Keys stand for outstanding hospitality, a coherent atmosphere and consistent quality — from the first welcome to the last detail. For us, it’s motivation to refine service and cuisine every day."
+    },
+
+    "g2": {
+      "alt": "Journal post 2",
+      "title": "Among the best: a hotel for discerning tastes",
+      "intro": "Architecture, location and cuisine meet calm, warmth and first-class service — right in the mountains.",
+      "more": "Guests who arrive here seek calm without compromise: spacious rooms, mountain views and a house that takes its time. Fireplace lounge, concierge or small gestures — what matters is feeling truly welcome."
+    },
+
+    "g3": {
+      "alt": "Journal post 3",
+      "title": "Signature Moments: exceptional — and truly personal",
+      "intro": "Private winter experiences, concierge service and small details that turn a stay into a lasting memory.",
+      "more": "Signature Moments are experiences we create exclusively for you: private tastings, winter picnics, tailored tours or a dinner in a special place. This turns a trip into a personal moment that stays."
+    },
+
+    "g4": {
+      "alt": "Journal post 4",
+      "title": "Spa & Wellness: relaxation on a new level",
+      "intro": "Pool, quiet zones and treatments — designed for regeneration, stillness and renewed energy after a winter day.",
+      "more": "After a day in the cold, warmth awaits: pool, relaxation areas and treatments that release tension and restore energy. Gentle scents, soft light and quiet spaces help both mind and body truly switch off."
+    },
+
+    "e1": {
+      "alt": "Journal post 5",
+      "kicker": "REST",
+      "title": "Hidden places in St. Moritz",
+      "intro": "With its lively village center and famous slopes, St. Moritz is a world-renowned destination. Beyond the hotspots, the region also offers inspiring places.",
+      "more": "Away from the beaten path, St. Moritz and the Engadin reveal their quiet side: snowy forest trails, small viewpoints and places where nature feels close. Perfect for a walk that clears your head."
+    },
+
+    "e2": {
+      "alt": "Journal post 6",
+      "kicker": "CARLTON HOTEL",
+      "title": "Inspired by nature: the Grand Restaurant",
+      "intro": "The Grand Restaurant is an homage to nature and the culinary treasures of the Engadin. Regional produce, fine aromas and quiet elegance define the evening.",
+      "more": "The Grand Restaurant combines classic elegance with refined regional flavors. Seasonal menus, a calm atmosphere and attentive service — ideal for evenings you’ll remember."
+    }
   }
 }

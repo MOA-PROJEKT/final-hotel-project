@@ -1,87 +1,93 @@
-import React, { useState } from 'react'
+// src/pages/Wellness.jsx
+import { useTranslation } from "react-i18next";
 
 // Components
-import WellnessSection from '../components/WellnessSection.jsx'
-import ImageCarousel from '../components/ImageCaroussel.jsx'
+import WellnessSection from "../components/WellnessSection.jsx";
+import ImageCarousel from "../components/ImageCaroussel.jsx";
 
 // Images – Hero
-import Hero from '../assets/images/wellness/Hero.webp'
+import Hero from "../assets/images/wellness/Hero.webp";
 
 // Images – Spa
-import spaMassage from '../assets/images/wellness/spaMassage.jpg'
-import spaSauna from '../assets/images/wellness/spaSauna.jpg'
-import spaPool2 from '../assets/images/wellness/yoga1.webp'
+import spaMassage from "../assets/images/wellness/spaMassage.jpg";
+import spaSauna from "../assets/images/wellness/spaSauna.jpg";
+import spaPool2 from "../assets/images/wellness/yoga1.webp";
 
 // Images – Yoga & Fitness
-import yogaSession from '../assets/images/wellness/yogaSession.jpg'
-import fitnessGym from '../assets/images/wellness/fitnessGym.jpg'
+import yogaSession from "../assets/images/wellness/yogaSession.jpg";
+import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
 
 // Images – Carousel
-import yoga1 from '../assets/images/wellness/yoga1.webp'
-import yoga2 from '../assets/images/wellness/yoga2.webp'
-import yoga3 from '../assets/images/wellness/yoga3.webp'
-import yoga4 from '../assets/images/wellness/yoga4.webp'
-import yoga5 from '../assets/images/wellness/yoga5.webp'
-import yoga6 from '../assets/images/wellness/yoga6.webp'
+import yoga1 from "../assets/images/wellness/yoga1.webp";
+import yoga2 from "../assets/images/wellness/yoga2.webp";
+import yoga3 from "../assets/images/wellness/yoga3.webp";
+import yoga4 from "../assets/images/wellness/yoga4.webp";
+import yoga5 from "../assets/images/wellness/yoga5.webp";
+import yoga6 from "../assets/images/wellness/yoga6.webp";
 
-const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6]
+const carouselImages = [yoga1, yoga2, yoga3, yoga4, yoga5, yoga6];
 
 export default function Wellness() {
+  const { t } = useTranslation("wellness");
+
+  const scrollDownSmooth = () => {
+    const scrollDuration = 1500;
+    const targetScroll = window.innerHeight;
+    const start = window.scrollY;
+    const startTime = performance.now();
+
+    function scrollStep(timestamp) {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / scrollDuration, 1);
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : -1 + (4 - 2 * progress) * progress;
+
+      window.scrollTo(0, start + targetScroll * ease);
+      if (progress < 1) requestAnimationFrame(scrollStep);
+    }
+
+    requestAnimationFrame(scrollStep);
+  };
+
   return (
     <section className="bg-[#f7efe7] text-[#1b1b1b]">
       {/* ================= HERO ================= */}
       <div id="hero" className="relative min-h-[100vh] overflow-hidden">
         <img
           src={Hero}
-          alt="hero bild"
+          alt={t("hero.alt")}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-900/35" />
 
-        <div className="relative z-10 flex min-h-[90vh]  items-center justify-center">
+        <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="text-center lg:mt-16 max-w-3xl text-white">
-            <h1 className="mt-4 text-3xl   md:text-6xl font-semibold leading-tight">
-              Wellness, Spa & Fitness
+            <h1 className="mt-4 text-3xl md:text-6xl font-semibold leading-tight">
+              {t("hero.title")}
             </h1>
 
             <button
-              onClick={() => {
-                const scrollDuration = 1500
-                const targetScroll = window.innerHeight
-                const start = window.scrollY
-                const startTime = performance.now()
-
-                function scrollStep(timestamp) {
-                  const elapsed = timestamp - startTime
-                  const progress = Math.min(elapsed / scrollDuration, 1)
-                  const ease =
-                    progress < 0.5
-                      ? 2 * progress * progress
-                      : -1 + (4 - 2 * progress) * progress
-                  window.scrollTo(0, start + targetScroll * ease)
-                  if (progress < 1) {
-                    requestAnimationFrame(scrollStep)
-                  }
-                }
-                requestAnimationFrame(scrollStep)
-              }}
-              aria-label="Nach unten scrollen"
+              onClick={scrollDownSmooth}
+              aria-label={t("hero.scrollDownLabel")}
               className="
-    absolute bottom-[-6rem] left-1/2 -translate-x-1/2
-    flex flex-col items-center
-    text-white hover:text-[#c50355] opacity-80 hover:opacity-100 transition
-  "
+                absolute bottom-[-6rem] left-1/2 -translate-x-1/2
+                flex flex-col items-center
+                text-white hover:text-[#c50355] opacity-80 hover:opacity-100 transition
+              "
             >
-              <span className="text-sm uppercase tracking-widest  mb-2">
-                Mehr Entdecken
+              <span className="text-sm uppercase tracking-widest mb-2">
+                {t("hero.discoverMore")}
               </span>
 
               <svg
-                className="w-9 h-9 animate-bounce "
+                className="w-9 h-9 animate-bounce"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -97,13 +103,8 @@ export default function Wellness() {
       {/* ================= INTRO ================= */}
       <section>
         <div className="flex flex-col items-center text-center px-6 pt-16">
-          <p
-            className="
-            text-gray-500 text-2xl mt-4 max-w-3xl mx-auto"
-          >
-            Entdecken Sie unsere exklusive Wellnesswelt – von entspannenden Spa-
-            Anwendungen über ruhige Yoga-Sessions bis hin zu einem modernen
-            Fitnessbereich für ein ganzheitliches Wohlfühlerlebnis.
+          <p className="text-gray-500 text-2xl mt-4 max-w-3xl mx-auto">
+            {t("intro.text")}
           </p>
         </div>
       </section>
@@ -113,39 +114,116 @@ export default function Wellness() {
         <WellnessSection
           index={0}
           image={spaPool2}
-          tag="MOA Hotel – Pool"
-          title="Entspannung mit Blick ins Wasser"
-          description="Der Innenpool im MOA Hotel bietet Ruhe, angenehme Temperaturen und eine elegante Atmosphäre zum Abschalten."
+          tag={t("spa.pool.tag")}
+          title={t("spa.pool.title")}
+          description={t("spa.pool.description")}
           details={[
-            { label: 'Öffnungszeiten', value: '07:00 – 21:00 Uhr' },
-            { label: 'Temperatur', value: '28 °C' },
-            { label: 'Zugang', value: 'Hotelgäste' },
+            {
+              label: t("spa.pool.details.openingHours"),
+              value: t("spa.pool.values.openingHours"),
+            },
+            {
+              label: t("spa.pool.details.temperature"),
+              value: t("spa.pool.values.temperature"),
+            },
+            {
+              label: t("spa.pool.details.access"),
+              value: t("spa.pool.values.access"),
+            },
+          ]}
+          extraDetails={[
+            {
+              label: t("spa.pool.extra.bestTime.label"),
+              value: t("spa.pool.extra.bestTime.value"),
+            },
+            {
+              label: t("spa.pool.extra.towels.label"),
+              value: t("spa.pool.extra.towels.value"),
+            },
+            {
+              label: t("spa.pool.extra.privateSpa.label"),
+              value: t("spa.pool.extra.privateSpa.value"),
+            },
+            {
+              label: t("spa.pool.extra.kids.label"),
+              value: t("spa.pool.extra.kids.value"),
+            },
           ]}
         />
 
         <WellnessSection
           index={1}
           image={spaSauna}
-          tag="MOA Hotel – Sauna"
-          title="Wohltuende Wärme für Körper & Geist"
-          description="Unsere Sauna ist ein Rückzugsort zur Regeneration und Entspannung – perfekt nach einem aktiven Tag."
+          tag={t("spa.sauna.tag")}
+          title={t("spa.sauna.title")}
+          description={t("spa.sauna.description")}
           details={[
-            { label: 'Öffnungszeiten', value: '14:00 – 22:00 Uhr' },
-            { label: 'Temperatur', value: '80 – 90 °C' },
-            { label: 'Ruhebereich', value: 'inklusive' },
+            {
+              label: t("spa.sauna.details.openingHours"),
+              value: t("spa.sauna.values.openingHours"),
+            },
+            {
+              label: t("spa.sauna.details.temperature"),
+              value: t("spa.sauna.values.temperature"),
+            },
+            {
+              label: t("spa.sauna.details.restArea"),
+              value: t("spa.sauna.values.restArea"),
+            },
+          ]}
+          extraDetails={[
+            {
+              label: t("spa.sauna.extra.bestTime.label"),
+              value: t("spa.sauna.extra.bestTime.value"),
+            },
+            {
+              label: t("spa.sauna.extra.towels.label"),
+              value: t("spa.sauna.extra.towels.value"),
+            },
+            {
+              label: t("spa.sauna.extra.privateSpa.label"),
+              value: t("spa.sauna.extra.privateSpa.value"),
+            },
+            {
+              label: t("spa.sauna.extra.kids.label"),
+              value: t("spa.sauna.extra.kids.value"),
+            },
           ]}
         />
 
         <WellnessSection
           index={2}
           image={spaMassage}
-          tag="MOA Hotel – Massage"
-          title="Individuelle Massagen für Ihr Wohlbefinden"
-          description="Genießen Sie maßgeschneiderte Massagen, die Körper und Geist in Einklang bringen."
+          tag={t("spa.massage.tag")}
+          title={t("spa.massage.title")}
+          description={t("spa.massage.description")}
           details={[
-            { label: 'Behandlungen', value: 'Ganzkörper, Aroma, Hot Stone' },
-            { label: 'Dauer', value: '30 – 90 Minuten' },
-            { label: 'Termine', value: 'nach Vereinbarung' },
+            {
+              label: t("spa.massage.details.treatments"),
+              value: t("spa.massage.values.treatments"),
+            },
+            {
+              label: t("spa.massage.details.duration"),
+              value: t("spa.massage.values.duration"),
+            },
+            {
+              label: t("spa.massage.details.appointments"),
+              value: t("spa.massage.values.appointments"),
+            },
+          ]}
+          extraDetails={[
+            {
+              label: t("spa.massage.extra.recommendation.label"),
+              value: t("spa.massage.extra.recommendation.value"),
+            },
+            {
+              label: t("spa.massage.extra.prep.label"),
+              value: t("spa.massage.extra.prep.value"),
+            },
+            {
+              label: t("spa.massage.extra.cancellation.label"),
+              value: t("spa.massage.extra.cancellation.value"),
+            },
           ]}
         />
       </section>
@@ -158,13 +236,13 @@ export default function Wellness() {
       <section className="relative overflow-hidden">
         <div className="flex flex-col items-center justify-center">
           {/* ================= YOGA SECTION ================= */}
-          <div className="w-full max-w-7xl px-6 ">
+          <div className="w-full max-w-7xl px-6">
             <div className="flex flex-col md:flex-row items-center relative justify-center">
               {/* Bild */}
               <div className="w-full md:w-7/12 relative">
                 <img
                   src={yogaSession}
-                  alt="Yoga Session"
+                  alt={t("yoga.imageAlt")}
                   className="w-full h-96 md:h-[500px] object-cover shadow-xl"
                 />
               </div>
@@ -172,34 +250,35 @@ export default function Wellness() {
               {/* Textbox überlappend */}
               <div
                 className="
-            bg-white/80 md:bg-white/90
-            backdrop-blur-md md:backdrop-blur-[3px]
-            shadow-lg
-            h-auto md:h-[520px]
-            p-10 md:p-14
-            w-full md:w-[450px]
-            -mt-16 md:mt-0
-            relative
-            z-10
-            md:-ml-10
-          "
+                  bg-white/80 md:bg-white/90
+                  backdrop-blur-md md:backdrop-blur-[3px]
+                  shadow-lg
+                  h-auto md:h-[520px]
+                  p-10 md:p-14
+                  w-full md:w-[450px]
+                  -mt-16 md:mt-0
+                  relative
+                  z-10
+                  md:-ml-10
+                "
               >
-                <h2 className="text-4xl font-bold  text-[#b2854e] tracking-wide mb-4">
-                  Yoga & Meditation
+                <h2 className="text-4xl font-bold text-[#b2854e] tracking-wide mb-4">
+                  {t("yoga.title")}
                 </h2>
-                <h3 className="text-2xl font-semibold text-slate-700  mb-4">
-                  Tägliche Yoga-Stunden
+
+                <h3 className="text-2xl font-semibold text-slate-700 mb-4">
+                  {t("yoga.subtitle")}
                 </h3>
+
                 <p className="text-slate-700 leading-relaxed mb-4">
-                  Finden Sie innere Ruhe und Balance in unserem speziell
-                  gestalteten Yoga-Bereich. Perfekt für Anfänger und
-                  Fortgeschrittene.
+                  {t("yoga.text")}
                 </p>
+
                 <ul className="text-slate-700 space-y-2 list-disc list-inside">
-                  <li>Morgen-Yoga für Energie</li>
-                  <li>Entspannungs-Yoga am Abend</li>
-                  <li>Meditation & Atemübungen</li>
-                  <li>Private Yoga-Sessions</li>
+                  <li>{t("yoga.list.0")}</li>
+                  <li>{t("yoga.list.1")}</li>
+                  <li>{t("yoga.list.2")}</li>
+                  <li>{t("yoga.list.3")}</li>
                 </ul>
               </div>
             </div>
@@ -212,7 +291,7 @@ export default function Wellness() {
               <div className="w-full md:w-7/12 relative">
                 <img
                   src={fitnessGym}
-                  alt="Fitness Studio"
+                  alt={t("fitness.imageAlt")}
                   className="w-full h-96 md:h-[500px] object-cover shadow-xl"
                 />
               </div>
@@ -220,34 +299,35 @@ export default function Wellness() {
               {/* Textbox überlappend */}
               <div
                 className="
-            bg-white/80 md:bg-white/90
-            backdrop-blur-md md:backdrop-blur-[3px]
-            shadow-lg
-            h-auto md:h-[520px]
-            p-10 md:p-14
-            w-full md:w-[450px]
-            -mt-16 md:mt-0
-            relative
-            z-10
-            md:-mr-10
-          "
+                  bg-white/80 md:bg-white/90
+                  backdrop-blur-md md:backdrop-blur-[3px]
+                  shadow-lg
+                  h-auto md:h-[520px]
+                  p-10 md:p-14
+                  w-full md:w-[450px]
+                  -mt-16 md:mt-0
+                  relative
+                  z-10
+                  md:-mr-10
+                "
               >
                 <h2 className="text-4xl font-bold text-[#b2854e] tracking-wide mb-4">
-                  Fitness & Gym
+                  {t("fitness.title")}
                 </h2>
+
                 <h3 className="text-2xl font-semibold text-slate-700 mb-4">
-                  Modernes Fitnessstudio
+                  {t("fitness.subtitle")}
                 </h3>
+
                 <p className="text-slate-700 leading-relaxed mb-4">
-                  Unser Fitnessbereich ist ausgestattet mit neuesten Geräten,
-                  Functional Training Zonen und einem freundlichen Team, das Sie
-                  unterstützt.
+                  {t("fitness.text")}
                 </p>
+
                 <ul className="text-slate-700 space-y-2 list-disc list-inside">
-                  <li>Laufbänder & Crosstrainer</li>
-                  <li>Freihantelbereich</li>
-                  <li>Kraftgeräte & Functional Training</li>
-                  <li>Personal Trainer auf Anfrage</li>
+                  <li>{t("fitness.list.0")}</li>
+                  <li>{t("fitness.list.1")}</li>
+                  <li>{t("fitness.list.2")}</li>
+                  <li>{t("fitness.list.3")}</li>
                 </ul>
               </div>
             </div>
@@ -255,5 +335,5 @@ export default function Wellness() {
         </div>
       </section>
     </section>
-  )
+  );
 }

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-export default function BookingForm({ roomId }) {
+export default function BookingForm({ roomId, pricePerNight = 0 }) {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { t } = useTranslation("bookings");
@@ -27,6 +27,38 @@ export default function BookingForm({ roomId }) {
     if (!roomId) return false;
     return true;
   }, [checkIn, checkOut, guests, roomId]);
+
+  // ✅ NEU: Nächte berechnen
+  const nights = useMemo(() => {
+    if (!checkIn || !checkOut) return 0;
+    const a = new Date(checkIn).getTime();
+    const b = new Date(checkOut).getTime();
+    if (Number.isNaN(a) || Number.isNaN(b)) return 0;
+    if (a >= b) return 0;
+
+    const diffMs = b - a;
+    const oneDay = 1000 * 60 * 60 * 24;
+    return Math.round(diffMs / oneDay);
+  }, [checkIn, checkOut]);
+
+  // ✅ NEU: Gesamtpreis
+  const totalPrice = useMemo(() => {
+    const p = Number(pricePerNight) || 0;
+    if (!isValid || nights <= 0 || p <= 0) return 0;
+    return p * nights;
+  }, [pricePerNight, nights, isValid]);
+
+  // ✅ NEU: Preis-Format (EUR)
+  const totalFormatted = useMemo(() => {
+    try {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+      }).format(totalPrice);
+    } catch {
+      return `${totalPrice} €`;
+    }
+  }, [totalPrice]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +95,9 @@ export default function BookingForm({ roomId }) {
 
       if (!res.ok) {
         const msg =
-          data?.msg || data?.message || t("form.errors.bookFailedWithStatus", { status: res.status });
+          data?.msg ||
+          data?.message ||
+          t("form.errors.bookFailedWithStatus", { status: res.status });
         if (res.status === 401) navigate("/login");
         else setError(msg);
         return;
@@ -136,12 +170,30 @@ export default function BookingForm({ roomId }) {
             />
           </label>
 
+          {/* ✅ NEU: Anzeige Nächte + Gesamtpreis (nur wenn sinnvoll) */}
+          {nights > 0 && (
+            <div className="text-sm text-slate-700">
+              <span className="font-semibold">{nights}</span>{" "}
+              {nights === 1 ? "Nacht" : "Nächte"}
+              {Number(pricePerNight) > 0 && (
+                <>
+                  {" "}
+                  · <span className="font-semibold">{totalFormatted}</span>
+                </>
+              )}
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={!isValid || loading}
             className="mt-[50px] inline-flex items-center justify-center rounded-md border border-[#c52b58] bg-[#c52b58] px-5 py-3 text-sm font-semibold text-white disabled:opacity-60"
           >
-            {loading ? t("form.saving") : t("form.submit")}
+            {loading
+              ? t("form.saving")
+              : isValid && totalPrice > 0
+              ? `${t("form.submit")} · ${totalFormatted}`
+              : t("form.submit")}
           </button>
 
           {!token && <div className="text-xs text-slate-500">{t("form.mustLogin")}</div>}

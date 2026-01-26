@@ -1,0 +1,143 @@
+{
+  "hero": {
+    "title": "Wellness, Spa & Fitness",
+    "discoverMore": "Mehr entdecken",
+    "scrollDownLabel": "Nach unten scrollen",
+    "alt": "Wellness Hero Bild"
+  },
+
+  "section": {
+    "showInfo": "Mehr Infos anzeigen",
+    "hideInfo": "Infos ausblenden"
+  },
+
+  "intro": {
+    "text": "Entdecken Sie unsere exklusive Wellnesswelt – von entspannenden Spa-Anwendungen über ruhige Yoga-Sessions bis hin zu einem modernen Fitnessbereich für ein ganzheitliches Wohlfühlerlebnis."
+  },
+
+  "spa": {
+    "pool": {
+      "tag": "MOA Hotel – Pool",
+      "title": "Entspannung mit Blick ins Wasser",
+      "description": "Der Innenpool im MOA Hotel bietet Ruhe, angenehme Temperaturen und eine elegante Atmosphäre zum Abschalten.",
+      "details": {
+        "openingHours": "Öffnungszeiten",
+        "temperature": "Temperatur",
+        "access": "Zugang"
+      },
+      "values": {
+        "openingHours": "07:00 – 21:00 Uhr",
+        "temperature": "28 °C",
+        "access": "Hotelgäste"
+      },
+      "extra": {
+        "bestTime": {
+          "label": "Beste Besuchszeit",
+          "value": "07:00 – 10:00 Uhr oder ab 18:00 Uhr"
+        },
+        "towels": {
+          "label": "Handtücher & Ausstattung",
+          "value": "Inklusive Bademantel & Slipper"
+        },
+        "privateSpa": {
+          "label": "Privat-Spa",
+          "value": "Auf Anfrage buchbar"
+        },
+        "kids": {
+          "label": "Kinder",
+          "value": "Ab 12 Jahren erlaubt"
+        }
+      }
+    },
+
+    "sauna": {
+      "tag": "MOA Hotel – Sauna",
+      "title": "Wohltuende Wärme für Körper & Geist",
+      "description": "Unsere Sauna ist ein Rückzugsort zur Regeneration und Entspannung – perfekt nach einem aktiven Tag.",
+      "details": {
+        "openingHours": "Öffnungszeiten",
+        "temperature": "Temperatur",
+        "restArea": "Ruhebereich"
+      },
+      "values": {
+        "openingHours": "14:00 – 22:00 Uhr",
+        "temperature": "80 – 90 °C",
+        "restArea": "inklusive"
+      },
+      "extra": {
+        "bestTime": {
+          "label": "Beste Besuchszeit",
+          "value": "Ab 16:00 Uhr – besonders ruhig"
+        },
+        "towels": {
+          "label": "Handtücher & Ausstattung",
+          "value": "Handtücher inklusive (Bademantel auf dem Zimmer)"
+        },
+        "privateSpa": {
+          "label": "Privat-Spa",
+          "value": "Auf Anfrage möglich"
+        },
+        "kids": {
+          "label": "Kinder",
+          "value": "Ab 12 Jahren erlaubt"
+        }
+      }
+    },
+
+    "massage": {
+      "tag": "MOA Hotel – Massage",
+      "title": "Individuelle Massagen für Ihr Wohlbefinden",
+      "description": "Genießen Sie maßgeschneiderte Massagen, die Körper und Geist in Einklang bringen.",
+      "details": {
+        "treatments": "Behandlungen",
+        "duration": "Dauer",
+        "appointments": "Termine"
+      },
+      "values": {
+        "treatments": "Ganzkörper, Aroma, Hot Stone",
+        "duration": "30 – 90 Minuten",
+        "appointments": "nach Vereinbarung"
+      },
+      "extra": {
+        "recommendation": {
+          "label": "Empfehlung",
+          "value": "Bitte 10 Minuten vor Termin erscheinen"
+        },
+        "prep": {
+          "label": "Vorbereitung",
+          "value": "Leichte Kleidung – wir stellen alles Nötige bereit"
+        },
+        "cancellation": {
+          "label": "Stornierung",
+          "value": "Kostenfrei bis 24 Stunden vorher"
+        }
+      }
+    }
+  },
+
+  "yoga": {
+    "imageAlt": "Yoga Session",
+    "title": "Yoga & Meditation",
+    "subtitle": "Tägliche Yoga-Stunden",
+    "text": "Finden Sie innere Ruhe und Balance in unserem speziell gestalteten Yoga-Bereich. Perfekt für Anfänger und Fortgeschrittene.",
+    "list": [
+      "Morgen-Yoga für Energie",
+      "Entspannungs-Yoga am Abend",
+      "Meditation & Atemübungen",
+      "Private Yoga-Sessions"
+    ]
+  },
+
+  "fitness": {
+    "imageAlt": "Fitness Studio",
+    "title": "Fitness & Gym",
+    "subtitle": "Modernes Fitnessstudio",
+    "text": "Unser Fitnessbereich ist ausgestattet mit neuesten Geräten, Functional Training Zonen und einem freundlichen Team, das Sie unterstützt.",
+    "list": [
+      "Laufbänder & Crosstrainer",
+      "Freihantelbereich",
+      "Kraftgeräte & Functional Training",
+      "Personal Trainer auf Anfrage"
+    ]
+  }
+}

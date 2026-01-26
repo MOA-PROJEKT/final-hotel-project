@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+// src/components/WellnessSection.jsx
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function WellnessSection({
   image,
@@ -7,16 +9,19 @@ export default function WellnessSection({
   description,
   details,
   index = 0,
+  extraDetails = [], // ✅ neu: für Dropdown-Inhalt
 }) {
-  const isEven = index % 2 === 1
-  const [open, setOpen] = useState(false)
+  const { t } = useTranslation("wellness");
+
+  const isEven = index % 2 === 1;
+  const [open, setOpen] = useState(false);
 
   return (
     <section className="relative my-10">
       <div
         className={`
           flex flex-col md:flex-row items-start justify-center
-          ${isEven ? 'md:flex-row-reverse' : ''}
+          ${isEven ? "md:flex-row-reverse" : ""}
         `}
       >
         {/* Bild */}
@@ -43,7 +48,7 @@ export default function WellnessSection({
             mt-6 md:mt-12
             relative
             z-10
-            ${isEven ? 'md:-mr-10' : 'md:-ml-10'}
+            ${isEven ? "md:-mr-10" : "md:-ml-10"}
           `}
         >
           {/* Tag */}
@@ -82,65 +87,51 @@ export default function WellnessSection({
           </div>
 
           {/* Button → Dropdown */}
-          <div className="relative mt-6">
-            <button
-              type="button"
-              onClick={() => setOpen(!open)}
-              className="
-                w-full flex justify-between items-center
-                border border-[#c50355]
-                px-6 sm:px-12 py-3
-                text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
-                text-[#c50355]
-                hover:bg-[#c50355]
-                hover:text-white
-                transition
-              "
-            >
-              {open ? 'Infos ausblenden' : 'Mehr Infos anzeigen'}
-              <span
-                className={`transform transition-transform ${
-                  open ? 'rotate-180' : 'rotate-0'
-                }`}
+          {extraDetails?.length > 0 && (
+            <div className="relative mt-6">
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                className="
+                  w-full flex justify-between items-center
+                  border border-[#c50355]
+                  px-6 sm:px-12 py-3
+                  text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
+                  text-[#c50355]
+                  hover:bg-[#c50355]
+                  hover:text-white
+                  transition
+                "
               >
-                ▼
-              </span>
-            </button>
+                {open ? t("section.hideInfo") : t("section.showInfo")}
+                <span
+                  className={`transform transition-transform ${
+                    open ? "rotate-180" : "rotate-0"
+                  }`}
+                >
+                  ▼
+                </span>
+              </button>
 
-            {open && (
-              <div className="mt-2 border border-gray-200 rounded p-4 space-y-3 bg-white">
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 text-slate-700">
-                  <span className="font-medium">Beste Besuchszeit</span>
-                  <span className="sm:text-right break-words">
-                    07:00 – 10:00 Uhr oder ab 18:00 Uhr
-                  </span>
+              {open && (
+                <div className="mt-2 border border-gray-200 rounded p-4 space-y-3 bg-white">
+                  {extraDetails.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col sm:flex-row sm:justify-between gap-1 text-slate-700"
+                    >
+                      <span className="font-medium">{item.label}</span>
+                      <span className="sm:text-right break-words">
+                        {item.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 text-slate-700">
-                  <span className="font-medium">Handtücher & Ausstattung</span>
-                  <span className="sm:text-right break-words">
-                    Inklusive Bademantel & Slipper
-                  </span>
-                </div>
-
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 text-slate-700">
-                  <span className="font-medium">Privat-Spa</span>
-                  <span className="sm:text-right break-words">
-                    Auf Anfrage buchbar
-                  </span>
-                </div>
-
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 text-slate-700">
-                  <span className="font-medium">Kinder</span>
-                  <span className="sm:text-right break-words">
-                    Ab 12 Jahren erlaubt
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>
-  )
+  );
 }
