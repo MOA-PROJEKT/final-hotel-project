@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 // IMPORT ALL IMAGES (Vite requires this for images inside src/)
 import img1 from '../assets/images/img_restaurant/1.jpg'
 import img2 from '../assets/images/img_restaurant/2.jpg'
@@ -8,6 +7,7 @@ import img4 from '../assets/images/img_restaurant/4.jpg'
 import img5 from '../assets/images/img_restaurant/5.jpg'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export default function Restaurant() {
   const { t, i18n } = useTranslation('restaurant')
@@ -123,7 +123,7 @@ export default function Restaurant() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[img1, img2, img3, img4].map((src, i) => (
-            <a key={i} href="/gallery" className="block">
+            <Link key={i} to="/gallery" className="block">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -143,7 +143,7 @@ export default function Restaurant() {
                   </span>
                 </motion.div>
               </motion.div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
