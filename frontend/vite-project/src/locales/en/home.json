@@ -23,6 +23,31 @@
     "showLess": "Show less"
   },
 
+  "cards": {
+  "restaurant": {
+    "title": "Dining at MOA",
+    "textLong": "Seasonal cuisine, fine wines, and an evening with views of the mountains.",
+    "text2": "Local ingredients, curated menus, and service that feels effortlessly perfect.",
+    "meta": "Daily from 6 pm · Smart casual",
+    "button": "TO THE RESTAURANT"
+  },
+  "wellness": {
+    "title": "Wellness & Spa",
+    "textLong": "Warmth, calm, and treatments — the perfect balance after a day in the mountains.",
+    "text2": "Pool, saunas, and quiet zones designed for real recovery.",
+    "meta": "7 am–9 pm · Massages on request",
+    "button": "TO WELLNESS"
+  },
+  "rooms": {
+    "title": "Rooms & Suites",
+    "textLong": "Timeless design, generous space, and views you won’t forget.",
+    "text2": "From doubles to penthouses — every detail is made for comfort.",
+    "meta": "Check-in 3 pm · Check-out 11 am",
+    "button": "TO THE ROOMS"
+  }
+}
+,
+
   "hotel": {
     "altImpression": "Hotel impression",
     "prev": "Previous image",
@@ -122,13 +147,14 @@
       "more": "After a day in the cold, warmth awaits: pool, relaxation areas and treatments that release tension and restore energy. Gentle scents, soft light and quiet spaces help both mind and body truly switch off."
     },
 
-    "e1": {
-      "alt": "Journal post 5",
-      "kicker": "REST",
-      "title": "Hidden places in St. Moritz",
-      "intro": "With its lively village center and famous slopes, St. Moritz is a world-renowned destination. Beyond the hotspots, the region also offers inspiring places.",
-      "more": "Away from the beaten path, St. Moritz and the Engadin reveal their quiet side: snowy forest trails, small viewpoints and places where nature feels close. Perfect for a walk that clears your head."
-    },
+   "e1": {
+  "alt": "Journal post 5",
+  "kicker": "REST",
+  "title": "Hidden places of our region",
+  "intro": "With its lively village center and well-known slopes, the region is among the world’s most appreciated travel destinations. Beyond the hotspots, it also reveals calm and inspiring places.",
+  "more": "Away from the beaten path, the mountains and valleys reveal their quiet side: snowy forest trails, small viewpoints and places where nature feels close. Ideal for walks that clear the mind and invite a sense of calm."
+}
+,
 
     "e2": {
       "alt": "Journal post 6",

@@ -23,6 +23,30 @@
     "showLess": "Weniger anzeigen"
   },
 
+  "cards": {
+  "restaurant": {
+    "title": "Kulinarik im MOA",
+    "textLong": "Saisonale Küche, feine Weine und ein Abend mit Blick auf die Berge.",
+    "text2": "Regionale Zutaten, kreative Menüs und ein Service, der leise perfekt bleibt.",
+    "meta": "Täglich ab 18:00 · Smart Casual",
+    "button": "ZUM RESTAURANT"
+  },
+  "wellness": {
+    "title": "Wellness & Spa",
+    "textLong": "Wärme, Ruhe und Treatments – der perfekte Ausgleich nach einem Tag in den Bergen.",
+    "text2": "Pool, Saunen und stille Ruhezonen für echte Regeneration.",
+    "meta": "07:00–21:00 · Massagen auf Anfrage",
+    "button": "ZUM WELLNESS"
+  },
+  "rooms": {
+    "title": "Zimmer & Suiten",
+    "textLong": "Zeitloses Design, viel Raum und Ausblicke, die bleiben.",
+    "text2": "Von Doppelzimmer bis Penthouse – jedes Detail ist auf Komfort ausgelegt.",
+    "meta": "Check-in 15:00 · Check-out 11:00",
+    "button": "ZU DEN ZIMMERN"
+  }
+},
+
   "hotel": {
     "altImpression": "Hotel Impression",
     "prev": "Vorheriges Bild",
@@ -123,12 +147,13 @@
     },
 
     "e1": {
-      "alt": "Journal Beitrag 5",
-      "kicker": "REST",
-      "title": "Die Hidden Places von St. Moritz",
-      "intro": "St. Moritz ist mit seinem belebten Dorfkern und den berühmten Pisten eine weltweit beliebte Reisedestination. Auch abseits der touristischen Hotspots bietet die Region inspirierende Orte.",
-      "more": "Abseits der bekannten Wege zeigen sich St. Moritz und das Engadin von ihrer stillen Seite: verschneite Waldpfade, kleine Aussichtspunkte und Orte, an denen man die Natur ganz nah spürt. Perfekt für einen Spaziergang, der den Kopf frei macht."
-    },
+  "alt": "Journal Beitrag 5",
+  "kicker": "REST",
+  "title": "Die Hidden Places unserer Region",
+  "intro": "Mit ihrem belebten Ortskern und den bekannten Pisten zählt die Region zu den weltweit geschätzten Reisedestinationen. Abseits der touristischen Hotspots eröffnet sie jedoch auch ruhige, inspirierende Orte.",
+  "more": "Abseits der bekannten Wege zeigen sich die Berge und Täler von ihrer stillen Seite: verschneite Waldpfade, kleine Aussichtspunkte und Orte, an denen man die Natur ganz nah spürt. Ideal für Spaziergänge, die den Kopf frei machen und neue Ruhe schenken."
+}
+,
 
     "e2": {
       "alt": "Journal Beitrag 6",
