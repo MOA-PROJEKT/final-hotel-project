@@ -14,7 +14,7 @@
     {
       "subtitle": "ESSEN UND TRINKEN",
       "title": "MOA Restaurant",
-      "text": "Küchenchef Salvatore Frequente aus Sizilien und sein Team kümmern sich um die kulinarischen Belange der Gäste. Dabei haben Sie sich für neue Kreationen Inspiration in der Engadiner Natur geholt. Unterstützt wird das Konzept von der stilvollen Einrichtung des Tessiner Interior Designer Carlo Rampazzi, welcher ebenfalls auf natürliche Materialien und warmes Licht setzt.",
+      "text": "Küchenchef Salvatore Frequente aus Sizilien und sein Team kümmern sich um die kulinarischen Belange der Gäste. Dabei haben Sie sich für neue Kreationen Inspiration in der Engadiner Natur geholt. Unterstützt wird das Konzept von der stilvollen Einrichtung des Tessiner Interior Designer Carlo Rampazzi, welcher ebenfalls auf natürliche Materialien und warmes Licht setzt. Unsere Küche kombiniert kreative Rezepte mit hochwertigen, regionalen Zutaten. Lassen Sie sich von unseren kulinarischen Kreationen verwöhnen, genießen Sie die harmonische Atmosphäre und erleben Sie ein Geschmackserlebnis, das in Erinnerung bleibt. Ob romantisches Dinner, Familienessen oder Geschäftsessen – im MOA Restaurant wird jeder Besuch zu einem besonderen Moment.",
       "schedule": [
         { "label": "Frühstück", "time": "07.00 – 11.00 Uhr" },
         { "label": "Abendessen", "time": "19.00 – 22.00 Uhr" }
@@ -24,7 +24,7 @@
     {
       "subtitle": "ESSEN UND TRINKEN",
       "title": "MOA Bar und Lounge",
-      "text": "Die perfekte Mischung aus Eleganz und Entspannung. Genießen Sie kleine Snacks, Cocktails und atemberaubende Ausblicke. Das Herzstück des Hauses. Geschaffen, um zu bleiben, zu verweilen. Kleine Snacks oder aber den berühmten Carlton Afternoon Tea, beides können Sie hier zelebrieren. Der Blick gleitet dabei durch die imposanten Fenster auf die schneebedeckten Berge.",
+      "text": "Die perfekte Mischung aus Eleganz und Entspannung. Genießen Sie kleine Snacks, Cocktails und atemberaubende Ausblicke. Das Herzstück des Hauses. Geschaffen, um zu bleiben, zu verweilen. Kleine Snacks oder aber den berühmten Carlton Afternoon Tea, beides können Sie hier zelebrieren. Der Blick gleitet dabei durch die imposanten Fenster auf die schneebedeckten Berge. Die MOA Bar & Lounge lädt zum Entspannen, Genießen und Verweilen ein. Hier erwarten Sie exquisite Cocktails, erlesene Weine und eine stilvolle Atmosphäre, perfekt für gesellige Abende oder ein entspanntes Treffen mit Freunden. Genießen Sie den Blick auf unsere Terrasse oder lassen Sie den Tag in der eleganten Lounge bei einem Drink ausklingen.",
       "schedule": [],
       "menus": ["Bar-Menü", "Tea Time", "Snacks"]
     },
@@ -37,13 +37,13 @@
     },
     {
       "subtitle": "ESSEN UND TRINKEN",
-      "title": "Fondue Gondeln",
-      "text": "Käsefondue und Schweizer Winter - gibt es eine treffendere Kombination? Im MOA Hotel kreieren wir daraus ein unverwechselbares Erlebnis mit unseren Fondue-Gondeln für zwei bis vier Personen.\n\nGenießen Sie den authentischen Schweizer Käse, sorgfältig ausgewählt von unseren erfahrenen Köchen, geschmolzen zu einer cremigen, perfekt gewürzten Mischung. Jede Gondel ist stilvoll dekoriert und mit Kerzenlicht sowie kuscheligen Decken ausgestattet, sodass Sie sich warm und behaglich fühlen.\n\nDazu servieren wir ausgewählte Weine, frisches Brot und saisonale Beilagen, die das Fondue-Erlebnis abrunden.\n\nOb für ein romantisches Abendessen oder einen geselligen Abend mit Freunden – unsere Fondue-Gondeln bieten ein einmaliges kulinarisches Abenteuer mitten im Herzen von MOA Hotel.",
+      "title": "Frische Meeresfrüchte",
+      "text": "Erleben Sie die Vielfalt frischer Meeresfrüchte im MOA Restaurant. Von delikaten Fischgerichten bis hin zu kreativen Kreationen aus der Küche – jede Speise wird mit viel Liebe zum Detail und hochwertigen Zutaten zubereitet. Unsere erfahrenen Köche wählen nur die frischesten Fische und Meeresfrüchte aus, die direkt aus der Region oder von ausgewählten Partnern stammen. Genießen Sie ein kulinarisches Highlight, das sowohl Gaumen als auch Augen verwöhnt, und lassen Sie sich von den harmonischen Aromen und Texturen überraschen. Ob zart gegrillter Fisch, saftige Garnelen oder kunstvoll angerichtete Spezialitäten – jedes Gericht erzählt eine Geschichte von Frische, Qualität und Leidenschaft für die Küche. ",
       "schedule": [
         { "label": "Mittagessen", "time": "12.00 – 15.00 Uhr" },
         { "label": "Abendessen", "time": "18.00 – 22.00 Uhr" }
       ],
-      "menus": ["Fondue Menü", "Weinkarte", "Dessert"]
+      "menus": ["Frische Meeresfrüchte", "Weinkarte"]
     }
   ]
 }
