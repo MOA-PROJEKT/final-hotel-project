@@ -3,7 +3,7 @@
     "title": "Kontaktieren Sie uns",
     "subtitle": "Das Team des MOA_Hotel steht Ihnen gerne zur Verfügung."
   },
-  "mapAlt": "Anreise nach St. Moritz – Karte Schweiz",
+  "mapAlt": "Anreise nach Düsseldorf – Karte deutschland",
   "visit": {
     "label": "Kontakt",
     "title": "Besuchen Sie uns",
@@ -12,7 +12,7 @@
   },
   "team": {
     "title": "Kontaktieren Sie Unser Team",
-    "addressLine": "Via Stella 22, CH-7500 St. Moritz",
+    "addressLine": "Steinstrasse 11, 40212 Düsseldorf, Deutschland",
     "phoneInline": "Telefon",
     "departments": {
       "management": { "name": "Management", "role": "General Managers" },

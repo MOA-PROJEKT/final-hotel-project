@@ -11,14 +11,14 @@ import Hero from "../assets/images/wellness/Hero.webp";
 // Images – Spa
 import spaMassage from "../assets/images/wellness/spaMassage.jpg";
 import spaSauna from "../assets/images/wellness/spaSauna.jpg";
-import spaPool2 from "../assets/images/wellness/yoga1.webp";
+import spaPool2 from "../assets/images/wellness/yoga1.avif";
 
 // Images – Yoga & Fitness
 import yogaSession from "../assets/images/wellness/yogaSession.jpg";
 import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
 
 // Images – Carousel
-import yoga1 from "../assets/images/wellness/yoga1.webp";
+import yoga1 from "../assets/images/wellness/yoga11.avif";
 import yoga2 from "../assets/images/wellness/yoga2.webp";
 import yoga3 from "../assets/images/wellness/yoga3.webp";
 import yoga4 from "../assets/images/wellness/yoga4.webp";
