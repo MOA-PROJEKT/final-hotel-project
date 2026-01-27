@@ -147,7 +147,7 @@ export default function Home() {
     <main className="bg-[#f7efe7] text-slate-900">
       {/* HERO – großes Startbild */}
       <section id="hero" className="relative min-h-[100vh] overflow-hidden">
-        {/* ✅ Hero Bild statt Video */}
+        {/* ✅ Hero Bild statt Video (Desktop + Mobile gleich) */}
         <img
           src={HERO}
           alt={t("hero.altHeroImage")}
@@ -338,204 +338,277 @@ export default function Home() {
         <ImageCaroussel images={CAROUSEL_IMAGES} />
       </section>
 
-      {/* ====== CARLTON-STYLE SEKTION 1 (d1) ====== */}
-      <section id="whats-on" className="relative z-20 bg-[#f7efe7] py-14">
-        <div className="mx-auto max-w-6xl px-4">
-          {/* Header mit Linien (nur hier) */}
-          <div className="mb-24 flex items-center justify-center gap-8">
-            <span className="h-px w-32 bg-[#d9c9bb]" />
-            <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">{t("sections.news")}</h2>
-            <span className="h-px w-32 bg-[#d9c9bb]" />
-          </div>
+   
 
-          <div className="relative mx-auto max-w-5xl">
-            {/* Bild rechts */}
-            <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
-              <img src={d1} alt={t("whatsOn.alt")} className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover" />
-            </div>
 
-            {/* Desktop Overlay */}
-            <div
-              className="
-                hidden md:block
-                absolute left-[-4%] top-[11%] 
-                w-[72%] max-w-[580px] h-[80%]  
-                bg-white/90
-                px-14 py-12
-                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
-              "
-            >
-              <div className="mb-6">
-                <div className="h-px w-16 bg-slate-300/70" />
-                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
-                  {t("common.kickerHotel")}
-                </p>
-              </div>
+{/* ====== CARLTON-STYLE SEKTION 1 (d1) ====== */}
+<section id="whats-on" className="relative z-20 bg-[#f7efe7] py-14">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="mb-24 flex items-center justify-center gap-8">
+      <span className="h-px w-32 bg-[#d9c9bb]" />
+      <h2 className="font-serif text-2xl tracking-wide text-[#b08b6c]">{t("sections.news")}</h2>
+      <span className="h-px w-32 bg-[#d9c9bb]" />
+    </div>
 
-              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">{t("winter.title")}</h3>
+    <div className="relative mx-auto max-w-5xl">
+      <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+        <img
+          src={d1}
+          alt={t("whatsOn.alt")}
+          className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+        />
+      </div>
 
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">{t("winter.textLong")}</p>
-
-              <div className="mt-10">
-                <Link
-                  to="/restaurant"
-                  className="
-                    inline-flex items-center justify-center
-                    border border-[#c50355]
-                    px-14 py-4
-                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
-                    text-[#c50355]
-                    transition hover:bg-[#c50355] hover:text-white
-                  "
-                >
-                  {t("buttons.toRestaurant")}
-                </Link>
-              </div>
-            </div>
-
-            {/* Mobile Box */}
-            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
-              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
-              <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("winter.title")}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("winter.textShort")}</p>
-              <Link
-                to="/restaurant"
-                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
-              >
-                {t("buttons.toRestaurant")}
-              </Link>
-            </div>
-          </div>
+      {/* Desktop Overlay */}
+      <div
+        className="
+          hidden md:block
+          absolute left-[-4%] top-[11%]
+          w-[72%] max-w-[580px] h-[80%]
+          bg-white/90
+          px-14 py-12
+          shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+        "
+      >
+        <div className="mb-6">
+          <div className="h-px w-16 bg-slate-300/70" />
+          <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+            {t("common.kickerHotel")}
+          </p>
         </div>
-      </section>
 
-      {/* ====== CARLTON-STYLE SEKTION 2 (d2) – REVERSE ====== */}
-      <section id="section-2" className="relative z-20 bg-[#f7efe7] py-24">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="relative mx-auto max-w-5xl">
-            {/* Bild links */}
-            <div className="w-full md:mr-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
-              <img src={d2} alt={t("section2.alt")} className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover" />
-            </div>
+        <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+          {t("cards.restaurant.title")}
+        </h3>
 
-            {/* Desktop Overlay rechts */}
-            <div
-              className="
-                hidden md:block
-                absolute right-[-4%] top-[6%]
-                w-[72%] max-w-[580px] h-[80%] 
-                bg-white/90
-                px-14 py-12
-                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
-              "
-            >
-              <div className="mb-6">
-                <div className="h-px w-16 bg-slate-300/70" />
-                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
-                  {t("common.kickerHotel")}
-                </p>
-              </div>
+        <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.restaurant.textLong")}
+        </p>
 
-              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">{t("winter.title")}</h3>
+        {/* ✅ NEU */}
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.restaurant.text2")}
+        </p>
 
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">{t("winter.textLong")}</p>
+        {/* ✅ NEU */}
+        <p className="mt-4 max-w-md text-[12px] tracking-wide text-slate-500">
+          {t("cards.restaurant.meta")}
+        </p>
 
-              <div className="mt-10">
-                <Link
-                  to="/restaurant"
-                  className="
-                    inline-flex items-center justify-center
-                    border border-[#c50355]
-                    px-14 py-4
-                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
-                    text-[#c50355]
-                    transition hover:bg-[#c50355] hover:text-white
-                  "
-                >
-                  {t("buttons.toRestaurant")}
-                </Link>
-              </div>
-            </div>
-
-            {/* Mobile Box */}
-            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
-              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
-              <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("winter.title")}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("winter.textShort")}</p>
-              <Link
-                to="/restaurant"
-                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
-              >
-                {t("buttons.toRestaurant")}
-              </Link>
-            </div>
-          </div>
+        <div className="mt-10">
+          <Link
+            to="/restaurant"
+            className="
+              inline-flex items-center justify-center
+              border border-[#c50355]
+              px-14 py-4
+              text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
+              text-[#c50355]
+              transition hover:bg-[#c50355] hover:text-white
+            "
+          >
+            {t("cards.restaurant.button")}
+          </Link>
         </div>
-      </section>
+      </div>
 
-      {/* ====== CARLTON-STYLE SEKTION 3 (d3) – OHNE HEADER ====== */}
-      <section id="section-3" className="relative z-20 bg-[#f7efe7] py-24">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="relative mx-auto max-w-5xl">
-            {/* Bild rechts */}
-            <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
-              <img src={d3} alt={t("section3.alt")} className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover" />
-            </div>
+      {/* Mobile Box */}
+      <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+        <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
+        <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("cards.restaurant.title")}</h3>
 
-            {/* Desktop Overlay links */}
-            <div
-              className="
-                hidden md:block
-                absolute left-[-4%] top-[11%] 
-                w-[72%] max-w-[580px] h-[80%]  
-                bg-white/90
-                px-14 py-12
-                shadow-[0_18px_50px_rgba(15,23,42,0.12)]
-              "
-            >
-              <div className="mb-6">
-                <div className="h-px w-16 bg-slate-300/70" />
-                <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
-                  {t("common.kickerHotel")}
-                </p>
-              </div>
+        {/* ✅ textShort entfernt -> gibt es nicht */}
+        <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("cards.restaurant.textLong")}</p>
 
-              <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">{t("winter.title")}</h3>
+        {/* ✅ NEU */}
+        <p className="mt-3 text-sm leading-relaxed text-slate-700">{t("cards.restaurant.text2")}</p>
 
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">{t("winter.textLong")}</p>
+        {/* ✅ NEU */}
+        <p className="mt-4 text-[12px] tracking-wide text-slate-500">{t("cards.restaurant.meta")}</p>
 
-              <div className="mt-10">
-                <Link
-                  to="/restaurant"
-                  className="
-                    inline-flex items-center justify-center
-                    border border-[#c50355]
-                    px-14 py-4
-                    text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
-                    text-[#c50355]
-                    transition hover:bg-[#c50355] hover:text-white
-                  "
-                >
-                  {t("buttons.toRestaurant")}
-                </Link>
-              </div>
-            </div>
+        <Link
+          to="/restaurant"
+          className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+        >
+          {t("cards.restaurant.button")}
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
 
-            {/* Mobile Box */}
-            <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
-              <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
-              <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("winter.title")}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("winter.textShort")}</p>
-              <Link
-                to="/restaurant"
-                className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
-              >
-                {t("buttons.toRestaurant")}
-              </Link>
-            </div>
-          </div>
+{/* ====== CARLTON-STYLE SEKTION 2 (d2) – REVERSE ====== */}
+<section id="section-2" className="relative z-20 bg-[#f7efe7] py-24">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="relative mx-auto max-w-5xl">
+      <div className="w-full md:mr-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+        <img
+          src={d2}
+          alt={t("section2.alt")}
+          className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+        />
+      </div>
+
+      <div
+        className="
+          hidden md:block
+          absolute right-[-4%] top-[6%]
+          w-[72%] max-w-[580px] h-[80%]
+          bg-white/90
+          px-14 py-12
+          shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+        "
+      >
+        <div className="mb-6">
+          <div className="h-px w-16 bg-slate-300/70" />
+          <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+            {t("common.kickerHotel")}
+          </p>
         </div>
-      </section>
+
+        <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+          {t("cards.wellness.title")}
+        </h3>
+
+        <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.wellness.textLong")}
+        </p>
+
+        {/* ✅ NEU */}
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.wellness.text2")}
+        </p>
+
+        {/* ✅ NEU */}
+        <p className="mt-4 max-w-md text-[12px] tracking-wide text-slate-500">
+          {t("cards.wellness.meta")}
+        </p>
+
+        <div className="mt-10">
+          <Link
+            to="/wellness"
+            className="
+              inline-flex items-center justify-center
+              border border-[#c50355]
+              px-14 py-4
+              text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
+              text-[#c50355]
+              transition hover:bg-[#c50355] hover:text-white
+            "
+          >
+            {t("cards.wellness.button")}
+          </Link>
+        </div>
+      </div>
+
+      <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+        <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
+        <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("cards.wellness.title")}</h3>
+
+        <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("cards.wellness.textLong")}</p>
+        <p className="mt-3 text-sm leading-relaxed text-slate-700">{t("cards.wellness.text2")}</p>
+        <p className="mt-4 text-[12px] tracking-wide text-slate-500">{t("cards.wellness.meta")}</p>
+
+        <Link
+          to="/wellness"
+          className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+        >
+          {t("cards.wellness.button")}
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ====== CARLTON-STYLE SEKTION 3 (d3) – OHNE HEADER ====== */}
+<section id="section-3" className="relative z-20 bg-[#f7efe7] py-24">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="relative mx-auto max-w-5xl">
+      <div className="w-full md:ml-auto md:w-[82%] shadow-[0_40px_80px_rgba(15,23,42,0.18)]">
+        <img
+          src={d3}
+          alt={t("section3.alt")}
+          className="block h-[340px] sm:h-[460px] md:h-[560px] w-full object-cover"
+        />
+      </div>
+
+      <div
+        className="
+          hidden md:block
+          absolute left-[-4%] top-[11%]
+          w-[72%] max-w-[580px] h-[80%]
+          bg-white/90
+          px-14 py-12
+          shadow-[0_18px_50px_rgba(15,23,42,0.12)]
+        "
+      >
+        <div className="mb-6">
+          <div className="h-px w-16 bg-slate-300/70" />
+          <p className="mt-4 text-[11px] tracking-[0.35em] uppercase text-slate-400">
+            {t("common.kickerHotel")}
+          </p>
+        </div>
+
+        <h3 className="font-serif text-4xl leading-[1.05] text-slate-900">
+          {t("cards.rooms.title")}
+        </h3>
+
+        <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.rooms.textLong")}
+        </p>
+
+        {/* ✅ NEU */}
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-700">
+          {t("cards.rooms.text2")}
+        </p>
+
+        {/* ✅ NEU */}
+        <p className="mt-4 max-w-md text-[12px] tracking-wide text-slate-500">
+          {t("cards.rooms.meta")}
+        </p>
+
+        <div className="mt-10">
+          <Link
+            to="/rooms"
+            className="
+              inline-flex items-center justify-center
+              border border-[#c50355]
+              px-14 py-4
+              text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]
+              text-[#c50355]
+              transition hover:bg-[#c50355] hover:text-white
+            "
+          >
+            {t("cards.rooms.button")}
+          </Link>
+        </div>
+      </div>
+
+      <div className="mt-6 block bg-white/90 px-7 py-8 shadow-[0_30px_70px_rgba(15,23,42,0.18)] md:hidden">
+        <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">{t("common.kickerHotel")}</p>
+        <h3 className="mt-3 font-serif text-3xl text-slate-900">{t("cards.rooms.title")}</h3>
+
+        <p className="mt-4 text-sm leading-relaxed text-slate-700">{t("cards.rooms.textLong")}</p>
+        <p className="mt-3 text-sm leading-relaxed text-slate-700">{t("cards.rooms.text2")}</p>
+        <p className="mt-4 text-[12px] tracking-wide text-slate-500">{t("cards.rooms.meta")}</p>
+
+        <Link
+          to="/rooms"
+          className="mt-6 inline-flex items-center justify-center border border-[#c50355] px-12 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white"
+        >
+          {t("cards.rooms.button")}
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
       {/* Journal Header */}
       <div className="mb-24 flex items-center justify-center gap-8">
