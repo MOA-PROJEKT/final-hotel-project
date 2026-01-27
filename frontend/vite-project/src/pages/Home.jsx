@@ -1,19 +1,19 @@
 // src/pages/Home.jsx
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import ImageCaroussel from "../components/ImageCaroussel.jsx";
 import { useTranslation } from "react-i18next";
 
-import herovideodesktop from "../assets/images/hotel/herovideodesktop.mp4";
+import b1 from "../assets/images/hotel/b1.jpg";
 
 import n1 from "../assets/images/hotel/n1.jpg";
 import n2 from "../assets/images/hotel/n2.jpg";
 import n3 from "../assets/images/hotel/n3.jpg";
-import n4 from "../assets/images/hotel/n4.gif";
+import n4 from "../assets/images/hotel/n4.jpg";
 import n5 from "../assets/images/hotel/n5.jpg";
 import n6 from "../assets/images/hotel/n6.jpg";
 
-import b1 from "../assets/images/hotel/b1.jpg";
+import HERO from "../assets/images/hotel/HERO.jpg";
 
 import c1 from "../assets/images/hotel/c1.jpg";
 import c2 from "../assets/images/hotel/c2.jpg";
@@ -41,23 +41,6 @@ export default function Home() {
   const { t } = useTranslation("home");
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // ✅ Video Play/Pause (wie Carlton)
-  const videoRef = useRef(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
-
-  const toggleVideo = () => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    if (v.paused) {
-      v.play();
-      setIsVideoPlaying(true);
-    } else {
-      v.pause();
-      setIsVideoPlaying(false);
-    }
-  };
 
   // ✅ Slides: NUR Keys + Images (keine Texte hardcoded)
   const HOTEL_SLIDES = useMemo(
@@ -164,43 +147,14 @@ export default function Home() {
     <main className="bg-[#f7efe7] text-slate-900">
       {/* HERO – großes Startbild */}
       <section id="hero" className="relative min-h-[100vh] overflow-hidden">
-        <video
-          ref={videoRef}
-          src={herovideodesktop}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
+        {/* ✅ Hero Bild statt Video */}
+        <img
+          src={HERO}
+          alt={t("hero.altHeroImage")}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-slate-900/35" />
 
-        {/* ✅ Play / Pause Button (unten links) */}
-        <button
-          type="button"
-          onClick={toggleVideo}
-          aria-label={isVideoPlaying ? t("hero.videoPause") : t("hero.videoPlay")}
-          className="
-            absolute bottom-6 left-6 z-20
-            flex h-10 w-10 items-center justify-center
-            rounded-full bg-black/15 backdrop-blur-sm
-            text-white/70 hover:bg-black/50
-            border border-white/10
-            transition
-          "
-        >
-          {isVideoPlaying ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <rect x="6" y="5" width="4" height="14" rx="1" />
-              <rect x="14" y="5" width="4" height="14" rx="1" />
-            </svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M8 5v14l11-7-11-7z" />
-            </svg>
-          )}
-        </button>
+        <div className="absolute inset-0 bg-slate-900/35" />
 
         <div className="relative z-10 flex min-h-[90vh] items-center justify-center">
           <div className="mx-auto pt-16 max-w-3xl px-4 text-center text-white">
