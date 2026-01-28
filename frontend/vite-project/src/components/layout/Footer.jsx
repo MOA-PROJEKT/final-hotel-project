@@ -7,8 +7,7 @@ export default function Footer() {
   const { t } = useTranslation('footer')
   const location = useLocation()
 
-
-const specialBgPages = ['/impressum', '/datenschutz']
+  const specialBgPages = ['/impressum', '/datenschutz']
   const bgClass = specialBgPages.includes(location.pathname)
     ? 'bg-[#adc3c7]'
     : 'bg-[#f7efe7]'
@@ -113,20 +112,21 @@ const specialBgPages = ['/impressum', '/datenschutz']
                 {t('services.items.conference')}
               </li>
               <li>
-                <a
-                  href="/datenschutz"
+                <Link
+                  to="/datenschutz"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
                   Datenschutz
-                </a>
+                </Link>
               </li>
+
               <li>
-                <a
-                  href="/impressum"
+                <Link
+                  to="/impressum"
                   className="text-slate-700 hover:text-rose-500 transition-colors"
                 >
                   Impressum
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-
 // IMPORT ALL IMAGES (Vite requires this for images inside src/)
 import img1 from '../assets/images/img_restaurant/1.jpg'
 import img2 from '../assets/images/img_restaurant/2.jpg'
 import img3 from '../assets/images/img_restaurant/3.jpg'
 import img4 from '../assets/images/img_restaurant/4.jpg'
 import img5 from '../assets/images/img_restaurant/5.jpg'
-import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 export default function Restaurant() {
-  const { t, i18n } = useTranslation("restaurant");
+  const { t, i18n } = useTranslation('restaurant')
   // console.log("LANG:", i18n.language); // optional
 
   const [openIndex, setOpenIndex] = useState(null)
@@ -20,21 +20,21 @@ export default function Restaurant() {
   }
 
   // Bilder bleiben im Code, Texte kommen aus i18n
-  const images = [img1, img2, img4, img5];
+  const images = [img1, img2, img4, img5]
 
-  const items = t("items", { returnObjects: true }).map((item, idx) => ({
+  const items = t('items', { returnObjects: true }).map((item, idx) => ({
     ...item,
     img: images[idx],
-  }));
+  }))
 
   return (
     <div className="bg-[#f7efe7] py-32  md:py-16">
       <h1 className="text-center md:text-5xl text-3xl font-light text-[#b2854e] mb-12  md:mt-36 ">
-        {t("hero.title")}
+        {t('hero.title')}
       </h1>
 
       <p className="text-center md:text-2xl text-lg font-serif mb-12 max-w-3xl mx-auto px-4 text-gray-500">
-        {t("hero.subtitle")}
+        {t('hero.subtitle')}
       </p>
 
       {items.map((item, i) => (
@@ -49,7 +49,7 @@ export default function Restaurant() {
             <img
               src={item.img}
               alt={item.title}
-              className="w-full shadow-lg object-cover max-h-full"
+              className="w-full h-[800px] shadow-lg object-cover max-h-full"
             />
           </div>
 
@@ -75,7 +75,7 @@ export default function Restaurant() {
                   onClick={() => toggle(i)}
                   className="text-[#c50355] font-semibold uppercase text-sm tracking-wide underline"
                 >
-                  {openIndex === i ? t("ui.less") : t("ui.more")}
+                  {openIndex === i ? t('ui.less') : t('ui.more')}
                 </button>
 
                 {openIndex === i && (
@@ -95,7 +95,7 @@ export default function Restaurant() {
               {/* MENU DROPDOWN */}
               <details className="group w-fit">
                 <summary className="inline-flex items-center justify-center border border-[#c50355] bg-white px-9 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] transition hover:bg-[#c50355] hover:text-white">
-                  {t("ui.downloadMenu")}
+                  {t('ui.downloadMenu')}
                   <span className="transition group-open:rotate-180">⌄</span>
                 </summary>
 
@@ -118,18 +118,20 @@ export default function Restaurant() {
       {/* GALLERY */}
       <div className="max-w-7xl mx-auto mt-24">
         <h2 className="text-2xl font-serif text-center text-slate-800 mb-6">
-          {t("ui.galleryTitle")}
+          {t('ui.galleryTitle')}
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[img1, img2, img3, img4].map((src, i) => (
-            <a key={i} href="/gallery" className="block">
+            <Link key={i} to="/gallery" className="block">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 className="relative overflow-hidden rounded-lg shadow-md"
               >
-                <img src={src} className="object-cover h-58 w-full" />
+                <div className="h-80 w-full overflow-hidden">
+                  <img src={src} className="object-cover h-80 w-full" />
+                </div>
 
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -137,11 +139,11 @@ export default function Restaurant() {
                   className="absolute inset-0 bg-black/40 flex items-center justify-center"
                 >
                   <span className="text-white text-sm uppercase tracking-wider">
-                    {t("ui.viewGallery")}
+                    {t('ui.viewGallery')}
                   </span>
                 </motion.div>
               </motion.div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

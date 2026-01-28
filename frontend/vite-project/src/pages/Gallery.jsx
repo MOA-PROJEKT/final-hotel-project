@@ -2,14 +2,13 @@
 import React from 'react'
 
 import spaHero from '../assets/images/galerie/pool2.jpg'
-import spaPool2 from '../assets/images/galerie/pool.webp'
-import spaSauna from '../assets/images/galerie/zimmer.webp'
-import spaMassage from '../assets/images/wellness/spaMassage.jpg'
-import yoga1 from '../assets/images/galerie/bet.webp'
-import yoga2 from '../assets/images/galerie/sonne.webp'
-import fitness from '../assets/images/galerie/fitness.webp'
-import snow from '../assets/images/galerie/schnee.webp'
-import pool3 from '../assets/images/galerie/pool3.webp'
+import slider1 from '../assets/images/zimmer/slider1.webp'
+import slider2 from '../assets/images/zimmer/slider2.webp'
+import slider5 from '../assets/images/zimmer/slider5.webp'
+import yoga2 from '../assets/images/wellness/yoga2.webp'
+import yoga4 from '../assets/images/wellness/yoga4.webp'
+import HERO from '../assets/images/hotel/HERO.jpg'
+import yoga6 from '../assets/images/wellness/yoga6.webp'
 
 import { useTranslation } from "react-i18next";
 
@@ -71,19 +70,19 @@ export default function Gallery() {
         <div className="flex flex-col lg:flex-row gap-7">
           <div className="lg:flex-[3]">
             <GalleryCard
-              src={spaPool2}
+              src={slider1}
               alt="Innenpool mit Liegen und Panorama"
               height="h-[400px] sm:h-[480px] lg:h-[583px]"
             />
           </div>
           <div className="lg:flex-[2] flex flex-col gap-7">
             <GalleryCard
-              src={spaMassage}
+              src={slider2}
               alt="Spa-Massagebereich mit warmem Licht"
               height="h-[220px] sm:h-[260px] lg:h-[280px]"
             />
             <GalleryCard
-              src={spaSauna}
+              src={yoga2}
               alt="Elegantes Zimmer mit warmem Licht"
               height="h-[220px] sm:h-[260px] lg:h-[280px]"
             />
@@ -94,7 +93,7 @@ export default function Gallery() {
         <div className="flex flex-col lg:flex-row gap-7">
           <div className="lg:flex-[2] flex flex-col gap-7">
             <GalleryCard
-              src={yoga1}
+              src={slider5}
               alt="Suite mit Blick ins Grüne"
               height="h-[170px] sm:h-[190px] lg:h-[280px]"
             />
@@ -106,7 +105,7 @@ export default function Gallery() {
           </div>
           <div className="lg:flex-[3]">
             <GalleryCard
-              src={pool3}
+              src={yoga6}
               alt="Entspannter Nachmittag am Pool"
               height="h-[260px] sm:h-[300px] lg:h-[580px]"
             />
@@ -117,14 +116,14 @@ export default function Gallery() {
         <div className="flex flex-col md:flex-row gap-7">
           <div className="md:flex-1">
             <GalleryCard
-              src={fitness}
+              src={yoga4}
               alt="Exklusiver Fitnessbereich mit Blick nach draußen"
               height="h-[220px] sm:h-[240px] lg:h-[320px]"
             />
           </div>
           <div className="md:flex-1">
             <GalleryCard
-              src={snow}
+              src={HERO}
               alt="Winterlicher Ausblick über das MOA Hotel"
               height="h-[220px] sm:h-[240px] lg:h-[320px]"
             />

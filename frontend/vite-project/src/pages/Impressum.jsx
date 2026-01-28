@@ -9,25 +9,25 @@ export default function Impressum() {
         <p>
           <strong>MOA HOTEL PARADISE GmbH</strong>
         </p>
-        <p>Inhaber: Max Mustermann</p>
+        <p>Inhaber: MOA</p>
         <p>
-          Musterstraße 10
+          Steinstrasse 11
           <br />
-          12345 Musterstadt
+          40212 Düsseldorf
           <br />
-          Schweiz
+          deustchland
         </p>
         <p>
-          Telefon: +41 11 123 45 67
+          Telefon: +491 11 123 45 67
           <br />
           E-Mail:{' '}
           <a href="mailto:moa@hotel.ch" className="text-rose-500">
             moa@hotel.ch
           </a>
         </p>
-        <p>Geschäftsführer: Max Mustermann</p>
-        <p>Handelsregister: HRB 12345, Amtsgericht Musterstadt</p>
-        <p>Umsatzsteuer-ID: CH123456789</p>
+        <p>Geschäftsführer: MOA</p>
+        <p>Handelsregister: MOA 12345, Amtsgericht düsseldorf</p>
+        <p>Umsatzsteuer-ID: MOA123456789</p>
       </div>
     </main>
   )

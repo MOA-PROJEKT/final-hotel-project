@@ -3,7 +3,7 @@
     "title": "Contact us",
     "subtitle": "The MOA_Hotel team will be happy to assist you."
   },
-  "mapAlt": "How to get to St. Moritz – map of Switzerland",
+  "mapAlt": "How to get to Düsseldorf – map of Germany",
   "visit": {
     "label": "Contact",
     "title": "Visit us",
@@ -12,7 +12,7 @@
   },
   "team": {
     "title": "Contact our team",
-    "addressLine": "Via Stella 22, CH-7500 St. Moritz",
+    "addressLine": "Steinstrasse 11, 40212 Düsseldorf, Germany",
     "phoneInline": "Phone",
     "departments": {
       "management": { "name": "Management", "role": "General Managers" },
