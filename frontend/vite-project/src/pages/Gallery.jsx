@@ -10,8 +10,7 @@ import yoga4 from '../assets/images/wellness/yoga4.webp'
 import HERO from '../assets/images/hotel/HERO.jpg'
 import yoga6 from '../assets/images/wellness/yoga6.webp'
 
-import { useTranslation } from "react-i18next";
-
+import { useTranslation } from 'react-i18next'
 
 function GalleryCard({ src, alt, height = 'h-64' }) {
   return (
@@ -29,7 +28,7 @@ function GalleryCard({ src, alt, height = 'h-64' }) {
 }
 
 export default function Gallery() {
-  const { t } = useTranslation("gallery");
+  const { t } = useTranslation('gallery')
   return (
     <main className=" text-white bg-[#f7efe7] min-h-screen">
       {/* HERO: volle Breite, Header liegt darüber */}
@@ -43,26 +42,22 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-slate-950/5" />
           <div className="relative flex h-full items-center pt-[140px] justify-center px-4">
             <div className="text-center  max-w-3xl">
-             
-              <h1 className="mt-6 text-3xl sm:text-3xl lg:text-5xl font-semibold ">
-  {t("hero.title")}
-</h1>
-
-             
+              <h1 className="mt-64 text-3xl sm:text-3xl lg:text-5xl font-semibold ">
+                {t('hero.title')}
+              </h1>
             </div>
           </div>
         </div>
       </section>
 
-<div className="mt-16 flex items-center justify-center gap-4 sm:gap-8 px-4">
-  <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
-  <h2 className="font-serif text-xl md:text-3xl tracking-wide text-[#b2854e] whitespace-nowrap text-center">
-  {t("section.title")}
-</h2>
+      <div className="mt-16 flex items-center justify-center gap-4 sm:gap-8 px-4">
+        <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
+        <h2 className="font-serif text-xl md:text-3xl tracking-wide text-[#b2854e] whitespace-nowrap text-center">
+          {t('section.title')}
+        </h2>
 
-  <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
-</div>
-
+        <span className="h-px w-16 sm:w-32 bg-[#b2854e]" />
+      </div>
 
       {/* GALLERY-BEREICH – groß & edel */}
       <section className="mt-16 mx-auto max-w-7xl px-4 sm:px-8 lg:px-10 pb-20 space-y-10">
