@@ -2,13 +2,13 @@
 import React from 'react'
 
 import spaHero from '../assets/images/galerie/pool2.jpg'
-import slider1 from '../assets/images/zimmer/slider1.webp'
+import slider1 from '../assets/images/img_restaurant/4.jpg'
 import slider2 from '../assets/images/zimmer/slider2.webp'
 import slider5 from '../assets/images/zimmer/slider5.webp'
-import yoga2 from '../assets/images/wellness/yoga2.webp'
-import yoga4 from '../assets/images/wellness/yoga4.webp'
-import HERO from '../assets/images/hotel/HERO.jpg'
-import yoga6 from '../assets/images/wellness/yoga6.webp'
+import yoga2 from '../assets/images/extra/1.jpg'
+import yoga4 from '../assets/images/zimmer/deluxe-suite/z1.jpg'
+import HERO from '../assets/images/extra/8.jpg'
+import yoga6 from '../assets/images/zimmer/deluxe-suite/z1.jpg'
 
 import { useTranslation } from 'react-i18next'
 
