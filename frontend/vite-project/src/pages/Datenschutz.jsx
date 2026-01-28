@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Datenschutz() {
   return (
-    <main className="flex items-center justify-center min-h-screen py-6 pt-[200px] bg-[#adc3c7]">
+    <main className="flex items-center justify-center min-h-screen py-6 pt-24 md:pt-[200px] bg-[#adc3c7]">
       <div className="max-w-3xl text-center text-slate-700">
         <h1 className="text-3xl font-semibold mb-6">Datenschutzerklärung</h1>
 
