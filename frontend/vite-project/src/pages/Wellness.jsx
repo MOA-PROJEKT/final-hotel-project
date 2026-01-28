@@ -6,16 +6,16 @@ import WellnessSection from "../components/WellnessSection.jsx";
 import ImageCarousel from "../components/ImageCaroussel.jsx";
 
 // Images – Hero
-import Hero from "../assets/images/wellness/Hero.webp";
+import Hero from "../assets/images/wellness/Hero.avif";
 
 // Images – Spa
-import spaMassage from "../assets/images/wellness/spaMassage.jpg";
+import spaMassage from "../assets/images/wellness/spaMassage.avif";
 import spaSauna from "../assets/images/wellness/spaSauna.jpg";
 import spaPool2 from "../assets/images/wellness/yoga1.avif";
 
 // Images – Yoga & Fitness
 import yogaSession from "../assets/images/wellness/yogaSession.jpg";
-import fitnessGym from "../assets/images/wellness/fitnessGym.jpg";
+import fitnessGym from "../assets/images/wellness/fit.jpg";
 
 // Images – Carousel
 import yoga1 from "../assets/images/wellness/yoga11.avif";
