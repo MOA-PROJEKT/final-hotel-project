@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Impressum() {
   return (
-    <main className="flex items-center justify-center min-h-screen px-6 bg-[#adc3c7]">
+    <main className="flex md:items-center justify-center min-h-screen px-6 pt-24 md:pt-0 bg-[#adc3c7]">
       <div className="max-w-2xl text-center text-slate-700">
         <h1 className="text-3xl font-semibold mb-6">Impressum</h1>
 
