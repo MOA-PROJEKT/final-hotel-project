@@ -3,6 +3,9 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, User, ChevronDown, LogOut, Shield, UserCircle } from 'lucide-react'
 import { useTranslation } from "react-i18next";
 
+import logoWhite from '../../assets/images/logo/logo-white.png'
+import logoDark from '../../assets/images/logo/logo-dark.png'
+
 const navLinks = [
   { key: "hotel", to: "/" },
   { key: "rooms", to: "/rooms" },
@@ -102,6 +105,9 @@ export default function Navbar() {
 
   const useDarkText = isScrolled || isLightPage
 
+  // ✅ LOGO: automatisch weiß/dunkel je nach Hintergrund
+  const logo = useDarkText ? logoDark : logoWhite
+
   useEffect(() => {
     const onScroll = () => {
       if (forceCompact) setIsScrolled(true)
@@ -140,7 +146,8 @@ export default function Navbar() {
   const shadowText = useDarkText ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
   const textMain = useDarkText ? 'text-slate-900' : `text-white ${shadowText}`
   const textMuted = useDarkText ? 'text-slate-900/70' : `text-white ${shadowText}`
-  const borderSoft = useDarkText ? 'border-slate-900/25' : 'border-white/70'
+ const borderSoft = useDarkText ? 'border-slate-900' : 'border-white/70'
+
 
   const navBase = useDarkText
     ? 'text-slate-900/70 hover:text-slate-900'
@@ -200,7 +207,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 isolate border-b transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-40 isolate border-b transition-none lg:transition-all lg:duration-300  ${
           isLightPage && !isScrolled
             ? 'bg-[#f7f2ec] border-transparent'
             : isScrolled
@@ -223,10 +230,16 @@ export default function Navbar() {
 
                 <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                   <div
-                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft} text-[10px] tracking-[0.2em] ${textMain}`}
+                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft}`}
                   >
-                    ★
+                    <img
+                      src={logo}
+                      alt="Logo"
+                      className="h-7 w-7 object-contain"
+                      draggable="false"
+                    />
                   </div>
+
                   <span className={`font-display text-[16px] tracking-[0.55em] uppercase ${textMain}`}>
                     MOA HOTEL PARADISE
                   </span>
@@ -390,10 +403,16 @@ export default function Navbar() {
 
               <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                 <div
-                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border ${borderSoft} text-[9px] tracking-[0.2em] ${textMain}`}
+                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border ${borderSoft}`}
                 >
-                  ★
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    className="h-6 w-6 object-contain"
+                    draggable="false"
+                  />
                 </div>
+
                 <span className={`text-[12px] tracking-[0.45em] uppercase font-semibold ${textMain}`}>
                   MOA HOTEL PARADISE
                 </span>
