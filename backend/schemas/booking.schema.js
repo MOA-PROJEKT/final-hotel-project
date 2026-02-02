@@ -1,4 +1,4 @@
-import { body } from 'express-validator'
+import { body, param } from 'express-validator'
 
 export const createBookingSchema = [
   body('roomId')
@@ -41,4 +41,17 @@ export const createBookingSchema = [
     .isInt({ min: 1, max: 10 })
     .withMessage('guests must be between 1 and 10.')
     .toInt(),
+]
+
+
+export const bookingIdParamSchema = [
+  param('id').isMongoId().withMessage('id must be a valid MongoDB ObjectId'),
+]
+
+export const bookingStatusPatchSchema = [
+  param('id').isMongoId().withMessage('id must be a valid MongoDB ObjectId'),
+  body('status')
+    .trim()
+    .isIn(['pending', 'confirmed', 'cancelled'])
+    .withMessage('status must be one of: pending, confirmed, cancelled'),
 ]
