@@ -2,6 +2,7 @@ import React from 'react'
 import ContactCard1 from '../components/ContactCard1.jsx'
 import contactHero from '../assets/images/hotel/contakt.png'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 const SALES_CONTACTS = [
   {
@@ -29,6 +30,27 @@ const SALES_CONTACTS = [
 
 export default function Kontakt() {
   const { t } = useTranslation('contact')
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const res = await fetch("https://formspree.io/f/maqqoaal", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+
+    if (res.ok) {
+      form.reset();
+      navigate("/danke");
+    } else {
+      alert("Fehler beim Senden. Bitte später nochmal versuchen.");
+    }
+  };
 
   return (
     <main className="bg-[#f7efe7] min-h-screen text-[#2a2a2a] pt-20">
@@ -255,75 +277,69 @@ export default function Kontakt() {
         </div>
 
         <form
-          action="https://formspree.io/f/maqqoaal"
-          method="POST"
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
-        >
-          {/* Redirect zur Danke-Seite */}
-          <input
-            type="hidden"
-            name="_next"
-            value="https://final-hotel-project.vercel.app/danke"
-          />
+  onSubmit={handleSubmit}
+  className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+>
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium">{t('form.firstName')}</label>
+    <input
+      type="text"
+      name="vorname"
+      className="border rounded-lg px-4 py-2"
+      required
+    />
+  </div>
 
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">{t('form.firstName')}</label>
-            <input
-              type="text"
-              name="vorname"
-              className="border rounded-lg px-4 py-2"
-              required
-            />
-          </div>
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium">{t('form.lastName')}</label>
+    <input
+      type="text"
+      name="nachname"
+      className="border rounded-lg px-4 py-2"
+      required
+    />
+  </div>
 
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">{t('form.lastName')}</label>
-            <input
-              type="text"
-              name="nachname"
-              className="border rounded-lg px-4 py-2"
-              required
-            />
-          </div>
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium">{t('form.phone')}</label>
+    <input
+      type="tel"
+      name="telefon"
+      className="border rounded-lg px-4 py-2"
+    />
+  </div>
 
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">{t('form.phone')}</label>
-            <input
-              type="tel"
-              name="telefon"
-              className="border rounded-lg px-4 py-2"
-            />
-          </div>
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium">{t('form.email')}</label>
+    <input
+      type="email"
+      name="email"
+      className="border rounded-lg px-4 py-2"
+      required
+    />
+  </div>
 
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">{t('form.email')}</label>
-            <input
-              type="email"
-              name="email"
-              className="border rounded-lg px-4 py-2"
-              required
-            />
-          </div>
+  <div className="md:col-span-2 flex flex-col">
+    <label className="mb-1 font-medium">{t('form.message')}</label>
+    <textarea
+      name="nachricht"
+      rows="6"
+      className="border rounded-lg px-4 py-2"
+      required
+    />
+  </div>
 
-          <div className="md:col-span-2 flex flex-col">
-            <label className="mb-1 font-medium">{t('form.message')}</label>
-            <textarea
-              name="nachricht"
-              rows="6"
-              className="border rounded-lg px-4 py-2"
-              required
-            ></textarea>
-          </div>
+  <div className="md:col-span-2 text-center">
+    <button
+      type="submit"
+      className="bg-[#c50355] text-white px-10 py-3 rounded-lg text-lg transition"
+    >
+      {t('form.submit')}
+    </button>
+  </div>
+</form>
 
-          <div className="md:col-span-2 text-center">
-            <button
-              type="submit"
-              className="bg-[#c50355] text-white px-10 py-3 rounded-lg text-lg transition"
-            >
-              {t('form.submit')}
-            </button>
-          </div>
-        </form>
+
       </section>
     </main>
   )
