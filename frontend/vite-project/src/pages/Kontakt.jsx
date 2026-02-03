@@ -1,6 +1,6 @@
 import React from 'react'
 import ContactCard1 from '../components/ContactCard1.jsx'
-import contactHero from '../assets/images/hotel/contakt.jpg'
+import contactHero from '../assets/images/hotel/contakt.png'
 import { useTranslation } from 'react-i18next'
 
 const SALES_CONTACTS = [
@@ -41,34 +41,37 @@ export default function Kontakt() {
       </section>
 
       {/* KARTE (BILD) + BESUCHS-INFOS – wie Carlton */}
-      <section className="w-full bg-white">
+      <section className="w-full ml-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-12  pt-6 pb-6">
           {/* Linke Seite: Karte als Bild */}
           <div className="w-full h-full min-h-[500px]">
-            <iframe
-              title="Google Map Düsseldorf"
-              src="https://www.google.com/maps?q=Düsseldorf&output=embed"
-              className="w-full h-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+  <img
+    src={contactHero}
+    alt="Contact"
+    className="w-full h-full object-cover"
+    loading="lazy"
+    draggable="false"
+  />
+</div>
+
 
           {/* Rechte Seite: Besuchsadresse */}
           <div className="flex flex-col justify-center items-center text-center lg:items-start lg:text-left lg:pl-9">
-            <span className="text-xs tracking-[0.35em] uppercase text-[#b38b4d] mb-2">
+            <span className="text-m tracking-[0.35em] uppercase text-[#b38b4d] mb-2">
               {t('visit.label')}
             </span>
             <h3 className="text-2xl font-medium mb-6 text-[#2a2a2a]">
               {t('visit.title')}
             </h3>
 
-            <div className="space-y-2 mb-6 leading-8">
-              <p>MOA_Hotel</p>
+            <div className="space-y-2 mb-6 leading-8 text-m">
+              <p className='text-[#b38b4d]'>MOA_Hotel</p>
               <p>
-                Via Steinstrasse 11
+                Avenida de Bruselas 10
                 <br />
-                40212 Düsseldorf
+                 38660 Costa Adeje, Santa Cruz de Tenerife
+  <br />
+  Spanien (Kanarische Inseln)
               </p>
             </div>
 
@@ -76,16 +79,16 @@ export default function Kontakt() {
               <p className="font-medium text-[#b38b4d] uppercase tracking-[0.2em]">
                 {t('visit.phoneLabel')}
               </p>
-              <p className="mb-4 text-base">+491 11 123 45 67</p>
+              <p className="mb-4 text-base">+34 922 123 456</p>
 
               <p className="font-medium text-[#b38b4d] uppercase tracking-[0.2em]">
                 {t('visit.emailLabel')}
               </p>
               <a
-                href="mailto:moa@hotel.ch"
+                href="mailto:moa@hotel.com"
                 className="text-[#c50355] hover:underline text-base"
               >
-                moa@hotel.ch
+                moa@hotel.com
               </a>
             </div>
           </div>

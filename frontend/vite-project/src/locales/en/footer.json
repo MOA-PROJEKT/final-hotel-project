@@ -20,11 +20,11 @@
     }
   },
   "contact": {
-   "title": "Kontakt",
-    "addressLine1": "Steinstrasse 11",
-    "addressLine2": "40212 Düsseldorf",
-    "phone": "+491 11 123 45 67",
-    "email": "moa@hotel.ch"
+   "title": "Contact",
+    "addressLine1": " Santa Cruz de Tenerife, Avenida de Bruselas 10 ",
+    "addressLine2": "38660 Spain (Canary Islands)",
+    "phone": "+34 922 123 456",
+    "email": "moa@hotel.com"
   },
   "copyright": "© 2024 MOA Hotel. All rights reserved."
 }

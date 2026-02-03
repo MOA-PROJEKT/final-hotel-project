@@ -117,7 +117,7 @@ export default function CornerJuniorSuite() {
                   <div>
                     <p className="text-xs text-neutral-500">ab</p>
                     <p className="text-2xl font-semibold">
-                      CHF {room.price} <span className="text-sm font-normal text-neutral-500">/ Nacht</span>
+                       € {room.price} <span className="text-sm font-normal text-neutral-500">/ Nacht</span>
                     </p>
                     <p className="text-xs text-neutral-500 mt-1">
                       Max. Gäste: <span className="text-neutral-800 font-medium">{room.maxGuests}</span>

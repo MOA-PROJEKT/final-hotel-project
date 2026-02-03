@@ -53,7 +53,7 @@ export default function RoomTemplate({
           </ul>
 
           <p className="mt-6 text-2xl font-semibold">
-            CHF {room.price} <span className="text-sm">/ Nacht</span>
+            € {room.price}  <span className="text-sm">/ Nacht</span>
           </p>
 
           <Link

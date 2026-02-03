@@ -204,7 +204,7 @@ export default function AdminDashboard() {
   );
 
   return (
-    <main className="min-h-screen bg-[#f7f2ec] pt-40 lg:pt-36 pb-20">
+    <main className="min-h-screen bg-[#f7f2ec] pt-40 lg:pt-56 pb-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="rounded-2xl bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
