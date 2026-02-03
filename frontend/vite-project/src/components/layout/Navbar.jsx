@@ -243,7 +243,8 @@ export default function Navbar() {
                   <span className="hidden sm:inline">Menü</span>
                 </button>
 
-                <div className={`flex flex-col items-center leading-tight ${textMain}`}>
+                <div className={`flex flex-col items-center leading-tight ${textMain} lg:translate-x-12`}>
+
                   <div
                     className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft}`}
                   >
@@ -263,19 +264,28 @@ export default function Navbar() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex items-center justify-end gap-3 sm:gap-4 w-[220px]">
+
                   <LanguageSwitcher current={language} onChange={handleLanguageChange} isDark={useDarkText} />
 
                   {!isLoggedIn ? (
-                    <button
-                      type="button"
-                      onClick={goLogin}
-                      className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full border ${borderSoft} ${textMain} hover:opacity-90 transition-opacity`}
-                      aria-label="Login"
-                      title="Login"
-                    >
-                      <User className="h-4 w-4" />
-                    </button>
+                  <button
+    type="button"
+    onClick={goLogin}
+    className={`hidden sm:flex items-center gap-2 px-1 py-2 hover:opacity-90 transition-opacity ${textMain}`}
+    aria-label="Login"
+    title="Login"
+  >
+    <span
+      className={`flex h-8 w-8 items-center justify-center rounded-full border ${borderSoft} text-[12px] font-semibold ${textMain}`}
+    >
+      <User className="h-4 w-4" />
+    </span>
+
+    {/* Platzhalter, damit Breite EXAKT gleich bleibt wie im Logged-in Zustand */}
+    <ChevronDown className="h-4 w-4 opacity-0" aria-hidden="true" />
+  </button>
+
                   ) : (
                     <div ref={userMenuRef} className="relative hidden sm:block">
                       <button
