@@ -3,6 +3,8 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { use } from 'react'
 
+import  logo from '../../assets/images/logo/logo-dark.png'
+
 export default function Footer() {
   const { t } = useTranslation('footer')
   const location = useLocation()
@@ -23,8 +25,14 @@ export default function Footer() {
               className="flex items-center gap-3 mb-6 hover:opacity-80 transition-opacity"
             >
               <div className="w-10 h-10 rounded-full border-2 border-slate-900 flex items-center justify-center">
-                <span className="text-slate-900 text-xl">★</span>
-              </div>
+  <img
+    src={logo}
+    alt="MOA Logo"
+    className="w-7 h-7 object-contain text-slate-900"
+    draggable="false"
+  />
+</div>
+
               <span className="text-black uppercase tracking-[0.3em] text-sm">
                 MOA HOTEL PARADISE
               </span>
@@ -206,7 +214,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="text-neutral-500 text-sm">{t('copyright')}</p>
+          <p className="text-slate-700 text-sm">{t('copyright')}</p>
         </div>
       </div>
     </footer>

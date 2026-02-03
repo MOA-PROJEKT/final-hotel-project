@@ -262,8 +262,8 @@ export default function Kontakt() {
           {/* Redirect zur Danke-Seite */}
           <input
             type="hidden"
-            name="_redirect"
-            value="https://hotel-projekt.vite.app/danke"
+            name="_next"
+            value="https://final-hotel-project.vercel.app/danke"
           />
 
           <div className="flex flex-col">
