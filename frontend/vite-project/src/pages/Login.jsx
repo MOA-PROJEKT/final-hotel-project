@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Eye, EyeOff } from "lucide-react"; // ✅ NEU
+import { Eye, EyeOff } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -15,20 +15,33 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [showPassword, setShowPassword] = useState(false); // ✅ NEU
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [error, setError] = useState("");
+  // ✅ NEU: Backend validation errors
+  const [errors, setErrors] = useState([]); // [{ field, msg }]
+  const [errorMsg, setErrorMsg] = useState(""); // general message
+
   const [loading, setLoading] = useState(false);
+
+  // helper: error message for a field (email/password/name)
+  const getFieldError = (field) => errors.find((e) => e.field === field)?.msg;
 
   const submit = async (e) => {
     e.preventDefault();
-    setError("");
+
+    // reset errors
+    setErrors([]);
+    setErrorMsg("");
     setLoading(true);
 
     try {
       const url =
         mode === "login" ? `${API_URL}/auth/login` : `${API_URL}/auth/register`;
-      const payload = mode === "login" ? { email, password } : { name, email, password };
+
+      const payload =
+        mode === "login"
+          ? { email, password }
+          : { name, email, password };
 
       const res = await fetch(url, {
         method: "POST",
@@ -36,34 +49,39 @@ export default function Login() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        setError(data?.msg || t("errors.loginFailed"));
+        // backend returns { msg, errors: [{field,msg}] }
+        setErrorMsg(data?.msg || data?.message || t("errors.loginFailed"));
+        setErrors(Array.isArray(data?.errors) ? data.errors : []);
         setLoading(false);
         return;
       }
 
+      // success
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-
       window.dispatchEvent(new Event("auth-changed"));
 
       if (data.user?.role === "admin") navigate("/admin");
       else navigate("/rooms");
     } catch (err) {
-      setError(t("errors.serverUnreachable"));
+      setErrorMsg(t("errors.serverUnreachable"));
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ styles (wie bei dir im Stil, nur klein gehalten)
+  // styles
   const input =
     "mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none focus:border-slate-900 pr-12";
   const inputWrap = "mt-1 relative";
   const eyeBtn =
     "absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-slate-500 hover:bg-slate-100";
+
+  const fieldError =
+    "mt-1 text-sm text-red-600";
 
   return (
     <main className="min-h-screen bg-[#f7f2ec] pt-40 lg:pt-56 pb-20">
@@ -76,7 +94,11 @@ export default function Login() {
           <div className="mt-6 flex gap-2">
             <button
               type="button"
-              onClick={() => setMode("login")}
+              onClick={() => {
+                setMode("login");
+                setErrors([]);
+                setErrorMsg("");
+              }}
               className={`rounded-lg px-4 py-2 text-sm font-medium ${
                 mode === "login"
                   ? "bg-slate-900 text-white"
@@ -85,9 +107,14 @@ export default function Login() {
             >
               {t("tabLogin")}
             </button>
+
             <button
               type="button"
-              onClick={() => setMode("register")}
+              onClick={() => {
+                setMode("register");
+                setErrors([]);
+                setErrorMsg("");
+              }}
               className={`rounded-lg px-4 py-2 text-sm font-medium ${
                 mode === "register"
                   ? "bg-slate-900 text-white"
@@ -110,6 +137,9 @@ export default function Login() {
                   className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 outline-none focus:border-slate-900"
                   required
                 />
+                {getFieldError("name") && (
+                  <p className={fieldError}>{getFieldError("name")}</p>
+                )}
               </div>
             )}
 
@@ -124,9 +154,11 @@ export default function Login() {
                 type="email"
                 required
               />
+              {getFieldError("email") && (
+                <p className={fieldError}>{getFieldError("email")}</p>
+              )}
             </div>
 
-            {/* ✅ Passwort mit Eye Icon */}
             <div>
               <label className="block text-sm font-medium text-slate-700">
                 {t("password")}
@@ -146,16 +178,23 @@ export default function Login() {
                   className={eyeBtn}
                   onClick={() => setShowPassword((v) => !v)}
                   title={showPassword ? "Verbergen" : "Anzeigen"}
-                  aria-label={showPassword ? "Passwort verbergen" : "Passwort anzeigen"}
+                  aria-label={
+                    showPassword ? "Passwort verbergen" : "Passwort anzeigen"
+                  }
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
+
+              {getFieldError("password") && (
+                <p className={fieldError}>{getFieldError("password")}</p>
+              )}
             </div>
 
-            {error && (
+            {/* general error message */}
+            {errorMsg && (
               <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
-                {error}
+                {errorMsg}
               </div>
             )}
 

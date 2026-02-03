@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import express from 'express'
 import connectDB from './libs/dbConnect.js'
 import cors from 'cors'

@@ -90,7 +90,11 @@ export default function RoomDetails() {
 
           {/* RIGHT: Booking form wrapper card */}
           <div className="lg:col-span-1  rounded-2xl border border-white/20 bg-white/85 p-6 shadow-lg backdrop-blur-md">
-            <BookingForm roomId={roomId} />
+            <BookingForm
+  roomId={roomId}
+  maxGuests={Number(room.maxGuests || room.max || 10)}
+/>
+
           </div>
         </div>
       </div>

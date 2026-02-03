@@ -136,7 +136,7 @@ export default function TwinJuniorSuite() {
                   <div>
                     <p className="text-xs text-neutral-500">ab</p>
                     <p className="text-2xl font-semibold">
-                      CHF {room.price}{" "}
+                       € {room.price}{" "}
                       <span className="text-sm font-normal text-neutral-500">/ Nacht</span>
                     </p>
                     <p className="text-xs text-neutral-500 mt-1">

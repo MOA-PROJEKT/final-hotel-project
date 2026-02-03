@@ -3,6 +3,9 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, User, ChevronDown, LogOut, Shield, UserCircle } from 'lucide-react'
 import { useTranslation } from "react-i18next";
 
+import logoWhite from '../../assets/images/logo/logo-white.png'
+import logoDark from '../../assets/images/logo/logo-dark.png'
+
 const navLinks = [
   { key: "hotel", to: "/" },
   { key: "rooms", to: "/rooms" },
@@ -81,8 +84,12 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const path = location.pathname
+  const solidBookPages = path === "/rooms" || path === "/wellness" || path === "/gallery";
 
-  const forceCompact = path === '/my-bookings' || path === '/admin'
+
+
+
+  
 
   const [auth, setAuth] = useState(() => readAuthFromStorage())
   const [userMenuOpen, setUserMenuOpen] = useState(false)
@@ -102,16 +109,17 @@ export default function Navbar() {
 
   const useDarkText = isScrolled || isLightPage
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (forceCompact) setIsScrolled(true)
-      else setIsScrolled(window.scrollY > 40)
-    }
+  // ✅ LOGO: automatisch weiß/dunkel je nach Hintergrund
+  const logo = useDarkText ? logoDark : logoWhite
 
-    onScroll()
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [forceCompact])
+  useEffect(() => {
+  const onScroll = () => setIsScrolled(window.scrollY > 40)
+
+  onScroll()
+  window.addEventListener('scroll', onScroll)
+  return () => window.removeEventListener('scroll', onScroll)
+}, [])
+
 
   useEffect(() => {
     const onAuthChanged = () => setAuth(readAuthFromStorage())
@@ -140,7 +148,8 @@ export default function Navbar() {
   const shadowText = useDarkText ? '' : 'drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]'
   const textMain = useDarkText ? 'text-slate-900' : `text-white ${shadowText}`
   const textMuted = useDarkText ? 'text-slate-900/70' : `text-white ${shadowText}`
-  const borderSoft = useDarkText ? 'border-slate-900/25' : 'border-white/70'
+ const borderSoft = useDarkText ? 'border-slate-900' : 'border-white/70'
+
 
   const navBase = useDarkText
     ? 'text-slate-900/70 hover:text-slate-900'
@@ -195,12 +204,25 @@ export default function Navbar() {
     const next = code === "EN" ? "en" : "de";
     i18n.changeLanguage(next);
     localStorage.setItem("lang", next);
-  };
+  }
+
+  
+
+  const bookBtnBase =
+    "hidden md:inline-flex rounded-sm border px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] transition-colors";
+
+  const bookBtnDefault =
+    "border-[#c50355] bg-transparent text-[#c50355] hover:bg-[#c50355] hover:text-white";
+
+  const bookBtnSolid =
+    "border-[#c50355] bg-[#c50355] text-white hover:bg-[#a80247]";
+
+  
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 isolate border-b transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-40 isolate border-b transition-none lg:transition-all lg:duration-300  ${
           isLightPage && !isScrolled
             ? 'bg-[#f7f2ec] border-transparent'
             : isScrolled
@@ -223,10 +245,16 @@ export default function Navbar() {
 
                 <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                   <div
-                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft} text-[10px] tracking-[0.2em] ${textMain}`}
+                    className={`mb-2 flex h-9 w-9 items-center justify-center rounded-full border ${borderSoft}`}
                   >
-                    ★
+                    <img
+                      src={logo}
+                      alt="Logo"
+                      className="h-7 w-7 object-contain"
+                      draggable="false"
+                    />
                   </div>
+
                   <span className={`font-display text-[16px] tracking-[0.55em] uppercase ${textMain}`}>
                     MOA HOTEL PARADISE
                   </span>
@@ -270,7 +298,7 @@ export default function Navbar() {
 
                       {userMenuOpen && (
                         <div className="absolute right-0 top-full mt-2 z-[9999] w-fit min-w-[135px] rounded-md bg-slate-900 text-white shadow-lg p-2 translate-x-1">
-                          {/* ✅ Änderung #1: Profil mit Icon + "Profil" */}
+                          
                           <button
                             type="button"
                             onClick={goProfile}
@@ -281,7 +309,7 @@ export default function Navbar() {
 
                           </button>
 
-                          {/* ✅ Änderung #2: My bookings nur wenn NICHT Admin */}
+                        
                           {!isAdmin && (
                             <button
                               type="button"
@@ -321,7 +349,8 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={goRooms}
-                    className="hidden md:inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
+                    className={`${bookBtnBase} ${solidBookPages ? bookBtnSolid : bookBtnDefault}`}
+
                   >
                     {t("book")}
                   </button>
@@ -375,12 +404,17 @@ export default function Navbar() {
               </nav>
 
               <button
-                type="button"
-                onClick={goRooms}
-                className="inline-flex rounded-sm border border-[#c50355] bg-transparent px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c50355] transition-colors hover:bg-[#c50355] hover:text-white"
-              >
-                {t("book")}
-              </button>
+  type="button"
+  onClick={goRooms}
+  className={`inline-flex rounded-sm border px-7 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] transition-colors ${
+    solidBookPages
+      ? "border-[#c50355] bg-[#c50355] text-white hover:bg-[#a80247]"
+      : "border-[#c50355] bg-transparent text-[#c50355] hover:bg-[#c50355] hover:text-white"
+  }`}
+>
+  {t("book")}
+</button>
+
             </div>
           )}
 
@@ -390,10 +424,16 @@ export default function Navbar() {
 
               <div className={`flex flex-col items-center leading-tight ${textMain}`}>
                 <div
-                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border ${borderSoft} text-[9px] tracking-[0.2em] ${textMain}`}
+                  className={`mb-1 flex h-7 w-7 items-center justify-center rounded-full border ${borderSoft}`}
                 >
-                  ★
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    className="h-6 w-6 object-contain"
+                    draggable="false"
+                  />
                 </div>
+
                 <span className={`text-[12px] tracking-[0.45em] uppercase font-semibold ${textMain}`}>
                   MOA HOTEL PARADISE
                 </span>
