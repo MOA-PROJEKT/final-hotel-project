@@ -41,7 +41,7 @@ export default function Kontakt() {
       </section>
 
       {/* KARTE (BILD) + BESUCHS-INFOS – wie Carlton */}
-      <section className="w-full ml-16">
+      <section className="w-full ml-0 lg:ml-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-12  pt-6 pb-6">
           {/* Linke Seite: Karte als Bild */}
           <div className="w-full h-full min-h-[500px]">

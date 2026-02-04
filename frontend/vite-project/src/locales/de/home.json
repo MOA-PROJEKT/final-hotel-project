@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Ihr privates Refugium im Herzen der Alpen.",
+    "title": "Ihr privates Refugium im Herzen der Kanarischen Inseln.",
     "book": "Buchen",
     "discoverMore": "Mehr entdecken",
     "scrollDownLabel": "Nach unten scrollen",
@@ -9,8 +9,8 @@
   },
 
   "seasonIntro": {
-    "title": "Wintersaison: 12. Dezember 2025 – 22. März 2026",
-    "text": "Hoch über dem See gelegen, ist das MOA Hotel das edelste Refugium der Region – mit weitem Blick über Berge, Stadtlichter und den winterlichen See."
+    "title": "Sommersaison: 12. Dezember 2025 – 22. März 2026",
+    "text": "Hoch über dem Meer gelegen, ist das MOA Hotel das edelste Refugium der Region – mit weitem Blick über Palmen, Küstenlichter und das türkisfarbene Wasser."
   },
 
   "buttons": {
@@ -24,28 +24,28 @@
   },
 
   "cards": {
-  "restaurant": {
-    "title": "Kulinarik im MOA",
-    "textLong": "Saisonale Küche, feine Weine und ein Abend mit Blick auf die Berge.",
-    "text2": "Regionale Zutaten, kreative Menüs und ein Service, der leise perfekt bleibt.",
-    "meta": "Täglich ab 18:00 · Smart Casual",
-    "button": "ZUM RESTAURANT"
+    "restaurant": {
+      "title": "Kulinarik im MOA",
+      "textLong": "Saisonale Küche, feine Weine und ein Abend mit Blick auf das Meer.",
+      "text2": "Regionale Zutaten, kreative Menüs und ein Service, der leise perfekt bleibt.",
+      "meta": "Täglich ab 18:00 · Smart Casual",
+      "button": "ZUM RESTAURANT"
+    },
+    "wellness": {
+      "title": "Wellness & Spa",
+      "textLong": "Wärme, Ruhe und Treatments – der perfekte Ausgleich nach einem Tag am Wasser.",
+      "text2": "Pool, Saunen und stille Ruhezonen für echte Regeneration.",
+      "meta": "07:00–21:00 · Massagen auf Anfrage",
+      "button": "ZUM WELLNESS"
+    },
+    "rooms": {
+      "title": "Zimmer & Suiten",
+      "textLong": "Zeitloses Design, viel Raum und Ausblicke, die bleiben.",
+      "text2": "Von Doppelzimmer bis Penthouse – jedes Detail ist auf Komfort ausgelegt.",
+      "meta": "Check-in 15:00 · Check-out 11:00",
+      "button": "ZU DEN ZIMMERN"
+    }
   },
-  "wellness": {
-    "title": "Wellness & Spa",
-    "textLong": "Wärme, Ruhe und Treatments – der perfekte Ausgleich nach einem Tag in den Bergen.",
-    "text2": "Pool, Saunen und stille Ruhezonen für echte Regeneration.",
-    "meta": "07:00–21:00 · Massagen auf Anfrage",
-    "button": "ZUM WELLNESS"
-  },
-  "rooms": {
-    "title": "Zimmer & Suiten",
-    "textLong": "Zeitloses Design, viel Raum und Ausblicke, die bleiben.",
-    "text2": "Von Doppelzimmer bis Penthouse – jedes Detail ist auf Komfort ausgelegt.",
-    "meta": "Check-in 15:00 · Check-out 11:00",
-    "button": "ZU DEN ZIMMERN"
-  }
-},
 
   "hotel": {
     "altImpression": "Hotel Impression",
@@ -58,7 +58,7 @@
     "kicker": "Moving Mountains",
     "title": "Moving Mountains – unser ganzheitliches Programm",
     "text": "Ein Konzept, das Vitalität stärkt, die Natur neu erlebbar macht und die Freude an Bewegung, Genuss und Entspannung verbindet.",
-    "alt": "Moving Mountains – Winter in den Bergen"
+    "alt": "Moving Mountains – Auszeit auf der Insel"
   },
 
   "sections": {
@@ -70,27 +70,27 @@
     "kickerHotel": "MOA HOTEL"
   },
 
-  "winter": {
-    "title": "Ein Winter voller Möglichkeiten",
-    "textLong": "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel – von Genuss bis Erlebnis.",
-    "textShort": "Entdecke saisonale Highlights, besondere Events und neue Winter-Momente im MOA Hotel."
+  "summer": {
+    "title": "Ein Sommer voller Möglichkeiten",
+    "textLong": "Entdecke saisonale Highlights, besondere Events und neue Insel-Momente im MOA Hotel – von Genuss bis Erlebnis.",
+    "textShort": "Entdecke saisonale Highlights, besondere Events und neue Insel-Momente im MOA Hotel."
   },
 
   "whatsOn": {
-    "alt": "Aktuelles – Winter"
+    "alt": "Aktuelles – Insel"
   },
   "section2": {
-    "alt": "Winter Highlight"
+    "alt": "Insel Highlight"
   },
   "section3": {
-    "alt": "Winter Highlight"
+    "alt": "Insel Highlight"
   },
 
   "hotelSlides": {
     "kicker": "MOA HOTEL",
     "1": {
       "title": "Grand Restaurant",
-      "text1": "Feine Küche mit Blick auf Berge und See.",
+      "text1": "Feine Küche mit Blick auf Meer und Horizont.",
       "text2": "Regionale Zutaten, ruhige Atmosphäre und persönlicher Service für besondere Abende."
     },
     "2": {
@@ -98,16 +98,16 @@
       "text1": "Nachhaltige Architektur trifft auf modernen Komfort und bewussten Umgang mit Ressourcen."
     },
     "3": {
-      "title": "Ein Rückzugsort hoch über dem Tal",
-      "text1": "Weiter Blick über Berge, Stadtlichter und See – perfekt für ruhige Tage und lange Abende."
+      "title": "Ein Rückzugsort hoch über der Küste",
+      "text1": "Weiter Blick über Palmen, Küstenlichter und das Meer – perfekt für ruhige Tage und lange Abende."
     },
     "4": {
-      "title": "Wintertage am Kamin",
-      "text1": "Nach einem Tag im Schnee wartet die Lounge mit Kamin, warmen Drinks und leiser Musik."
+      "title": "Abende in der Lounge",
+      "text1": "Nach einem Tag in der Sonne wartet die Lounge mit kühlen Drinks, sanfter Musik und entspannter Atmosphäre."
     },
     "5": {
       "title": "Private Erlebnisse",
-      "text1": "Helikopterflüge, Spa-Suiten oder private Dinner – wir gestalten Erlebnisse nach Wunsch."
+      "text1": "Bootstouren, Spa-Suiten oder private Dinner – wir gestalten Erlebnisse nach Wunsch."
     },
     "6": {
       "title": "Ankommen und Abschalten",
@@ -128,38 +128,37 @@
     "g2": {
       "alt": "Journal Beitrag 2",
       "title": "Unter den Besten: ein Hotel für besondere Ansprüche",
-      "intro": "Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und erstklassigen Service – mitten in den Bergen.",
-      "more": "Wer bei uns ankommt, sucht Ruhe ohne Verzicht: großzügige Zimmer, ein Blick auf die Berge und ein Haus, das sich Zeit nimmt. Ob Kaminlounge, Concierge oder kleine Aufmerksamkeiten – hier zählt das Gefühl, wirklich willkommen zu sein."
+      "intro": "Architektur, Lage und Kulinarik treffen auf Ruhe, Wärme und erstklassigen Service – mitten auf der Insel.",
+      "more": "Wer bei uns ankommt, sucht Ruhe ohne Verzicht: großzügige Zimmer, ein Blick auf das Meer und ein Haus, das sich Zeit nimmt. Ob Lounge, Concierge oder kleine Aufmerksamkeiten – hier zählt das Gefühl, wirklich willkommen zu sein."
     },
 
     "g3": {
       "alt": "Journal Beitrag 3",
       "title": "Signature Moments: außergewöhnlich – und ganz persönlich",
-      "intro": "Private Winter-Erlebnisse, Concierge-Service und kleine Details, die aus einem Aufenthalt eine Erinnerung machen.",
-      "more": "Signature Moments sind Erlebnisse, die wir exklusiv für dich gestalten: private Tastings, Winter-Picknicks, individuelle Touren oder ein Dinner an einem besonderen Ort. So wird aus einer Reise ein persönlicher Moment, der bleibt."
+      "intro": "Private Erlebnisse, Concierge-Service und kleine Details, die aus einem Aufenthalt eine Erinnerung machen.",
+      "more": "Signature Moments sind Erlebnisse, die wir exklusiv für dich gestalten: private Tastings, Picknicks, individuelle Touren oder ein Dinner an einem besonderen Ort. So wird aus einer Reise ein persönlicher Moment, der bleibt."
     },
 
     "g4": {
       "alt": "Journal Beitrag 4",
       "title": "Spa & Wellness: Entspannung auf einem neuen Niveau",
-      "intro": "Pool, Ruhezonen und Treatments – gestaltet für Regeneration, Stille und neue Energie nach einem Wintertag.",
-      "more": "Nach einem Tag in der Kälte wartet Wärme: Pool, Ruhezonen und Treatments, die Muskulatur lösen und Energie zurückbringen. Sanfte Düfte, leises Licht und stille Bereiche sorgen dafür, dass Kopf und Körper wirklich abschalten."
+      "intro": "Pool, Ruhezonen und Treatments – gestaltet für Regeneration, Stille und neue Energie nach einem Tag am Meer.",
+      "more": "Nach einem Tag am Wasser wartet Wärme: Pool, Ruhezonen und Treatments, die Muskulatur lösen und Energie zurückbringen. Sanfte Düfte, leises Licht und stille Bereiche sorgen dafür, dass Kopf und Körper wirklich abschalten."
     },
 
     "e1": {
-  "alt": "Journal Beitrag 5",
-  "kicker": "REST",
-  "title": "Die Hidden Places unserer Region",
-  "intro": "Mit ihrem belebten Ortskern und den bekannten Pisten zählt die Region zu den weltweit geschätzten Reisedestinationen. Abseits der touristischen Hotspots eröffnet sie jedoch auch ruhige, inspirierende Orte.",
-  "more": "Abseits der bekannten Wege zeigen sich die Berge und Täler von ihrer stillen Seite: verschneite Waldpfade, kleine Aussichtspunkte und Orte, an denen man die Natur ganz nah spürt. Ideal für Spaziergänge, die den Kopf frei machen und neue Ruhe schenken."
-}
-,
+      "alt": "Journal Beitrag 5",
+      "kicker": "REST",
+      "title": "Die Hidden Places unserer Region",
+      "intro": "Mit ihrem belebten Ortskern und den bekannten Stränden zählt die Region zu den weltweit geschätzten Reisedestinationen. Abseits der Hotspots eröffnet sie jedoch auch ruhige, inspirierende Orte.",
+      "more": "Abseits der bekannten Wege zeigt sich die Insel von ihrer stillen Seite: kleine Buchten, Aussichtspunkte am Wasser und Orte, an denen man die Natur ganz nah spürt. Ideal für Spaziergänge, die den Kopf frei machen und neue Ruhe schenken."
+    },
 
     "e2": {
       "alt": "Journal Beitrag 6",
       "kicker": "CARLTON HOTEL",
       "title": "Inspiration aus der Natur: Das Grand Restaurant",
-      "intro": "Das Grand Restaurant ist eine Hommage an die Natur und die kulinarischen Köstlichkeiten des Engadins. Regionale Produkte, feine Aromen und ruhige Eleganz prägen den Abend.",
+      "intro": "Das Grand Restaurant ist eine Hommage an die Natur und die kulinarischen Schätze der Insel. Regionale Produkte, feine Aromen und ruhige Eleganz prägen den Abend.",
       "more": "Das Grand Restaurant verbindet klassische Eleganz mit feinen, regionalen Aromen. Saisonale Menüs, ruhige Atmosphäre und ein Service, der aufmerksam bleibt, ohne aufdringlich zu sein – ideal für Abende, die in Erinnerung bleiben."
     }
   }

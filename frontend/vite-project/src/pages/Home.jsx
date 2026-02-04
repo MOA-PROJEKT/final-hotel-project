@@ -622,40 +622,46 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4">
           <div id="journal-top" className="grid gap-x-24 gap-y-20 md:grid-cols-2">
             <div className="space-y-20">
-              {/* g1 */}
-              <article>
-                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-                  <img src={g1} alt={t("journal.g1.alt")} className="h-[260px] sm:h-[320px] md:h-[360px] w-full object-cover" />
-                </div>
+             
 
-                <div className="mt-10">
-                  <div className="flex items-center gap-7">
-                    <span className="h-px w-20 bg-[#d9c9bb]" />
-                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">{t("journal.kicker")}</p>
+
+ {/* e2 */}
+                <article className="md:mt-28 md:pl-8">
+                  <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                    <img src={e2} alt={t("journal.e2.alt")} className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover" />
                   </div>
 
-                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">{t("journal.g1.title")}</h3>
-                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">{t("journal.g1.intro")}</p>
-
-                  <div
-                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
-                      isOpen("g1") ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="max-w-xl text-base leading-relaxed text-slate-700">{t("journal.g1.more")}</p>
+                  <div className="mt-10">
+                    <div className="flex items-center gap-7">
+                      <span className="h-px w-20 bg-[#d9c9bb]" />
+                      <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">{t("journal.e2.kicker")}</p>
                     </div>
-                  </div>
 
-                  <button
-                    type="button"
-                    onClick={() => toggleJournal("g1")}
-                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
-                  >
-                    {isOpen("g1") ? t("buttons.less") : t("buttons.read")}
-                  </button>
-                </div>
-              </article>
+                    <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">{t("journal.e2.title")}</h3>
+                    <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">{t("journal.e2.intro")}</p>
+
+                    <div
+                      className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                        isOpen("e2") ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="max-w-xl text-base leading-relaxed text-slate-700">{t("journal.e2.more")}</p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleJournal("e2")}
+                      className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                    >
+                      {isOpen("e2") ? t("buttons.less") : t("buttons.read")}
+                    </button>
+                  </div>
+                </article>
+
+
+
 
               {/* g3 */}
               <article>
@@ -816,40 +822,46 @@ export default function Home() {
                   </div>
                 </article>
 
-                {/* e2 */}
-                <article className="md:mt-28 md:pl-8">
-                  <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
-                    <img src={e2} alt={t("journal.e2.alt")} className="h-[260px] sm:h-[320px] md:h-[380px] w-full object-cover" />
+
+ {/* g1 */}
+              <article>
+                <div className="overflow-hidden shadow-[0_40px_90px_rgba(15,23,42,0.14)]">
+                  <img src={g1} alt={t("journal.g1.alt")} className="h-[260px] sm:h-[320px] md:h-[360px] w-full object-cover" />
+                </div>
+
+                <div className="mt-10">
+                  <div className="flex items-center gap-7">
+                    <span className="h-px w-20 bg-[#d9c9bb]" />
+                    <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">{t("journal.kicker")}</p>
                   </div>
 
-                  <div className="mt-10">
-                    <div className="flex items-center gap-7">
-                      <span className="h-px w-20 bg-[#d9c9bb]" />
-                      <p className="text-[10px] tracking-[0.35em] uppercase text-slate-500">{t("journal.e2.kicker")}</p>
+                  <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">{t("journal.g1.title")}</h3>
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">{t("journal.g1.intro")}</p>
+
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
+                      isOpen("g1") ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl text-base leading-relaxed text-slate-700">{t("journal.g1.more")}</p>
                     </div>
-
-                    <h3 className="mt-6 font-serif text-3xl leading-snug text-slate-900">{t("journal.e2.title")}</h3>
-                    <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-700">{t("journal.e2.intro")}</p>
-
-                    <div
-                      className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out ${
-                        isOpen("e2") ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="max-w-xl text-base leading-relaxed text-slate-700">{t("journal.e2.more")}</p>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => toggleJournal("e2")}
-                      className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
-                    >
-                      {isOpen("e2") ? t("buttons.less") : t("buttons.read")}
-                    </button>
                   </div>
-                </article>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleJournal("g1")}
+                    className="mt-10 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#c50355] hover:opacity-80"
+                  >
+                    {isOpen("g1") ? t("buttons.less") : t("buttons.read")}
+                  </button>
+                </div>
+              </article>
+
+
+
+
+               
               </div>
             </div>
           )}
