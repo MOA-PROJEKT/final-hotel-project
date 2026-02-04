@@ -233,10 +233,10 @@ export default function Home() {
               <img src={active.image} alt={t("hotel.altImpression")} className="h-full w-full object-cover" />
             </div>
 
-            <div className="mt-8 md:mt-4 md:absolute md:right-[6%] md:top-[-20px] md:w-[52%] lg:w-[52%]">
+            <div className="mt-8 md:mt-4 md:absolute md:right-[6%] md:top-[-40px] md:w-[52%] lg:w-[52%]">
               <div className="bg-white/50 backdrop-blur-[2px] px-8 py-9 sm:px-10 sm:py-11 shadow-[0_30px_80px_rgba(15,23,42,0.18)] md:h-[19rem] lg:h-[25rem] flex flex-col">
                 <div className="mb-6">
-                  <p className="text-[11px] tracking-[0.35em] uppercase text-slate-400">
+                  <p className="text-[11px]  tracking-[0.35em] uppercase text-slate-400">
                     {t(active.kickerKey)}
                   </p>
                   <div className="mt-4 h-px w-16 bg-slate-300" />
@@ -602,9 +602,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-
-
 
 
 
