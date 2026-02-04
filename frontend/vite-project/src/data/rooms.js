@@ -8,7 +8,7 @@ import TWIN_JUNIOR from '../assets/images/zimmer/1_Titelbild_Twin-Junior-Suite.j
 import letzte from '../assets/images/zimmer/letzte.webp'
 import CORNER_JUNIOR from '../assets/images/zimmer/1_Titelbild_Corner-Junior-Suite.jpg'
 import GRAND_SUITE from '../assets/images/zimmer/1_Titelbild_Grand-Suite-bedroom.jpg'
-import PENTHOUSE from '../assets/images/zimmer/4_Carlton_Penthouse-13.jpg'
+import PENTHOUSE from '../assets/images/zimmer/4_Moa_Penthouse-13.jpg'
 
 export const rooms = [
   {
@@ -90,7 +90,7 @@ export const rooms = [
   },
   {
     id: 'penthouse-suite',
-    name: 'Carlton Penthouse Suite',
+    name: 'Moa Penthouse Suite',
     size: '386 m²',
     category: 'Penthouse',
     image: PENTHOUSE,

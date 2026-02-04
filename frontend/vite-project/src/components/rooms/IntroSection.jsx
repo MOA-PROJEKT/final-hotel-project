@@ -69,9 +69,9 @@ export default function IntroSection() {
             Ihr Zimmer oder Ihre Suite steht Ihnen am Anreisetag ab 15 Uhr und
             am Abreisetag bis 12 Uhr zur Verfügung. Wenn Sie früher ankommen
             oder später abreisen, kümmert sich unser Concierge-Team gerne um Ihr
-            Gepäck. Anreise per Flugzeug Das Carlton Hotel St. Moritz ist in gut
+            Gepäck. Anreise per Flugzeug Das MOA Hotel  ist in gut
             3 Stunden von den internationalen Flughäfen Zürich und Mailand
-            erreichbar. Zudem ist das Carlton Hotel nur 7 km von Europas
+            erreichbar. Zudem ist das MOA Hotel nur 7 km von Europas
             höchstgelegenem Flugplatz Samedan entfernt, von wo wir gerne einen
             kostenfreien Transfer zum Hotel organisieren. Bitte informieren Sie
             uns über Ihre Ankunftszeit. Anreise per Zug Bitte informieren Sie
