@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Your private retreat in the heart of the Alps.",
+    "title": "Your private retreat in the heart of the Canary Islands.",
     "book": "Book",
     "discoverMore": "Discover more",
     "scrollDownLabel": "Scroll down",
@@ -9,8 +9,8 @@
   },
 
   "seasonIntro": {
-    "title": "Winter season: 12 December 2025 – 22 March 2026",
-    "text": "Perched high above the lake, MOA Hotel is the region’s most exclusive refuge — with sweeping views of mountains, city lights and the winter lake."
+    "title": "Summer season: 12 December 2025 – 22 March 2026",
+    "text": "Perched high above the sea, MOA Hotel is the region’s most exclusive refuge — with sweeping views of palms, coastal lights and turquoise waters."
   },
 
   "buttons": {
@@ -24,29 +24,28 @@
   },
 
   "cards": {
-  "restaurant": {
-    "title": "Dining at MOA",
-    "textLong": "Seasonal cuisine, fine wines, and an evening with views of the mountains.",
-    "text2": "Local ingredients, curated menus, and service that feels effortlessly perfect.",
-    "meta": "Daily from 6 pm · Smart casual",
-    "button": "TO THE RESTAURANT"
+    "restaurant": {
+      "title": "Dining at MOA",
+      "textLong": "Seasonal cuisine, fine wines, and an evening with views of the sea.",
+      "text2": "Local ingredients, curated menus, and service that feels effortlessly perfect.",
+      "meta": "Daily from 6 pm · Smart casual",
+      "button": "TO THE RESTAURANT"
+    },
+    "wellness": {
+      "title": "Wellness & Spa",
+      "textLong": "Warmth, calm, and treatments — the perfect balance after a day by the water.",
+      "text2": "Pool, saunas, and quiet zones designed for real recovery.",
+      "meta": "7 am–9 pm · Massages on request",
+      "button": "TO WELLNESS"
+    },
+    "rooms": {
+      "title": "Rooms & Suites",
+      "textLong": "Timeless design, generous space, and views you won’t forget.",
+      "text2": "From doubles to penthouses — every detail is made for comfort.",
+      "meta": "Check-in 3 pm · Check-out 11 am",
+      "button": "TO THE ROOMS"
+    }
   },
-  "wellness": {
-    "title": "Wellness & Spa",
-    "textLong": "Warmth, calm, and treatments — the perfect balance after a day in the mountains.",
-    "text2": "Pool, saunas, and quiet zones designed for real recovery.",
-    "meta": "7 am–9 pm · Massages on request",
-    "button": "TO WELLNESS"
-  },
-  "rooms": {
-    "title": "Rooms & Suites",
-    "textLong": "Timeless design, generous space, and views you won’t forget.",
-    "text2": "From doubles to penthouses — every detail is made for comfort.",
-    "meta": "Check-in 3 pm · Check-out 11 am",
-    "button": "TO THE ROOMS"
-  }
-}
-,
 
   "hotel": {
     "altImpression": "Hotel impression",
@@ -59,7 +58,7 @@
     "kicker": "Moving Mountains",
     "title": "Moving Mountains — our holistic program",
     "text": "A concept that strengthens vitality, brings nature closer, and combines movement, pleasure and relaxation.",
-    "alt": "Moving Mountains — winter in the mountains"
+    "alt": "Moving Mountains — island escape"
   },
 
   "sections": {
@@ -71,27 +70,27 @@
     "kickerHotel": "MOA HOTEL"
   },
 
-  "winter": {
-    "title": "A winter full of possibilities",
-    "textLong": "Discover seasonal highlights, special events and new winter moments at MOA Hotel — from indulgence to experiences.",
-    "textShort": "Discover seasonal highlights, special events and new winter moments at MOA Hotel."
+  "summer": {
+    "title": "A summer full of possibilities",
+    "textLong": "Discover seasonal highlights, special events and new island moments at MOA Hotel — from indulgence to experiences.",
+    "textShort": "Discover seasonal highlights, special events and new island moments at MOA Hotel."
   },
 
   "whatsOn": {
-    "alt": "What’s on — winter"
+    "alt": "What’s on - Island"
   },
   "section2": {
-    "alt": "Winter highlight"
+    "alt": "Island highlight"
   },
   "section3": {
-    "alt": "Winter highlight"
+    "alt": "Island highlight"
   },
 
   "hotelSlides": {
     "kicker": "MOA HOTEL",
     "1": {
       "title": "Grand Restaurant",
-      "text1": "Fine dining with views of mountains and the lake.",
+      "text1": "Fine dining with views of the sea and the horizon.",
       "text2": "Regional ingredients, a calm atmosphere and attentive service for unforgettable evenings."
     },
     "2": {
@@ -99,16 +98,16 @@
       "text1": "Sustainable architecture meets modern comfort and a mindful use of resources."
     },
     "3": {
-      "title": "A retreat high above the valley",
-      "text1": "Wide views over mountains, city lights and the lake — perfect for quiet days and long evenings."
+      "title": "A retreat high above the coast",
+      "text1": "Wide views over palms, coastal lights and the sea — perfect for quiet days and long evenings."
     },
     "4": {
-      "title": "Winter days by the fireplace",
-      "text1": "After a day in the snow, the lounge awaits with a fireplace, warm drinks and soft music."
+      "title": "Evenings in the lounge",
+      "text1": "After a day in the sun, the lounge awaits with chilled drinks, soft music and a relaxed atmosphere."
     },
     "5": {
       "title": "Private experiences",
-      "text1": "Helicopter flights, spa suites or private dinners — we create experiences tailored to your wishes."
+      "text1": "Boat trips, spa suites or private dinners — we create experiences tailored to your wishes."
     },
     "6": {
       "title": "Arrive and unwind",
@@ -129,38 +128,37 @@
     "g2": {
       "alt": "Journal post 2",
       "title": "Among the best: a hotel for discerning tastes",
-      "intro": "Architecture, location and cuisine meet calm, warmth and first-class service — right in the mountains.",
-      "more": "Guests who arrive here seek calm without compromise: spacious rooms, mountain views and a house that takes its time. Fireplace lounge, concierge or small gestures — what matters is feeling truly welcome."
+      "intro": "Architecture, location and cuisine meet calm, warmth and first-class service — right on the island.",
+      "more": "Guests who arrive here seek calm without compromise: spacious rooms, sea views and a house that takes its time. Lounge, concierge or small gestures — what matters is feeling truly welcome."
     },
 
     "g3": {
       "alt": "Journal post 3",
       "title": "Signature Moments: exceptional — and truly personal",
-      "intro": "Private winter experiences, concierge service and small details that turn a stay into a lasting memory.",
-      "more": "Signature Moments are experiences we create exclusively for you: private tastings, winter picnics, tailored tours or a dinner in a special place. This turns a trip into a personal moment that stays."
+      "intro": "Private  experiences, concierge service and small details that turn a stay into a lasting memory.",
+      "more": "Signature Moments are experiences we create exclusively for you: private tastings, picnics, tailored tours or a dinner in a special place. This turns a trip into a personal moment that stays."
     },
 
     "g4": {
       "alt": "Journal post 4",
       "title": "Spa & Wellness: relaxation on a new level",
-      "intro": "Pool, quiet zones and treatments — designed for regeneration, stillness and renewed energy after a winter day.",
-      "more": "After a day in the cold, warmth awaits: pool, relaxation areas and treatments that release tension and restore energy. Gentle scents, soft light and quiet spaces help both mind and body truly switch off."
+      "intro": "Pool, quiet zones and treatments — designed for regeneration, stillness and renewed energy after a day by the sea.",
+      "more": "After a day by the water, warmth awaits: pool, relaxation areas and treatments that release tension and restore energy. Gentle scents, soft light and quiet spaces help both mind and body truly switch off."
     },
 
-   "e1": {
-  "alt": "Journal post 5",
-  "kicker": "REST",
-  "title": "Hidden places of our region",
-  "intro": "With its lively village center and well-known slopes, the region is among the world’s most appreciated travel destinations. Beyond the hotspots, it also reveals calm and inspiring places.",
-  "more": "Away from the beaten path, the mountains and valleys reveal their quiet side: snowy forest trails, small viewpoints and places where nature feels close. Ideal for walks that clear the mind and invite a sense of calm."
-}
-,
+    "e1": {
+      "alt": "Journal post 5",
+      "kicker": "REST",
+      "title": "Hidden places of our region",
+      "intro": "With its lively village center and well-known beaches, the region is among the world’s most appreciated travel destinations. Beyond the hotspots, it also reveals calm and inspiring places.",
+      "more": "Away from the beaten path, the island reveals its quiet side: small coves, viewpoints by the water and places where nature feels close. Ideal for walks that clear the mind and invite a sense of calm."
+    },
 
     "e2": {
       "alt": "Journal post 6",
       "kicker": "CARLTON HOTEL",
       "title": "Inspired by nature: the Grand Restaurant",
-      "intro": "The Grand Restaurant is an homage to nature and the culinary treasures of the Engadin. Regional produce, fine aromas and quiet elegance define the evening.",
+      "intro": "The Grand Restaurant is an homage to nature and the culinary treasures of the island. Regional produce, fine aromas and quiet elegance define the evening.",
       "more": "The Grand Restaurant combines classic elegance with refined regional flavors. Seasonal menus, a calm atmosphere and attentive service — ideal for evenings you’ll remember."
     }
   }
